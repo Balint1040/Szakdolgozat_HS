@@ -4,24 +4,14 @@ import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Anta } from "next/font/google";
 
-import BootstrapClient from "@/components/BootstrapClient.tsx"
-
-/*const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});*/
+import BootstrapClient from "../../components/BootstrapClient";
 
 const anta = Anta( {
   weight: "400",
   display: "swap",
   subsets: ["latin-ext"]
 })
+
 
 export const metadata: Metadata = {
   title: "HS Market",
@@ -61,8 +51,6 @@ export default function RootLayout({
         {children}
 
       </body>
-
-      
     </html>
   );
 }
