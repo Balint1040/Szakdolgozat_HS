@@ -1,1 +1,0 @@
-# Szakdolgozat_HS
