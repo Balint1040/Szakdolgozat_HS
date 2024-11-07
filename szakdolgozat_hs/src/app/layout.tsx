@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 //import localFont from "next/font/local";
 import "./globals.css";
+import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Anta } from "next/font/google";
 
-import BootstrapClient from "../../components/BootstrapClient";
+import BootstrapClient from "@/components/BootstrapClient";
+import OrangeButton from "@/components/OrangeButton";
 
 const anta = Anta( {
   weight: "400",
@@ -27,27 +29,19 @@ export default function RootLayout({
     <html lang="hu">
       <body className={`${anta.className}`}>
 
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
-          <div className="container-fluid">
-            <a className="navbar-brand" href="#">Navbar</a>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Link</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link disabled" aria-disabled="true">Disabled</a>
-                </li>
-              </ul>
-            </div>
+        <nav className="navbar navbar-expand-lg">
+          <div className="container justify-content-between">
+            <a className="navbar-brand" href="#"><span className="text-Orange">H</span><span className="text-Blue">S</span>market</a>
+            <form className="d-flex navbarSearch" role="search">
+              <input className="form-control" type="search" placeholder="Keresés" aria-label="Search"/>
+            </form>
+            <OrangeButton props={{
+              name: "Bejelentkezés",
+              href: "#"
+            }} />
           </div>
         </nav>
+
         {children}
 
       </body>

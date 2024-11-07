@@ -1,0 +1,70 @@
+:root {
+    --blue: #1761A0;
+    --orange: #FF7E2D;
+    --gray: #333333;
+    --white: #FFFFFF;
+    --light: #F2F2F2;
+}
+
+
+.text-Orange {
+    color: var(--orange);
+}
+.text-Blue {
+    color: var(--blue);
+}
+
+.buttonOrange {
+    height: 55px;
+    padding: 14px 20px;
+    color: var(--white);
+    font-size: 26px;
+    line-height: 100%;
+    border-radius: 27px;
+    background-color: var(--orange);
+    -webkit-box-shadow: 2px 4px 20px 5px var(--orange);
+    -moz-box-shadow: 2px 4px 20px 5px var(--orange);
+    box-shadow: 2px 4px 20px 5px var(--orange);
+}
+
+
+nav {
+    height: 100px;
+    background-color: var(--gray);
+}
+.navbar-brand {
+    font-size: 40px !important;
+    color: var(--white) !important;
+}
+.navbarSearch .form-control {
+    height: 55px;
+    width: 540px;
+    border-radius: 27px;
+    border: none;
+    padding-left: 76px;
+    font-size: 20px;
+}
+
+
+.hero {
+    height: calc(100vh - 100px);
+    background-image: url("../../public/static/heroBg.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: var(--white);
+}
+.hero .contentWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /*justify-content: end;*/
+    align-items: end;
+}
+.hero .contentWrapper > * {
+    display: inline-block;
+}
+.hero .contentWrapper p {
+    font-size: 45px;
+    max-width: 600px;
+}
