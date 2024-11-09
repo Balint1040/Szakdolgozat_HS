@@ -7,6 +7,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+//EXAMPLE FOR CREATING A TABLE
+
 model Post {
   id        Int      @id @default(autoincrement())
   title     String   @db.VarChar(255)
@@ -15,6 +17,7 @@ model Post {
   published Boolean  @default(false)
   authorId  Int
   author    User     @relation(fields: [authorId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  tags      Tag[]
 }
 
 model Profile {
@@ -30,4 +33,10 @@ model User {
   email   String   @unique @db.VarChar(255)
   posts   Post[]
   profile Profile?
+}
+
+model Tag{
+  id Int @id @default(autoincrement())
+  name String
+  post Post[]
 }
