@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
+    "@prisma/client": "^5.22.0",
     "bootstrap": "^5.3.3",
     "next": "15.0.2",
     "react": "19.0.0-rc-02c0e824-20241028",
