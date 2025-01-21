@@ -6,7 +6,6 @@
     --light: #F2F2F2;
 }
 
-
 .text-Orange {
     color: var(--orange);
 }
@@ -14,7 +13,16 @@
     color: var(--blue);
 }
 
-.buttonOrange {
+.navbarSearchIcon {
+    height: 36px;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: .75;
+}
+
+.orangeButton, .blueButton {
     height: 55px;
     padding: 14px 20px;
     color: var(--white);
@@ -25,6 +33,16 @@
     -webkit-box-shadow: 2px 4px 20px 5px var(--orange);
     -moz-box-shadow: 2px 4px 20px 5px var(--orange);
     box-shadow: 2px 4px 20px 5px var(--orange);
+}
+.blueButton {
+    background-color: var(--blue);
+    -webkit-box-shadow: 2px 4px 20px 5px var(--blue);
+    -moz-box-shadow: 2px 4px 20px 5px var(--blue);
+    box-shadow: 2px 4px 20px 5px var(--blue);
+}
+.orangeButton svg, .blueButton svg{
+    height: 20px;
+    margin-left: 10px;
 }
 
 
@@ -67,4 +85,59 @@ nav {
 .hero .contentWrapper p {
     font-size: 45px;
     max-width: 600px;
+}
+
+#strengths {
+    padding: 100px 0;
+    color: var(--gray);
+}
+#strengths svg {
+    height: 100px;
+}
+#strengths .sCardWrap svg, #strengths .sCardWrap > div {
+    transition: all .3s ease-in-out;
+}
+#strengths .sCardWrap:hover {
+    color: var(--orange);
+}
+#strengths .sCardWrap:hover svg {
+    transform: translateY(-10px);
+    filter: drop-shadow(0px 4px 20px #FF7E2D);
+}
+
+#cta p {
+    font-size: 40px;
+    color: var(--gray);
+}
+.ram, .gpu, .motherb {
+    position: absolute;
+}
+.ram {
+    animation: float 6s ease-in-out infinite;
+    z-index: 3;
+    bottom: 0;
+    left: 15%;
+}
+.gpu {
+    animation: float 7s ease-in-out infinite;
+    z-index: 2;
+    left: 0;
+    bottom: 20%;
+}
+.motherb {
+    animation: float 5s ease-in-out infinite;
+    right: 0;
+    top: 0;
+}
+
+@keyframes float {
+    0% {
+        transform: translatey(0px);
+   }
+    50% {
+        transform: translatey(-20px);
+   }
+    100% {
+        transform: translatey(0px);
+   }
 }

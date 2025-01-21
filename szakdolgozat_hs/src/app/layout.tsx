@@ -7,6 +7,9 @@ import { Anta } from "next/font/google";
 
 import BootstrapClient from "@/components/BootstrapClient";
 import OrangeButton from "@/components/OrangeButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const anta = Anta( {
   weight: "400",
@@ -32,13 +35,11 @@ export default function RootLayout({
         <nav className="navbar navbar-expand-lg">
           <div className="container justify-content-between">
             <a className="navbar-brand" href="#"><span className="text-Orange">H</span><span className="text-Blue">S</span>market</a>
-            <form className="d-flex navbarSearch" role="search">
+            <form className="d-flex navbarSearch position-relative" role="search">
               <input className="form-control" type="search" placeholder="Keresés" aria-label="Search"/>
+              <FontAwesomeIcon className="navbarSearchIcon" icon={faMagnifyingGlass as IconProp} />
             </form>
-            <OrangeButton props={{
-              name: "Bejelentkezés",
-              href: "#"
-            }} />
+            <OrangeButton name="Bejelentkezés" href="#" />
           </div>
         </nav>
 

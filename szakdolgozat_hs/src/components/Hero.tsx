@@ -1,3 +1,4 @@
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
 import OrangeButton from "./OrangeButton"
 
 export default function Hero() {
@@ -9,10 +10,7 @@ export default function Hero() {
                         <p className="text-end pb-3">
                             <span className="text-Orange">2.481</span> termékünk várja, hogy kiválaszd a számodra legmegfelelőbbet!
                         </p>
-                        <OrangeButton props={{
-                            name: "Termékek felfedezése",
-                            href: "#"
-                        }} />
+                        <OrangeButton name="Termékek felfedezése" href="https://www.google.com" variant="discover"/>
                     </div>
                 </div>
             </div>
