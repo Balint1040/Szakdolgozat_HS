@@ -17,8 +17,10 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "bootstrap": "^5.3.3",
     "next": "15.0.2",
+    "node-fetch": "^3.3.2",
     "react": "19.0.0-rc-02c0e824-20241028",
     "react-dom": "19.0.0-rc-02c0e824-20241028",
+    "swiper": "^11.2.1",
     "szakdolgozat_hs": "file:"
   },
   "devDependencies": {

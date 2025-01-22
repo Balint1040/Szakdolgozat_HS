@@ -7,7 +7,7 @@ import motherb from "../../public/static/motherb.png"
 
 export default function Cta() {
     return (
-        <section id="cta" className="position-reltaive py-5">
+        <section id="cta" className="position-reltaive py-5 mb-5">
             <div className="container">
                 <div className="row">
                     <div className="col-12 col-md-7">
