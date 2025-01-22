@@ -1,0 +1,714 @@
+[
+    {
+        "name": "ASRock Intel Arc A380 Challenger ITX 6GB OC 6GB GDDR6 videokártya (A380 CLI 6GO)",
+        "price": "62 899",
+        "properties": {
+            "Chipset gyártó": " Intel",
+            "DirectX verzió": " DirectX 12.2",
+            "Fogyasztás (W)": " 75",
+            "Mélység (mm)": " 190",
+            "Memória méret (GB)": " 6 GB",
+            "Memória mérete": " 6 GB",
+            "Memória típus": " GDDR6"
+        },
+        "manufacturer": "ASROCK",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/64/m/644675_3.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/64/m/644675_1.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/64/m/644675_4.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/64/m/644675_2.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/64/m/644675_5.webp?202501212151"
+        ]
+    },
+    {
+        "name": "Sapphire Pulse RX 7700 XT 12GB GDDR6 videokártya (11335-04-20G)",
+        "price": "204 199",
+        "properties": {
+            "Chipset gyártó": " AMD",
+            "Chipset típus": " AMD Radeon RX 7700 XT",
+            "DirectX verzió": " 12 Ultimate",
+            "Foglalat": " PCIe 4.0 x16",
+            "Fogyasztás (W)": " 230",
+            "Mélység (mm)": " 280",
+            "Memória méret (GB)": " 12",
+            "Memória mérete": " 12 GB",
+            "Memória típus": " GDDR6"
+        },
+        "manufacturer": "Sapphire",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/82/m/824413_4.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/82/m/824413_1.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/82/m/824413_5.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/82/m/824413_2.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/82/m/824413_3.webp?202501212151"
+        ]
+    },
+    {
+        "name": "BLACKBIRD Videokártya PCI-Ex16x nVIDIA GT 610 2GB DDR3 BH1569",
+        "price": "11 800",
+        "properties": {
+            "Chipset gyártó": " NVIDIA",
+            "Chipset típus": " GeForce GT 610",
+            "DirectX verzió": " 11",
+            "Gyártó": " BLACKBIRD",
+            "Mélység (mm)": " Nincs adat",
+            "Memória méret (GB)": " 2",
+            "Memória típus": " GDDR3"
+        },
+        "manufacturer": "BlackBird",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/98/m/981931_4.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/98/m/981931_2.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/98/m/981931_1.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/98/m/981931_3.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/98/m/981931_5.webp?202501212151"
+        ]
+    },
+    {
+        "name": "GIGABYTE RTX 3060 Gaming OC 12G 12GB GDDR6 videokártya (GV-N3060GAMING OC-12)",
+        "price": "144 099",
+        "properties": {
+            "Chipset gyártó": " NVIDIA",
+            "Chipset típus": " NVIDIA GeForce RTX 3060",
+            "DirectX verzió": " DirectX 12",
+            "Mélység (mm)": " 282",
+            "Memória mérete": " 12 GB",
+            "Memória típus": " GDDR6"
+        },
+        "manufacturer": "Gigabyte",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/52/m/528423_1.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/52/m/528423_2.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/52/m/528423_5.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/52/m/528423_4.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/52/m/528423_3.webp?202501212151"
+        ]
+    },
+    {
+        "name": "Asus DUAL-RTX3050-O6G",
+        "price": "88 099",
+        "properties": {
+            "Chipset típus": " NVIDIA GeForce RTX 3050",
+            "Foglalat": " PCIe 4.0 x16",
+            "Mélység (mm)": " 201",
+            "Memória méret (GB)": " 6",
+            "Memória típus": " GDDR6"
+        },
+        "manufacturer": "Asus",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/63/m/633423_1.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/63/m/633423_4.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/63/m/633423_5.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/63/m/633423_3.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/63/m/633423_2.webp?202501212151"
+        ]
+    },
+    {
+        "name": "Gigabyte RTX4070 WINDFORCE 2X OC V2 12G GV-N4070WF2OCV2-12GD",
+        "price": "263 799",
+        "properties": {
+            "Chipset típus": " GeForce RTX 4070",
+            "Mélység (mm)": " 122,3",
+            "Memória mérete": " 12 GB",
+            "Memória típus": " GDDR6X"
+        },
+        "manufacturer": "Gigabyte",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/64/m/642821_4.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/64/m/642821_2.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/64/m/642821_3.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/64/m/642821_1.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/64/m/642821_5.webp?202501212151"
+        ]
+    },
+    {
+        "name": "Sapphire Radeon RX6500 XT 8GB DDR6 Pulse Gaming OC 11314-08-20G",
+        "price": "89 299",
+        "properties": {
+            "Memória mérete": " 8 GB",
+            "Memória típus": " GDDR6"
+        },
+        "manufacturer": "Sapphire",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/96/m/965987_5.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/96/m/965987_2.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/96/m/965987_3.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/96/m/965987_4.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/96/m/965987_1.webp?202501212151"
+        ]
+    },
+    {
+        "name": "GIGABYTE RTX 4080 SUPER Gaming OC 16GB GDDR6X videokártya (GV-N408SGAMING OC-16GD)",
+        "price": "559 799",
+        "properties": {
+            "Chipset típus": " NVIDIA GeForce RTX 4080 SUPER",
+            "DirectX verzió": " DirectX 12.2",
+            "Foglalat": " PCIe 4.0 x16",
+            "Fogyasztás (W)": " 340",
+            "Mélység (mm)": " 342",
+            "Memória méret (GB)": " 16",
+            "Memória típus": " GDDR6X"
+        },
+        "manufacturer": "Gigabyte",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/55/m/551771_1.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/55/m/551771_4.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/55/m/551771_2.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/55/m/551771_3.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/55/m/551771_5.webp?202501212151"
+        ]
+    },
+    {
+        "name": "MSI RTX 4060 Ti Ventus 2X Black 8G OC 8GB GDDR6 videokártya (V515-017R)",
+        "price": "189 399",
+        "properties": {
+            "Chipset gyártó": " NVIDIA",
+            "Chipset típus": " GeForce RTX 4060 Ti",
+            "DirectX verzió": " DirectX 12",
+            "Gyártó": " MSI COMPUTER",
+            "Mélység (mm)": " 199",
+            "Memória méret (GB)": " 8 GB",
+            "Memória mérete": " 8 GB",
+            "Memória típus": " GDDR6"
+        },
+        "manufacturer": "MSI",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/40/m/400075_5.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/40/m/400075_1.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/40/m/400075_4.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/40/m/400075_2.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/40/m/400075_3.webp?202501212151"
+        ]
+    },
+    {
+        "name": "BLACKBIRD Videokártya PCI-Ex16x nVIDIA GT 210 1GB DDR3 BH1560",
+        "price": "8 899",
+        "properties": {
+            "Chipset gyártó": " NVIDIA",
+            "Chipset típus": " Nvidia GT210",
+            "DirectX verzió": " 11.1",
+            "Gyártó": " BLACKBIRD",
+            "Mélység (mm)": " Nincs adat",
+            "Memória méret (GB)": " 1",
+            "Memória típus": " DDR3"
+        },
+        "manufacturer": "BlackBird",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/45/m/452410_1.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/45/m/452410_3.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/45/m/452410_4.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/45/m/452410_5.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/45/m/452410_2.webp?202501212151"
+        ]
+    },
+    {
+        "name": "MSI RTX 3050 LP 6G OC 6GB GDDR6 videokártya (V812-023R)",
+        "price": "91 898",
+        "properties": {
+            "Chipset típus": " NVIDIA GeForce RTX 3050",
+            "DirectX verzió": " DirectX 12.2",
+            "Foglalat": " PCIe 4.0 x16",
+            "Fogyasztás (W)": " 70",
+            "Mélység (mm)": " 174",
+            "Memória méret (GB)": " 6",
+            "Memória típus": " GDDR6"
+        },
+        "manufacturer": "MSI",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/23/m/230038_3.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/23/m/230038_4.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/23/m/230038_1.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/23/m/230038_5.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/23/m/230038_2.webp?202501212151"
+        ]
+    },
+    {
+        "name": "Sapphire Nitro+ RX 7800 XT 16GB GDDR6 videokártya (11330-01-20G)",
+        "price": "256 299",
+        "properties": {
+            "Chipset gyártó": " AMD",
+            "Chipset típus": " AMD Radeon RX 7800 XT",
+            "DirectX verzió": " 12 Ultimate",
+            "Foglalat": " PCIe 4.0 x16",
+            "Fogyasztás (W)": " 288",
+            "Mélység (mm)": " 320",
+            "Memória méret (GB)": " 16",
+            "Memória mérete": " 16 GB",
+            "Memória típus": " GDDR6"
+        },
+        "manufacturer": "Sapphire",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/58/m/587889_2.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/58/m/587889_1.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/58/m/587889_4.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/58/m/587889_3.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/58/m/587889_5.webp?202501212151"
+        ]
+    },
+    {
+        "name": "GIGABYTE RTX 3060 Windforce OC 12G LHR 12GB GDDR6 videokártya (GV-N3060WF2OC-12GD)",
+        "price": "134 598",
+        "properties": {
+            "Chipset gyártó": " NVIDIA",
+            "Chipset típus": " NVIDIA GeForce RTX 3060",
+            "DirectX verzió": " DirectX 12",
+            "Gyártó": " Gigabyte",
+            "Mélység (mm)": " 198",
+            "Memória méret (GB)": " 12 GB12288 MB",
+            "Memória mérete": " 12 GB",
+            "Memória típus": " GDDR6"
+        },
+        "manufacturer": "Gigabyte",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/32/m/321853_1.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/32/m/321853_5.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/32/m/321853_4.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/32/m/321853_2.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/32/m/321853_3.webp?202501212151"
+        ]
+    },
+    {
+        "name": "ASUS PROART NVIDIA RTX 4070 SUPER 12GB GDDR6X 90YV0KC6-M0NA00",
+        "price": "314 199",
+        "properties": {
+            "Memória mérete": " 12 GB",
+            "Memória típus": " GDDR6X"
+        },
+        "manufacturer": "Asus",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/79/m/798848_3.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/79/m/798848_4.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/79/m/798848_2.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/79/m/798848_5.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/79/m/798848_1.webp?202501212151"
+        ]
+    },
+    {
+        "name": "OEM 2db Molex Power 4pin - Power 6pin M/F adapter XFYKABTAPPCIE6",
+        "price": "349",
+        "properties": {},
+        "manufacturer": "OEM",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/97/m/975163_4.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/97/m/975163_1.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/97/m/975163_2.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/97/m/975163_5.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/97/m/975163_3.webp?202501212151"
+        ]
+    },
+    {
+        "name": "SUPERMICRO kábel GPU Power 8-pin to 8-Pin 20cm CBL-PWEX-1148-20",
+        "price": "6 999",
+        "properties": {},
+        "manufacturer": "Supermicro",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/65/m/657869_3.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/65/m/657869_5.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/65/m/657869_4.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/65/m/657869_1.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/65/m/657869_2.webp?202501212151"
+        ]
+    },
+    {
+        "name": "Számítógépház kiegészítő PHANTEKS PCI-e 4.0 Riser kábel 90 fok-os 15cm PH-CBRS4.0_FL15",
+        "price": "25 599",
+        "properties": {
+            "Gyártó": " Phanteks"
+        },
+        "manufacturer": "Phanteks",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/46/m/461077_2.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/46/m/461077_1.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/46/m/461077_5.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/46/m/461077_4.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/46/m/461077_3.webp?202501212151"
+        ]
+    },
+    {
+        "name": "GPU fogyasztásmérő Thermal Grizzly WireView GPU, 1x 12VHPWR normál TG-WV-H1N",
+        "price": "22 998",
+        "properties": {
+            "Gyártó": " Thermal Grizzly"
+        },
+        "manufacturer": "Thermal Grizzly",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/45/m/457862_5.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/45/m/457862_3.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/45/m/457862_4.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/45/m/457862_1.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/45/m/457862_2.webp?202501212151"
+        ]
+    },
+    {
+        "name": "GEMBIRD Tápkábel Y 2 X 4pin HDD-ről 6pin videókártya csatlakozóra CC-PSU-6",
+        "price": "409",
+        "properties": {},
+        "manufacturer": "Gembird",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/45/m/452028_4.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/45/m/452028_5.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/45/m/452028_1.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/45/m/452028_2.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/45/m/452028_3.webp?202501212151"
+        ]
+    },
+    {
+        "name": "Kábel Táp Átalakító Akasa 6-Pin VGA (Male) - 8-Pin VGA (Female) 10cm AK-CB052",
+        "price": "1 800",
+        "properties": {
+            "Gyártó": " Akasa",
+            "Mélység (mm)": " 10"
+        },
+        "manufacturer": "Akasa",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/43/m/438860_2.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/43/m/438860_4.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/43/m/438860_5.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/43/m/438860_1.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/43/m/438860_3.webp?202501212151"
+        ]
+    },
+    {
+        "name": "Akyga AK-CA-49 PCI Express 6-pin Adapter F-F cable 0,4m",
+        "price": "618",
+        "properties": {},
+        "manufacturer": "Akyga",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/40/m/404099_3.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/40/m/404099_5.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/40/m/404099_4.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/40/m/404099_1.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/40/m/404099_2.webp?202501212151"
+        ]
+    },
+    {
+        "name": "Kábel Táp Átalakító Akasa 2x 4-Pin Molex - 6-Pin PCIe AK-CB4-6",
+        "price": "1 299",
+        "properties": {
+            "Gyártó": " Akasa",
+            "Mélység (mm)": " 10"
+        },
+        "manufacturer": "Akasa",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/37/m/370501_5.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/37/m/370501_4.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/37/m/370501_3.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/37/m/370501_1.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/37/m/370501_2.webp?202501212151"
+        ]
+    },
+    {
+        "name": "GPU fogyasztásmérő Thermal Grizzly WireView GPU, 1x 12VHPWR fordított TG-WV-H1R",
+        "price": "22 998",
+        "properties": {
+            "Gyártó": " Thermal Grizzly"
+        },
+        "manufacturer": "Thermal Grizzly",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/32/m/326198_3.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/32/m/326198_2.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/32/m/326198_1.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/32/m/326198_4.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/32/m/326198_5.webp?202501212151"
+        ]
+    },
+    {
+        "name": "Kábel Riser Akasa PCI-express 3.0 x16 30 cm Fekete AK-CBPE01-30B",
+        "price": "21 599",
+        "properties": {
+            "Gyártó": " Akasa",
+            "Mélység (mm)": " 30"
+        },
+        "manufacturer": "Akasa",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/30/m/306438_2.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/30/m/306438_3.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/30/m/306438_5.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/30/m/306438_1.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/30/m/306438_4.webp?202501212151"
+        ]
+    },
+    {
+        "name": "Delock 85453 tápkábel 2 x 4 tűs Molex apa csatlakozó 8 érintkezős EPS dugó, 30 cm",
+        "price": "1 400",
+        "properties": {
+            "Mélység (mm)": " 0,3000000"
+        },
+        "manufacturer": "DeLock",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/16/m/168590_4.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/16/m/168590_5.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/16/m/168590_1.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/16/m/168590_2.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/16/m/168590_3.webp?202501212151"
+        ]
+    },
+    {
+        "name": "DELOCK tápkábel PCI Express 6 pin female PCI Express 8 pin male 20cm 83775",
+        "price": "1 099",
+        "properties": {
+            "Gyártó": " DELOCK",
+            "Mélység (mm)": " 20"
+        },
+        "manufacturer": "DeLock",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/39/m/39807_5.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/39/m/39807_2.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/39/m/39807_4.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/39/m/39807_3.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/39/m/39807_1.webp?202501212151"
+        ]
+    },
+    {
+        "name": "AL Asus sAM5 TUF GAMING B850-PLUS WIFI",
+        "price": "116 399",
+        "properties": {
+            "Chipset gyártó": " AMD",
+            "Chipset típus": " AMD B850",
+            "Gyártó": " AMD",
+            "Mélység (mm)": " 244"
+        },
+        "manufacturer": "Asus",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/35/m/352684_5.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/35/m/352684_2.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/35/m/352684_3.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/35/m/352684_1.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/35/m/352684_4.webp?202501212151"
+        ]
+    },
+    {
+        "name": "AL Asus sAM5 TUF GAMING B850M-PLUS WIFI",
+        "price": "110 700",
+        "properties": {
+            "Chipset gyártó": " AMD",
+            "Chipset típus": " AMD B850",
+            "Gyártó": " AMD",
+            "Mélység (mm)": " 244"
+        },
+        "manufacturer": "Asus",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/18/m/185972_2.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/18/m/185972_5.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/18/m/185972_4.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/18/m/185972_1.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/18/m/185972_3.webp?202501212151"
+        ]
+    },
+    {
+        "name": "PNY NVIDIA Quadro P1000 V2 4GB GDDR5 videokártya (VCQP1000V2-PB)",
+        "price": "134 299",
+        "properties": {
+            "Mélység (mm)": " 150",
+            "Memória mérete": " 4 GB",
+            "Memória típus": " GDDR5"
+        },
+        "manufacturer": "PNY",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/94/m/941158_5.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/94/m/941158_4.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/94/m/941158_2.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/94/m/941158_1.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/94/m/941158_3.webp?202501212151"
+        ]
+    },
+    {
+        "name": "PNY Quadro P1000 V2 4GB GDDR5 videokártya (VCQP1000V2-SB)",
+        "price": "131 699",
+        "properties": {
+            "Chipset típus": " NVIDIA Quadro P1000",
+            "DirectX verzió": " DirectX 12.1",
+            "Foglalat": " PCIe 3.0 x16",
+            "Fogyasztás (W)": " 47",
+            "Mélység (mm)": " 150",
+            "Memória méret (GB)": " 4",
+            "Memória mérete": " 4 GB",
+            "Memória típus": " GDDR5"
+        },
+        "manufacturer": "PNY",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/91/m/914039_1.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/91/m/914039_5.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/91/m/914039_3.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/91/m/914039_4.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/91/m/914039_2.webp?202501212151"
+        ]
+    },
+    {
+        "name": "PNY RTX 4060 Verto Dual Fan 8GB GDDR6 videokártya (VCG40608DFXPB1)",
+        "price": "149 299",
+        "properties": {
+            "Chipset típus": " NVIDIA GeForce RTX 4060",
+            "DirectX verzió": " DirectX 12.2",
+            "Foglalat": " PCIe 4.0 x16",
+            "Fogyasztás (W)": " 115",
+            "Mélység (mm)": " 210",
+            "Memória méret (GB)": " 8",
+            "Memória típus": " GDDR6"
+        },
+        "manufacturer": "PNY",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/61/m/612838_5.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/61/m/612838_2.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/61/m/612838_1.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/61/m/612838_3.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/61/m/612838_4.webp?202501212151"
+        ]
+    },
+    {
+        "name": "PNY RTX A2000 16GB DDR6 ADA OEM VCNRTX2000ADA-SB",
+        "price": "309 799",
+        "properties": {
+            "Chipset típus": " NVIDIA RTX A2000",
+            "Mélység (mm)": " 167,76",
+            "Memória mérete": " 16 GB",
+            "Memória típus": " GDDR6"
+        },
+        "manufacturer": "PNY",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/51/m/511807_5.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/51/m/511807_4.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/51/m/511807_3.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/51/m/511807_1.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/51/m/511807_2.webp?202501212151"
+        ]
+    },
+    {
+        "name": "VGA PALIT NVIDIA RTX4060Ti WHITE 8GB GDDR6 - NE6406T019P1-1048L",
+        "price": "203 098",
+        "properties": {
+            "Chipset gyártó": " NVIDIA",
+            "Chipset típus": " GeForce RTX 4060 Ti",
+            "DirectX verzió": " 12 Ultimate",
+            "Mélység (mm)": " 269,1",
+            "Memória méret (GB)": " 8",
+            "Memória típus": " GDDR6"
+        },
+        "manufacturer": "Palit",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/41/m/416117_1.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/41/m/416117_5.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/41/m/416117_3.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/41/m/416117_2.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/41/m/416117_4.webp?202501212151"
+        ]
+    },
+    {
+        "name": "PNY RTX A2000E 16GB DDR6 ADA OEM VCNRTX2000EADA-SB",
+        "price": "347 699",
+        "properties": {
+            "Memória mérete": " 16 GB",
+            "Memória típus": " GDDR6"
+        },
+        "manufacturer": "PNY",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/39/m/394551_3.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/39/m/394551_2.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/39/m/394551_1.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/39/m/394551_4.webp?202501212151",
+            "https://1.pcx.hu/pcx_prod_img/39/m/394551_5.webp?202501212151"
+        ]
+    },
+    {
+        "name": "INNO3D RTX 3060 Twin X2 OC LHR 8GB GDDR6 videokártya (N30602-08D6X-11902130)",
+        "price": "149 299",
+        "properties": {
+            "Chipset típus": " NVIDIA GeForce RTX 3060",
+            "DirectX verzió": " DirectX 12.2",
+            "Foglalat": " PCIe 4.0 x16",
+            "Fogyasztás (W)": " 170",
+            "Mélység (mm)": " 240",
+            "Memória típus": " GDDR6"
+        },
+        "manufacturer": "Inno3D",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/15/m/158846_5.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/15/m/158846_4.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/15/m/158846_2.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/15/m/158846_3.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/15/m/158846_1.webp?202501212151"
+        ]
+    },
+    {
+        "name": "PNY RTX A1000 8GB DDR6 VCNRTXA1000-PB",
+        "price": "201 399",
+        "properties": {
+            "Chipset típus": " A1000",
+            "Fogyasztás (W)": " 50",
+            "Mélység (mm)": " 162,56",
+            "Memória méret (GB)": " 8",
+            "Memória típus": " GDDR6"
+        },
+        "manufacturer": "PNY",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/12/m/128627_3.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/12/m/128627_2.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/12/m/128627_5.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/12/m/128627_4.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/12/m/128627_1.webp?202501212151"
+        ]
+    },
+    {
+        "name": "INNO3D RTX 4060 Ti Twin X2 8GB GDDR6 videokártya (N406T2-08D6-171153N)",
+        "price": "191 299",
+        "properties": {
+            "Chipset típus": " NVIDIA GeForce RTX 4060 Ti",
+            "DirectX verzió": " DirectX 12.2",
+            "Foglalat": " PCIe 4.0 x16",
+            "Fogyasztás (W)": " 160",
+            "Mélység (mm)": " 250",
+            "Memória méret (GB)": " 8",
+            "Memória mérete": " 8 GB",
+            "Memória típus": " GDDR6"
+        },
+        "manufacturer": "Inno3D",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/12/m/127953_3.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/12/m/127953_4.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/12/m/127953_5.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/12/m/127953_1.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/12/m/127953_2.webp?202501212151"
+        ]
+    },
+    {
+        "name": "VER 010S PLUS PCI-E Riser kártya",
+        "price": "4 100",
+        "properties": {},
+        "manufacturer": "OEM",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/97/m/976080_2.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/97/m/976080_3.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/97/m/976080_1.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/97/m/976080_4.webp?202501212151",
+            "https://2.pcx.hu/pcx_prod_img/97/m/976080_5.webp?202501212151"
+        ]
+    },
+    {
+        "name": "VER 010-X PCI-E Riser kártya (V10X)",
+        "price": "2 998",
+        "properties": {},
+        "manufacturer": "OEM",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/32/m/320395_5.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/32/m/320395_3.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/32/m/320395_4.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/32/m/320395_2.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/32/m/320395_1.webp?202501212151"
+        ]
+    },
+    {
+        "name": "Számítógépház kiegészítő CableMod Vertical VGA adapter + Riser CM-VPB-2DK-R",
+        "price": "24 500",
+        "properties": {
+            "Gyártó": " CableMod"
+        },
+        "manufacturer": "CableMod",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/45/m/45595_2.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/45/m/45595_1.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/45/m/45595_4.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/45/m/45595_5.webp?202501212151",
+            "https://3.pcx.hu/pcx_prod_img/45/m/45595_3.webp?202501212151"
+        ]
+    }
+    ]

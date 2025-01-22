@@ -1,0 +1,1960 @@
+[    
+    {
+        "name": "Intel Core i5-12400F processzor (BX8071512400F)",
+        "price": "51 899",
+        "properties": {
+            "Alap órajel": " 2,5 GHz",
+            "Cache": " 18 MB",
+            "Cikknév kiegészítés": " GPU nélkül",
+            "Foglalat": " LGA1700",
+            "Fogyasztás (W)": " 117",
+            "Integrált GPU": " Nincs",
+            "Magok száma": " 6, 6 db",
+            "Maximum memória": " 128",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " Intel 1700",
+            "Turbó órajel (Mhz)": " 4.4 GHz"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/53/m/532146_1.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/53/m/532146_5.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/53/m/532146_3.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/53/m/532146_4.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/53/m/532146_2.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Intel Core i5-12400 processzor (BX8071512400)",
+        "price": "68 199",
+        "properties": {
+            "Cache": " 18 MB",
+            "Fogyasztás (W)": " 117",
+            "Integrált GPU": " Van",
+            "Magok száma": " 6, 6 db",
+            "Maximum memória": " 128",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " Intel 1700",
+            "Turbó órajel (Mhz)": " 4,4000000"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/85/m/854682_4.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/85/m/854682_2.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/85/m/854682_5.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/85/m/854682_3.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/85/m/854682_1.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Intel Core i5-12600K processzor (BX8071512600K)",
+        "price": "81 999",
+        "properties": {
+            "Alap órajel": " 3,7 GHz",
+            "Cache": " 9,5 MB",
+            "Foglalat": " LGA1700",
+            "Fogyasztás (W)": " 150",
+            "Integrált GPU": " Van",
+            "Magok száma": " 10",
+            "Maximum memória": " 128",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " Intel 1700",
+            "Turbó órajel (Mhz)": " 4.9 GHz"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/13/m/133129_4.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/13/m/133129_2.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/13/m/133129_5.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/13/m/133129_1.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/13/m/133129_3.webp?202501222149"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 7 7800X3D processzor (100-100000910WOF)",
+        "price": "241 499",
+        "properties": {
+            "Cache": " 8",
+            "Fogyasztás (W)": " 120",
+            "Magok száma": " 8",
+            "Processzor foglalat": " AMD AM5"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/48/m/483649_2.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/48/m/483649_5.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/48/m/483649_4.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/48/m/483649_1.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/48/m/483649_3.webp?202501222149"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 9 7900X processzor (100-100000589WOF)",
+        "price": "182 099",
+        "properties": {
+            "Alap órajel": " 4,7 GHz",
+            "Cache": " 64 MB",
+            "Foglalat": " AM5",
+            "Fogyasztás (W)": " 170 Watt",
+            "Integrált GPU": " Van",
+            "Magok száma": " 12",
+            "Maximum memória": " 128",
+            "Processzor foglalat": " AMD AM5",
+            "Turbó órajel (Mhz)": " 5.6 GHz"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/37/m/370873_1.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/37/m/370873_5.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/37/m/370873_2.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/37/m/370873_3.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/37/m/370873_4.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Intel Core i5-14600K processzor (BX8071514600K)",
+        "price": "116 999",
+        "properties": {
+            "Cache": " 20",
+            "Fogyasztás (W)": " 125",
+            "Magok száma": " 14",
+            "Processzor foglalat": " Intel 1700"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/91/m/916785_5.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/91/m/916785_2.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/91/m/916785_3.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/91/m/916785_4.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/91/m/916785_1.webp?202501222149"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 9 5950X processzor (100-100000059WOF)",
+        "price": "137 899",
+        "properties": {
+            "Alap órajel": " 3,4 GHz",
+            "Cache": " 72 MB",
+            "Foglalat": " AM4",
+            "Fogyasztás (W)": " 105 W",
+            "Integrált GPU": " Nincs",
+            "Magok száma": " 16",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " AMD AM4",
+            "Turbó órajel (Mhz)": " 4,9000000"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/30/m/302843_1.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/30/m/302843_2.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/30/m/302843_3.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/30/m/302843_4.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/30/m/302843_5.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Intel Core i7-14700K processzor (BX8071514700K)",
+        "price": "178 799",
+        "properties": {
+            "Cache": " 28",
+            "Fogyasztás (W)": " 125",
+            "Magok száma": " 20",
+            "Processzor foglalat": " Intel 1700"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/32/m/321787_3.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/32/m/321787_1.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/32/m/321787_5.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/32/m/321787_4.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/32/m/321787_2.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Intel Core i5-10400F processzor (BX8070110400F)",
+        "price": "44 099",
+        "properties": {
+            "Alap órajel": " 2,9 GHz",
+            "Cache": " 12 MB",
+            "Foglalat": " LGA1200",
+            "Fogyasztás (W)": " 65",
+            "Integrált GPU": " Nincs",
+            "Magok száma": " 6",
+            "Maximum memória": " 128",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " Intel 1200",
+            "Turbó órajel (Mhz)": " 4.3 GHz"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/21/m/218483_5.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/21/m/218483_1.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/21/m/218483_4.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/21/m/218483_3.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/21/m/218483_2.webp?202501222149"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 5 5600 3,50GHz Socket AM4 32MB (5600) box processzor 100-100000927BOX",
+        "price": "48 699",
+        "properties": {
+            "Cache": " 0,384",
+            "Fogyasztás (W)": " 65",
+            "Magok száma": " 6",
+            "Processzor foglalat": " AMD AM4"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/19/m/197546_4.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/19/m/197546_2.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/19/m/197546_1.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/19/m/197546_5.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/19/m/197546_3.webp?202501222149"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 9 7950X3D processzor (100-100000908WOF)",
+        "price": "306 499",
+        "properties": {
+            "Alap órajel": " 4,2 GHz",
+            "Cache": " 1 MB",
+            "Foglalat": " AM5",
+            "Fogyasztás (W)": " 120",
+            "Integrált GPU": " Van",
+            "Magok száma": " 16",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " AMD AM5",
+            "Turbó órajel (Mhz)": " 5,7000000"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/35/m/358780_5.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/35/m/358780_3.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/35/m/358780_2.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/35/m/358780_1.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/35/m/358780_4.webp?202501222149"
+        ]
+    },
+    {
+        "name": "AMD AM5 CPU Ryzen 9 9900X 4.4GHz 76MB Cache 100-100000662WOF",
+        "price": "194 799",
+        "properties": {
+            "Alap órajel": " 4,4 GHz",
+            "Cache": " 76",
+            "Foglalat": " AM5",
+            "Fogyasztás (W)": " 120",
+            "Magok száma": " 12 db",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " AMD AM5",
+            "Turbó órajel (Mhz)": " 5,6000000"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/58/m/581615_5.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/58/m/581615_4.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/58/m/581615_1.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/58/m/581615_2.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/58/m/581615_3.webp?202501222149"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 5 8400F 4,2GHz AM5 BOX 100-100001591BOX",
+        "price": "65 399",
+        "properties": {
+            "Alap órajel": " 4,2 GHz",
+            "Cache": " 6 MB",
+            "Foglalat": " AM5",
+            "Magok száma": " 6 db",
+            "Processzor foglalat": " AMD AM5"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/21/m/216867_4.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/21/m/216867_3.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/21/m/216867_5.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/21/m/216867_2.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/21/m/216867_1.webp?202501222149"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 9 5900X processzor (100-100000061WOF)",
+        "price": "110 599",
+        "properties": {
+            "Alap órajel": " 3,7 GHz",
+            "Cache": " 70 MB",
+            "Foglalat": " AM4",
+            "Fogyasztás (W)": " 105 Watt",
+            "Integrált GPU": " Nincs",
+            "Magok száma": " 12, 12 db",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " AMD AM4",
+            "Turbó órajel (Mhz)": " 4.8 GHz"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/82/m/829006_5.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/82/m/829006_2.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/82/m/829006_1.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/82/m/829006_4.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/82/m/829006_3.webp?202501222149"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 3 3200G processzor (YD3200C5FHBOX)",
+        "price": "27 499",
+        "properties": {
+            "Alap órajel": " 3,6 GHz",
+            "Cache": " 384 kB",
+            "Foglalat": " AM4",
+            "Fogyasztás (W)": " 65 Watt",
+            "Magok száma": " 4",
+            "Processzor foglalat": " AMD AM4",
+            "Turbó órajel (Mhz)": " 4 GHz"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/92/m/922275_1.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/92/m/922275_5.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/92/m/922275_4.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/92/m/922275_2.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/92/m/922275_3.webp?202501222149"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 7 7700X processzor (100-100000591WOF)",
+        "price": "136 199",
+        "properties": {
+            "Cache": " 40",
+            "Fogyasztás (W)": " 105",
+            "Integrált GPU": " Van",
+            "Magok száma": " 8",
+            "Processzor foglalat": " AMD AM5",
+            "Turbó órajel (Mhz)": " 5,4000000"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/94/m/944610_3.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/94/m/944610_4.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/94/m/944610_2.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/94/m/944610_5.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/94/m/944610_1.webp?202501222149"
+        ]
+    },
+    {
+        "name": "INTEL CPU Xeon E-2336 OEM 99ACX8 CM8070804495816 SRKN5",
+        "price": "190 398",
+        "properties": {},
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/30/m/301159_4.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/30/m/301159_5.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/30/m/301159_3.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/30/m/301159_2.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/30/m/301159_1.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Intel Xeon Silver 4210 processzor (A4G7A37932)",
+        "price": "196 599",
+        "properties": {
+            "Cache": " 13,75",
+            "Fogyasztás (W)": " 85",
+            "Magok száma": " 10",
+            "Processzor foglalat": " Intel 3647"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/73/m/734276_3.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/73/m/734276_2.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/73/m/734276_5.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/73/m/734276_4.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/73/m/734276_1.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Intel Core i5-14500 processzor (BX8071514500)",
+        "price": "116 199",
+        "properties": {
+            "Cache": " 11,5000000",
+            "Fogyasztás (W)": " 65",
+            "Magok száma": " 14",
+            "Processzor foglalat": " Intel 1700"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/56/m/564721_2.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/56/m/564721_3.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/56/m/564721_1.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/56/m/564721_4.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/56/m/564721_5.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Fujitsu Intel Xeon Silver 4215R szerver processzor (CD8069504449200)",
+        "price": "191 199",
+        "properties": {
+            "Cache": " 8",
+            "Fogyasztás (W)": " 130",
+            "Magok száma": " 8",
+            "Processzor foglalat": " Intel 3647"
+        },
+        "manufacturer": "Fujitsu",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/19/m/199645_3.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/19/m/199645_1.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/19/m/199645_2.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/19/m/199645_4.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/19/m/199645_5.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Supermicro AMD EPYC Rome 7262 szerver processzor (PSE-ROM7262-0041)",
+        "price": "88 798",
+        "properties": {
+            "Cache": " 128",
+            "Fogyasztás (W)": " 155",
+            "Magok száma": " 8",
+            "Processzor foglalat": " AMD SP3"
+        },
+        "manufacturer": "Supermicro",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/84/m/846115_5.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/84/m/846115_4.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/84/m/846115_1.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/84/m/846115_3.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/84/m/846115_2.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Intel Core i7-13700 processzor (BX8071513700)",
+        "price": "157 999",
+        "properties": {
+            "Cache": " 30",
+            "Fogyasztás (W)": " 219",
+            "Magok száma": " 16",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " Intel 1700",
+            "Turbó órajel (Mhz)": " 5,2000000"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/21/m/215664_3.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/21/m/215664_1.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/21/m/215664_5.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/21/m/215664_4.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/21/m/215664_2.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Intel Pentium Gold G6600 processzor (BX80701G6600)",
+        "price": "59 299",
+        "properties": {
+            "Cache": " 0,5",
+            "Fogyasztás (W)": " 58",
+            "Magok száma": " 2",
+            "Processzor foglalat": " Intel 1200"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/88/m/889786_5.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/88/m/889786_3.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/88/m/889786_2.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/88/m/889786_4.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/88/m/889786_1.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Intel Core i9-13900K processzor (BX8071513900K)",
+        "price": "221 999",
+        "properties": {
+            "Alap órajel": " 3,0 GHz",
+            "Cache": " 36 MB",
+            "Foglalat": " LGA1700",
+            "Fogyasztás (W)": " 253",
+            "Magok száma": " 24",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " Intel 1700",
+            "Turbó órajel (Mhz)": " 5.8 GHz"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/39/m/391774_2.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/39/m/391774_3.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/39/m/391774_5.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/39/m/391774_1.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/39/m/391774_4.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Intel Core i9-13900KF processzor (BX8071513900KF)",
+        "price": "213 098",
+        "properties": {
+            "Cache": " 32",
+            "Fogyasztás (W)": " 253",
+            "Magok száma": " 24",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " Intel 1700",
+            "Turbó órajel (Mhz)": " 5,8000000"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/33/m/332015_3.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/33/m/332015_2.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/33/m/332015_1.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/33/m/332015_4.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/33/m/332015_5.webp?202501222149"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 5 5500 processzor (100-100000457BOX)",
+        "price": "40 698",
+        "properties": {
+            "Cache": " 3",
+            "Fogyasztás (W)": " 65",
+            "Magok száma": " 6",
+            "Processzor foglalat": " AMD AM4"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/15/m/152622_3.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/15/m/152622_2.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/15/m/152622_5.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/15/m/152622_1.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/15/m/152622_4.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Intel Core i7-12700 processzor (BX8071512700)",
+        "price": "135 199",
+        "properties": {
+            "Alap órajel": " 2,1 GHz",
+            "Cache": " 25",
+            "Foglalat": " LGA1700",
+            "Fogyasztás (W)": " 180",
+            "Integrált GPU": " Van",
+            "Magok száma": " 12",
+            "Maximum memória": " 128",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " Intel 1700",
+            "Turbó órajel (Mhz)": " 4,9000000"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/74/m/747204_4.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/74/m/747204_1.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/74/m/747204_2.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/74/m/747204_5.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/74/m/747204_3.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Intel Pentium Gold G6400 processzor (BX80701G6400)",
+        "price": "28 398",
+        "properties": {
+            "Cache": " 4 MB",
+            "Fogyasztás (W)": " 58",
+            "Magok száma": " 2 db",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " Intel 1200"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/77/m/774364_2.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/77/m/774364_5.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/77/m/774364_1.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/77/m/774364_3.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/77/m/774364_4.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Processzor AMD Ryzen 5 5600XT 3.8GHz AM4 BOX+Venti 100-100001585BOX",
+        "price": "60 799",
+        "properties": {
+            "Fogyasztás (W)": " 65",
+            "Magok száma": " 6",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " am4"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/83/m/830227_2.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/83/m/830227_3.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/83/m/830227_5.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/83/m/830227_4.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/83/m/830227_1.webp?202501222149"
+        ]
+    },
+    {
+        "name": "AMD AM4 CPU Ryzen 5 3600 3.6GHz 3MB L2 32MB L3 Cache 100-100000031SBX",
+        "price": "39 299",
+        "properties": {
+            "Cache": " 3",
+            "Magok száma": " 6",
+            "Processzor foglalat": " am4"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/72/m/720729_2.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/72/m/720729_3.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/72/m/720729_5.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/72/m/720729_1.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/72/m/720729_4.webp?202501222149"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 5 5500GT processzor (100-100001489BOX)",
+        "price": "48 199",
+        "properties": {
+            "Cache": " 3",
+            "Fogyasztás (W)": " 65",
+            "Magok száma": " 6",
+            "Processzor foglalat": " AMD AM4"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/49/m/498989_3.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/49/m/498989_2.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/49/m/498989_4.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/49/m/498989_1.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/49/m/498989_5.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Intel Core i5-10400 processzor (BX8070110400)",
+        "price": "60 698",
+        "properties": {
+            "Alap órajel": " 2,9 GHz",
+            "Cache": " 12 MB",
+            "Foglalat": " LGA1200",
+            "Fogyasztás (W)": " 65",
+            "Integrált GPU": " Van",
+            "Magok száma": " 6",
+            "Maximum memória": " 128",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " Intel 1200",
+            "Turbó órajel (Mhz)": " 4.3 GHz"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/66/m/669856_2.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/66/m/669856_3.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/66/m/669856_1.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/66/m/669856_4.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/66/m/669856_5.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Intel Core i7-13700F processzor (BX8071513700F)",
+        "price": "151 199",
+        "properties": {
+            "Alap órajel": " 2,1 GHz",
+            "Cache": " 30 MB",
+            "Foglalat": " LGA1700",
+            "Fogyasztás (W)": " 65-219 W",
+            "Magok száma": " 16",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " Intel 1700",
+            "Turbó órajel (Mhz)": " 5.2 GHz"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/84/m/840649_1.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/84/m/840649_5.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/84/m/840649_2.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/84/m/840649_3.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/84/m/840649_4.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Supermicro AMD EPYC 7501 szerver processzor (PSE-NPL7501-BEVIHAF)",
+        "price": "48 899",
+        "properties": {
+            "Fogyasztás (W)": " 170",
+            "Magok száma": " 32",
+            "Processzor foglalat": " AMD SP3"
+        },
+        "manufacturer": "Supermicro",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/53/m/533453_5.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/53/m/533453_1.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/53/m/533453_4.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/53/m/533453_2.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/53/m/533453_3.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Intel Core i5-13400 processzor (BX8071513400)",
+        "price": "77 600",
+        "properties": {
+            "Cache": " 20",
+            "Fogyasztás (W)": " 154",
+            "Integrált GPU": " Van",
+            "Magok száma": " 10, 6",
+            "Processzor foglalat": " Intel 1700",
+            "Turbó órajel (Mhz)": " 4,6000000"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/53/m/539177_2.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/53/m/539177_5.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/53/m/539177_3.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/53/m/539177_1.webp?202501222149",
+            "https://1.pcx.hu/pcx_prod_img/53/m/539177_4.webp?202501222149"
+        ]
+    },
+    {
+        "name": "CPU Intel s1700 Core i3-13100 - 4,50 GHz BX8071513100",
+        "price": "55 799",
+        "properties": {
+            "Alap órajel": " 3,4 GHz",
+            "Cache": " 12",
+            "Foglalat": " LGA1700",
+            "Fogyasztás (W)": " 89",
+            "Integrált GPU": " Van",
+            "Magok száma": " 4",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " Intel 1700",
+            "Turbó órajel (Mhz)": " 4,5000000"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/75/m/755460_4.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/75/m/755460_1.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/75/m/755460_2.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/75/m/755460_3.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/75/m/755460_5.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Intel Core i9-14900 processzor (BX8071514900)",
+        "price": "265 899",
+        "properties": {
+            "Cache": " 32",
+            "Fogyasztás (W)": " 65",
+            "Magok száma": " 24",
+            "Processzor foglalat": " Intel 1700"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/63/m/633619_5.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/63/m/633619_3.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/63/m/633619_2.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/63/m/633619_1.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/63/m/633619_4.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Intel Core i5-13500 processzor (BX8071513500)",
+        "price": "101 199",
+        "properties": {
+            "Cache": " 24",
+            "Magok száma": " 14 db",
+            "Processzor foglalat": " Intel 1700",
+            "Turbó órajel (Mhz)": " 4800"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/36/m/362729_4.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/36/m/362729_1.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/36/m/362729_5.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/36/m/362729_2.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/36/m/362729_3.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Intel Core i7-12700F processzor (BX8071512700F)",
+        "price": "117 799",
+        "properties": {
+            "Cache": " 25",
+            "Fogyasztás (W)": " 180",
+            "Integrált GPU": " Nincs",
+            "Magok száma": " 12",
+            "Maximum memória": " 128",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " Intel 1700",
+            "Turbó órajel (Mhz)": " 4,9000000"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/86/m/861505_1.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/86/m/861505_5.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/86/m/861505_3.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/86/m/861505_2.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/86/m/861505_4.webp?202501222149"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 7 3800X processzor (100-100000025BOX)",
+        "price": "96 999",
+        "properties": {
+            "Alap órajel": " 3,9 GHz",
+            "Cache": " 4 MB",
+            "Foglalat": " AM4",
+            "Fogyasztás (W)": " 105",
+            "Magok száma": " 8",
+            "Processzor foglalat": " AMD AM4"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/57/m/575569_3.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/57/m/575569_5.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/57/m/575569_4.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/57/m/575569_1.webp?202501222149",
+            "https://2.pcx.hu/pcx_prod_img/57/m/575569_2.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Intel Core i9-14900F processzor (BX8071514900F)",
+        "price": "233 498",
+        "properties": {
+            "Cache": " 32",
+            "Fogyasztás (W)": " 65",
+            "Magok száma": " 24",
+            "Processzor foglalat": " Intel 1700"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/22/m/228985_5.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/22/m/228985_2.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/22/m/228985_3.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/22/m/228985_1.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/22/m/228985_4.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Processzor AMD Ryzen 5 5600T 3.7GHz AM4 BOX+Venti 100-100001584Box",
+        "price": "57 200",
+        "properties": {
+            "Fogyasztás (W)": " 65",
+            "Magok száma": " 6",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " am4"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/27/m/278146_2.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/27/m/278146_4.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/27/m/278146_3.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/27/m/278146_5.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/27/m/278146_1.webp?202501222150"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 5 5600GT processzor (100-100001488BOX)",
+        "price": "55 499",
+        "properties": {
+            "Cache": " 384 kB",
+            "Fogyasztás (W)": " 65",
+            "Magok száma": " 6",
+            "Processzor foglalat": " AMD AM4"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/17/m/173099_3.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/17/m/173099_5.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/17/m/173099_4.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/17/m/173099_1.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/17/m/173099_2.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i9-12900KF processzor (BX8071512900KF)",
+        "price": "189 899",
+        "properties": {
+            "Alap órajel": " 3,2 GHz",
+            "Cache": " 14 MB",
+            "Cikknév kiegészítés": " GPU nélkül",
+            "Foglalat": " LGA1700",
+            "Fogyasztás (W)": " 241",
+            "Integrált GPU": " Nincs",
+            "Magok száma": " 16",
+            "Maximum memória": " 128",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " Intel 1700",
+            "Turbó órajel (Mhz)": " 5200"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/40/m/400879_1.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/40/m/400879_3.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/40/m/400879_5.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/40/m/400879_4.webp?202501222149",
+            "https://3.pcx.hu/pcx_prod_img/40/m/400879_2.webp?202501222149"
+        ]
+    },
+    {
+        "name": "Intel Core i7-14700 processzor (BX8071514700)",
+        "price": "155 899",
+        "properties": {
+            "Cache": " 28",
+            "Fogyasztás (W)": " 65",
+            "Magok száma": " 20",
+            "Processzor foglalat": " Intel 1700"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/78/m/783062_2.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/78/m/783062_5.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/78/m/783062_4.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/78/m/783062_1.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/78/m/783062_3.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Pentium Gold G6405 processzor (BX80701G6405)",
+        "price": "30 199",
+        "properties": {
+            "Alap órajel": " 4,1 GHz",
+            "Cache": " 0,5",
+            "Foglalat": " LGA1200",
+            "Fogyasztás (W)": " 58",
+            "Magok száma": " 2",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " Intel 1200"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/25/m/254079_5.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/25/m/254079_1.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/25/m/254079_3.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/25/m/254079_4.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/25/m/254079_2.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Celeron G5905 processzor (BX80701G5905)",
+        "price": "20 698",
+        "properties": {
+            "Alap órajel": " 3,5 GHz",
+            "Cache": " 4 MB",
+            "Foglalat": " LGA1200",
+            "Fogyasztás (W)": " 58 Watt",
+            "Magok száma": " 2",
+            "Processzor foglalat": " Intel 1200"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/94/m/949904_4.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/94/m/949904_1.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/94/m/949904_2.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/94/m/949904_5.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/94/m/949904_3.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i5-12600KF processzor (BX8071512600KF)",
+        "price": "76 098",
+        "properties": {
+            "Alap órajel": " 3,7 GHz",
+            "Cache": " 9,5 MB",
+            "Cikknév kiegészítés": " GPU nélkül",
+            "Foglalat": " LGA1700",
+            "Fogyasztás (W)": " 150",
+            "Integrált GPU": " Nincs",
+            "Magok száma": " 6",
+            "Maximum memória": " 128",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " Intel 1700",
+            "Turbó órajel (Mhz)": " 4.9 GHz"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/72/m/720764_1.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/72/m/720764_4.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/72/m/720764_2.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/72/m/720764_3.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/72/m/720764_5.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Processzor AMD Ryzen 7 5800XT 3.8GHz AM4 BOX+Venti 100-100001582BOX",
+        "price": "107 099",
+        "properties": {
+            "Fogyasztás (W)": " 105",
+            "Magok száma": " 8",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " am4"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/45/m/452689_2.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/45/m/452689_5.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/45/m/452689_1.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/45/m/452689_3.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/45/m/452689_4.webp?202501222150"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 7 9700X 5,5GHz Socket AM5 32MB (100-100001404WOF) box processzor",
+        "price": "153 299",
+        "properties": {
+            "Magok száma": " 8",
+            "Processzor foglalat": " AMD AM5"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/34/m/346346_3.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/34/m/346346_2.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/34/m/346346_5.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/34/m/346346_1.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/34/m/346346_4.webp?202501222150"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 9 7900 processzor (100-100000590BOX)",
+        "price": "169 299",
+        "properties": {
+            "Alap órajel": " 3,7 GHz",
+            "Cache": " 768 Kb",
+            "Foglalat": " AM5",
+            "Fogyasztás (W)": " 65 Watt",
+            "Magok száma": " 12",
+            "Processzor foglalat": " AMD AM5",
+            "Turbó órajel (Mhz)": " 5.4 GHz"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/86/m/862472_3.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/86/m/862472_1.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/86/m/862472_4.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/86/m/862472_5.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/86/m/862472_2.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i9-13900F processzor (BX8071513900F)",
+        "price": "283 500",
+        "properties": {
+            "Cache": " 32 MB",
+            "Fogyasztás (W)": " 65 Watt",
+            "Integrált GPU": " Nincs",
+            "Magok száma": " 8",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " Intel 1700",
+            "Turbó órajel (Mhz)": " 5.6 GHz"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/28/m/287082_5.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/28/m/287082_4.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/28/m/287082_2.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/28/m/287082_3.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/28/m/287082_1.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i7-13700K processzor (BX8071513700K)",
+        "price": "167 899",
+        "properties": {
+            "Alap órajel": " 3,4 GHz",
+            "Cache": " 30 MB",
+            "Foglalat": " LGA1700",
+            "Fogyasztás (W)": " 253",
+            "Integrált GPU": " Van",
+            "Magok száma": " 16",
+            "Maximum memória": " 128",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " Intel 1700",
+            "Turbó órajel (Mhz)": " 5,4000000"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/27/m/276947_2.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/27/m/276947_1.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/27/m/276947_4.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/27/m/276947_5.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/27/m/276947_3.webp?202501222150"
+        ]
+    },
+    {
+        "name": "CPU AMD AM5 Ryzen 7 8700F - 4,1GHz 100-100001590BOX",
+        "price": "124 299",
+        "properties": {
+            "Alap órajel": " 4,1 GHz",
+            "Cache": " 8 MB",
+            "Foglalat": " AM5",
+            "Magok száma": " 8 db",
+            "Processzor foglalat": " AMD AM5"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/76/m/768060_3.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/76/m/768060_1.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/76/m/768060_2.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/76/m/768060_4.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/76/m/768060_5.webp?202501222150"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 7 8700G processzor (100-100001236BOX)",
+        "price": "120 499",
+        "properties": {
+            "Cache": " 8",
+            "Fogyasztás (W)": " 65",
+            "Magok száma": " 8",
+            "Processzor foglalat": " AMD AM5"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/69/m/694211_5.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/69/m/694211_3.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/69/m/694211_4.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/69/m/694211_2.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/69/m/694211_1.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i5-11400 processzor (BX8070811400)",
+        "price": "69 900",
+        "properties": {
+            "Alap órajel": " 2,6 GHz",
+            "Cache": " 12 MB",
+            "Foglalat": " LGA1200",
+            "Fogyasztás (W)": " 65",
+            "Integrált GPU": " Van",
+            "Magok száma": " 6",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " Intel 1200",
+            "Turbó órajel (Mhz)": " 4.4 GHz"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/22/m/227734_3.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/22/m/227734_2.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/22/m/227734_4.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/22/m/227734_1.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/22/m/227734_5.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i3-12100F processzor (BX8071512100F)",
+        "price": "37 600",
+        "properties": {
+            "Alap órajel": " 3,3 GHz",
+            "Cache": " 12 MB",
+            "Cikknév kiegészítés": " GPU nélkül",
+            "Foglalat": " LGA1700",
+            "Fogyasztás (W)": " 89",
+            "Integrált GPU": " Nincs",
+            "Magok száma": " 4",
+            "Maximum memória": " 128",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " Intel 1700",
+            "Turbó órajel (Mhz)": " 4,3000000"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/50/m/504364_3.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/50/m/504364_5.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/50/m/504364_2.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/50/m/504364_4.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/50/m/504364_1.webp?202501222150"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 5 4500 processzor (100-100000644BOX)",
+        "price": "38 398",
+        "properties": {
+            "Cache": " 11",
+            "Fogyasztás (W)": " 65",
+            "Integrált GPU": " Nincs",
+            "Magok száma": " 6",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " AMD AM4",
+            "Turbó órajel (Mhz)": " 4,1000000"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/80/m/809843_4.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/80/m/809843_2.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/80/m/809843_1.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/80/m/809843_3.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/80/m/809843_5.webp?202501222150"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 9 7950X processzor (100-100000514WOF)",
+        "price": "213 699",
+        "properties": {
+            "Alap órajel": " 4,5 GHz",
+            "Cache": " 1 MB",
+            "Foglalat": " AM5",
+            "Fogyasztás (W)": " 170",
+            "Integrált GPU": " Van",
+            "Magok száma": " 16",
+            "Maximum memória": " 128",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " AMD AM5",
+            "Turbó órajel (Mhz)": " 5,7000000"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/81/m/818124_3.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/81/m/818124_2.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/81/m/818124_4.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/81/m/818124_5.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/81/m/818124_1.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i3-10100 processzor (BX8070110100)",
+        "price": "41 899",
+        "properties": {
+            "Alap órajel": " 3,6 GHz",
+            "Cache": " 6 MB",
+            "Foglalat": " LGA1200",
+            "Fogyasztás (W)": " 65",
+            "Integrált GPU": " Van",
+            "Magok száma": " 4",
+            "Maximum memória": " 128",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " Intel 1200",
+            "Turbó órajel (Mhz)": " 4,3000000"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/67/m/674120_3.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/67/m/674120_5.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/67/m/674120_4.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/67/m/674120_1.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/67/m/674120_2.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i7-14700F processzor (BX8071514700F)",
+        "price": "143 800",
+        "properties": {
+            "Cache": " 28",
+            "Fogyasztás (W)": " 65",
+            "Magok száma": " 20",
+            "Processzor foglalat": " Intel 1700"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/84/m/849249_1.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/84/m/849249_4.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/84/m/849249_2.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/84/m/849249_3.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/84/m/849249_5.webp?202501222150"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 3 4300G processzor (100-100000144BOX)",
+        "price": "37 600",
+        "properties": {
+            "Cache": " 4 MB",
+            "Fogyasztás (W)": " 65",
+            "Magok száma": " 4",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " AMD AM4",
+            "Turbó órajel (Mhz)": " 4"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/17/m/176564_2.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/17/m/176564_3.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/17/m/176564_4.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/17/m/176564_1.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/17/m/176564_5.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i5-13400F processzor (BX8071513400F)",
+        "price": "67 799",
+        "properties": {
+            "Alap órajel": " 2,5 GHz",
+            "Cache": " 20",
+            "Foglalat": " LGA1700",
+            "Fogyasztás (W)": " 154",
+            "Integrált GPU": " Nincs",
+            "Magok száma": " 10",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " Intel 1700",
+            "Turbó órajel (Mhz)": " 4,6000000"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/95/m/954095_4.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/95/m/954095_3.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/95/m/954095_1.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/95/m/954095_5.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/95/m/954095_2.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i7-14700KF processzor (BX8071514700KF)",
+        "price": "168 499",
+        "properties": {
+            "Cache": " 28",
+            "Fogyasztás (W)": " 125",
+            "Magok száma": " 20",
+            "Processzor foglalat": " Intel 1700"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/80/m/804466_3.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/80/m/804466_2.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/80/m/804466_1.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/80/m/804466_5.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/80/m/804466_4.webp?202501222150"
+        ]
+    },
+    {
+        "name": "CPU Intel s1700 Core i3-13100F - 4,50 GHz BX8071513100F",
+        "price": "39 299",
+        "properties": {
+            "Cache": " 12 MB",
+            "Fogyasztás (W)": " 89",
+            "Integrált GPU": " Nincs",
+            "Magok száma": " 4",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " Intel 1700",
+            "Turbó órajel (Mhz)": " 4.5 GHz"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/19/m/194453_2.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/19/m/194453_5.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/19/m/194453_1.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/19/m/194453_3.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/19/m/194453_4.webp?202501222150"
+        ]
+    },
+    {
+        "name": "INTEL CPU S1851 Core Ultra 5 245K 3.6GHz 24MB Cache BOX BX80768245K",
+        "price": "142 298",
+        "properties": {
+            "Cache": " 26",
+            "Fogyasztás (W)": " 159",
+            "Magok száma": " 14",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " Intel 1851",
+            "Turbó órajel (Mhz)": " 5,2000000"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/34/m/345463_2.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/34/m/345463_5.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/34/m/345463_1.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/34/m/345463_3.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/34/m/345463_4.webp?202501222150"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 7 7700 processzor (100-100000592BOX)",
+        "price": "126 898",
+        "properties": {
+            "Alap órajel": " 3,8 GHz",
+            "Cache": " 512Kb",
+            "Foglalat": " AM5",
+            "Fogyasztás (W)": " 65 Watt",
+            "Magok száma": " 8 db",
+            "Processzor foglalat": " AMD AM5",
+            "Turbó órajel (Mhz)": " 5.3 GHz"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/85/m/857138_1.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/85/m/857138_5.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/85/m/857138_2.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/85/m/857138_4.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/85/m/857138_3.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i9-14900K processzor (BX8071514900K)",
+        "price": "224 199",
+        "properties": {
+            "Cache": " 32",
+            "Fogyasztás (W)": " 125",
+            "Magok száma": " 24",
+            "Processzor foglalat": " Intel 1700"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/30/m/302478_3.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/30/m/302478_2.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/30/m/302478_5.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/30/m/302478_1.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/30/m/302478_4.webp?202501222150"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 3 4100 processzor (100-100000510BOX)",
+        "price": "29 100",
+        "properties": {
+            "Cache": " 6",
+            "Cikknév kiegészítés": " (Wraith Stealth cooler)",
+            "Fogyasztás (W)": " 65",
+            "Integrált GPU": " Nincs",
+            "Magok száma": " 4",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " AMD AM4",
+            "Turbó órajel (Mhz)": " 4"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/89/m/890517_1.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/89/m/890517_3.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/89/m/890517_2.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/89/m/890517_4.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/89/m/890517_5.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i3-12100 processzor (BX8071512100)",
+        "price": "51 098",
+        "properties": {
+            "Alap órajel": " 3,3 GHz",
+            "Cache": " 12 MB",
+            "Foglalat": " LGA1700",
+            "Fogyasztás (W)": " 60",
+            "Integrált GPU": " Van",
+            "Magok száma": " 4",
+            "Maximum memória": " 128",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " Intel 1700",
+            "Turbó órajel (Mhz)": " 4,3000000"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/67/m/670710_1.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/67/m/670710_3.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/67/m/670710_4.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/67/m/670710_5.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/67/m/670710_2.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i9-14900KF processzor (BX8071514900KF)",
+        "price": "207 399",
+        "properties": {
+            "Cache": " 32",
+            "Fogyasztás (W)": " 125",
+            "Magok száma": " 24",
+            "Processzor foglalat": " Intel 1700"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/71/m/714901_5.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/71/m/714901_2.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/71/m/714901_1.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/71/m/714901_3.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/71/m/714901_4.webp?202501222150"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 5 9600X 3,9GHz Socket AM5 32MB (9600X) box processzor 100-100001405WOF",
+        "price": "116 299",
+        "properties": {
+            "Magok száma": " 6",
+            "Processzor foglalat": " AMD AM5"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/52/m/522411_5.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/52/m/522411_4.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/52/m/522411_3.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/52/m/522411_2.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/52/m/522411_1.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i3-10105 processzor (BX8070110105)",
+        "price": "41 899",
+        "properties": {
+            "Alap órajel": " 3,7 GHz",
+            "Cache": " 6 MB",
+            "Foglalat": " LGA1200",
+            "Fogyasztás (W)": " 65",
+            "Integrált GPU": " Van",
+            "Magok száma": " 4",
+            "Maximum memória": " 128",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " Intel 1200",
+            "Turbó órajel (Mhz)": " 4.4 GHz"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/96/m/962940_2.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/96/m/962940_1.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/96/m/962940_4.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/96/m/962940_5.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/96/m/962940_3.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i3-14100 processzor (BX8071514100)",
+        "price": "59 599",
+        "properties": {
+            "Cache": " 5",
+            "Fogyasztás (W)": " 60",
+            "Magok száma": " 4",
+            "Processzor foglalat": " Intel 1700"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/48/m/486019_5.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/48/m/486019_2.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/48/m/486019_4.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/48/m/486019_1.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/48/m/486019_3.webp?202501222150"
+        ]
+    },
+    {
+        "name": "INTEL CPU S1851 Core Ultra 7 265K 3.9GHz 30MB Cache BOX BX80768265K",
+        "price": "196 699",
+        "properties": {
+            "Cache": " 36864",
+            "Fogyasztás (W)": " 250",
+            "Magok száma": " 20",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " Intel 1851"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/70/m/709763_4.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/70/m/709763_3.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/70/m/709763_5.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/70/m/709763_2.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/70/m/709763_1.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i5-14600KF processzor (BX8071514600KF)",
+        "price": "106 399",
+        "properties": {
+            "Cache": " 20",
+            "Fogyasztás (W)": " 125",
+            "Magok száma": " 14",
+            "Processzor foglalat": " Intel 1700"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/88/m/882076_3.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/88/m/882076_5.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/88/m/882076_4.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/88/m/882076_1.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/88/m/882076_2.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i3 10100F OEM processzor (CM8070104291318)",
+        "price": "29 500",
+        "properties": {
+            "Cache": " 1",
+            "Fogyasztás (W)": " 65",
+            "Magok száma": " 4",
+            "Processzor foglalat": " Intel 1200"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/96/m/IntelCorei310100FOEMprocesszorCM8070104291318_1.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/96/m/IntelCorei310100FOEMprocesszorCM8070104291318_3.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/96/m/IntelCorei310100FOEMprocesszorCM8070104291318_5.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/96/m/IntelCorei310100FOEMprocesszorCM8070104291318_4.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/96/m/IntelCorei310100FOEMprocesszorCM8070104291318_2.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i9-12900K processzor (BX8071512900K)",
+        "price": "167 298",
+        "properties": {
+            "Cache": " 30 MB",
+            "Fogyasztás (W)": " 125-241 W",
+            "Integrált GPU": " Van",
+            "Magok száma": " 16",
+            "Maximum memória": " 128",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " Intel 1700",
+            "Turbó órajel (Mhz)": " 5,1 GHz"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/14/m/146395_5.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/14/m/146395_4.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/14/m/146395_2.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/14/m/146395_3.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/14/m/146395_1.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i3-14100F processzor (BX8071514100F)",
+        "price": "42 699",
+        "properties": {
+            "Cache": " 5",
+            "Fogyasztás (W)": " 58",
+            "Magok száma": " 4",
+            "Processzor foglalat": " Intel 1700"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/60/m/600955_1.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/60/m/600955_3.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/60/m/600955_2.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/60/m/600955_5.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/60/m/600955_4.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i5-14400 processzor (BX8071514400)",
+        "price": "78 398",
+        "properties": {
+            "Cache": " 9,5",
+            "Fogyasztás (W)": " 65",
+            "Magok száma": " 10",
+            "Processzor foglalat": " Intel 1700"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/71/m/710174_2.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/71/m/710174_5.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/71/m/710174_3.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/71/m/710174_1.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/71/m/710174_4.webp?202501222150"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 7 5700G processzor (100-100000263BOX)",
+        "price": "76 399",
+        "properties": {
+            "Alap órajel": " 3,8 GHz",
+            "Cache": " 16 MB",
+            "Foglalat": " AM4",
+            "Fogyasztás (W)": " 65 W",
+            "Integrált GPU": " Van",
+            "Magok száma": " 8",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " AMD AM4",
+            "Turbó órajel (Mhz)": " 4.6 GHz"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/66/m/661599_3.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/66/m/661599_1.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/66/m/661599_2.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/66/m/661599_5.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/66/m/661599_4.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i5-10600KF processzor (BX8070110600KF)",
+        "price": "51 599",
+        "properties": {
+            "Alap órajel": " 3,3 GHz",
+            "Cache": " 12 MB",
+            "Foglalat": " LGA1200",
+            "Fogyasztás (W)": " 125",
+            "Magok száma": " 6",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " Intel 1200",
+            "Turbó órajel (Mhz)": " 4,8 GHz"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/36/m/368932_3.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/36/m/368932_4.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/36/m/368932_2.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/36/m/368932_5.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/36/m/368932_1.webp?202501222150"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 7 5700 3.7GHz Socket AM4 dobozos (100-100000743BOX)",
+        "price": "60 698",
+        "properties": {
+            "Alap órajel": " 3,7 GHz",
+            "Cache": " 4 MB",
+            "Foglalat": " AM4",
+            "Fogyasztás (W)": " 65",
+            "Magok száma": " 8",
+            "Processzor foglalat": " AMD AM4"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/46/m/463769_1.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/46/m/463769_4.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/46/m/463769_5.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/46/m/463769_3.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/46/m/463769_2.webp?202501222150"
+        ]
+    },
+    {
+        "name": "CPU AMD AM5 Ryzen 5 9600X - 5,4GHz 100-100001405WOF",
+        "price": "113 599",
+        "properties": {
+            "Fogyasztás (W)": " 65",
+            "Magok száma": " 6",
+            "Processzor foglalat": " AMD AM5"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/66/m/667738_3.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/66/m/667738_1.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/66/m/667738_5.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/66/m/667738_4.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/66/m/667738_2.webp?202501222150"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 5 5600 processzor (100-100000927BOX)",
+        "price": "52 998",
+        "properties": {
+            "Alap órajel": " 3,5 GHz",
+            "Cache": " 32 MB",
+            "Foglalat": " AM4",
+            "Fogyasztás (W)": " 65",
+            "Integrált GPU": " Nincs",
+            "Magok száma": " 6",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " AMD AM4",
+            "Turbó órajel (Mhz)": " 4,4000000"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/55/m/555337_4.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/55/m/555337_3.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/55/m/555337_1.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/55/m/555337_5.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/55/m/555337_2.webp?202501222150"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 5 5600G processzor (100-100000252BOX)",
+        "price": "56 498",
+        "properties": {
+            "Alap órajel": " 3,9 GHz",
+            "Cache": " 16 MB",
+            "Foglalat": " AM4",
+            "Fogyasztás (W)": " 65",
+            "Integrált GPU": " Van",
+            "Magok száma": " 6, 6 db",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " AMD AM4",
+            "Turbó órajel (Mhz)": " 4,4000000"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/97/m/975702_4.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/97/m/975702_1.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/97/m/975702_5.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/97/m/975702_3.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/97/m/975702_2.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i7-12700KF processzor (BX8071512700KF)",
+        "price": "108 400",
+        "properties": {
+            "Alap órajel": " 3,6 GHz",
+            "Cache": " 25 MB",
+            "Foglalat": " LGA1700",
+            "Fogyasztás (W)": " 125-190 W",
+            "Integrált GPU": " Nincs",
+            "Magok száma": " 12",
+            "Maximum memória": " 128",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " Intel 1700",
+            "Turbó órajel (Mhz)": " 5,0 GHz"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/60/m/609807_4.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/60/m/609807_5.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/60/m/609807_3.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/60/m/609807_1.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/60/m/609807_2.webp?202501222150"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 7 9700X processzor (100-100001404WOF)",
+        "price": "152 599",
+        "properties": {
+            "Fogyasztás (W)": " 65",
+            "Magok száma": " 8",
+            "Processzor foglalat": " AMD AM5"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/83/m/830718_2.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/83/m/830718_5.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/83/m/830718_1.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/83/m/830718_3.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/83/m/830718_4.webp?202501222150"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 5 5500 processzor (100-100000457BOX)",
+        "price": "40 499",
+        "properties": {
+            "Alap órajel": " 3,6 GHz",
+            "Cache": " 19",
+            "Cikknév kiegészítés": " (Wraith Stealth cooler)",
+            "Foglalat": " AM4",
+            "Fogyasztás (W)": " 65",
+            "Integrált GPU": " Nincs",
+            "Magok száma": " 6, 6 db",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " AMD AM4",
+            "Turbó órajel (Mhz)": " 4,2000000"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/79/m/794854_4.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/79/m/794854_5.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/79/m/794854_2.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/79/m/794854_1.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/79/m/794854_3.webp?202501222150"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 5 3600 processzor (100-100000031BOX)",
+        "price": "34 699",
+        "properties": {
+            "Alap órajel": " 3,6 GHz",
+            "Cache": " 3 MB",
+            "Foglalat": " AM4",
+            "Fogyasztás (W)": " 65 Watt",
+            "Magok száma": " 6",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " AMD AM4",
+            "Turbó órajel (Mhz)": " 4.2 GHz"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/53/m/534085_1.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/53/m/534085_5.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/53/m/534085_4.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/53/m/534085_2.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/53/m/534085_3.webp?202501222150"
+        ]
+    },
+    {
+        "name": "Intel Core i5-14400F processzor (BX8071514400F)",
+        "price": "70 099",
+        "properties": {
+            "Cache": " 9,5",
+            "Fogyasztás (W)": " 65",
+            "Magok száma": " 10",
+            "Processzor foglalat": " Intel 1700"
+        },
+        "manufacturer": "Intel",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/61/m/611877_4.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/61/m/611877_2.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/61/m/611877_5.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/61/m/611877_1.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/61/m/611877_3.webp?202501222150"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 7 5800X processzor (100-100000063WOF)",
+        "price": "82 099",
+        "properties": {
+            "Alap órajel": " 3,8 GHz",
+            "Cache": " 36 MB",
+            "Foglalat": " AM4",
+            "Fogyasztás (W)": " 105",
+            "Integrált GPU": " Nincs",
+            "Magok száma": " 8, 8 db",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " AMD AM4",
+            "Turbó órajel (Mhz)": " 4,7000000"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/88/m/880547_3.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/88/m/880547_4.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/88/m/880547_5.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/88/m/880547_2.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/88/m/880547_1.webp?202501222150"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 5 5600X (100-100000065BOX)",
+        "price": "58 499",
+        "properties": {
+            "Alap órajel": " 3,7 GHz",
+            "Cache": " 35 MB",
+            "Foglalat": " AM4",
+            "Fogyasztás (W)": " 65 Watt",
+            "Magok száma": " 6",
+            "Memória foglalat": " DDR4",
+            "Processzor foglalat": " AMD AM4",
+            "Turbó órajel (Mhz)": " 4.6 GHz"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/86/m/869114_4.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/86/m/869114_5.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/86/m/869114_2.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/86/m/869114_1.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/86/m/869114_3.webp?202501222150"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 5 7600X processzor (100-100000593WOF)",
+        "price": "101 699",
+        "properties": {
+            "Cache": " 38",
+            "Fogyasztás (W)": " 105",
+            "Integrált GPU": " Van",
+            "Magok száma": " 6",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " AMD AM5",
+            "Turbó órajel (Mhz)": " 5,3000000"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://3.pcx.hu/pcx_prod_img/19/m/198238_3.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/19/m/198238_1.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/19/m/198238_4.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/19/m/198238_2.webp?202501222150",
+            "https://3.pcx.hu/pcx_prod_img/19/m/198238_5.webp?202501222150"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 9 7900X3D processzor (100-100000909WOF)",
+        "price": "310 098",
+        "properties": {
+            "Alap órajel": " 4,4 GHz",
+            "Cache": " 128 MB",
+            "Foglalat": " AM5",
+            "Fogyasztás (W)": " 170",
+            "Magok száma": " 12",
+            "Memória foglalat": " DDR5",
+            "Processzor foglalat": " AMD AM5",
+            "Turbó órajel (Mhz)": " 5.6 GHz"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://2.pcx.hu/pcx_prod_img/43/m/432404_2.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/43/m/432404_5.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/43/m/432404_4.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/43/m/432404_1.webp?202501222150",
+            "https://2.pcx.hu/pcx_prod_img/43/m/432404_3.webp?202501222150"
+        ]
+    },
+    {
+        "name": "AMD Ryzen 5 7600 processzor (100-100001015BOX)",
+        "price": "94 899",
+        "properties": {
+            "Alap órajel": " 3,8 GHz",
+            "Cache": " 38",
+            "Cikknév kiegészítés": " (Wraith Stealth cooler)",
+            "Foglalat": " AM5",
+            "Fogyasztás (W)": " 65",
+            "Magok száma": " 6",
+            "Processzor foglalat": " AMD AM5",
+            "Turbó órajel (Mhz)": " 5,1000000"
+        },
+        "manufacturer": "AMD",
+        "image_urls": [
+            "https://1.pcx.hu/pcx_prod_img/98/m/981687_2.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/98/m/981687_4.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/98/m/981687_5.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/98/m/981687_1.webp?202501222150",
+            "https://1.pcx.hu/pcx_prod_img/98/m/981687_3.webp?202501222150"
+        ]
+    }
+]
