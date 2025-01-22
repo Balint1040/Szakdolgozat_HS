@@ -1,17 +1,8 @@
 import { IconDefinition, IconProp } from "@fortawesome/fontawesome-svg-core"
 import { faArrowRight, faSortDown } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import Link from "next/link"
-//import React from "react"
 
-/*interface IProps {
-    props: {
-        name: string,
-        href: string
-    }
-}*/
-
-export default function OrangeButton({
+export default function BlueButton({
     name,
     href,
     variant
@@ -29,7 +20,7 @@ export default function OrangeButton({
     }
     
     return (
-        <a className="orangeButton" href={href}>
+        <a className="blueButton" href={href}>
             {name}
             {icon == null ? "" : icon}
         </a>

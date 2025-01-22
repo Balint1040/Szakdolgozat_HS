@@ -6,7 +6,6 @@
     --light: #F2F2F2;
 }
 
-
 .text-Orange {
     color: var(--orange);
 }
@@ -14,7 +13,30 @@
     color: var(--blue);
 }
 
-.buttonOrange {
+.navbarSearchIcon {
+    height: 36px;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: .75;
+    transition: all .3s ease-in-out;
+}
+
+input[type="search"] {
+    transition: all .3s ease-in-out;
+}
+input[type="search"]:active, input[type="search"]:focus {
+    box-shadow: none;
+    -webkit-box-shadow: 2px 4px 20px 5px var(--blue);
+    -moz-box-shadow: 2px 4px 20px 5px var(--blue);
+    box-shadow: 2px 4px 20px 5px var(--blue);
+}
+input[type="search"]:active + .navbarSearchIcon, input[type="search"]:focus + .navbarSearchIcon {
+    color: var(--blue) !important;
+}
+
+.orangeButton, .blueButton {
     height: 55px;
     padding: 14px 20px;
     color: var(--white);
@@ -25,6 +47,42 @@
     -webkit-box-shadow: 2px 4px 20px 5px var(--orange);
     -moz-box-shadow: 2px 4px 20px 5px var(--orange);
     box-shadow: 2px 4px 20px 5px var(--orange);
+    transition: all .3s ease-in-out;
+    overflow: hidden;
+    position: relative;
+}
+.orangeButton:hover {
+    background-color: var(--white);
+    color: var(--orange);
+    
+}
+.orangeButton::after, .blueButton::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: solid 3px var(--orange);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 26px;
+}
+.blueButton::after {
+    border-color: var(--blue);
+}
+.blueButton {
+    background-color: var(--blue);
+    -webkit-box-shadow: 2px 4px 20px 5px var(--blue);
+    -moz-box-shadow: 2px 4px 20px 5px var(--blue);
+    box-shadow: 2px 4px 20px 5px var(--blue);
+}
+.blueButton:hover {
+    background-color: var(--white);
+    color: var(--blue);
+}
+.orangeButton svg, .blueButton svg{
+    height: 20px;
+    margin-left: 10px;
 }
 
 
@@ -67,4 +125,339 @@ nav {
 .hero .contentWrapper p {
     font-size: 45px;
     max-width: 600px;
+}
+
+#strengths {
+    padding: 100px 0;
+    color: var(--gray);
+}
+#strengths svg {
+    height: 100px;
+}
+#strengths .sCardWrap svg, #strengths .sCardWrap > div {
+    transition: all .3s ease-in-out;
+}
+#strengths .sCardWrap:hover {
+    color: var(--orange);
+}
+#strengths .sCardWrap:hover svg {
+    transform: translateY(-10px);
+    filter: drop-shadow(0px 4px 20px #FF7E2D);
+}
+
+#cta p {
+    font-size: 40px;
+    color: var(--gray);
+}
+.ram, .gpu, .motherb {
+    position: absolute;
+}
+.ram {
+    animation: float 6s ease-in-out infinite;
+    z-index: 3;
+    bottom: 0;
+    left: 15%;
+}
+.gpu {
+    animation: float 7s ease-in-out infinite;
+    z-index: 2;
+    left: 0;
+    bottom: 20%;
+}
+.motherb {
+    animation: float 5s ease-in-out infinite;
+    right: 0;
+    top: 0;
+}
+
+@keyframes float {
+    0% {
+        transform: translatey(0px);
+   }
+    50% {
+        transform: translatey(-20px);
+   }
+    100% {
+        transform: translatey(0px);
+   }
+}
+
+
+
+#quote {
+    min-height: 500px;
+    background-image: url("../../public/static/quoteBg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+}
+#quote .quoteWrap {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 730px;
+}
+#quote p {
+    font-size: 50px;
+    text-align: center;
+}
+#quote .text-end {
+    font-size: 30px;
+}
+
+
+#reviews {
+    padding: 50px 0 90px 0;
+}
+#reviews h1 {
+    margin: 80px 0 100px 0;
+}
+.reviewCard {
+    background-color: var(--light);
+    border-radius: 20px;
+    overflow: hidden;
+    height: 380px;
+}
+.reviewCard svg {
+    color: #E0B507;
+    filter: drop-shadow(0px 4px 15px #333333);
+}
+.reviewSwiper {
+    overflow-x: visible;
+}
+.reviewSwiper-controlWrap, .recommendationSwiper-controlWrap {
+    display: flex;
+    width: calc(100% - 130px);
+    flex-direction: row;
+    position: relative;
+    padding: 30px 0 0 0 !important;
+}
+.reviewSwiper-scrollbarWrap, .recommendationSwiper-scrollbarWrap {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+.reviewSwiper-scrollbarInnerWrap, .recommendationSwiper-scrollbarInnerWrap {
+    background-color: var(--light);
+    width: 100%;
+    overflow: hidden;
+    border-radius: 2px;
+}
+.reviewSwiper-scrollbar, .recommendationSwiper-scrollbar {
+    height: 5px;
+    width: 100%;
+    background-color: var(--light) ;
+    position: relative;
+}
+.reviewSwiper-scrollbar .swiper-scrollbar-drag, .recommendationSwiper-scrollbar .swiper-scrollbar-drag {
+    background-color: var(--orange);
+}
+.reviewSwiper-nextEl, .reviewSwiper-prevEl, .recommendationSwiper-nextEl, .recommendationSwiper-prevEl {
+    position: relative;
+    min-height: 65px;
+    height: 65px;
+    min-width: 65px;
+    width: 65px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--blue);
+    border-radius: 100%;
+    color: var(--white);
+    transition: all .3s ease-in-out;
+}
+.reviewSwiper-nextEl::after, .reviewSwiper-prevEl::after, .recommendationSwiper-nextEl::after, .recommendationSwiper-prevEl::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background-color: transparent !important;
+    border: solid 3px var(--blue);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.reviewSwiper-nextEl:hover, .reviewSwiper-prevEl:hover, .recommendationSwiper-nextEl:hover, .recommendationSwiper-prevEl:hover {
+    cursor: pointer;
+    background-color: var(--white);
+    color: var(--blue);
+}
+.reviewSwiper-nextEl svg, .reviewSwiper-prevEl svg, .recommendationSwiper-nextEl svg, .recommendationSwiper-prevEl svg {
+    height: 30px;
+}
+
+#recommendation .orangeButton {
+    -webkit-box-shadow: unset;
+    -moz-box-shadow: unset;
+    box-shadow: unset;
+}
+
+#recommendation {
+    padding: 100px 0 150px 0;
+}
+#recommendation h1 {
+    margin-bottom: 100px;
+}
+.recommendationCard {
+    background-color: var(--light);
+    height: 475px;
+    padding: 10px;
+    position: relative;
+    border-radius: 20px;
+}
+.recommendationCard .imgWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    width: 100%;
+    background-color: var(--white);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.recommendationCard .imgWrap .imgHover {
+    content: "\f00e";
+    font-family: 'Font Awesome 6 Free';
+    width: 100%;
+    height: 100%;
+    background-color: var(--gray);
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity .3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white);
+    font-size: 35px;
+}
+.recommendationCard .imgWrap:hover .imgHover {
+    opacity: .5;
+}
+.recommendationCard img {
+    max-height: 190px;
+}
+.recommendationCard .quantityWrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 140px;
+    justify-content: center;
+    font-size: 25px;
+    background-color: var(--white);
+    border-radius: 40px;
+}
+.recommendationCard .quantityWrap h3 {
+    width: 50px;
+    text-align: center;
+    margin-bottom: 0;
+    border-right: solid 3px var(--light);
+    border-left: solid 3px var(--light);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.recommendationCard .quantityWrap a {
+    width: 40px;
+    text-align: center;
+    color: var(--gray);
+}
+.recommendationCard .recommendationBottomRowWrap {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+}
+.recommendationCard h4 {
+    font-size: 20px;
+}
+.recommendationCard p {
+    margin-bottom: 5px;
+    letter-spacing: 0;
+    line-height: 110%;
+    color: #777777;
+    max-height: 80px;
+    font-size: 16px;
+}
+.recommendationCard .recommendationPrice {
+    font-size: 25px;
+}
+.recommendationCard .recommendationMore {
+    font-size: 16px;
+    color: #777777;
+    display: flex;
+    align-items: center;
+    transition: all .3s ease-in-out;
+}
+.recommendationCard .recommendationMore:hover {
+    color: var(--orange);
+}
+.recommendationCard .recommendationMore svg {
+    transition: transform .3s ease-in-out;
+}
+.recommendationCard .recommendationMore:hover svg {
+    transform: translateX(10px);
+}
+
+
+
+
+
+footer {
+    background-color: var(--gray);
+    color: var(--white);
+    padding: 100px 0;
+}
+footer h1 {
+    margin-bottom: 40px;
+}
+footer .contactButton svg {
+    color: var(--orange);
+    margin-right: 10px;
+}
+footer .contactButton {
+    color: var(--white);
+    font-size: 25px;
+    margin-bottom: 15px;
+    transition: all .3s ease-in-out;
+}
+footer .contactButton:hover {
+    color: var(--orange);
+}
+footer .blueButton, footer .orangeButton {
+    max-width: 200px;
+    margin-bottom: 25px;
+}
+footer .footerCr {
+    color: #555555;
+    font-size: 18px;
+}
+footer .navigButton {
+    color: var(--white);
+    font-size: 25px;
+    margin-bottom: 10px;
+    transition: all .3s ease-in-out;
+}
+footer .navigButton:hover {
+    color: var(--blue);
+}
+footer .seo {
+    color: #555555;
+    margin-top: 30px;
+}
+footer .seo:not(:nth-last-of-type(1))::after {
+    content: "|";
+    color: var(--orange);
+    margin: 0 10px;
 }
