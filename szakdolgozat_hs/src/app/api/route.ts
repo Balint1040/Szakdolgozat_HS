@@ -1,16 +1,26 @@
-import { PrismaClient } from "@prisma/client";
-import { NextApiRequest, NextApiResponse } from "next";
-import products from '../../../ramproducts.json'
+import { NextResponse } from 'next/server'
+import mysql from 'mysql2/promise'
 
-declare global {
-    var prisma: PrismaClient | undefined;
-}
-let prisma: PrismaClient;
-if (!global.prisma) {
-    global.prisma = new PrismaClient();
-}
-prisma = global.prisma;
+export async function GET() {
+  try {
+    const connection = await mysql.createConnection({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_DATABASE,
+    });
 
+    const [rows] = await connection.execute('SELECT * FROM product')
+
+    await connection.end()
+
+    return NextResponse.json(rows)
+  } catch (error) {
+    console.error('Error fetching data:', error)
+    return NextResponse.json({ error: 'Failed to fetch data' }, { status: 500 })
+  }
+}
+/* DB product seed
 export default async function Page(req: NextApiRequest, res: NextApiResponse) {
     try {
         for (const product of products) {
@@ -33,3 +43,5 @@ export default async function Page(req: NextApiRequest, res: NextApiResponse) {
         console.error(e);
     }
 }
+
+*/
