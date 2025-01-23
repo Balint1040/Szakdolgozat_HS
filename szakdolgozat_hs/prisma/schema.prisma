@@ -7,19 +7,32 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model imageurl {
-  id        Int    @id @default(autoincrement())
-  url       String
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  name        String
+  price       Int
+  properties  Json
+  manufacturer String
+  categoryId  Int?
+  imageUrls   ImageUrl[]
+
+}
+
+model ImageUrl {
+  id Int @id @default(autoincrement())
+  url String
   productId Int
 
   @@index([productId], map: "ImageUrl_productId_fkey")
+  Product Product[]
 }
 
-model product {
+/*model product {
   id           Int    @id @default(autoincrement())
   name         String
   price        Int
   properties   Json
   manufacturer String
   categoryId   Int    @default(1)
-}
+}*/
