@@ -9,30 +9,23 @@ type Enumerate<N extends number, Acc extends number[] = []> = Acc['length'] exte
 type IntRange<F extends number, T extends number> = Exclude<Enumerate<T>, Enumerate<F>>
 type Quantity = IntRange<1, 50>
 
-export interface IRecommendationCard {
-    id: number
-    name: string
-    desc: string
-    img: string
-    price: number
-    quantity: Quantity
-}
+import { Product } from "@/app/termekek/page"
 
 
 
 export default function RecommendationCard({
     data
 } : {
-    data: IRecommendationCard
+    data: Product
 }) {
     return (
         <div className="recommendationCard">
             <a href="#" className="imgWrap">
-                <img src={data.img} />
+                <img src={data.url} />
                 <div className="imgHover"><FontAwesomeIcon icon={faMagnifyingGlassPlus as IconProp} /></div>
             </a>
             <h4>{data.name}</h4>
-            <p>{data.desc}</p>
+            <p>{JSON.stringify(data.properties).slice(0, 120 - 3) + '...'}</p>
             
             <div className="d-flex justify-content-between recommendationBottomRowWrap">
                 <div className="d-flex justify-content-between">
@@ -41,9 +34,9 @@ export default function RecommendationCard({
                 </div>
                 <div className="d-flex flex-row justify-content-between mt-3">
                     <div className="quantityWrap">
-                        <a className="" onClick={() => {data.quantity = (data.quantity - 1) as Quantity}}>-</a>
-                        <h3>{data.quantity}</h3>
-                        <a className="" onClick={() => {data.quantity = (data.quantity + 1) as Quantity}}>+</a>
+                        <a className="" onClick={() => {data.price = (data.price - 1) as Quantity}}>-</a>
+                        <h3>1</h3>
+                        <a className="" onClick={() => {data.price = (data.price + 1) as Quantity}}>+</a>
                     </div>
                     <OrangeButton name="Kosárba" href="#" />
                 </div>

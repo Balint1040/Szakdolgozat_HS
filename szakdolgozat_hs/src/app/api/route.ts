@@ -10,7 +10,7 @@ export async function GET() {
       database: process.env.DB_DATABASE,
     });
 
-    const [rows] = await connection.execute('SELECT * FROM product')
+    const [rows] = await connection.execute('SELECT * FROM product INNER JOIN imageurl ON product.id = imageurl.productID')
 
     await connection.end()
 

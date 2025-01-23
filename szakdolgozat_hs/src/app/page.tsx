@@ -9,13 +9,13 @@ import Recommendation from "@/components/Recommendation";
 
 export default function Home() {
   return (
-    <span>
+    <>
       <Hero />
       <Strengths />
       <Recommendation />
       <Cta />
       <Quote />
       <Reviews />
-    </span>
+    </>
   );
 }

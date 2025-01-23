@@ -302,9 +302,17 @@ nav {
 #recommendation h1 {
     margin-bottom: 100px;
 }
+.productsContainer .recommendationCard {
+    height: 500px;
+}
+.productsContainer .recommendationCard h4 {
+    font-size: 18px;
+    line-height: 105%;
+}
 .recommendationCard {
     background-color: var(--light);
     height: 475px;
+    width: 100%;
     padding: 10px;
     position: relative;
     border-radius: 20px;
@@ -343,6 +351,7 @@ nav {
 }
 .recommendationCard img {
     max-height: 190px;
+    max-width: 95%;
 }
 .recommendationCard .quantityWrap {
     display: flex;
@@ -408,6 +417,12 @@ nav {
 }
 .recommendationCard .recommendationMore:hover svg {
     transform: translateX(10px);
+}
+
+
+
+.productCardWrap {
+    max-width: 30%;
 }
 
 
