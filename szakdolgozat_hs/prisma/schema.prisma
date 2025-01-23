@@ -14,7 +14,7 @@ model Product {
   price       Int
   properties  Json
   manufacturer String
-  //categoryId  Int @default(4)
+  categoryId  Int?
   imageUrls   ImageUrl[]
 
 }

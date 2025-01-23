@@ -10,7 +10,7 @@ export async function GET() {
       database: process.env.DB_DATABASE,
     });
 
-    const [rows] = await connection.execute('SELECT * FROM product')
+    const [rows] = await connection.execute('SELECT * FROM product INNER JOIN imageurl ON product.id = imageurl.productID')
 
     await connection.end()
 
@@ -20,6 +20,36 @@ export async function GET() {
     return NextResponse.json({ error: 'Failed to fetch data' }, { status: 500 })
   }
 }
+
+export async function POST(request: Request) {
+  try {
+    const { name, price, properties, manufacturer, categoryId, imageUrls } = await request.json()
+
+    const connection = await mysql.createConnection({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_DATABASE,
+    });
+
+    const [result, fields] = await connection.execute(
+      'INSERT INTO product (name, price, properties, manufacturer, categoryId) VALUES (?, ?, ?, ?, ?)',
+      [name, price, properties, manufacturer, categoryId]
+    );
+
+    //todo imgurls table insert into
+    // const productId = result.insertId
+
+
+    await connection.end();
+
+    return NextResponse.json({ message: 'added' }, { status: 201 })
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+
 /* DB product seed
 export default async function Page(req: NextApiRequest, res: NextApiResponse) {
     try {
