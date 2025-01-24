@@ -1,5 +1,6 @@
 'use client'
 
+import ProductCard from '@/components/ProductCard'
 import RecommendationCard from '@/components/RecommendationCard'
 import { useEffect, useState } from 'react'
 
@@ -46,8 +47,7 @@ export default function Page() {
                         <div className="row">
                             {uniqueProducts.map((product) => (
                                 <div className="col-4 p-2" key={product.productId}>
-                                    <RecommendationCard data={product} />
-                                    <span>{product.url}</span>
+                                    <ProductCard data={product} />
                                 </div>
                             ))}
                         </div>
