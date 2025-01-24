@@ -86,6 +86,46 @@ input[type="search"]:active + .navbarSearchIcon, input[type="search"]:focus + .n
 }
 
 
+
+.orangeCartButton {
+    height: 48px;
+    width: 48px;
+    color: var(--white);
+    font-size: 24px;
+    line-height: 100%;
+    border-radius: 100%;
+    background-color: var(--orange);
+    /*-webkit-box-shadow: 2px 4px 20px 5px var(--orange);
+    -moz-box-shadow: 2px 4px 20px 5px var(--orange);
+    box-shadow: 2px 4px 20px 5px var(--orange);*/
+    transition: all .3s ease-in-out;
+    overflow: hidden;
+    position: relative;
+}
+.orangeCartButton:hover {
+    background-color: var(--white);
+    color: var(--orange);
+    
+}
+.orangeCartButton::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: solid 3px var(--orange);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 26px;
+}
+.orangeCartButton svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-55%, -50%);
+}
+
+
 nav {
     height: 100px;
     background-color: var(--gray);
@@ -418,11 +458,37 @@ nav {
 .recommendationCard .recommendationMore:hover svg {
     transform: translateX(10px);
 }
-
+.productCard {
+    -webkit-box-shadow: 0px 4px 15px 1px var(--gray);
+    -moz-box-shadow: 0px 4px 15px 1px var(--gray);
+    box-shadow: 0px 4px 15px 1px var(--gray);
+}
 
 
 .productCardWrap {
     max-width: 30%;
+}
+.propertyRow {
+    position: relative;
+    margin-bottom: 2;
+}
+.propertyRow:not(:nth-last-of-type(1))::after {
+    content: "";
+    height: 1px;
+    background-color: var(--gray);
+    width: 95%;
+    position: absolute;
+    left: 50%;
+    bottom: -1px;
+    transform: translatex(-50%);
+    opacity: .5;
+}
+.propertyKey {
+    font-weight: 600;
+}
+.propertyKey, .propertyValue {
+    font-size: 14px;
+    word-wrap: break-word;
 }
 
 
