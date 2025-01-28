@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import mysql, {ResultSetHeader} from 'mysql2/promise'
 
+
 export async function GET() {
   try {
     const connection = await mysql.createConnection({
@@ -14,12 +15,12 @@ export async function GET() {
 
     await connection.end()
 
-
-    return NextResponse.json({ message: 'succes get' }, { status: 201 })
+    return NextResponse.json(rows)
   } catch (error) {
     console.error(error)
   }
 }
+
 
 export async function POST(request: Request) {
   try {

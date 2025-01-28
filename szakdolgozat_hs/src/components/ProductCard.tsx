@@ -19,7 +19,7 @@ export default function ProductCard({
                 <div className="imgHover"><FontAwesomeIcon icon={faMagnifyingGlassPlus as IconProp} /></div>
             </a>
             <h4>{(data.name.slice(0, 60).length) < 60 ? data.name : (data.name.slice(0, 60) + "...")}</h4>
-            <p>
+            <div>
                 {
                     [...Object.entries(data.properties)].map(([key, value], i) => {
                         if (i < 4) {
@@ -33,7 +33,7 @@ export default function ProductCard({
                         return null // if no properties are defined then just return null
                     })
                 }
-            </p>
+            </div>
 
             <div className="d-flex justify-content-between recommendationBottomRowWrap">
                 <div className="d-flex justify-content-between">
