@@ -2,11 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import mysql from 'mysql2/promise'
 
 
-
 export async function GET(
     request:  NextRequest,
-    { params }: { params: { id: string } }
+    context: { params: { id?: string } }
 ) {
+    
+    const params = await context.params
     const id = params.id
     
     try {
@@ -19,12 +20,11 @@ export async function GET(
         
         const query = 'SELECT * FROM product INNER JOIN imageurl ON product.id = imageurl.productID WHERE product.id = ?'
         const [rows] = await connection.execute(query,[id])
+
         connection.end()
         
         return NextResponse.json(rows)
     } catch (error) {
-        return NextResponse.json({
-            error: error
-        }, { status: 500 })
+        return console.error(error);
     }
 }
