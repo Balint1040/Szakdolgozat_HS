@@ -36,6 +36,7 @@ input[type="search"]:active + .navbarSearchIcon, input[type="search"]:focus + .n
     color: var(--blue) !important;
 }
 
+
 .orangeButton, .blueButton {
     height: 55px;
     padding: 14px 20px;
@@ -123,6 +124,42 @@ input[type="search"]:active + .navbarSearchIcon, input[type="search"]:focus + .n
     top: 50%;
     left: 50%;
     transform: translate(-55%, -50%);
+}
+
+
+
+.loginCard label {
+    padding: 0 1rem;
+    margin-bottom: 5px;
+}
+.loginCard input:not([type="checkbox"]) {
+    width: 100%;
+    background-color: var(--white);
+    border: none;
+    height: 50px;
+    color: var(--gray);
+    border-radius: 50px;
+    padding: 0 10px;
+    transition: all .3s ease-in-out;
+}
+.loginCard input:not([type="checkbox"]):focus {
+    -webkit-box-shadow: 2px 4px 20px 5px var(--orange);
+    -moz-box-shadow: 2px 4px 20px 5px var(--orange);
+    box-shadow: 2px 4px 20px 5px var(--orange);
+    outline: none;
+}
+.loginWrap {
+    min-height: calc(100vh - 100px);
+}
+.loginCard {
+    padding: 20px;
+    height: 450px;
+    width: 350px;
+    background-color: var(--light);
+    color: var(--gray);
+}
+.loginCard .orangeButton {
+    border: none;
 }
 
 
@@ -342,6 +379,7 @@ nav {
 #recommendation h1 {
     margin-bottom: 100px;
 }
+
 .productsContainer .recommendationCard {
     height: 500px;
 }
@@ -393,7 +431,7 @@ nav {
     max-height: 190px;
     max-width: 95%;
 }
-.recommendationCard .quantityWrap {
+.quantityWrap {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -403,7 +441,7 @@ nav {
     background-color: var(--white);
     border-radius: 40px;
 }
-.recommendationCard .quantityWrap h3 {
+.quantityWrap h3 {
     width: 50px;
     text-align: center;
     margin-bottom: 0;
@@ -414,7 +452,7 @@ nav {
     justify-content: center;
     align-items: center;
 }
-.recommendationCard .quantityWrap a {
+.quantityWrap a {
     width: 40px;
     text-align: center;
     color: var(--gray);
@@ -431,7 +469,7 @@ nav {
 .recommendationCard h4 {
     font-size: 20px;
 }
-.recommendationCard p {
+.recommendationCard p, .recommendationCard .propertiesWrap {
     margin-bottom: 5px;
     letter-spacing: 0;
     line-height: 110%;
@@ -492,6 +530,35 @@ nav {
 }
 
 
+.productContainer .propertyKey, .productContainer .propertyValue {
+    font-size: 19px !important;
+}
+.productContainer {
+    padding: 100px 0;
+}
+.productContainer .swiper-wrapper {
+    align-items: center;
+}
+.productSwiperThumbImg {
+    width: 100% !important;
+    height: 100% !important;
+}
+.productSwiper {
+    margin-bottom: 10px;
+}
+.productContainer .quantityWrap {
+    height: 50px;
+    background-color: var(--light);
+}
+.productContainer .quantityWrap h3 {
+    border-color: var(--white);
+}
+.productContainer .swiper-button-prev::after, .productContainer .swiper-button-next::after {
+    color: var(--blue);
+}
+
+
+
 
 
 
@@ -506,6 +573,7 @@ footer h1 {
 footer .contactButton svg {
     color: var(--orange);
     margin-right: 10px;
+    height: 25px;
 }
 footer .contactButton {
     color: var(--white);

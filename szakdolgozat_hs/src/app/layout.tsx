@@ -26,6 +26,7 @@ export const metadata: Metadata = {
 
 const seo = ["pc alkatrész", "processzor", "videó kártya", "ram", "megbízható", "olcsó", "alaplap"]
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -37,16 +38,22 @@ export default function RootLayout({
 
         <nav className="navbar navbar-expand-lg">
           <div className="container justify-content-between">
-            <a className="navbar-brand" href="#"><span className="text-Orange">H</span><span className="text-Blue">S</span>market</a>
+            <a className="navbar-brand" href="/"><span className="text-Orange">H</span><span className="text-Blue">S</span>market</a>
             <form className="d-flex navbarSearch position-relative" role="search">
               <input className="form-control" type="search" placeholder="Keresés" aria-label="Search"/>
               <FontAwesomeIcon className="navbarSearchIcon" icon={faMagnifyingGlass as IconProp} />
             </form>
-            <OrangeButton name="Bejelentkezés" href="#" />
+            <OrangeButton name="Bejelentkezés" href="/bejelentkezes" />
           </div>
         </nav>
 
+
+        <div style={{
+          minHeight: "calc(100vh - 100px)",
+        }}>
         {children}
+        </div>
+        
 
 
         <footer>

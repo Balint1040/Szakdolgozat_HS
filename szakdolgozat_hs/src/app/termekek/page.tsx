@@ -1,8 +1,17 @@
 'use client'
 
-import ProductCard from '@/components/ProductCard'
-import RecommendationCard from '@/components/RecommendationCard'
-import { useEffect, useState } from 'react'
+import dynamic from 'next/dynamic';
+//import ProductCard from '@/components/ProductCard'
+import { Suspense, useEffect, useState } from 'react'
+
+const ProductCard = dynamic(() => import("@/components/ProductCard"), {
+    loading: () => <div style={{
+        height: "500px",
+        backgroundColor: "#f2f2f2",
+        borderRadius: "20px",
+        width: "100%"
+    }}></div>,
+  });
 
 export interface Product {
     id: number,
@@ -12,9 +21,10 @@ export interface Product {
     manufacturer: string,
     categoryId: number,
     imgId: number,
-    url: string,
+    imageUrl: string,
     productId: number
 }
+
 
 export default function Page() {
     const [products, setProducts] = useState<Product[]>([])
@@ -24,7 +34,9 @@ export default function Page() {
     const uniqueProducts = [...new Map(products.map(prod => [prod['productId'], prod])).values()]
 
     useEffect(() => {
-        fetch('/api')
+        fetch('/api', {
+            //cache: 'force-cache'
+        })
             .then((response) => response.json())
             .then((data) => {
                 setProducts(data)
@@ -37,7 +49,6 @@ export default function Page() {
 
     return (
         <>
-            {error && <p>{error}</p>}
             <div className="container productsContainer">
                 <div className="row">
                     <div className="col-3">
@@ -45,11 +56,13 @@ export default function Page() {
                     </div>
                     <div className="col-9">
                         <div className="row">
-                            {uniqueProducts.map((product) => (
-                                <div className="col-4 p-2" key={product.productId}>
-                                    <ProductCard data={product} />
-                                </div>
-                            ))}
+                            <Suspense fallback={"loading"}>
+                                {products.map((product, index) => (
+                                    <div className="col-4 p-2" key={index}>
+                                        <ProductCard data={product} />
+                                    </div>
+                                ))}
+                            </Suspense>
                         </div>
                     </div>
                 </div>
