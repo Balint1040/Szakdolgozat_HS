@@ -29,9 +29,9 @@ export default function OrangeButton({
     }
     
     return (
-        <a className="orangeButton" href={href}>
+        <Link className="orangeButton" href={href}>
             {name}
             {icon == null ? "" : icon}
-        </a>
+        </Link>
     )
 }

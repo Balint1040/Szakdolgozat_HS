@@ -1,6 +1,11 @@
 'use client'
 import OrangeButton from '@/components/OrangeButton'
 import ProductSwiper from '@/components/ProductSwiper'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { faAnglesLeft } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
 
@@ -20,7 +25,7 @@ export default function Page({
 } : {
     params: Promise<{ id: string }>
 }) {
-    
+    const router = useRouter()
     const { id } = React.use(params)
     const [product, setProduct] = useState<Product | null>(null)
 
@@ -58,6 +63,9 @@ export default function Page({
     return (
         <>
             <div className="container productContainer">
+                <div className="mb-2">
+                    <a className='pointer' onClick={() => (router.back())}><FontAwesomeIcon icon={faAnglesLeft as IconProp} /> Vissza</a>
+                </div>
                 <div className="row">
                     <div className="col-6">
                         <ProductSwiper images={product.imageUrls} />

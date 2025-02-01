@@ -35,7 +35,7 @@ export default function Page() {
 
     useEffect(() => {
         fetch('/api', {
-            //cache: 'force-cache'
+            cache: 'force-cache'
         })
             .then((response) => response.json())
             .then((data) => {
@@ -46,6 +46,8 @@ export default function Page() {
                 console.error(err)
             })
     }, [])
+
+    
 
     return (
         <>

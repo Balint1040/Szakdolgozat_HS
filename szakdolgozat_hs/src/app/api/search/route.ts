@@ -6,6 +6,10 @@ export async function GET(request: Request) {
         const { searchParams } = new URL(request.url)
         const searchQuery = searchParams.get('kereses')
 
+        if (!searchQuery) {
+            return null
+        }
+
         const searchWords = searchQuery.split(' ').map(word => `%${word}%`)
         const filterConditions = searchWords.map(() => 'product.name LIKE ?').join(' AND ')
 

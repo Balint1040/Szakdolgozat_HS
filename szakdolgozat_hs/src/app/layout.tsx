@@ -12,6 +12,7 @@ import { faEnvelope, faMagnifyingGlass, faPhone } from "@fortawesome/free-solid-
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import BlueButton from "@/components/BlueButton";
 import SearchButton from "@/components/SearchButton";
+import Link from "next/link";
 
 const anta = Anta( {
   weight: "400",
@@ -39,9 +40,9 @@ export default function RootLayout({
 
         <nav className="navbar navbar-expand-lg">
           <div className="container justify-content-between">
-            <a className="navbar-brand" href="#"><span className="text-Orange">H</span><span className="text-Blue">S</span>market</a>
+            <Link className="navbar-brand" href="/"><span className="text-Orange">H</span><span className="text-Blue">S</span>market</Link>
               <SearchButton/>
-            <OrangeButton name="Bejelentkezés" href="#" />
+            <OrangeButton name="Bejelentkezés" href="/bejelentkezes" />
           </div>
         </nav>
 
@@ -53,7 +54,9 @@ export default function RootLayout({
         </div>
         
 
-
+        {
+          // Consider `Link` tag instead of `a` 
+        }
         <footer>
           <div className="container">
             <div className="row">

@@ -3,6 +3,7 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core"
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useRouter } from "next/router"
 import { useState, useEffect } from "react"
 
 export default function SearchButton() {
@@ -48,7 +49,7 @@ export default function SearchButton() {
                 ))}
                 {results.length > 4 && (
                     <div>
-                        <a href={`/termekkek-search?kereses=${query}`}>További találatok</a>
+                        <a href="#">További találatok</a>
                     </div>
                 )}
             </div>

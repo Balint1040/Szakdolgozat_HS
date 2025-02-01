@@ -12,7 +12,6 @@
 .text-Blue {
     color: var(--blue);
 }
-
 .navbarSearchIcon {
     height: 36px;
     position: absolute;
@@ -555,6 +554,20 @@ nav {
 }
 .productContainer .swiper-button-prev::after, .productContainer .swiper-button-next::after {
     color: var(--blue);
+}
+
+.pointer, .pointer svg {
+    width: auto !important;
+    color: var(--gray);
+    transition: all .3s ease-in-out;
+}
+.pointer:hover {
+    cursor: pointer;
+    color: var(--blue);
+}
+.pointer:hover svg {
+    transform: translateX(-10px);
+    color: var(--orange);
 }
 
 
