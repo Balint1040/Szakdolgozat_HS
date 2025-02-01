@@ -36,6 +36,7 @@ input[type="search"]:active + .navbarSearchIcon, input[type="search"]:focus + .n
     color: var(--blue) !important;
 }
 
+
 .orangeButton, .blueButton {
     height: 55px;
     padding: 14px 20px;
@@ -541,4 +542,21 @@ footer .seo:not(:nth-last-of-type(1))::after {
     content: "|";
     color: var(--orange);
     margin: 0 10px;
+}
+
+ .search-res-container {
+    position: absolute;
+    background-color: white;
+    z-index: 1;
+    width: 29%;
+    max-height: 500px;
+    overflow-y: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-res-img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
 }
