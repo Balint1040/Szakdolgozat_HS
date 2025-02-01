@@ -14,12 +14,12 @@ export default function ProductCard({
 }) {
     return (
         <div className="recommendationCard productCard">
-            <a href="#" className="imgWrap">
-                <img src={data.url} />
+            <a href={"/termekek/" + data.id} className="imgWrap">
+                <img src={data.imageUrl} />
                 <div className="imgHover"><FontAwesomeIcon icon={faMagnifyingGlassPlus as IconProp} /></div>
             </a>
             <h4>{(data.name.slice(0, 60).length) < 60 ? data.name : (data.name.slice(0, 60) + "...")}</h4>
-            <div>
+            <div className="propertiesWrap">
                 {
                     [...Object.entries(data.properties)].map(([key, value], i) => {
                         if (i < 4) {
@@ -37,7 +37,7 @@ export default function ProductCard({
 
             <div className="d-flex justify-content-between recommendationBottomRowWrap">
                 <div className="d-flex justify-content-between">
-                    <a href="#" className="recommendationMore">Bővebben <FontAwesomeIcon icon={faArrowRight as IconProp} className="ms-2" /></a>
+                    <a href={"/termekek/" + data.id} className="recommendationMore">Bővebben <FontAwesomeIcon icon={faArrowRight as IconProp} className="ms-2" /></a>
                     <div className="recommendationPrice"><span className="text-Blue">{data.price.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, "$1.")}</span>,-</div>
                 </div>
                 <div className="d-flex flex-row justify-content-between mt-3">

@@ -27,6 +27,7 @@ export const metadata: Metadata = {
 
 const seo = ["pc alkatrész", "processzor", "videó kártya", "ram", "megbízható", "olcsó", "alaplap"]
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -44,7 +45,13 @@ export default function RootLayout({
           </div>
         </nav>
 
+
+        <div style={{
+          minHeight: "calc(100vh - 100px)",
+        }}>
         {children}
+        </div>
+        
 
 
         <footer>

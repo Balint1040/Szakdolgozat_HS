@@ -10,7 +10,7 @@ export default function Hero() {
                         <p className="text-end pb-3">
                             <span className="text-Orange">2.481</span> termékünk várja, hogy kiválaszd a számodra legmegfelelőbbet!
                         </p>
-                        <OrangeButton name="Termékek felfedezése" href="https://www.google.com" variant="discover"/>
+                        <OrangeButton name="Termékek felfedezése" href="/termekek" variant="discover"/>
                     </div>
                 </div>
             </div>

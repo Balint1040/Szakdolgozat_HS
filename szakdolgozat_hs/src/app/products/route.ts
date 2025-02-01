@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server'
-import mysql, {ResultSetHeader} from 'mysql2/promise'
-
+import mysql from 'mysql2/promise'
 
 export async function GET() {
   try {
@@ -11,49 +10,45 @@ export async function GET() {
       database: process.env.DB_DATABASE,
     });
 
-    const [rows] = await connection.execute('SELECT p.id, p.name, p.price, p.properties, p.manufacturer, p.categoryId, i.url AS imageUrl FROM product p LEFT JOIN ImageUrl i ON p.id = i.productId WHERE i.url = (SELECT MIN(url) FROM ImageUrl WHERE productId = p.id) ORDER BY p.id')
+    const [rows] = await connection.execute('SELECT * FROM product INNER JOIN imageurl ON product.id = imageurl.productID')
 
     await connection.end()
 
     return NextResponse.json(rows)
   } catch (error) {
-    console.error(error)
+    console.error('Error fetching data:', error)
+    return NextResponse.json({ error: 'Failed to fetch data' }, { status: 500 })
   }
 }
 
-
 export async function POST(request: Request) {
   try {
-    const { name, price, properties, manufacturer, categoryId, imageUrls } = await request.json();
+    const { name, price, properties, manufacturer, categoryId, imageUrls } = await request.json()
 
     const connection = await mysql.createConnection({
       host: process.env.DB_HOST,
       user: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-    })
+    });
 
-    const [result] = await connection.execute(
+    const [result, fields] = await connection.execute(
       'INSERT INTO product (name, price, properties, manufacturer, categoryId) VALUES (?, ?, ?, ?, ?)',
       [name, price, properties, manufacturer, categoryId]
-    )
+    );
 
-    const productId = (result as ResultSetHeader).insertId;
+    //todo imgurls table insert into
+    // const productId = result.insertId
 
-    for (const imageUrl of imageUrls) {
-      await connection.execute(
-        'INSERT INTO imageurl (productId, url) VALUES (?, ?)',
-        [productId, imageUrl]
-      );
-    }
 
-    await connection.end()
+    await connection.end();
 
     return NextResponse.json({ message: 'added' }, { status: 201 })
   } catch (error) {
     console.error(error)
   }
 }
+
 
 /* DB product seed
 export default async function Page(req: NextApiRequest, res: NextApiResponse) {
@@ -75,7 +70,7 @@ export default async function Page(req: NextApiRequest, res: NextApiResponse) {
         }
         res.status(200).json({ message: 'Seed succes' });
     } catch (e) {
-        console.error(e)
+        console.error(e);
     }
 }
 
