@@ -1,8 +1,8 @@
 'use client'
 
-import dynamic from 'next/dynamic';
-//import ProductCard from '@/components/ProductCard'
-import { Suspense, useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
+import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
 
 const ProductCard = dynamic(() => import("@/components/ProductCard"), {
     loading: () => <div style={{
@@ -11,7 +11,7 @@ const ProductCard = dynamic(() => import("@/components/ProductCard"), {
         borderRadius: "20px",
         width: "100%"
     }}></div>,
-  });
+})
 
 export interface Product {
     id: number,
@@ -25,50 +25,93 @@ export interface Product {
     productId: number
 }
 
-
 export default function Page() {
     const [products, setProducts] = useState<Product[]>([])
-    const [error, setError] = useState<string | null>(null)
+    const [displayedProducts, setDisplayedProducts] = useState<Product[]>([])
+    const [loading, setLoading] = useState(false)
+    const [hasMore, setHasMore] = useState(true)
 
-    //const uniqueProducts = [...new Map(products.map(prod => [prod.url.includes("webp"), prod])).values()]
-    const uniqueProducts = [...new Map(products.map(prod => [prod['productId'], prod])).values()]
+    const fetchProducts = useCallback(async () => {
+        setLoading(true)
 
-    useEffect(() => {
-        fetch('/api', {
-            cache: 'force-cache'
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                setProducts(data)
-            })
-            .catch((err) => {
-                setError('Failed to fetch products')
-                console.error(err)
-            })
+        try {
+            const res = await fetch(`/api`)
+            const data: Product[] = await res.json()
+
+            setProducts(data)
+            setDisplayedProducts(data.slice(0, 20))
+        } catch (error) {
+            console.error('Failed to fetch products:', error)
+        } finally {
+            setLoading(false)
+        }
     }, [])
 
-    
+    const loadMoreProducts = useCallback(() => {
+        if (loading || !hasMore) return
+
+        setLoading(true)
+        const nextIndex = displayedProducts.length
+
+        const nextProducts = products.slice(nextIndex, nextIndex + 20)
+
+        if (nextProducts.length === 0) {
+            setHasMore(false)
+        } else {
+            setDisplayedProducts((prev) => [...prev, ...nextProducts])
+        }
+
+        setLoading(false)
+    }, [loading, hasMore, displayedProducts, products])
+
+    const loaderRef = useCallback((node: HTMLDivElement) => {
+        if (loading || !hasMore) return
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting) {
+                    loadMoreProducts()
+                }
+            },
+            { threshold: 1.0 }
+        )
+        if (node) observer.observe(node)
+        return () => observer.disconnect()
+    }, [loading, hasMore, loadMoreProducts])
+
+    useEffect(() => {
+        fetchProducts()
+    }, [fetchProducts])
 
     return (
-        <>
-            <div className="container productsContainer">
-                <div className="row">
-                    <div className="col-3">
+        <div className="container productsContainer">
+            <div className="row">
+                <div className="col-3">
+                    {/* Add any sidebar or filter components here */}
+                </div>
+                <div className="col-9">
+                    <div className="row">
+                        <Suspense fallback={"loading"}>
+                            {displayedProducts.map((product) => (
+                                <div className="col-4 p-2" key={product.id}>
+                                    <ProductCard data={product} />
+                                </div>
+                            ))}
+                        </Suspense>
+                    </div>
 
-                    </div>
-                    <div className="col-9">
-                        <div className="row">
-                            <Suspense fallback={"loading"}>
-                                {products.map((product, index) => (
-                                    <div className="col-4 p-2" key={index}>
-                                        <ProductCard data={product} />
-                                    </div>
-                                ))}
-                            </Suspense>
+                    {loading && (
+                        <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                            <div>Loading...</div>
                         </div>
-                    </div>
+                    )}
+
+                    {hasMore && (
+                        <div ref={loaderRef} style={{ height: '20px', marginBottom: '20px' }}>
+                            {/* Invisible loader */}
+                        </div>
+                    )}
                 </div>
             </div>
-        </>
+        </div>
     )
 }

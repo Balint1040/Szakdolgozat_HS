@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Page() {
     return (
         <>
-            <div className="loginWrap d-flex justify-content-center align-items-center my-5">
+            <div className="loginWrap d-flex justify-content-center align-items-center">
                 <div className="loginCard d-flex justify-content-center align-items-center">
                     <form>
                         <h2 className="text-center mb-4">Regisztráció</h2>
