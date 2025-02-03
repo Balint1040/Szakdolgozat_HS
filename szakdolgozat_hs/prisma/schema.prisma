@@ -7,32 +7,42 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model imageurltoproduct {
+  A Int
+  B Int
 
-model Product {
-  id          Int      @id @default(autoincrement())
-  name        String
-  price       Int
-  properties  Json
-  manufacturer String
-  categoryId  Int?
-  imageUrls   ImageUrl[]
-
+  @@unique([A, B], map: "_ImageUrlToProduct_AB_unique")
+  @@index([B], map: "_ImageUrlToProduct_B_index")
+  @@map("_imageurltoproduct")
 }
 
-model ImageUrl {
-  id Int @id @default(autoincrement())
-  url String
+model imageurl {
+  id        Int    @id @default(autoincrement())
+  url       String
   productId Int
 
   @@index([productId], map: "ImageUrl_productId_fkey")
-  Product Product[]
 }
 
-/*model product {
+model product {
   id           Int    @id @default(autoincrement())
   name         String
   price        Int
   properties   Json
   manufacturer String
-  categoryId   Int    @default(1)
-}*/
+  categoryId   Int?
+}
+
+model user {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique(map: "User_email_key")
+  password  String
+  role      user_role @default(guest)
+  createdAt DateTime  @default(now())
+  name      String
+}
+
+enum user_role {
+  guest
+  admin
+}
