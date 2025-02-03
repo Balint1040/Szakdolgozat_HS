@@ -34,7 +34,7 @@ export default function Page() {
     const uniqueProducts = [...new Map(products.map(prod => [prod['productId'], prod])).values()]
 
     useEffect(() => {
-        fetch('/api', {
+        fetch('/api/products', {
             cache: 'force-cache'
         })
             .then((response) => response.json())
