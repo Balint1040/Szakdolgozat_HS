@@ -1,27 +1,72 @@
-import Link from "next/link";
+'use client'
+
+import { useState } from "react"
+import bcrypt from 'bcryptjs'
 
 export default function Page() {
+
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [message, setMessage] = useState('')
+
+    const handleSubmit = async (event: React.FormEvent) => {
+        event.preventDefault()
+
+        const hashedPassword = await bcrypt.hash(password, 10)
+        try {
+            const res = await fetch('/api/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email, password: hashedPassword }),
+            })
+
+            if (res.ok) {
+                const data = await res.json()
+                setMessage(data.message)
+            }
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
     return (
         <>
             <div className="loginWrap d-flex justify-content-center align-items-center my-5">
                 <div className="loginCard d-flex justify-content-center align-items-center">
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <h2 className="text-center mb-4">Regisztráció</h2>
                         <div className="mb-3">
-                            <label htmlFor="userName">Felhasználó név</label>
-                            <input type="text" id="userName" required/>
+                            <label htmlFor="name">Név</label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                required 
+                            />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="email">E-mail cím</label>
-                            <input type="email" id="email" required/>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required 
+                            />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="password">Jelszó</label>
-                            <input type="password" id="password" required/>
-                        </div>
-                        <div className="mb-1">
-                            <label htmlFor="password">Jelszó megerősítése</label>
-                            <input type="password" id="password" required/>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required 
+                            />
                         </div>
                         <div className="mb-3 px-2 d-flex justify-content-between align-items-center">
                             <div className="d-flex align-items-center">
@@ -32,9 +77,7 @@ export default function Page() {
                         <div className="d-flex justify-content-center">
                             <button type="submit" className="orangeButton">Regisztráció</button>
                         </div>
-                        <div className="text-center mt-4">
-                            <span>Már van fiókja? <Link href="/bejelentkezes" className="text-Orange">Bejelentkezés</Link></span>
-                        </div>
+                        {message && <p className="mt-5 text-danger">{message}</p>}
                     </form>
                 </div>
             </div>

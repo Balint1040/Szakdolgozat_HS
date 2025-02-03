@@ -1,33 +1,34 @@
+'use client'
+
+import Link from "next/link"
+import React, { useState } from "react"
+
+
 export default function Page() {
-    
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
     const [message, setMessage] = useState('')
 
-
-    const handleSubmit = async (event: React.FormEvent) => {
+    const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
-        try {
-            const res = await fetch('/api/users', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({name, email, password }),
-            })
+        const formData = new FormData(event.currentTarget)
+        const name  = formData.get('name') as string
+        const email = formData.get('email') as string
+        const password = formData.get('password') as string
 
-            if (res.ok) {
-                const data = await res.json()
-                setMessage(data.message)
-            } else {
-                setMessage('sikertelen')
-            }
-        } catch (e) {
-            console.error(e)
-        }
+        const response = await fetch('/api/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, email, password })
+        })
+
+        const result = await response.json()
+        setMessage(result.message)
     }
+
+    
+
     return (
         <>
             <div className="loginWrap d-flex justify-content-center align-items-center my-5">
@@ -35,12 +36,11 @@ export default function Page() {
                     <form onSubmit={handleSubmit}>
                         <h2 className="text-center mb-4">Bejelentkezés</h2>
                         <div className="mb-3">
-                            <label htmlFor="email">Név</label>
+                            <label htmlFor="email">Felhasználónév</label>
                             <input 
                             type="name" 
                             id="name" required 
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
+                            
                             />
                         </div>
                         <div className="mb-3">
@@ -48,8 +48,7 @@ export default function Page() {
                             <input 
                             type="email" 
                             id="email" required 
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            
                             />
                         </div>
                         <div className="mb-1">
@@ -57,8 +56,7 @@ export default function Page() {
                             <input 
                             type="password" 
                             id="password" required 
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
+                            
                             />
                         </div>
                         <div className="mb-3 px-2 d-flex justify-content-between align-items-center">
@@ -70,11 +68,11 @@ export default function Page() {
                         </div>
                         <div className="d-flex justify-content-center">
                             <button type="submit" className="orangeButton">Bejelentkezés</button>
-                            {message && <p className="mt-3">{message}</p>}
                         </div>
                         <div className="text-center mt-4">
                             <span>Még nincs fiókja? <Link href="/regisztracio" className="text-Orange">Regisztrálok</Link></span>
                         </div>
+                        {message && <div className="alert alert-info">{message}</div>}
                     </form>
                 </div>
             </div>
