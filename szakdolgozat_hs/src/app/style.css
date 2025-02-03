@@ -152,10 +152,14 @@ input[type="search"]:active + .navbarSearchIcon, input[type="search"]:focus + .n
 }
 .loginCard {
     padding: 20px;
-    height: 450px;
+    min-height: 450px;
     width: 350px;
     background-color: var(--light);
     color: var(--gray);
+    border-radius: 20px;
+    -webkit-box-shadow: 1px 4px 20px 2px var(--gray);
+    -moz-box-shadow: 1px 4px 20px 2px var(--gray);
+    box-shadow: 1px 4px 20px 2px var(--gray);
 }
 .loginCard .orangeButton {
     border: none;

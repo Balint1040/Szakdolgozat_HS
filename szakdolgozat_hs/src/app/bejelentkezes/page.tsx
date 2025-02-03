@@ -1,7 +1,3 @@
-'use client'
-
-import { useState } from "react"
-
 export default function Page() {
     
     const [name, setName] = useState('')
@@ -70,11 +66,14 @@ export default function Page() {
                                 <input type="checkbox" id="rememberMe" />
                                 <label htmlFor="rememberMe" className="ps-1 mb-0">Emlékezz rám</label>
                             </div>
-                            <a href="#" className="forgotPassword">Elfelejtett jelszó?</a>
+                            <a href="#" className="forgotPassword text-Blue">Elfelejtett jelszó?</a>
                         </div>
                         <div className="d-flex justify-content-center">
                             <button type="submit" className="orangeButton">Bejelentkezés</button>
                             {message && <p className="mt-3">{message}</p>}
+                        </div>
+                        <div className="text-center mt-4">
+                            <span>Még nincs fiókja? <Link href="/regisztracio" className="text-Orange">Regisztrálok</Link></span>
                         </div>
                     </form>
                 </div>
