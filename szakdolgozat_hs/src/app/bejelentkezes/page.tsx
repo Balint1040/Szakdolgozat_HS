@@ -31,7 +31,7 @@ export default function Page() {
 
     return (
         <>
-            <div className="loginWrap d-flex justify-content-center align-items-center my-5">
+            <div className="loginWrap d-flex justify-content-center align-items-center">
                 <div className="loginCard d-flex justify-content-center align-items-center">
                     <form onSubmit={handleSubmit}>
                         <h2 className="text-center mb-4">Bejelentkezés</h2>

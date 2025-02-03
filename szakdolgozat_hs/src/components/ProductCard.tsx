@@ -43,9 +43,9 @@ export default function ProductCard({
                 </div>
                 <div className="d-flex flex-row justify-content-between mt-3">
                     <div className="quantityWrap">
-                        <a className="" onClick={() => { data.price = (data.price - 1) as Quantity }}>-</a>
+                        <a className="">-</a>
                         <h3>1</h3>
-                        <a className="" onClick={() => { data.price = (data.price + 1) as Quantity }}>+</a>
+                        <a className="">+</a>
                     </div>
                     <OrangeCartButton href={"#"} />
                 </div>
