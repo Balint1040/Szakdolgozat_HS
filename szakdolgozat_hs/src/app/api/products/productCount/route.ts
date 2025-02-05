@@ -1,18 +1,11 @@
 import { NextResponse } from 'next/server'
 import mysql from 'mysql2/promise'
+import { pool } from '@/_lib/db'
 
 export async function GET() {
   try {
-    const connection = await mysql.createConnection({
-      host: process.env.DB_HOST,
-      user: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_DATABASE,
-    });
-
-    const [rows]: any[] = await connection.execute('SELECT COUNT(*) as count FROM product')
-    await connection.end()
-
+    const [rows]: any[] = await (await pool).execute('SELECT COUNT(*) as count FROM product')
+    
     const count = rows[0].count
     return NextResponse.json({ count })
     

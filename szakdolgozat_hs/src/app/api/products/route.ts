@@ -1,19 +1,11 @@
 import { NextResponse } from 'next/server'
 import mysql, {ResultSetHeader} from 'mysql2/promise'
+import { pool } from '@/_lib/db'
 
 
 export async function GET() {
   try {
-    const connection = await mysql.createConnection({
-      host: process.env.DB_HOST,
-      user: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_DATABASE,
-    });
-
-    const [rows] = await connection.execute('SELECT p.id, p.name, p.price, p.properties, p.manufacturer, p.categoryId, i.url AS imageUrl FROM product p LEFT JOIN ImageUrl i ON p.id = i.productId WHERE i.url = (SELECT MIN(url) FROM ImageUrl WHERE productId = p.id) ORDER BY p.id')
-
-    await connection.end()
+    const [rows] = await (await pool).execute('SELECT p.id, p.name, p.price, p.properties, p.manufacturer, p.categoryId, i.url AS imageUrl FROM product p LEFT JOIN ImageUrl i ON p.id = i.productId WHERE i.url = (SELECT MIN(url) FROM ImageUrl WHERE productId = p.id) ORDER BY p.id')
 
     return NextResponse.json(rows)
   } catch (error) {

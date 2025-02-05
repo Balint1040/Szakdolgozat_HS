@@ -35,7 +35,7 @@ export default function Page() {
         setLoading(true)
 
         try {
-            const res = await fetch(`/api`)
+            const res = await fetch(`/api/products`)
             const data: Product[] = await res.json()
 
             setProducts(data)
@@ -83,7 +83,8 @@ export default function Page() {
     }, [fetchProducts])
 
     return (
-        <div className="container productsContainer">
+        <>
+                <div className="container productsContainer">
             <div className="row">
                 <div className="col-3">
                     {/* Add any sidebar or filter components here */}
@@ -113,5 +114,7 @@ export default function Page() {
                 </div>
             </div>
         </div>
+        </>
+
     )
 }

@@ -3,13 +3,13 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core"
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Link from "next/link"
 import { useRouter } from "next/router"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 
 export default function SearchButton() {
     const [query, setQuery] = useState("")
     const [results, setResults] = useState([])
-
 
     useEffect(() => {
         if (query.length > 3) {
@@ -43,13 +43,19 @@ export default function SearchButton() {
             </form>
             <div className="search-res-container">
                 {results.slice(0, 4).map((result: any) => (
-                    <div key={result.id} className="search-res">
-                        <img src={result.url} className="search-res-img" /> {result.name}
+                    <div key={result.id} className="search-res-item">
+                        <Link legacyBehavior href={`/termekek/${result.id}`}>
+                            <a className="search-res-link">
+                                <img src={result.url} className="search-res-img" alt={result.name} /> {result.name}
+                            </a>
+                        </Link>
                     </div>
                 ))}
                 {results.length > 4 && (
                     <div>
-                        <a href="#">További találatok</a>
+                        <Link legacyBehavior href={`/search?query=${query}`}>
+                            <a>További találatok</a>
+                        </Link>
                     </div>
                 )}
             </div>

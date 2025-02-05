@@ -5,29 +5,33 @@ import React, { useState } from "react"
 
 
 export default function Page() {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     const [message, setMessage] = useState('')
 
-    const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
-        const formData = new FormData(event.currentTarget)
-        const name  = formData.get('name') as string
-        const email = formData.get('email') as string
-        const password = formData.get('password') as string
+        try {
+            const response = await fetch('/api/users/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            })
 
-        const response = await fetch('/api/users', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ name, email, password })
-        })
-
-        const result = await response.json()
-        setMessage(result.message)
+            if (!response.ok) {
+                const result = await response.json()
+                setMessage(result.error || 'Sikertelen bejelentkezés')
+                return
+            }
+            const result = await response.json()
+            setMessage(result.message)
+        } catch (e) {
+            console.error(e)
+        }
     }
-
-    
 
     return (
         <>
@@ -36,27 +40,23 @@ export default function Page() {
                     <form onSubmit={handleSubmit}>
                         <h2 className="text-center mb-4">Bejelentkezés</h2>
                         <div className="mb-3">
-                            <label htmlFor="email">Felhasználónév</label>
-                            <input 
-                            type="name" 
-                            id="name" required 
-                            
-                            />
-                        </div>
-                        <div className="mb-3">
                             <label htmlFor="email">E-mail cím</label>
-                            <input 
-                            type="email" 
-                            id="email" required 
-                            
+                            <input
+                                type="email"
+                                id="email" required
+                                className="form-control"
+                                value={email}
+                                onChange={e => setEmail(e.target.value)}
                             />
                         </div>
                         <div className="mb-1">
                             <label htmlFor="password">Jelszó</label>
-                            <input 
-                            type="password" 
-                            id="password" required 
-                            
+                            <input
+                                type="password"
+                                id="password" required
+                                className="form-control"
+                                value={password}
+                                onChange={e => setPassword(e.target.value)}
                             />
                         </div>
                         <div className="mb-3 px-2 d-flex justify-content-between align-items-center">
@@ -68,14 +68,15 @@ export default function Page() {
                         </div>
                         <div className="d-flex justify-content-center">
                             <button type="submit" className="orangeButton">Bejelentkezés</button>
+                            {message && <p>{message}</p>}
                         </div>
                         <div className="text-center mt-4">
                             <span>Még nincs fiókja? <Link href="/regisztracio" className="text-Orange">Regisztrálok</Link></span>
                         </div>
-                        {message && <div className="alert alert-info">{message}</div>}
                     </form>
                 </div>
             </div>
         </>
+
     )
 }
