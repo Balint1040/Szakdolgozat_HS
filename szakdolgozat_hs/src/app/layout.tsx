@@ -13,6 +13,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import BlueButton from "@/components/BlueButton";
 import SearchButton from "@/components/SearchButton";
 import Link from "next/link";
+import LoggedInButtons from "@/components/LoggedInButtons";
 
 const anta = Anta( {
   weight: "400",
@@ -42,7 +43,8 @@ export default function RootLayout({
           <div className="container justify-content-between">
             <Link className="navbar-brand" href="/"><span className="text-Orange">H</span><span className="text-Blue">S</span>market</Link>
               <SearchButton/>
-            <OrangeButton name="Bejelentkezés" href="/bejelentkezes" />
+            { /* <OrangeButton name="Bejelentkezés" href="/bejelentkezes" /> */ }
+            <LoggedInButtons />
           </div>
         </nav>
 
@@ -69,6 +71,7 @@ export default function RootLayout({
                 <h1 className="text-center"><span className="text-Orange">H</span><span className="text-Blue">S</span>market</h1>
                 <OrangeButton name="Impresszum" href="#" />
                 <BlueButton name="Adatvédelem" href="#" />
+
                 <span className="footerCr">{new Date().getFullYear()} © Minden jog fenntartva</span>
               </div>
               <div className="col-12 col-sm-4 d-flex flex-column align-items-end text-end">
