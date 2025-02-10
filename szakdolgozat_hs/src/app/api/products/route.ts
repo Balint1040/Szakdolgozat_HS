@@ -1,10 +1,16 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import mysql, {ResultSetHeader} from 'mysql2/promise'
 import { pool } from '@/_lib/db'
+import { roleValidationMiddleware } from '@/middleware/roleValidationMiddleware'
 
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
+    const middlewareResponse = await roleValidationMiddleware(request)
+    if (middlewareResponse) {
+      return middlewareResponse
+    }
+    
     const [rows] = await (await pool).execute('SELECT p.id, p.name, p.price, p.properties, p.manufacturer, p.categoryId, i.url AS imageUrl FROM product p LEFT JOIN ImageUrl i ON p.id = i.productId WHERE i.url = (SELECT MIN(url) FROM ImageUrl WHERE productId = p.id) ORDER BY p.id')
 
     return NextResponse.json(rows)

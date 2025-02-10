@@ -25,8 +25,16 @@ export async function POST(request: Request) {
       id: result.insertId,
       name,
       email,
-      message: 'User created successfully',
+      message: 'sikeres',
     })
+    
+    response.cookies.set('auth_token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      maxAge: 60 * 60,
+      path: '/',
+    })
+
 
     return response;
   } catch (e) {

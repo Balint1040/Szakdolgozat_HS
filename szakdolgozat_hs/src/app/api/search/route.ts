@@ -3,6 +3,7 @@ import mysql from 'mysql2/promise'
 
 export async function GET(request: Request) {
     try {
+
         const { searchParams } = new URL(request.url)
         const searchQuery = searchParams.get('kereses')
 

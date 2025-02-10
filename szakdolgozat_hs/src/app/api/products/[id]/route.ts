@@ -1,12 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import mysql from 'mysql2/promise'
 import { pool } from "@/_lib/db";
+import { roleValidationMiddleware } from "@/middleware/roleValidationMiddleware";
 
 
 export async function GET(
     request:  NextRequest,
     context: { params: { id?: string } }
 ) {
+    const middlewareResponse = await roleValidationMiddleware(request)
+    if (middlewareResponse) {
+        return middlewareResponse
+    }
     
     const params = await context.params
     const id = params.id
