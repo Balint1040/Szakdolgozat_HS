@@ -1,22 +1,19 @@
-import mysql from 'mysql2/promise'
-import { NextResponse } from 'next/server'
+import { NextResponse, NextRequest } from 'next/server'
+import { roleValidationMiddleware } from '@/middleware/roleValidationMiddleware'
+import { pool } from '@/_lib/db'
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    const connection = await mysql.createConnection({
-      host: process.env.DB_HOST,
-      user: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_DATABASE,
-    })
+    const middlewareResponse = await roleValidationMiddleware(request)
+    if (middlewareResponse) {
+      return middlewareResponse
+    }
 
-    const [rows] = await connection.execute('SELECT * FROM user')
-
-    await connection.end()
+    const [rows] = await (await pool).execute('SELECT * FROM user')
 
     return NextResponse.json(rows)
-  } catch (error) {
-    console.error(error)
+  } catch (e) {
+    console.error(e)
+    return NextResponse.json(e)
   }
 }
-

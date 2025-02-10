@@ -14,7 +14,7 @@ export async function POST(request: Request) {
     )
 
     const user = rows[0]
-    console.log('User data:', user)
+    console.log('User:', user)
 
     const passwordMatch = await bcrypt.compare(password, user.password)
     if (!passwordMatch) {
@@ -28,7 +28,7 @@ export async function POST(request: Request) {
     )
 
     const response = NextResponse.json({
-      message: 'Login successful',
+      message: 'sikeres',
       user: { id: user.id, name: user.name, email: user.email }
     })
 
