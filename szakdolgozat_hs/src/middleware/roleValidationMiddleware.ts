@@ -4,14 +4,15 @@ import jwt from 'jsonwebtoken'
 export async function roleValidationMiddleware(request: NextRequest) {
   const token = request.cookies.get('auth_token')?.value
 
-  if (!token) {
-    return NextResponse.json({ error: 'Nincs' }, { status: 401 })
+
+  if(token === undefined){
+    return NextResponse.redirect(new URL('/bejelentkezes', request.url))
   }
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET!)
     if (typeof decoded !== 'string' && decoded.role !== 'admin') {
-      return NextResponse.json({ error: 'Nincs jogosultság' }, { status: 403 })
+      return NextResponse.redirect(new URL('/bejelentkezes', request.url))
     }
   } catch (error) {
     return NextResponse.json({ error: 'Érvénytelen token' }, { status: 401 })

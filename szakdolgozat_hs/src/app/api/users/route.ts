@@ -1,13 +1,15 @@
 import { NextResponse, NextRequest } from 'next/server'
-import { roleValidationMiddleware } from '@/middleware/roleValidationMiddleware'
+//import { roleValidationMiddleware } from '@/middleware/roleValidationMiddleware'
 import { pool } from '@/_lib/db'
 
 export async function GET(request: NextRequest) {
   try {
+    /*
     const middlewareResponse = await roleValidationMiddleware(request)
     if (middlewareResponse) {
       return middlewareResponse
     }
+      */
 
     const [rows] = await (await pool).execute('SELECT * FROM user')
 

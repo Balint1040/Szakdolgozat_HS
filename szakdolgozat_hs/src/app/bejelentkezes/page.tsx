@@ -1,6 +1,7 @@
 'use client'
 
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import React, { useState } from "react"
 
 
@@ -8,11 +9,13 @@ export default function Page() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [message, setMessage] = useState('')
+    const router = useRouter()
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
         try {
+            
             const response = await fetch('/api/users/login', {
                 method: 'POST',
                 headers: {
@@ -26,8 +29,8 @@ export default function Page() {
                 setMessage(result.error || 'Sikertelen bejelentkezés')
                 return
             }
-            const result = await response.json()
-            setMessage(result.message)
+            router.push('/')
+            router.refresh()
         } catch (e) {
             console.error(e)
         }

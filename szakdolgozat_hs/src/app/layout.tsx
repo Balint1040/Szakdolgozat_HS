@@ -14,8 +14,10 @@ import BlueButton from "@/components/BlueButton";
 import SearchButton from "@/components/SearchButton";
 import Link from "next/link";
 import LoggedInButtons from "@/components/LoggedInButtons";
+import LoggedValidation from "@/components/LoggedValidation";
+import { NextRequest } from "next/server";
 
-const anta = Anta( {
+const anta = Anta({
   weight: "400",
   display: "swap",
   subsets: ["latin-ext"]
@@ -42,9 +44,12 @@ export default function RootLayout({
         <nav className="navbar navbar-expand-lg">
           <div className="container justify-content-between">
             <Link className="navbar-brand" href="/"><span className="text-Orange">H</span><span className="text-Blue">S</span>market</Link>
-              <SearchButton/>
-            { /* <OrangeButton name="Bejelentkezés" href="/bejelentkezes" /> */ }
-            <LoggedInButtons />
+            <SearchButton />
+            { /*
+              <OrangeButton name="Bejelentkezés" href="/bejelentkezes" />
+              <LoggedInButtons />
+            */ }
+            <LoggedValidation loggedIn={<LoggedInButtons />} notLoggedIn={<OrangeButton name="Bejelentkezés" href="/bejelentkezes"/>} />
           </div>
         </nav>
 
@@ -52,9 +57,9 @@ export default function RootLayout({
         <div style={{
           minHeight: "calc(100vh - 100px)",
         }}>
-        {children}
+          {children}
         </div>
-        
+
 
         {
           // Consider `Link` tag instead of `a` 
@@ -77,9 +82,9 @@ export default function RootLayout({
               <div className="col-12 col-sm-4 d-flex flex-column align-items-end text-end">
                 <h1 className="text-end">Navigáció</h1>
                 <a href="#" className="navigButton">Profilom</a>
-                <a href="#" className="navigButton">Termékek</a>
+                <a href="/termekek" className="navigButton">Termékek</a>
                 <a href="#" className="navigButton">Kosaram</a>
-              </div>  
+              </div>
             </div>
             <div className="d-flex flex-row justify-content-center">
               {[...seo].map((w) => (

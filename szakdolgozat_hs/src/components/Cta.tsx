@@ -15,9 +15,9 @@ export default function Cta() {
                         <span className="text-Blue">Fedezd fel a <span className="text-Orange">legjobb</span> számítógép alkatrészeket!</span> Frissítsd géped, és élvezd a teljesítményt! Ne várj tovább, válaszd ki álmaid alkatrészét, és vásárolj most!
                         </p>
                         <div className="d-flex pt-4 mt-5">
-                            <OrangeButton name="Vásárlok" href="#" variant="discover" />
+                            <OrangeButton name="Vásárlok" href="/termekek" variant="discover" />
                             <span className="mx-4"></span>
-                            <BlueButton name="Kedvezményes termékek" href="#" variant="discover" />
+                            <BlueButton name="Kedvezményes termékek" href="/termekek" variant="discover" />
                         </div>
                     </div>
                     <div className="col-12 col-md-5">
