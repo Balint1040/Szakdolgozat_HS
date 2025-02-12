@@ -591,6 +591,37 @@ nav {
 
 
 
+.dashboardButtonWrap {
+    min-height: calc(100vh - 100px) !important;
+    height: 100%;
+    width: 100%;
+    background-color: var(--gray);
+}
+.dashboardButtonWrap a {
+    border-radius: 0 !important;
+    color: var(--white);
+}
+.dashboardButtonWrap a.active {
+    background-color: var(--blue) !important;
+}
+.dashboardButtonWrap a:hover:not(.active) {
+    color: var(--orange);
+}
+
+.dashboardProfilKepWrap {
+    background-color: var(--light) !important;
+    border-radius: 100%;
+    width: 350px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 160px;
+}
+.dashboardProductsHeader {
+    position: sticky;
+    top: 0;
+}
 
 
 
