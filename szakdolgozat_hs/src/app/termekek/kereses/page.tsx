@@ -3,6 +3,8 @@
 import { useEffect, useState, useCallback } from 'react'
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { Product } from '../page'
 
 const ProductCard = dynamic(() => import("@/components/ProductCard"), {
     loading: () => <div style={{
@@ -13,20 +15,11 @@ const ProductCard = dynamic(() => import("@/components/ProductCard"), {
     }}></div>,
 })
 
-export interface Product {
-    id: number,
-    name: string,
-    price: number,
-    properties: Object,
-    manufacturer: string,
-    categoryId: number,
-    imgId: number,
-    imageUrl: string,
-    url: string,
-    productId: number
-}
 
 export default function Page() {
+    const router = useRouter()
+    const searchParams = useSearchParams()
+    const query = searchParams.get('')
     const [products, setProducts] = useState<Product[]>([])
     const [displayedProducts, setDisplayedProducts] = useState<Product[]>([])
     const [loading, setLoading] = useState(false)
@@ -36,17 +29,17 @@ export default function Page() {
         setLoading(true)
 
         try {
-            const res = await fetch(`/api/products`)
+            const res = await fetch(`/api/search?kereses=${query}`)
             const data: Product[] = await res.json()
 
             setProducts(data)
             setDisplayedProducts(data.slice(0, 20))
         } catch (error) {
-            console.error('Failed to fetch products:', error)
+            console.error(error)
         } finally {
             setLoading(false)
         }
-    }, [])
+    }, [query])
 
     const loadMoreProducts = useCallback(() => {
         if (loading || !hasMore) return
@@ -83,39 +76,47 @@ export default function Page() {
         fetchProducts()
     }, [fetchProducts])
 
+    
+/*
+    const [products, setProducts] = useState<Product[]>([])
+
+    useEffect(() => {
+        try {
+            async function fetchData() {
+                const res = await fetch(`/api/search?kereses=${query}`)
+                const data: Product[] = await res.json()
+
+                setProducts(data)
+            }
+            fetchData()
+        } catch (error) {
+            console.error('Failed to fetch products:', error)
+        }
+    }, [])
+
+*/
     return (
         <>
-                <div className="container productsContainer">
-            <div className="row">
-                <div className="col-3">
-                    {/* Add any sidebar or filter components here */}
-                </div>
-                <div className="col-9">
-                    <div className="row">
-                        <Suspense fallback={"loading"}>
-                            {displayedProducts.map((product) => (
-                                <div className="col-4 p-2" key={product.id}>
-                                    <ProductCard data={product} />
-                                </div>
-                            ))}
-                        </Suspense>
+            <div className="container productsContainer">
+                <div className="row">
+                    <div className="col-3">
+                        {/* Add any sidebar or filter components here */}
                     </div>
-
-                    {loading && (
-                        <div style={{ textAlign: 'center', marginTop: '20px' }}>
-                            <div>Loading...</div>
+                    <div className="col-9">
+                        <div className="row">
+                            <Suspense fallback={"loading"}>
+                                {products.map((product) => (
+                                    <div className="col-4 p-2" key={product.id}>
+                                        <ProductCard data={product} />
+                                    </div>
+                                ))}
+                            </Suspense>
                         </div>
-                    )}
 
-                    {hasMore && (
-                        <div ref={loaderRef} style={{ height: '20px', marginBottom: '20px' }}>
-                            {/* Invisible loader */}
-                        </div>
-                    )}
+                        
+                    </div>
                 </div>
             </div>
-        </div>
         </>
-
     )
 }
