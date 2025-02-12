@@ -16,6 +16,7 @@ import Link from "next/link";
 import LoggedInButtons from "@/components/LoggedInButtons";
 import LoggedValidation from "@/components/LoggedValidation";
 import { NextRequest } from "next/server";
+import { BrowserRouter } from "react-router";
 
 const anta = Anta({
   weight: "400",
@@ -56,6 +57,7 @@ export default function RootLayout({
 
         <div style={{
           minHeight: "calc(100vh - 100px)",
+          position: "relative"
         }}>
           {children}
         </div>
