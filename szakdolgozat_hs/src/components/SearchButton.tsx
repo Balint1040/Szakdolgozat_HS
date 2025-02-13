@@ -64,7 +64,7 @@ export default function SearchButton() {
     }
 
     return (
-        <div ref={searchRef}>
+        <div ref={searchRef} className="searchWrap">
             <form className="d-flex navbarSearch position-relative" role="search" onSubmit={handleSubmit}>
                 <input
                     className="form-control"

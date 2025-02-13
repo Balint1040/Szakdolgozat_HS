@@ -24,7 +24,7 @@
 
 input[type="search"] {
     transition: all .3s ease-in-out;
-    /*transition: border-radius .0s ease-in-out !important;*/
+    transition: border-radius .0s ease-in-out !important;
 }
 input[type="search"]:active, input[type="search"]:focus {
     box-shadow: none;
@@ -254,13 +254,13 @@ nav {
 .ram {
     animation: float 6s ease-in-out infinite;
     z-index: 3;
-    bottom: 0;
-    left: 15%;
+    bottom: 25%;
+    right: -30px;
 }
 .gpu {
     animation: float 7s ease-in-out infinite;
     z-index: 2;
-    left: 0;
+    left: -15px;
     bottom: 20%;
 }
 .motherb {
@@ -711,6 +711,20 @@ footer .seo:not(:nth-last-of-type(1))::after {
     border-bottom-right-radius: 27px;
     border-bottom-left-radius: 27px;
     overflow-x: hidden;
+    transition: height .3s ease-in-out;
+    height: 0;
+}
+.search-res-container:has(> .search-res-item:nth-of-type(4)) {
+    height: 300px;
+}
+.search-res-container:has(> .search-res-item:nth-of-type(3)):not(:has(> .search-res-item:nth-of-type(4))) {
+    height: calc(300px - 64px - 44px);
+}
+.search-res-container:has(> .search-res-item:nth-of-type(2)):not(:has(> .search-res-item:nth-of-type(3))) {
+    height: calc(300px - 128px - 44px);
+}
+.search-res-container:has(> .search-res-item:nth-of-type(1)):not(:has(> .search-res-item:nth-of-type(2))) {
+    height: calc(300px - 192px - 44px);
 }
 
 .navbarSearch:has(+ .search-res-container > .search-res-item) .form-control  {
@@ -750,4 +764,187 @@ footer .seo:not(:nth-last-of-type(1))::after {
     height: 50px;
     object-fit: cover;
     margin-right: 10px;
+}
+
+
+.ctaButtonSpan {
+    width: 100%;
+}
+
+
+@media (min-width: 1199.98px) {
+    .ctaButtonSpan {
+        width: unset !important;
+    }
+
+    .ram {
+        bottom: 0;
+        left: 15%;
+    }
+    .gpu {
+        left: 0;
+        bottom: 20%;
+    }
+    .motherb {
+        right: 0;
+        top: 0;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .navbarSearch .form-control, .search-res-container {
+        width: 475px;
+    }
+    #cta p {
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    nav {
+        height: 140px;
+    }
+    .navbar-brand {
+        font-size: 60px;
+    }
+    nav .orangeButton {
+        position: relative;
+        display: block;
+    }
+
+    .searchWrap, .navbarSearch, .navbarSearch .form-control {
+        width: 100%;
+    }
+    .search-res-container {
+        width: 696px;
+    }
+
+    .hero .contentWrapper p {
+        font-size: 40px;
+    }
+
+    .ctaImgColumn {
+        padding-top: 50px;
+        height: 400px;
+        display: flex;
+        justify-content: center;
+    }
+    .ctaImgColumn > div {
+        width: 60%;
+    }
+    .ctaButtonSpan {
+        width: unset !important;
+    }
+
+    .ram {
+        bottom: -20%;
+        right: -10%;
+    }
+    .gpu {
+        left: -10%;
+        bottom: 0;
+    }
+    .motherb {
+        left: 10%;
+        bottom: 0;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .search-res-container {
+        width: 516px;
+    }
+    
+    .ctaButtonSpan {
+        width: 100% !important;
+    }
+
+
+    .ctaImgColumn > div {
+        width: 100%;
+    }
+    .ram {
+        bottom: -25%;
+        right: -10%;
+    }
+    .gpu {
+        left: -10%;
+        bottom: -10%;
+    }
+    .motherb {
+        left: 15%;
+        bottom: 0;
+    }
+    .reviewCard {
+        height: 475px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .ctaImgColumn > div {
+        width: 70%;
+    }
+    .row {
+        padding: 0 7px;
+    }
+    .search-res-container {
+        width: calc(100% - 24px);
+    }
+    .navbar-brand {
+        font-size: 25px !important;
+    }
+
+    .hero .contentWrapper p {
+        font-size: 30px;
+    }
+    nav .orangeButton {
+        margin-bottom: 10px;
+    }
+    .orangeButton, .blueButton {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .sCardWrap {
+        margin-bottom: 20px;
+    }
+    #cta p {
+        font-size: 27px;
+    }
+
+
+    .ctaImgColumn {
+        height: 500px;
+    }
+    .ctaImgColumn > div {
+        width: 100%;
+    }
+    .ram {
+        bottom: 5%;
+        right: 5%;
+    }
+    .gpu {
+        left: 5%;
+        bottom: 0;
+    }
+    .motherb {
+        left: 10%;
+        bottom: 0;
+    }
+    .ram, .gpu, .motherb {
+        width: 300px;
+        height: auto;
+    }
+
+    #quote p {
+        font-size: 35px;
+    }
+
+    .reviewCard {
+        font-size: 20px !important;
+    }
+    .reviewCard p {
+        font-size: 18px !important;
+        line-height: 20px;
+    }
 }

@@ -70,6 +70,20 @@ export default function Recommendation() {
                         modules={[Navigation, Scrollbar]}
                         spaceBetween={50}
                         slidesPerView={3}
+                        breakpoints={{
+                            320: {
+                                slidesPerView: 1,
+                                spaceBetween: 40,
+                            },
+                            768: {
+                                slidesPerView: 2,
+                                spaceBetween: 40,
+                            },
+                            992: {
+                                spaceBetween: 50,
+                                slidesPerView: 3
+                            },
+                          }}
                         navigation = {{
                             prevEl: ".recommendationSwiper-prevEl",
                             nextEl: ".recommendationSwiper-nextEl"
