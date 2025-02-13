@@ -10,7 +10,11 @@ export default function Hero() {
     useEffect(() => {
         const fetchProductCount = async() => {
             try {
-                const res = await fetch('/api/products/productCount')
+                const res = await fetch('/api/products/productCount', {
+                    headers: {
+                        'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
+                    }
+                })
                 const data = await res.json()
                 setProductCount(data.count)
             } catch (e) {
