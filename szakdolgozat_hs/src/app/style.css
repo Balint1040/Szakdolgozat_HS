@@ -24,7 +24,6 @@
 
 input[type="search"] {
     transition: all .3s ease-in-out;
-    transition: border-radius .0s ease-in-out !important;
 }
 input[type="search"]:active, input[type="search"]:focus {
     box-shadow: none;
@@ -38,6 +37,7 @@ input[type="search"]:active + .navbarSearchIcon, input[type="search"]:focus + .n
 
 
 .orangeButton, .blueButton {
+    display: block;
     height: 55px;
     padding: 14px 20px;
     color: var(--white);
@@ -711,6 +711,7 @@ footer .seo:not(:nth-last-of-type(1))::after {
     border-bottom-right-radius: 27px;
     border-bottom-left-radius: 27px;
     overflow-x: hidden;
+    overflow-y: hidden;
     transition: height .3s ease-in-out;
     height: 0;
 }
@@ -726,10 +727,15 @@ footer .seo:not(:nth-last-of-type(1))::after {
 .search-res-container:has(> .search-res-item:nth-of-type(1)):not(:has(> .search-res-item:nth-of-type(2))) {
     height: calc(300px - 192px - 44px);
 }
-
+.navbarSearch .form-control {
+    transition: border-radius .3s ease-in-out;
+    transition-delay: .3s;
+}
 .navbarSearch:has(+ .search-res-container > .search-res-item) .form-control  {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    transition: border-radius 0s ease-in-out;
+    transition-delay: 0s;
 }
 .search-res-container > div:not(.search-res-item) {
     text-align: center;
