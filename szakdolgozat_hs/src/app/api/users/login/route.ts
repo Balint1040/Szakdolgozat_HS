@@ -14,7 +14,6 @@ export async function POST(request: Request) {
     )
 
     const user = rows[0]
-    console.log('User:', user)
 
     const passwordMatch = await bcrypt.compare(password, user.password)
     if (!passwordMatch) {
@@ -24,7 +23,7 @@ export async function POST(request: Request) {
     const token = jwt.sign(
       { userId: user.id, role: user.role }, 
       process.env.JWT_SECRET!, 
-      { expiresIn: '1h' }
+      { expiresIn: '7h' }
     )
 
     const response = NextResponse.json({
