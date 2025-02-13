@@ -24,6 +24,7 @@
 
 input[type="search"] {
     transition: all .3s ease-in-out;
+    transition: border-radius .0s ease-in-out !important;
 }
 input[type="search"]:active, input[type="search"]:focus {
     box-shadow: none;
@@ -109,7 +110,7 @@ nav .loggedInCartButton:hover::after {
     -moz-box-shadow: 2px 4px 20px 5px var(--orange);
     box-shadow: 2px 4px 20px 5px var(--orange);*/
     transition: all .3s ease-in-out;
-    overflow: hidden;
+    /*overflow: hidden;*/
     position: relative;
 }
 .orangeCartButton:hover, .loggedInCartButton:hover {
@@ -132,6 +133,9 @@ nav .loggedInCartButton:hover::after {
     top: 50%;
     left: 50%;
     transform: translate(-55%, -50%);
+}
+.loggedInProfileButton svg {
+    transform: translate(-50%, -50%) !important;
 }
 
 
@@ -618,9 +622,32 @@ nav {
     align-items: center;
     font-size: 160px;
 }
-.dashboardProductsHeader {
+.dashboardRowHeader {
     position: sticky;
     top: 0;
+    left: 0;
+    background-color: #ddd;
+}
+.dashboardRow {
+    background-color: var(--light);
+    padding: 5px 0;
+    align-items: center;
+    transition: all .3s ease-in-out;
+    border: solid 2px transparent;
+}
+.dashboardRow:nth-of-type(odd) {
+    background-color: #eaeaea;
+}
+.dashboardButtons {
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+}
+.dashboardRow:hover {
+    background-color: #ddd;
+    border: solid 2px var(--orange);
+}
+.dashboardRow:hover .dashboardButtons { 
+    opacity: 1;
 }
 
 
@@ -674,14 +701,32 @@ footer .seo:not(:nth-last-of-type(1))::after {
     margin: 0 10px;
 }
 
- .search-res-container {
+.search-res-container {
     position: absolute;
     background-color: white;
     z-index: 2;
-    width: 29%;
+    width: 540px;
     max-height: 500px;
     overflow-y: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbarSearch:has(+ .search-res-container > .search-res-item) .form-control  {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.search-res-link {
+    color: var(--gray);
+}
+.search-res-container > div:not(.search-res-item) {
+    text-align: center;
+}
+.search-res-container > div:not(.search-res-item) a {
+    color: var(--orange);
+}
+.search-res-item a {
+    padding: 10px;
+    overflow-x: hidden;
 }
 
 .search-res-img {

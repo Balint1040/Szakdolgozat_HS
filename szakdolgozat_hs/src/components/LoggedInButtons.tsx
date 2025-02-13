@@ -1,16 +1,18 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
+
 
 export default function LoggedInButtons() {
     return (
         <div className="d-flex flex-row justify-content-between">
-            <a className="loggedInCartButton me-3" href="">
+            <Link className="loggedInCartButton me-3" href="">
                 <FontAwesomeIcon icon={faCartShopping as IconProp} />
-            </a>
-            <a className="loggedInCartButton" href="">
+            </Link>
+            <Link className="loggedInCartButton loggedInProfileButton" href="/vezerlopult">
                 <FontAwesomeIcon icon={faUser as IconProp} />
-            </a>
+            </Link>
         </div>
     )
 }

@@ -1,7 +1,11 @@
 'use client'
 
 import { Product } from "@/app/termekek/page"
+import { Button, ButtonGroup } from "react-bootstrap"
 import { useEffect, useState } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons"
+import { IconProp } from "@fortawesome/fontawesome-svg-core"
 
 export default function Page() {
 
@@ -19,8 +23,8 @@ export default function Page() {
     }, [])
 
     return (
-        <div>
-            <div className="row dashboardProductsHeader">
+        <div className="pe-4 position-relative">
+            <div className="row dashboardRowHeader">
                 <div className="col-1">
                     ID
                 </div>
@@ -35,7 +39,7 @@ export default function Page() {
                 </div>
             </div>
             {products.map((product) => (
-                <div className="row" key={product.id}>
+                <div className="row dashboardRow" key={product.id}>
                     <div className="col-1">
                         {product.id}
                     </div>
@@ -43,10 +47,25 @@ export default function Page() {
                         {(product.name.slice(0, 95).length) < 95 ? product.name : (product.name.slice(0, 95) + "...")}
                     </div>
                     <div className="col-1">
-                        {product.price}.-
+                        {product.price.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, "$1.")},-
                     </div>
-                    <div className="col-1">
+                    <div className="col-2">
                         {product.categoryId}
+                    </div>
+                    <div className="col-1 d-flex justify-content-end dashboardButtons">
+                        <ButtonGroup>
+                            <Button 
+                                variant="warning" 
+                                href={`/vezerlopult/termekek/${product.id}`}
+                            >
+                            <FontAwesomeIcon icon={faPen as IconProp} />
+                            </Button>
+                            <Button 
+                                variant="danger" 
+                            >
+                            <FontAwesomeIcon icon={faTrash as IconProp} />
+                            </Button>
+                        </ButtonGroup>
                     </div>
                 </div>
             ))}
