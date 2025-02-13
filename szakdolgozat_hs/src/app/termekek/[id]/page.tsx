@@ -31,8 +31,12 @@ export default function Page({
 
     useEffect(() => {
         const fetchProduct = async () => {
-            const response = await fetch(`/api/products/${id}`)
-            const data = await response.json()
+            const res = await fetch(`/api/products/${id}`, {
+                headers: {
+                    'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
+                }
+            })
+            const data = await res.json()
             if (data.length > 0) {
                 const productData = {
                     id: data[0].id,

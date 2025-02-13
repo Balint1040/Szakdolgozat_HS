@@ -7,6 +7,10 @@ import { pool } from '@/_lib/db'
 export async function GET(request: NextRequest) {
   try {
     
+    if (request.headers.get('X-Api-Key') !== process.env.NEXT_PUBLIC_API_KEY) {
+      return NextResponse.json({ error: 'Hozzáférés megtagadva' }, { status: 403 })
+  }
+    
     const [rows] = await (await pool).execute('SELECT p.id, p.name, p.price, p.properties, p.manufacturer, p.categoryId, i.url AS imageUrl FROM product p LEFT JOIN ImageUrl i ON p.id = i.productId WHERE i.url = (SELECT MIN(url) FROM ImageUrl WHERE productId = p.id) ORDER BY p.id')
 
     return NextResponse.json(rows)
@@ -20,14 +24,8 @@ export async function POST(request: Request) {
   try {
     const { name, price, properties, manufacturer, categoryId, imageUrls } = await request.json();
 
-    const connection = await mysql.createConnection({
-      host: process.env.DB_HOST,
-      user: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_DATABASE,
-    })
 
-    const [result] = await connection.execute(
+    const [result] = await (await pool).execute(
       'INSERT INTO product (name, price, properties, manufacturer, categoryId) VALUES (?, ?, ?, ?, ?)',
       [name, price, properties, manufacturer, categoryId]
     )
@@ -35,13 +33,11 @@ export async function POST(request: Request) {
     const productId = (result as ResultSetHeader).insertId;
 
     for (const imageUrl of imageUrls) {
-      await connection.execute(
+      await (await pool).execute(
         'INSERT INTO imageurl (productId, url) VALUES (?, ?)',
         [productId, imageUrl]
       );
     }
-
-    await connection.end()
 
     return NextResponse.json({ message: 'added' }, { status: 201 })
   } catch (error) {

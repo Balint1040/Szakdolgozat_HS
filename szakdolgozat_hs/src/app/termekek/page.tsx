@@ -36,7 +36,11 @@ export default function Page() {
         setLoading(true)
 
         try {
-            const res = await fetch(`/api/products`)
+            const res = await fetch(`/api/products`, {
+                headers: {
+                    'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
+                }
+            })
             const data: Product[] = await res.json()
 
             setProducts(data)
