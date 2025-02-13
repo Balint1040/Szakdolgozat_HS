@@ -64,7 +64,7 @@ export default function SearchButton() {
     }
 
     return (
-        <div ref={searchRef}>
+        <div ref={searchRef} className="searchWrap">
             <form className="d-flex navbarSearch position-relative" role="search" onSubmit={handleSubmit}>
                 <input
                     className="form-control"
@@ -82,7 +82,7 @@ export default function SearchButton() {
                     <div key={result.id} className="search-res-item">
                         <Link href={`/termekek/${result.id}`}>
                             <span className="search-res-link">
-                                <img src={result.url} className="search-res-img" alt={result.name} /> {result.name}
+                                <img src={result.url} className="search-res-img" alt={result.name} /> {(result.name.slice(0, 40).length) < 40 ? result.name : (result.name.slice(0, 40) + "...")}
                             </span>
                         </Link>
                     </div>

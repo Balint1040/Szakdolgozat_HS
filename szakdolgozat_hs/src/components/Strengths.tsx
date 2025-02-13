@@ -9,25 +9,25 @@ export default function Strengths() {
         <section id="strengths" className="position-relative">
             <div className="container">
                 <div className="row">
-                    <div className="col-12 col-sm-3">
+                    <div className="col-12 col-sm-6 col-lg-3 mb-sm-4">
                         <div className="d-flex justify-content-center flex-column sCardWrap">
                             <FontAwesomeIcon icon={faGaugeHigh as IconProp} />
                             <div className="text-center fs-3 mt-2">Gyors</div>
                         </div>
                     </div>
-                    <div className="col-12 col-sm-3">
+                    <div className="col-12 col-sm-6 col-lg-3 mb-sm-4">
                         <div className="d-flex justify-content-center flex-column sCardWrap">
                             <FontAwesomeIcon icon={faCircleCheck as IconProp} />
                             <div className="text-center fs-3 mt-2">Megbízható</div>
                         </div>
                     </div>
-                    <div className="col-12 col-sm-3">
+                    <div className="col-12 col-sm-6 col-lg-3 mb-sm-4">
                         <div className="d-flex justify-content-center flex-column sCardWrap">
                             <FontAwesomeIcon icon={faShieldHalved as IconProp} />
                             <div className="text-center fs-3 mt-2">Biztonságos</div>
                         </div>
                     </div>
-                    <div className="col-12 col-sm-3">
+                    <div className="col-12 col-sm-6 col-lg-3 mb-sm-4">
                         <div className="d-flex justify-content-center flex-column sCardWrap">
                             <FontAwesomeIcon icon={faArrowTrendDown as IconProp} />
                             <div className="text-center fs-3 mt-2">Kedvező áron</div>

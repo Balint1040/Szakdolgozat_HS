@@ -45,12 +45,17 @@ export default function RootLayout({
         <nav className="navbar navbar-expand-lg">
           <div className="container justify-content-between">
             <Link className="navbar-brand" href="/"><span className="text-Orange">H</span><span className="text-Blue">S</span>market</Link>
+            <div className="d-block d-lg-none">
+              <LoggedValidation loggedIn={<LoggedInButtons />} notLoggedIn={<OrangeButton name="Bejelentkezés" href="/bejelentkezes"/>} />
+            </div>
             <SearchButton />
             { /*
               <OrangeButton name="Bejelentkezés" href="/bejelentkezes" />
               <LoggedInButtons />
             */ }
-            <LoggedValidation loggedIn={<LoggedInButtons />} notLoggedIn={<OrangeButton name="Bejelentkezés" href="/bejelentkezes"/>} />
+            <div className="d-none d-lg-block">
+              <LoggedValidation loggedIn={<LoggedInButtons />} notLoggedIn={<OrangeButton name="Bejelentkezés" href="/bejelentkezes"/>} />
+            </div>
           </div>
         </nav>
 
@@ -69,26 +74,28 @@ export default function RootLayout({
         <footer>
           <div className="container">
             <div className="row">
-              <div className="col-12 col-sm-4 d-flex flex-column align-items-start">
+              <div className="col-12 col-md-6 col-lg-4 d-flex flex-column align-items-center align-items-lg-start order-1">
                 <h1>Kapcsolat</h1>
-                <a href="mailto:info@hsmarket.hu" className="contactButton"><FontAwesomeIcon icon={faEnvelope as IconProp} /> info@hsmarket.hu</a>
-                <a href="tel:+36209658523" className="contactButton"><FontAwesomeIcon icon={faPhone as IconProp} /> +36 20 965 8523</a>
+                <div className="d-flex flex-column h-100 justify-content-center justify-content-lg-start">
+                  <a href="mailto:info@hsmarket.hu" className="contactButton"><FontAwesomeIcon icon={faEnvelope as IconProp} /> info@hsmarket.hu</a>
+                  <a href="tel:+36209658523" className="contactButton"><FontAwesomeIcon icon={faPhone as IconProp} /> +36 20 965 8523</a>
+                </div>
               </div>
-              <div className="col-12 col-sm-4 d-flex flex-column align-items-center text-center">
+              <div className="col-12 col-lg-4 d-flex flex-column align-items-center text-center order-3 order-lg-2 mt-5 mt-lg-0">
                 <h1 className="text-center"><span className="text-Orange">H</span><span className="text-Blue">S</span>market</h1>
                 <OrangeButton name="Impresszum" href="#" />
                 <BlueButton name="Adatvédelem" href="#" />
 
                 <span className="footerCr">{new Date().getFullYear()} © Minden jog fenntartva</span>
               </div>
-              <div className="col-12 col-sm-4 d-flex flex-column align-items-end text-end">
+              <div className="col-12 col-md-6 col-lg-4 d-flex flex-column align-items-center align-items-lg-end text-end order-2 order-lg-3 mt-5 mt-md-0">
                 <h1 className="text-end">Navigáció</h1>
                 <a href="#" className="navigButton">Profilom</a>
                 <a href="/termekek" className="navigButton">Termékek</a>
                 <a href="#" className="navigButton">Kosaram</a>
               </div>
             </div>
-            <div className="d-flex flex-row justify-content-center">
+            <div className="d-flex flex-row justify-content-center flex-wrap">
               {[...seo].map((w) => (
                 <span className="seo" key={w}>{w}</span>
               ))}

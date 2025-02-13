@@ -10,17 +10,17 @@ export default function Cta() {
         <section id="cta" className="position-reltaive py-5 mb-5">
             <div className="container">
                 <div className="row">
-                    <div className="col-12 col-md-7">
+                    <div className="col-12 col-lg-7">
                         <p>
                         <span className="text-Blue">Fedezd fel a <span className="text-Orange">legjobb</span> számítógép alkatrészeket!</span> Frissítsd géped, és élvezd a teljesítményt! Ne várj tovább, válaszd ki álmaid alkatrészét, és vásárolj most!
                         </p>
-                        <div className="d-flex pt-4 mt-5">
+                        <div className="d-flex flex-wrap pt-4 mt-5">
                             <OrangeButton name="Vásárlok" href="/termekek" variant="discover" />
-                            <span className="mx-4"></span>
+                            <span className="mx-4 my-2 my-xl-0 d-lg-inline d-block ctaButtonSpan"></span>
                             <BlueButton name="Kedvezményes termékek" href="/termekek" variant="discover" />
                         </div>
                     </div>
-                    <div className="col-12 col-md-5">
+                    <div className="col-12 col-lg-5 ctaImgColumn">
                         <div className="position-relative h-100">
                             <Image src={ram} alt="ram" className="ram"/>
                             <Image src={gpu} alt="gpu" className="gpu"/>
