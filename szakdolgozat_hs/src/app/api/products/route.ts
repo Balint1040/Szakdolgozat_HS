@@ -19,24 +19,22 @@ export async function GET(request: NextRequest) {
   }
 }
 
-
 export async function POST(request: Request) {
   try {
-    const { name, price, properties, manufacturer, categoryId, imageUrls } = await request.json();
-
+    const { name, price, properties, manufacturer, categoryId, imageUrls } = await request.json()
 
     const [result] = await (await pool).execute(
       'INSERT INTO product (name, price, properties, manufacturer, categoryId) VALUES (?, ?, ?, ?, ?)',
       [name, price, properties, manufacturer, categoryId]
     )
 
-    const productId = (result as ResultSetHeader).insertId;
+    const productId = (result as ResultSetHeader).insertId
 
     for (const imageUrl of imageUrls) {
       await (await pool).execute(
         'INSERT INTO imageurl (productId, url) VALUES (?, ?)',
         [productId, imageUrl]
-      );
+      )
     }
 
     return NextResponse.json({ message: 'added' }, { status: 201 })
@@ -44,6 +42,8 @@ export async function POST(request: Request) {
     console.error(error)
   }
 }
+
+
 
 /* DB product seed
 export default async function Page(req: NextApiRequest, res: NextApiResponse) {

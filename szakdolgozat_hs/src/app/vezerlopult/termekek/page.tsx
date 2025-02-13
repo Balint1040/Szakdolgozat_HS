@@ -13,7 +13,11 @@ export default function Page() {
 
     useEffect(() => {
         async function fetchRecipes() {
-            const data = await fetch(`/api/products`)
+            const data = await fetch(`/api/products`, {
+                headers: {
+                    'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
+                }
+            })
             const init = (await data.json()) as Product[]
 
             setProducts([...init])
