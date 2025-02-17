@@ -13,3 +13,14 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(e)
   }
 }
+export async function DELETE(req: Request) {
+  try {
+    const { id } = await req.json()
+
+    await (await pool).execute('DELETE FROM user WHERE id = ?', [id])
+
+    return NextResponse.json({ message: 'deleted' })
+  } catch (e) {
+    console.error(e)
+  }
+}

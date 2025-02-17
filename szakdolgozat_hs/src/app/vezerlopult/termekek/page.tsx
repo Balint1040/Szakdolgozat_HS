@@ -11,6 +11,13 @@ export default function Page() {
 
     const [products, setProducts] = useState<Product[]>([])
 
+    const categoryOptions: { [key: number]: string } = {
+        1: "Videókártya",
+        2: "Processzor",
+        3: "Alaplap",
+        4: "Memória"
+    }
+
     useEffect(() => {
         async function fetchRecipes() {
             const data = await fetch(`/api/products`, {
@@ -25,6 +32,22 @@ export default function Page() {
 
         fetchRecipes()
     }, [])
+
+    const handleDelete = async (id: number) => {
+        if (confirm("Biztosan törölni szeretnéd ezt a terméket?")) {
+            await fetch(`/api/products`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
+                },
+                body: JSON.stringify({ id })
+            })
+            setProducts(products.filter(product => product.id !== id))
+            alert("Termék törölve!")
+        }
+    }
+
 
     return (
         <div className="pe-4 position-relative">
@@ -54,7 +77,7 @@ export default function Page() {
                         {product.price.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, "$1.")},-
                     </div>
                     <div className="col-2">
-                        {product.categoryId}
+                        {categoryOptions[product.categoryId]}
                     </div>
                     <div className="col-1 d-flex justify-content-end dashboardButtons">
                         <ButtonGroup>
@@ -65,7 +88,8 @@ export default function Page() {
                             <FontAwesomeIcon icon={faPen as IconProp} />
                             </Button>
                             <Button 
-                                variant="danger" 
+                                variant="danger"
+                                onClick={() => handleDelete(product.id)}
                             >
                             <FontAwesomeIcon icon={faTrash as IconProp} />
                             </Button>

@@ -1,6 +1,10 @@
 'use client'
 import { Product } from "@/app/termekek/page"
+import { IconProp } from "@fortawesome/fontawesome-svg-core"
+import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useEffect, useState } from "react"
+import { Button, ButtonGroup } from "react-bootstrap"
 
 export interface User {
     id: number,
@@ -11,17 +15,32 @@ export interface User {
 }
 export default function Page() {
     const [users, setUsers] = useState<User[]>([])
-    
-        useEffect(() => {
-            async function fetchRecipes() {
-                const data = await fetch(`/api/users`)
-                const init = (await data.json()) as User[]
-    
-                setUsers([...init])
-            }
-    
-            fetchRecipes()
-        }, [])
+
+    useEffect(() => {
+        async function fetchRecipes() {
+            const data = await fetch(`/api/users`)
+            const init = (await data.json()) as User[]
+
+            setUsers([...init])
+        }
+
+        fetchRecipes()
+    }, [])
+
+    const handleDelete = async (id: number) => {
+        if (confirm("Biztosan törölni szeretnéd ezt a terméket?")) {
+            await fetch(`/api/users`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
+                },
+                body: JSON.stringify({ id })
+            })
+            setUsers(users.filter(users => users.id !== id))
+            alert("Termék törölve!")
+        }
+    }
     return (
         <div className="pe-4 position-relative">
             <div className="row dashboardRowHeader">
@@ -51,6 +70,22 @@ export default function Page() {
                     </div>
                     <div className="col-3">
                         {user.role}
+                    </div>
+                    <div className="col-1 d-flex justify-content-end dashboardButtons">
+                        <ButtonGroup>
+                            <Button
+                                variant="warning"
+                                href={`/vezerlopult/felhasznalok/${user.id}`}
+                            >
+                                <FontAwesomeIcon icon={faPen as IconProp} />
+                            </Button>
+                            <Button
+                                variant="danger"
+                                onClick={() => handleDelete(user.id)}
+                            >
+                                <FontAwesomeIcon icon={faTrash as IconProp} />
+                            </Button>
+                        </ButtonGroup>
                     </div>
                 </div>
             ))}

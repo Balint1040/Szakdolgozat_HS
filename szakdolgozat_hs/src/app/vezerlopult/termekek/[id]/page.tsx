@@ -20,12 +20,19 @@ interface Product {
 
 export default function Page({
     params
-} : {
+}: {
     params: Promise<{ id: string }>
 }) {
     const router = useRouter()
     const { id } = React.use(params)
     const [product, setProduct] = useState<Product | null>(null)
+
+    const categoryOptions = {
+        1: "Videókártya",
+        2: "Processzor",
+        3: "Alaplap",
+        4: "Memória"
+    }
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -52,7 +59,7 @@ export default function Page({
         fetchProduct()
     }, [id])
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target
         setProduct(prevState => prevState ? ({
             ...prevState,
@@ -92,7 +99,7 @@ export default function Page({
                     </div>
                     <div className="col-6">
                         <h2>{product.name}</h2>
-                        <h3 className='my-3'>Ár: <span className="text-Blue">{product.price}</span></h3>
+                        <h3 className='my-3'>Ár: <span className="text-Blue">{product.price.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, "$1.")},-</span></h3>
                         <form onSubmit={handleSubmit}>
                             <div className="mb-3">
                                 <label htmlFor="name" className="form-label">Név:</label>
@@ -128,15 +135,28 @@ export default function Page({
                                 />
                             </div>
                             <div className="mb-3">
+                                <label htmlFor="properties" className='form-label'>Tulajdonságok</label>
+                                <textarea
+                                    id="properties"
+                                    name="properties"
+                                    className="form-control"
+                                    value={JSON.stringify(product.properties)}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <div className="mb-3">
                                 <label htmlFor="categoryId" className="form-label">Termékkategória:</label>
-                                <input
-                                    type="text"
+                                <select
                                     id="categoryId"
                                     name="categoryId"
                                     className="form-control"
                                     value={product.categoryId}
                                     onChange={handleChange}
-                                />
+                                >
+                                    {Object.entries(categoryOptions).map(([id, name]) => (
+                                        <option key={id} value={id}>{name}</option>
+                                    ))}
+                                </select>
                             </div>
                             <button type="submit" className="btn btn-primary">Mentés</button>
                         </form>

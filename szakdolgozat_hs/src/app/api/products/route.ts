@@ -14,8 +14,8 @@ export async function GET(request: NextRequest) {
     const [rows] = await (await pool).execute('SELECT p.id, p.name, p.price, p.properties, p.manufacturer, p.categoryId, i.url AS imageUrl FROM product p LEFT JOIN ImageUrl i ON p.id = i.productId WHERE i.url = (SELECT MIN(url) FROM ImageUrl WHERE productId = p.id) ORDER BY p.id')
 
     return NextResponse.json(rows)
-  } catch (error) {
-    console.error(error)
+  } catch (e) {
+    console.error(e)
   }
 }
 
@@ -38,8 +38,22 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ message: 'added' }, { status: 201 })
-  } catch (error) {
-    console.error(error)
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+export async function DELETE(req: Request) {
+  try {
+    const { id } = await req.json()
+
+    await (await pool).execute('DELETE FROM imageurl WHERE productId = ?', [id])
+
+    await (await pool).execute('DELETE FROM product WHERE id = ?', [id])
+
+    return NextResponse.json({ message: 'deleted' })
+  } catch (e) {
+    console.error(e)
   }
 }
 
