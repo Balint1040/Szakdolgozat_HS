@@ -223,7 +223,14 @@ export default function Page() {
                         <OrangeButton name='Alkalmazás' href='#' />
                     </div>
                 </div>
-                <div className="col-9">
+                <div className="col-9 pt-2">
+                    <div className="orderRow p-2 mb-2">
+                        <div><span className='text-Blue'>{products.length}</span> találat</div>
+                        <div className='d-flex align-items-center'>
+                            <span className='pe-2'>Rendezés: </span>
+                            <OrangeButton name='Relevancia' href='#' variant='order' />
+                        </div>
+                    </div>
                     <div className="row">
                         <Suspense fallback={"loading"}>
                             {displayedProducts.map((product) => (

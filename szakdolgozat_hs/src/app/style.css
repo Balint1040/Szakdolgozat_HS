@@ -903,6 +903,35 @@ input[type=number] {
     opacity: .75;
 }
 
+.orderRow {
+    width: calc(100% + 7px);
+    transform: translateX(-4px);
+    background-color: var(--light);
+    height: 40px;
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 4px 15px 1px var(--gray);
+    -moz-box-shadow: 0px 4px 15px 1px var(--gray);
+    box-shadow: 0px 4px 15px 1px var(--gray);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    position: sticky;
+    top: 10px;
+    z-index: 2;
+}
+.orderRow .orangeButton {
+    box-shadow: none;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.orderRow .orangeButton svg {
+    transform: translateY(-3px);
+}
 @media (min-width: 1199.98px) {
     .ctaButtonSpan {
         width: unset !important;
