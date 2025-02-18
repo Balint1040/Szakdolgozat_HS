@@ -89,10 +89,63 @@ export default function Page() {
 
     return (
         <>
-                <div className="container productsContainer">
+        <div className="container productsContainer">
             <div className="row">
-                <div className="col-3">
-                    {/* Add any sidebar or filter components here */}
+                <div className="col-3 p-2 position-relative">
+                    <div className="filters p-2">
+                        <div className="row">
+                            <h3 className="text-Blue text-center">Szűrők</h3>
+                        </div>
+                        <hr />
+                        <div className="priceFilter">
+                            <h5>Ár</h5>
+                            <div className="row">
+                                <div className="col-5">
+                                    <input type="number" placeholder="Min."  />
+                                </div>
+                                <div className="col-2 text-center d-flex align-items-center justify-content-center">
+                                    -
+                                </div>
+                                <div className="col-5">
+                                    <input type="number" placeholder='Max.' />
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div className="checkboxFilter">
+                            <h5>Gyártó</h5>
+                            <div className="checkboxWrap">
+                                <div>
+                                    <input type="checkbox" id='example1' />
+                                    <label htmlFor="example1">Asus</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id='example2' />
+                                    <label htmlFor="example2">Msi</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id='example3' />
+                                    <label htmlFor="example3">Gigabyte</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id='example4' />
+                                    <label htmlFor="example4">Bequit</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id='example5' />
+                                    <label htmlFor="example5">Intel</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id='example6' />
+                                    <label htmlFor="example6">Corsair</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id='example7' />
+                                    <label htmlFor="example7">ROG</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className="col-9">
                     <div className="row">

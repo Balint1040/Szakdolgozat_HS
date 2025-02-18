@@ -777,6 +777,68 @@ footer .seo:not(:nth-last-of-type(1))::after {
     width: 100%;
 }
 
+.filters {
+    min-height: 400px;
+    width: 100%;
+    background-color: var(--light);
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 4px 15px 1px var(--gray);
+    -moz-box-shadow: 0px 4px 15px 1px var(--gray);
+    box-shadow: 0px 4px 15px 1px var(--gray);
+}
+.filters hr {
+    margin: 10px 0;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    appearance: textfield;
+    -moz-appearance:textfield;
+}
+.priceFilter input {
+    width: 100%;
+    background-color: var(--white);
+    box-shadow: none;
+    border: solid 2px var(--white);
+    padding: 8px 5px;
+    color: var(--gray);
+    border-radius: 20px;
+    outline: none;
+    transition: border-color .3s ease-in-out;
+}
+.priceFilter input:focus {
+    border-color: var(--orange);
+}
+.filters h5 {
+    margin-left: 8px;
+}
+
+.checkboxFilter {
+    font-size: 18px;
+    line-height: 100%;
+}
+.checkboxWrap {
+    max-height: 100px;
+    overflow-y: scroll;
+}
+.checkboxWrap > div {
+    padding-left: 8px;
+    display: flex;
+    align-items: center;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.checkboxFilter input {
+    margin-right: 5px;
+    border-radius: 10px;
+    color: var(--orange);
+}
+
 
 @media (min-width: 1199.98px) {
     .ctaButtonSpan {
