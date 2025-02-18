@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback } from 'react'
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
+import OrangeButton from '@/components/OrangeButton'
 
 const ProductCard = dynamic(() => import("@/components/ProductCard"), {
     loading: () => <div style={{
@@ -89,7 +90,7 @@ export default function Page() {
 
     return (
         <>
-        <div className="container productsContainer">
+        <div className="container productsContainer py-5">
             <div className="row">
                 <div className="col-3 p-2 position-relative">
                     <div className="filters p-2">
@@ -100,14 +101,60 @@ export default function Page() {
                         <div className="priceFilter">
                             <h5>Ár</h5>
                             <div className="row">
-                                <div className="col-5">
+                                <div className="col-5 pe-0">
                                     <input type="number" placeholder="Min."  />
                                 </div>
                                 <div className="col-2 text-center d-flex align-items-center justify-content-center">
                                     -
                                 </div>
-                                <div className="col-5">
+                                <div className="col-5 ps-0">
                                     <input type="number" placeholder='Max.' />
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div className="checkboxFilter">
+                            <h5>Kategória</h5>
+                            <div className="checkboxWrap">
+                                <div>
+                                    <input type="checkbox" id='cat1' />
+                                    <label htmlFor="cat1">Processzor</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id='cat2' />
+                                    <label htmlFor="cat2">Videókártya</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id='cat3' />
+                                    <label htmlFor="cat3">Alaplap</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id='cat4' />
+                                    <label htmlFor="cat4">Memória</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id='cat5' />
+                                    <label htmlFor="cat5">Tárhely</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id='cat6' />
+                                    <label htmlFor="cat6">Processzorhűtő</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id='cat7' />
+                                    <label htmlFor="cat7">Gépház</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id='cat8' />
+                                    <label htmlFor="cat8">Kábelek</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id='cat9' />
+                                    <label htmlFor="cat9">Bővítőkártyák</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id='cat10' />
+                                    <label htmlFor="cat10">Tápegység</label>
                                 </div>
                             </div>
                         </div>
@@ -143,8 +190,37 @@ export default function Page() {
                                     <input type="checkbox" id='example7' />
                                     <label htmlFor="example7">ROG</label>
                                 </div>
+                                <div>
+                                    <input type="checkbox" id='example8' />
+                                    <label htmlFor="example8">Intel</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id='example9' />
+                                    <label htmlFor="example9">Corsair</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" id='example10' />
+                                    <label htmlFor="example10">ROG</label>
+                                </div>
                             </div>
                         </div>
+                        <hr />
+                        <div className="priceFilter">
+                            <h5>Ventillátorok száma</h5>
+                            <div className="row">
+                                <div className="col-5 pe-0">
+                                    <input type="number" placeholder="Min."  />
+                                </div>
+                                <div className="col-2 text-center d-flex align-items-center justify-content-center">
+                                    -
+                                </div>
+                                <div className="col-5 ps-0">
+                                    <input type="number" placeholder='Max.' />
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <OrangeButton name='Alkalmazás' href='#' />
                     </div>
                 </div>
                 <div className="col-9">
