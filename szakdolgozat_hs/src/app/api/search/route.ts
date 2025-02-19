@@ -5,7 +5,6 @@ export async function GET(request: Request) {
     try {
         const { searchParams } = new URL(request.url)
         const searchQuery = searchParams.get('kereses')
-        const category = searchParams.get('kategoria')
 
         if (!searchQuery) {
             return null

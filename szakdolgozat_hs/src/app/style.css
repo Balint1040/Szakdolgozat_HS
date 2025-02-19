@@ -822,7 +822,7 @@ input[type=number] {
 .filters h5 {
     margin-left: 8px;
 }
-.filters .orangeButton {
+.filters .orangeButton, .filters .blueButton {
     height: 35px;
     padding: unset;
     font-size: 20px;
