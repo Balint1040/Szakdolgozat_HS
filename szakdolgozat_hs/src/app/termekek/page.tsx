@@ -38,7 +38,7 @@ export default function Page() {
     })
     const [maxPrice, setMaxPrice] = useState<number | null>(() => {
         const saved = localStorage.getItem('minPrice')
-        return saved !=null ? Number(saved) : null
+        return saved != null ? Number(saved) : null
     })
     const [filters, setFilters] = useState<{ minPrice: number | null, maxPrice: number | null }>({
         minPrice,
@@ -64,8 +64,8 @@ export default function Page() {
 
             setProducts(data)
             setDisplayedProducts(data.slice(0, 20))
-        } catch (error) {
-            console.error('Failed to fetch products:', error)
+        } catch (e) {
+            console.error(e)
         } finally {
             setLoading(false)
         }
@@ -124,7 +124,7 @@ export default function Page() {
     useEffect(() => {
         fetchProducts()
     }, [fetchProducts])
-    
+
     return (
         <>
             <div className="container productsContainer">
@@ -141,7 +141,7 @@ export default function Page() {
                                     <div className="col-5">
                                         <input type="number"
                                             placeholder="Min."
-                                            value={minPrice ||''}
+                                            value={minPrice || ''}
                                             onChange={(e) => setMinPrice(Number(e.target.value))}
                                         />
                                     </div>
