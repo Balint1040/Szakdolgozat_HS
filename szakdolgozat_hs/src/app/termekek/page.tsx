@@ -33,17 +33,31 @@ export default function Page() {
     const [loading, setLoading] = useState(false)
     const [hasMore, setHasMore] = useState(true)
     const [minPrice, setMinPrice] = useState<number | null>(() => {
-        const saved = localStorage.getItem('minPrice')
+        const saved = global?.localStorage?.getItem('minPrice')
         return saved != null ? Number(saved) : null
     })
     const [maxPrice, setMaxPrice] = useState<number | null>(() => {
-        const saved = localStorage.getItem('minPrice')
+        const saved = global?.localStorage?.getItem('maxPrice')
         return saved != null ? Number(saved) : null
     })
     const [filters, setFilters] = useState<{ minPrice: number | null, maxPrice: number | null }>({
         minPrice,
         maxPrice
     })
+
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const savedMinPrice = global?.localStorage?.getItem('minPrice')
+            const savedMaxPrice = global?.localStorage?.getItem('maxPrice')
+            if (savedMinPrice) setMinPrice(Number(savedMinPrice))
+            if (savedMaxPrice) setMaxPrice(Number(savedMaxPrice))
+            setFilters({
+                minPrice: savedMinPrice ? Number(savedMinPrice) : null,
+                maxPrice: savedMaxPrice ? Number(savedMaxPrice) : null
+            })
+        }
+    }, [])
 
 
 
@@ -107,18 +121,22 @@ export default function Page() {
             minPrice,
             maxPrice
         })
-
-        if (minPrice) localStorage.setItem('minPrice', minPrice.toString())
-        if (maxPrice) localStorage.setItem('maxPrice', maxPrice.toString())
+    
+        if (typeof window !== 'undefined') {
+            if (minPrice !== null) global?.localStorage?.setItem('minPrice', minPrice.toString())
+            if (maxPrice !== null) global?.localStorage?.setItem('maxPrice', maxPrice.toString())
+        }
     }
-
+    
     const clearFilters = () => {
         setMinPrice(null)
         setMaxPrice(null)
         setFilters({ minPrice: null, maxPrice: null })
-
-        localStorage.removeItem('minPrice')
-        localStorage.removeItem('maxPrice')
+    
+        if (typeof window !== 'undefined') {
+            global?.localStorage?.removeItem('minPrice')
+            global?.localStorage?.removeItem('maxPrice')
+        }
     }
 
     useEffect(() => {

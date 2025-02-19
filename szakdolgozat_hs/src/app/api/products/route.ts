@@ -33,7 +33,6 @@ export async function GET(request: NextRequest) {
       params.push(maxPrice)
     }
 
-
     query += ` ORDER BY p.id`
 
     const [rows] = await (await pool).execute(query, params)
