@@ -95,7 +95,30 @@ export default function Page() {
         })
     }
 
+    
 
+    const addToCart = async(product: Product, quantity: number) => {
+        try{
+            const res = await fetch('/api/carts', {
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json',
+                    'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
+                },
+                body: JSON.stringify({
+                    userId: 17,
+                    productId: product.id, 
+                    quantity: quantity})
+            })
+            if(res.ok){
+                alert(`${product.name} (${quantity}) hozzáadva a kosárhoz!`)
+            }else{
+                alert('Hiba a termék hozzáadásakor')
+            }
+        }catch(e){
+            console.error(e)
+        }
+    }
 
     const fetchProducts = useCallback(async () => {
         setLoading(true)
@@ -315,7 +338,7 @@ export default function Page() {
                             <Suspense fallback={"loading"}>
                                 {displayedProducts.map((product) => (
                                     <div className="col-4 p-2" key={product.id}>
-                                        <ProductCard data={product} />
+                                        <ProductCard data={product} onAddToCart={(product, quantity) => addToCart(product, quantity)}/>
                                     </div>
                                 ))}
                             </Suspense>
