@@ -205,7 +205,7 @@ export default function Page() {
 
     return (
         <>
-            <div className="container productsContainer">
+            <div className="container productsContainer py-4">
                 <div className="row">
                     <div className="col-3 p-2 position-relative">
                         <div className="filters p-2">
@@ -226,7 +226,7 @@ export default function Page() {
                                     <div className="col-2 text-center d-flex align-items-center justify-content-center">
                                         -
                                     </div>
-                                    <div className="col-5">
+                                    <div className="col-5 ps-0">
                                         <input
                                             type="number ps-0"
                                             placeholder='Max.'
@@ -296,9 +296,18 @@ export default function Page() {
                     <div className="col-9 pt-2">
                         <div className="orderRow p-2 mb-2">
                             <div><span className='text-Blue'>{products.length}</span> találat</div>
-                            <div className='d-flex align-items-center'>
-                                <span className='pe-2'>Rendezés: </span>
-                                <OrangeButton name='Relevancia' href='#' variant='order' />
+                            <div className='d-flex align-items-center position-relative customSelect'>
+                                {/* <OrangeButton name='Relevancia' href='#' variant='order' /> */}
+                                <div className="dropdown">
+                                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Dropdown button
+                                    </button>
+                                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a className="dropdown-item" href="#">Action</a>
+                                        <a className="dropdown-item" href="#">Another action</a>
+                                        <a className="dropdown-item" href="#">Something else here</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

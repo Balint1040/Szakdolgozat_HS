@@ -7,7 +7,7 @@
     --white: #FFFFFF;
     --light: #F2F2F2;
 }
-img {
+img, .swiper-slide {
     -webkit-user-drag: none;
     -khtml-user-drag: none;
     -moz-user-drag: none;
@@ -256,6 +256,9 @@ nav {
 #cta p {
     font-size: 40px;
     color: var(--gray);
+}
+.ctaImgColumn {
+    overflow: hidden;
 }
 .ram, .gpu, .motherb {
     position: absolute;
@@ -835,14 +838,14 @@ input[type=number] {
     appearance: textfield;
     -moz-appearance:textfield;
 }
-.productContainer .form-control {
+.productContainer .form-control, .cartBottomRow .form-control {
     background-color: var(--light) !important;
     padding: 5px 10px !important;
     box-shadow: none !important;
     margin: 0 !important;
     border-color: var(--light) !important;
 }
-.priceFilter input, .productContainer .form-control {
+.priceFilter input, .productContainer .form-control, .cartBottomRow .form-control {
     width: 100%;
     background-color: var(--white);
     box-shadow: none;
@@ -853,7 +856,7 @@ input[type=number] {
     outline: none;
     transition: border-color .3s ease-in-out;
 }
-.priceFilter input:focus, .productContainer .form-control:focus {
+.priceFilter input:focus, .productContainer .form-control:focus, .cartBottomRow .form-control:focus {
     border-color: var(--orange) !important;
 }
 .productContainer .blueButton {
@@ -964,19 +967,55 @@ input[type=number] {
     top: 10px;
     z-index: 2;
 }
-.orderRow .orangeButton {
+/*.orderRow #order {
     box-shadow: none;
     height: 26px;
     display: flex;
     align-items: center;
     font-size: 20px;
-    padding-top: 0;
-    padding-bottom: 0;
+    background-color: var(--orange);
+    border: none;
+    padding: 0 10px;
+    border-radius: 20px;
+}*/
+.orderRow .customSelect select {
+    display: none;
 }
-.orderRow .orangeButton svg {
+.orderRow #order svg {
     transform: translateY(-3px);
 }
 
+
+
+
+.cartItemRow {
+    height: 230px;
+    background-color: var(--light);
+    position: relative;
+    padding: 10px;
+    font-size: 22px;
+    margin-bottom: 10px;
+    border-radius: 30px;
+}
+.cartItemRow img {
+    width: auto;
+    height: 100%;
+}
+.cartItemRow .cartImgWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background-color: var(--white);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    padding: 5px;
+}
+.cartBottomRow {
+    font-size: 22px;
+}
 
 
 @media (min-width: 1199.98px) {
