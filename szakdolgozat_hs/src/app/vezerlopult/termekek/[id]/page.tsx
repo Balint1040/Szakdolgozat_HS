@@ -59,12 +59,38 @@ export default function Page({
         fetchProduct()
     }, [id])
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>, propertyIndex?: number, isKey?: boolean) => {
         const { name, value } = e.target
-        setProduct(prevState => prevState ? ({
-            ...prevState,
-            [name]: value
-        }) : null)
+        if (propertyIndex !== undefined) {
+            setProduct(prevState  => {
+
+                if(!prevState) return null
+                
+                const properties = Object.entries(prevState.properties);
+                if (isKey) {
+                    const [_, oldValue] = properties[propertyIndex]
+                    properties[propertyIndex] = [value, oldValue]
+                } else {
+                    const [oldKey, _] = properties[propertyIndex]
+                    properties[propertyIndex] = [oldKey, value]
+                }
+                
+                const updatedProperties = properties.reduce((acc, [key, value]) => {
+                    acc[key] = value
+                    return acc
+                }, {} as Record<string, string>);
+    
+                return {
+                    ...prevState,
+                    properties: updatedProperties
+                }
+            })
+        } else {
+            setProduct(prevState => prevState ? ({
+                ...prevState,
+                [name]: value
+            }) : null)
+        }
     }
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -147,34 +173,29 @@ export default function Page({
                             </div>
                             */ 
                             }
-
-                            <label className="form-label">Tulajdonságok:</label>
-                            {Object.entries(product.properties).map((property, index) => (
-                                <div className="row my-2" key={index}>
-                                    <div className="col-6">
-                                        <input 
-                                            type="text" 
-                                            id={property[0]} 
-                                            name={property[0]} 
-                                            className="form-control" 
-                                            value={property[0]} 
-                                            onChange={handleChange} 
-                                        />
+                                <label className="form-label">Tulajdonságok:</label>
+                                {Object.entries(product.properties).map((property, index) => (
+                                    <div className="row my-2" key={index}>
+                                        <div className="col-6">
+                                            <input 
+                                                type="text" 
+                                                className="form-control" 
+                                                value={property[0]} 
+                                                onChange={(e) => handleChange(e, index, true)} 
+                                                placeholder="Tulajdonság neve"
+                                            />
+                                        </div>
+                                        <div className="col-6">
+                                            <input 
+                                                type="text" 
+                                                className="form-control" 
+                                                value={property[1]} 
+                                                onChange={(e) => handleChange(e, index, false)} 
+                                                placeholder="Érték"
+                                            />
+                                        </div>
                                     </div>
-                                    <div className="col-6">
-                                        <input 
-                                            type="text" 
-                                            id={property[1]} 
-                                            name={property[1]} 
-                                            className="form-control" 
-                                            value={property[1]} 
-                                            onChange={handleChange} 
-                                        />
-                                    </div>
-                                </div>
-                            ))}
-
-
+                                ))}
                             <div className="mb-3">
                                 <label htmlFor="categoryId" className="form-label">Termékkategória:</label>
                                 <select
