@@ -1,21 +1,46 @@
 import { NextRequest, NextResponse } from 'next/server'
-import mysql, {ResultSetHeader} from 'mysql2/promise'
+import {ResultSetHeader} from 'mysql2/promise'
 import { pool } from '@/_lib/db'
 //import { roleValidationMiddleware } from '@/middleware/roleValidationMiddleware'
 
 
 export async function GET(request: NextRequest) {
   try {
-    
     if (request.headers.get('X-Api-Key') !== process.env.NEXT_PUBLIC_API_KEY) {
       return NextResponse.json({ error: 'Hozzáférés megtagadva' }, { status: 403 })
-  }
+    }
+
+    const { searchParams } = new URL(request.url)
+    const minPrice = searchParams.get('minPrice')
+    const maxPrice = searchParams.get('maxPrice')
     
-    const [rows] = await (await pool).execute('SELECT p.id, p.name, p.price, p.properties, p.manufacturer, p.categoryId, i.url AS imageUrl FROM product p LEFT JOIN ImageUrl i ON p.id = i.productId WHERE i.url = (SELECT MIN(url) FROM ImageUrl WHERE productId = p.id) ORDER BY p.id')
+    let query = `
+      SELECT p.*, i.url AS imageUrl 
+      FROM product p 
+      LEFT JOIN ImageUrl i ON p.id = i.productId 
+      AND i.url = (SELECT MIN(url) FROM ImageUrl WHERE productId = p.id) 
+      WHERE 1=1
+    `
+    const params: any[] = []
+
+    if (minPrice) {
+      query += ` AND p.price >= ?`
+      params.push(minPrice)
+    }
+
+    if (maxPrice) {
+      query += ` AND p.price <= ?`
+      params.push(maxPrice)
+    }
+
+    query += ` ORDER BY p.id`
+
+    const [rows] = await (await pool).execute(query, params)
 
     return NextResponse.json(rows)
   } catch (e) {
     console.error(e)
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
   }
 }
 

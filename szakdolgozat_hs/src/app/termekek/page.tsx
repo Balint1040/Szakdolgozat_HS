@@ -32,12 +32,44 @@ export default function Page() {
     const [displayedProducts, setDisplayedProducts] = useState<Product[]>([])
     const [loading, setLoading] = useState(false)
     const [hasMore, setHasMore] = useState(true)
+    const [minPrice, setMinPrice] = useState<number | null>(() => {
+        const saved = global?.localStorage?.getItem('minPrice')
+        return saved != null ? Number(saved) : null
+    })
+    const [maxPrice, setMaxPrice] = useState<number | null>(() => {
+        const saved = global?.localStorage?.getItem('maxPrice')
+        return saved != null ? Number(saved) : null
+    })
+    const [filters, setFilters] = useState<{ minPrice: number | null, maxPrice: number | null }>({
+        minPrice,
+        maxPrice
+    })
+
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            const savedMinPrice = global?.localStorage?.getItem('minPrice')
+            const savedMaxPrice = global?.localStorage?.getItem('maxPrice')
+            if (savedMinPrice) setMinPrice(Number(savedMinPrice))
+            if (savedMaxPrice) setMaxPrice(Number(savedMaxPrice))
+            setFilters({
+                minPrice: savedMinPrice ? Number(savedMinPrice) : null,
+                maxPrice: savedMaxPrice ? Number(savedMaxPrice) : null
+            })
+        }
+    }, [])
+
+
 
     const fetchProducts = useCallback(async () => {
         setLoading(true)
 
         try {
-            const res = await fetch(`/api/products`, {
+            const filterParams = new URLSearchParams()
+            if (filters.minPrice) filterParams.append('minPrice', filters.minPrice.toString())
+            if (filters.maxPrice) filterParams.append('maxPrice', filters.maxPrice.toString())
+
+            const res = await fetch(`/api/products?${filterParams}`, {
                 headers: {
                     'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
                 }
@@ -46,12 +78,12 @@ export default function Page() {
 
             setProducts(data)
             setDisplayedProducts(data.slice(0, 20))
-        } catch (error) {
-            console.error('Failed to fetch products:', error)
+        } catch (e) {
+            console.error(e)
         } finally {
             setLoading(false)
         }
-    }, [])
+    }, [filters])
 
     const loadMoreProducts = useCallback(() => {
         if (loading || !hasMore) return
@@ -84,177 +116,236 @@ export default function Page() {
         return () => observer.disconnect()
     }, [loading, hasMore, loadMoreProducts])
 
+    const applyFilters = () => {
+        setFilters({
+            minPrice,
+            maxPrice
+        })
+    
+        if (typeof window !== 'undefined') {
+            if (minPrice !== null) global?.localStorage?.setItem('minPrice', minPrice.toString())
+            if (maxPrice !== null) global?.localStorage?.setItem('maxPrice', maxPrice.toString())
+        }
+    }
+    
+    const clearFilters = () => {
+        setMinPrice(null)
+        setMaxPrice(null)
+        setFilters({ minPrice: null, maxPrice: null })
+    
+        if (typeof window !== 'undefined') {
+            global?.localStorage?.removeItem('minPrice')
+            global?.localStorage?.removeItem('maxPrice')
+        }
+    }
+
     useEffect(() => {
         fetchProducts()
     }, [fetchProducts])
 
     return (
         <>
-        <div className="container productsContainer py-5">
-            <div className="row">
-                <div className="col-3 p-2 position-relative">
-                    <div className="filters p-2">
+            <div className="container productsContainer">
+                <div className="row">
+                    <div className="col-3 p-2 position-relative">
+                        <div className="filters p-2">
+                            <div className="row">
+                                <h3 className="text-Blue text-center">Szűrők</h3>
+                            </div>
+                            <hr />
+                            <div className="priceFilter">
+                                <h5>Ár</h5>
+                                <div className="row">
+                                    <div className="col-5">
+                                        <input type="number"
+                                            placeholder="Min."
+                                            value={minPrice || ''}
+                                            onChange={(e) => setMinPrice(Number(e.target.value))}
+                                        />
+                                    </div>
+                                    <div className="col-2 text-center d-flex align-items-center justify-content-center">
+                                        -
+                                    </div>
+                                    <div className="col-5">
+                                        <input
+                                            type="number"
+                                            placeholder='Max.'
+                                            value={maxPrice || ''}
+                                            onChange={(e) => setMaxPrice(Number(e.target.value))}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div className="checkboxFilter">
+                                <h5>Kategória</h5>
+                                <div className="checkboxWrap">
+                                    <div>
+                                        <input type="checkbox" id='cat1' />
+                                        <label htmlFor="cat1">Processzor</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='cat2' />
+                                        <label htmlFor="cat2">Videókártya</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='cat3' />
+                                        <label htmlFor="cat3">Alaplap</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='cat4' />
+                                        <label htmlFor="cat4">Memória</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='cat5' />
+                                        <label htmlFor="cat5">Tárhely</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='cat6' />
+                                        <label htmlFor="cat6">Processzorhűtő</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='cat7' />
+                                        <label htmlFor="cat7">Gépház</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='cat8' />
+                                        <label htmlFor="cat8">Kábelek</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='cat9' />
+                                        <label htmlFor="cat9">Bővítőkártyák</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='cat10' />
+                                        <label htmlFor="cat10">Tápegység</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='cat11' />
+                                        <label htmlFor="cat11">Gépház</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='cat12' />
+                                        <label htmlFor="cat12">Kábelek</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='cat13' />
+                                        <label htmlFor="cat13">Bővítőkártyák</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='cat14' />
+                                        <label htmlFor="cat14">Tápegység</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='cat15' />
+                                        <label htmlFor="cat15">Gépház</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='cat16' />
+                                        <label htmlFor="cat16">Kábelek</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='cat17' />
+                                        <label htmlFor="cat17">Bővítőkártyák</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='cat18' />
+                                        <label htmlFor="cat18">Tápegység</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div className="checkboxFilter">
+                                <h5>Gyártó</h5>
+                                <div className="checkboxWrap">
+                                    <div>
+                                        <input type="checkbox" id='example1' />
+                                        <label htmlFor="example1">Asus</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='example2' />
+                                        <label htmlFor="example2">Msi</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='example3' />
+                                        <label htmlFor="example3">Gigabyte</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='example4' />
+                                        <label htmlFor="example4">Bequit</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='example5' />
+                                        <label htmlFor="example5">Intel</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='example6' />
+                                        <label htmlFor="example6">Corsair</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='example7' />
+                                        <label htmlFor="example7">ROG</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='example8' />
+                                        <label htmlFor="example8">Intel</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='example9' />
+                                        <label htmlFor="example9">Corsair</label>
+                                    </div>
+                                    <div>
+                                        <input type="checkbox" id='example10' />
+                                        <label htmlFor="example10">ROG</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div className="priceFilter">
+                                <h5>Ventillátorok száma</h5>
+                                <div className="row">
+                                    <div className="col-5 pe-0">
+                                        <input type="number" placeholder="Min." />
+                                    </div>
+                                    <div className="col-2 text-center d-flex align-items-center justify-content-center">
+                                        -
+                                    </div>
+                                    <div className="col-5 ps-0">
+                                        <input type="number" placeholder='Max.' />
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div className='orangeButton' onClick={applyFilters}>Alkamazás</div>
+                            <div className='blueButton mt-2' onClick={clearFilters}>Szűrők törlése</div>
+                        </div>
+
+                    </div>
+                    <div className="col-9">
                         <div className="row">
-                            <h3 className="text-Blue text-center">Szűrők</h3>
+                            <Suspense fallback={"loading"}>
+                                {displayedProducts.map((product) => (
+                                    <div className="col-4 p-2" key={product.id}>
+                                        <ProductCard data={product} />
+                                    </div>
+                                ))}
+                            </Suspense>
                         </div>
-                        <hr />
-                        <div className="priceFilter">
-                            <h5>Ár</h5>
-                            <div className="row">
-                                <div className="col-5 pe-0">
-                                    <input type="number" placeholder="Min."  />
-                                </div>
-                                <div className="col-2 text-center d-flex align-items-center justify-content-center">
-                                    -
-                                </div>
-                                <div className="col-5 ps-0">
-                                    <input type="number" placeholder='Max.' />
-                                </div>
-                            </div>
-                        </div>
-                        <hr />
-                        <div className="checkboxFilter">
-                            <h5>Kategória</h5>
-                            <div className="checkboxWrap">
-                                <div>
-                                    <input type="checkbox" id='cat1' />
-                                    <label htmlFor="cat1">Processzor</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id='cat2' />
-                                    <label htmlFor="cat2">Videókártya</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id='cat3' />
-                                    <label htmlFor="cat3">Alaplap</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id='cat4' />
-                                    <label htmlFor="cat4">Memória</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id='cat5' />
-                                    <label htmlFor="cat5">Tárhely</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id='cat6' />
-                                    <label htmlFor="cat6">Processzorhűtő</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id='cat7' />
-                                    <label htmlFor="cat7">Gépház</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id='cat8' />
-                                    <label htmlFor="cat8">Kábelek</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id='cat9' />
-                                    <label htmlFor="cat9">Bővítőkártyák</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id='cat10' />
-                                    <label htmlFor="cat10">Tápegység</label>
-                                </div>
-                            </div>
-                        </div>
-                        <hr />
-                        <div className="checkboxFilter">
-                            <h5>Gyártó</h5>
-                            <div className="checkboxWrap">
-                                <div>
-                                    <input type="checkbox" id='example1' />
-                                    <label htmlFor="example1">Asus</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id='example2' />
-                                    <label htmlFor="example2">Msi</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id='example3' />
-                                    <label htmlFor="example3">Gigabyte</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id='example4' />
-                                    <label htmlFor="example4">Bequit</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id='example5' />
-                                    <label htmlFor="example5">Intel</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id='example6' />
-                                    <label htmlFor="example6">Corsair</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id='example7' />
-                                    <label htmlFor="example7">ROG</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id='example8' />
-                                    <label htmlFor="example8">Intel</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id='example9' />
-                                    <label htmlFor="example9">Corsair</label>
-                                </div>
-                                <div>
-                                    <input type="checkbox" id='example10' />
-                                    <label htmlFor="example10">ROG</label>
-                                </div>
-                            </div>
-                        </div>
-                        <hr />
-                        <div className="priceFilter">
-                            <h5>Ventillátorok száma</h5>
-                            <div className="row">
-                                <div className="col-5 pe-0">
-                                    <input type="number" placeholder="Min."  />
-                                </div>
-                                <div className="col-2 text-center d-flex align-items-center justify-content-center">
-                                    -
-                                </div>
-                                <div className="col-5 ps-0">
-                                    <input type="number" placeholder='Max.' />
-                                </div>
-                            </div>
-                        </div>
-                        <hr />
-                        <OrangeButton name='Alkalmazás' href='#' />
-                    </div>
-                </div>
-                <div className="col-9 pt-2">
-                    <div className="orderRow p-2 mb-2">
-                        <div><span className='text-Blue'>{products.length}</span> találat</div>
-                        <div className='d-flex align-items-center'>
-                            <span className='pe-2'>Rendezés: </span>
-                            <OrangeButton name='Relevancia' href='#' variant='order' />
-                        </div>
-                    </div>
-                    <div className="row">
-                        <Suspense fallback={"loading"}>
-                            {displayedProducts.map((product) => (
-                                <div className="col-4 p-2" key={product.id}>
-                                    <ProductCard data={product} />
-                                </div>
-                            ))}
-                        </Suspense>
-                    </div>
 
-                    {loading && (
-                        <div style={{ textAlign: 'center', marginTop: '20px' }}>
-                            <div>Loading...</div>
-                        </div>
-                    )}
+                        {loading && (
+                            <div style={{ textAlign: 'center', marginTop: '20px' }}>
+                                <div>Loading...</div>
+                            </div>
+                        )}
 
-                    {hasMore && (
-                        <div ref={loaderRef} style={{ height: '20px', marginBottom: '20px' }}>
-                            {/* Invisible loader */}
-                        </div>
-                    )}
+                        {hasMore && (
+                            <div ref={loaderRef} style={{ height: '20px', marginBottom: '20px' }}>
+                                {/* Invisible loader */}
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
-        </div>
         </>
 
     )
