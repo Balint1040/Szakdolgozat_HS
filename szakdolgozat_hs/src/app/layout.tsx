@@ -44,7 +44,7 @@ export default function RootLayout({
 
         <nav className="navbar navbar-expand-lg">
           <div className="container justify-content-between">
-            <Link className="navbar-brand" href="/"><span className="text-Orange">H</span><span className="text-Blue">S</span>market</Link>
+            <Link className="navbar-brand logo" href="/"><span className="text-Orange">H</span><span className="text-Blue">S</span><span>market</span></Link>
             <div className="d-block d-lg-none">
               <LoggedValidation loggedIn={<LoggedInButtons />} notLoggedIn={<OrangeButton name="Bejelentkezés" href="/bejelentkezes"/>} />
             </div>
@@ -82,7 +82,9 @@ export default function RootLayout({
                 </div>
               </div>
               <div className="col-12 col-lg-4 d-flex flex-column align-items-center text-center order-3 order-lg-2 mt-5 mt-lg-0">
-                <h1 className="text-center"><span className="text-Orange">H</span><span className="text-Blue">S</span>market</h1>
+                <Link href={"/"}>
+                <h1 className="text-center logo"><span className="text-Orange">H</span><span className="text-Blue">S</span><span>market</span></h1>
+                </Link>
                 <OrangeButton name="Impresszum" href="#" />
                 <BlueButton name="Adatvédelem" href="#" />
 

@@ -95,6 +95,21 @@ input[type="search"]:active + .navbarSearchIcon, input[type="search"]:focus + .n
     margin-left: 10px;
 }
 
+a > .logo {
+    color: var(--white);
+}
+.logo span {
+    transition: all .3s ease-in-out;
+}
+.logo:hover span {
+    text-shadow: var(--white) 1px 0 10px;
+}
+.logo:hover .text-Blue {
+    text-shadow: var(--blue) 1px 0 10px !important;
+}
+.logo:hover .text-Orange {
+    text-shadow: var(--orange) 1px 0 10px !important;
+}
 
 nav .loggedInCartButton {
     background-color: var(--light);
@@ -885,6 +900,9 @@ input[type=number] {
     align-items: center;
     justify-content: center;
 }
+.filters .orangeButton:hover, .filters .blueButton:hover {
+    cursor: pointer !important;
+}
 .checkboxFilter {
     font-size: 18px;
     line-height: 100%;
@@ -939,6 +957,9 @@ input[type=number] {
 }
 .checkboxFilter input:checked + label {
     opacity: 1;
+}
+.checkboxFilter input:hover, .checkboxFilter label:hover {
+    cursor: pointer;
 }
 
 .checkboxWrap::-webkit-scrollbar {
