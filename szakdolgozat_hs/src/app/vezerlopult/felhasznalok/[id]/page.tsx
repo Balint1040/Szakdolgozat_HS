@@ -33,13 +33,42 @@ export default function Page({
                 }
             })
             const data = await res.json()
-            setUser(data)
+            if (Array.isArray(data)) {
+                setUser(data[0])
+            }
         }
         fetchUser()
     }, [id])
 
+
+    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        if (!user) return
+        const newRole = e.target.value
+        setUser({ ...user, role: newRole })
+    }
+
     if (!user) {
         return <div>Loading...</div>
+    }
+    const handleSave = async () => {
+        try {
+            const res = await fetch(`/api/users/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
+                },
+                body: JSON.stringify({ role: user.role })
+            });
+    
+            if(!res.ok) {
+                return alert('nem')
+            }
+    
+            alert('juhu')
+        } catch (e) {
+            console.error(e)
+        }
     }
 
     return (
@@ -49,6 +78,35 @@ export default function Page({
                     <a className='pointer' onClick={() => { router.back() }}>
                         <FontAwesomeIcon icon={faAnglesLeft as IconProp} /> Vissza
                     </a>
+                </div>
+                <div className="row">
+                    <div className="col-12">
+                        <h2>Felhasználó adatai</h2>
+                        <div className="card mt-3">
+                            <div className="card-body">
+                                <p>Név: {user.name}</p>
+                                <p>Email: {user.email}</p>
+                            </div>
+                            <div className="mb-3 px-3">
+                                <label htmlFor="role" className="form-label"><strong>Szerepkör:</strong></label>
+                                <select 
+                                    id="role"
+                                    className="form-select mb-3"
+                                    value={user.role}
+                                    onChange={handleChange}
+                                    >
+                                    <option value="guest">Guest</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                                <button 
+                                    className="btn btn-primary mb-3" 
+                                    onClick={handleSave}
+                                    >
+                                    Mentés
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
