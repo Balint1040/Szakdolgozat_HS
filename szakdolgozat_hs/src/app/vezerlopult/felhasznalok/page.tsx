@@ -68,7 +68,7 @@ export default function Page() {
                     <div className="col-4">
                         {user.email}
                     </div>
-                    <div className="col-3">
+                    <div className="col-2">
                         {user.role}
                     </div>
                     <div className="col-1 d-flex justify-content-end dashboardButtons">

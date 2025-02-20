@@ -25,6 +25,13 @@ export default function Cart({
         console.error('Product is missing', product)
     }
 
+    let quantityClass = ""
+    if (quantity === 1) {
+        quantityClass = "disabled"
+    } else {
+        quantityClass = ""
+    }
+
     return (
         <div className="row cartItemRow">
             <div className="col-4 p-0 position-relative h-100">
@@ -54,7 +61,7 @@ export default function Cart({
                     <div className="d-flex justify-content-end">
                         <div className="quantityWrap">
                             <a 
-                            className="pointer"
+                            className={`pointer ${quantityClass}`}
                             onClick={() => quantity > 1 && onQuantityChange(quantity - 1)}
                             >
                             -

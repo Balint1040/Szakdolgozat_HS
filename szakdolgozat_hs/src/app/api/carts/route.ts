@@ -38,7 +38,7 @@ export async function POST(req: Request) {
         const { userId, productId, quantity } = await req.json()
 
         const [isCartExists] = await (await pool).execute(
-            'SELECT id FROM cart WHERE userId = ?',
+            'SELECT id FROM cart WHERE userId = 1',
             [userId]
         )
 
@@ -47,7 +47,7 @@ export async function POST(req: Request) {
             cartId = (isCartExists as RowDataPacket[])[0].id
         }else{
             const [result] = await (await pool).execute(
-                'INSERT INTO cart (userId) VALUES (?)',
+                'INSERT INTO cart (userId) VALUES (1)',
                 [userId]
             )
             cartId = (result as ResultSetHeader).insertId
@@ -71,7 +71,7 @@ export async function DELETE(req: Request){
         const userId = searchParams.get('userId')
 
         await (await pool).execute(
-            'DELETE FROM cart WHERE userId = ?',
+            'DELETE FROM cart WHERE userId = 1',
             [userId]
         )
 

@@ -5,6 +5,7 @@ import { Product } from "../termekek/page"
 import Cart from "@/components/Cart"
 import OrangeButton from "@/components/OrangeButton"
 import BlueButton from "@/components/BlueButton"
+import Loading from "@/components/Loading"
 
 interface CartItem {
     id: number
@@ -23,7 +24,7 @@ export default function Page() {
 
     async function fetchCartItems() {
         try {
-            const res = await fetch('/api/carts?userId=17', {
+            const res = await fetch('/api/carts?userId=1', {
                 headers: {
                     'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
                 }
@@ -44,7 +45,7 @@ export default function Page() {
 
     const quantityChange = async (productid: number, newQuantity: number) => {
         try{
-            const res = await fetch('/api/carts?userId=17',{
+            const res = await fetch('/api/carts?userId=1',{
                 method: 'PUT',
                 headers:{
                     'Content-Type': 'application/json',
@@ -62,7 +63,7 @@ export default function Page() {
 
     const handleRemove = async(productId:number) => {
         try{
-            const res = await fetch(`/api/carts?userId=17`, {
+            const res = await fetch(`/api/carts?userId=1`, {
                 method: 'DELETE',
                 headers:{
                     'Content-Type': 'application/json',
@@ -85,14 +86,17 @@ export default function Page() {
     }
 
     if (isLoading) {
-        return <div>Loading...</div>
+        return <Loading />
     }
 
     return (
         <>
             <div className="container py-4">
                 <div className="row">
-                    <h3>Kosaram</h3>
+                    <div className="d-flex justify-content-between align-items-center pb-3">
+                        <h3>Kosaram</h3>
+                        <OrangeButton name="Tovább vásárlok" href="/termekek" variant="discover" />
+                    </div>
                     <hr />
                 </div>
                 {cartItems.length === 0 ? (
@@ -123,7 +127,7 @@ export default function Page() {
                                 <input type="text" id="voucher" className="form-control" />
                             </div>
                             <div>
-                                Összesen: <span className="text-Orange">{calculateTotal().toFixed().replace(/(\d)(?=(\d{3})+$)/g, "$1.")},-</span>
+                                Összesen: <span className="text-Orange">{calculateTotal().toFixed().replace(/(\d)(?=(\d{3})+$)/g, "$1.")}</span>,-
                             </div>
                         </div>
                         <BlueButton name="Fizetés" href="#" variant="discover" />

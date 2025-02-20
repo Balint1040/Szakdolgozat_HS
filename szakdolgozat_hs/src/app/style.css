@@ -581,7 +581,7 @@ nav {
     align-items: center;
 }
 .quantityWrap a {
-    width: 40px;
+    width: 40px !important;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -602,6 +602,13 @@ nav {
 .quantityWrap a:hover {
     border-color: var(--orange);
     cursor: pointer;
+}
+.quantityWrap a.disabled {
+    color: #33333350;
+    cursor: default;
+}
+.quantityWrap a.disabled:hover {
+    border-color: transparent !important;
 }
 .recommendationCard .recommendationBottomRowWrap {
     position: absolute;

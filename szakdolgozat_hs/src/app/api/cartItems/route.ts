@@ -23,14 +23,12 @@ export async function PUT(req: Request) {
     try {
         const { productId, quantity } = await req.json()
 
-        // First check if the item exists in the cart
         const [existingItem] = await (await pool).execute(
             'SELECT id, quantity FROM cartItem WHERE productId = ?',
             [productId]
         )
 
         if (Array.isArray(existingItem) && existingItem.length > 0) {
-            // Update existing cart item quantity
             await (await pool).execute(
                 'UPDATE cartItem SET quantity = ? WHERE productId = ?',
                 [quantity, productId]

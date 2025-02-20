@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function LoggedInButtons() {
     return (
         <div className="d-flex flex-row justify-content-between">
-            <Link className="loggedInCartButton me-3" href="">
+            <Link className="loggedInCartButton me-3" href="/kosar">
                 <FontAwesomeIcon icon={faCartShopping as IconProp} />
             </Link>
             <Link className="loggedInCartButton loggedInProfileButton" href="/vezerlopult">
