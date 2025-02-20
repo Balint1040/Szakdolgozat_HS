@@ -6,12 +6,31 @@ import { useState } from "react"
 import Link from "next/link"
 import OrangeCartButton from "./OrangeCartButton"
 import fallbackImg from "../../public/static/imgNotFound.png"
+import { Quantity } from "./RecommendationCard"
+
+interface ProductCardProps{
+    data: Product
+    onAddToCart: (product: Product, quantity: Quantity) => Promise<void>
+}
 
 export default function ProductCard({
-    data
-}: {
-    data: Product
-}) {
+    data,
+    onAddToCart
+} : ProductCardProps) {
+
+    const [quantity, setQuantity] = useState<Quantity>(1 as Quantity)
+
+    const handleAddToCart = async(e: React.MouseEvent) => {
+        e.preventDefault()
+        if(onAddToCart){
+            try{
+                await onAddToCart(data, quantity)
+                setQuantity(1)
+            }catch(e){
+                console.error(e)
+            }
+        }
+    }
 
     const [imageError, setImageError] = useState(false)
 
@@ -53,15 +72,25 @@ export default function ProductCard({
                     <div className="recommendationPrice">
                         <span className="text-Blue">{data.price.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, "$1.")}</span>,-</div>
                 </div>
-                <div className="d-flex flex-row justify-content-between mt-3">
-                    <div className="quantityWrap">
-                        <a className="">-</a>
-                        <h3>1</h3>
-                        <a className="">+</a>
+                        <div className="d-flex flex-row justify-content-between mt-3">
+                        <div className="quantityWrap">
+                            <a 
+                                className="pointer"
+                                onClick={() => quantity > 1 && setQuantity(q => (q - 1) as Quantity)}
+                            >
+                                -
+                            </a>
+                            <h3>{quantity}</h3>
+                            <a 
+                                className="pointer"
+                                onClick={() => setQuantity(q => (q + 1) as Quantity)}
+                            >
+                                +
+                            </a>
+                        </div>
+                        <OrangeCartButton href="#" onClick={handleAddToCart} />
                     </div>
-                    <OrangeCartButton href={"#"} />
                 </div>
             </div>
-        </div>
     )
 }

@@ -31,6 +31,7 @@ model product {
   properties   Json
   manufacturer String
   categoryId   Int?
+  cartItems cartItem[]
 }
 
 model user {
@@ -40,6 +41,24 @@ model user {
   role      user_role @default(guest)
   createdAt DateTime  @default(now())
   name      String
+  cart cart[]
+}
+
+model cart{
+  id Int @id @default(autoincrement())
+  userId Int
+  user user @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  items cartItem[]
+}
+
+model cartItem{
+  id Int @id @default(autoincrement())
+  cartId Int
+  cart cart @relation(fields: [cartId], references: [id])
+  productId Int
+  product product @relation(fields: [productId], references: [id])
+  quantity Int @default(1)
 }
 
 enum user_role {
