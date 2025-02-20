@@ -82,12 +82,12 @@ export default function Page({
     }
 
     if (!product) {
-        return <div>Loading...</div>
+        return <div className="w-100 h-100 d-flex justify-content-center align-items-center">Loading...</div>
     }
 
     return (
         <>
-            <div className="container productContainer">
+            <div className="container-fluid productContainer py-3">
                 <div className="mb-2">
                     <a className='pointer' onClick={() => { router.back() }}>
                         <FontAwesomeIcon icon={faAnglesLeft as IconProp} /> Vissza
@@ -134,6 +134,7 @@ export default function Page({
                                     onChange={handleChange}
                                 />
                             </div>
+                            { /*
                             <div className="mb-3">
                                 <label htmlFor="properties" className='form-label'>Tulajdonságok</label>
                                 <textarea
@@ -144,6 +145,36 @@ export default function Page({
                                     onChange={handleChange}
                                 />
                             </div>
+                            */ 
+                            }
+
+                            <label className="form-label">Tulajdonságok:</label>
+                            {Object.entries(product.properties).map((property, index) => (
+                                <div className="row my-2" key={index}>
+                                    <div className="col-6">
+                                        <input 
+                                            type="text" 
+                                            id={property[0]} 
+                                            name={property[0]} 
+                                            className="form-control" 
+                                            value={property[0]} 
+                                            onChange={handleChange} 
+                                        />
+                                    </div>
+                                    <div className="col-6">
+                                        <input 
+                                            type="text" 
+                                            id={property[1]} 
+                                            name={property[1]} 
+                                            className="form-control" 
+                                            value={property[1]} 
+                                            onChange={handleChange} 
+                                        />
+                                    </div>
+                                </div>
+                            ))}
+
+
                             <div className="mb-3">
                                 <label htmlFor="categoryId" className="form-label">Termékkategória:</label>
                                 <select
@@ -158,7 +189,7 @@ export default function Page({
                                     ))}
                                 </select>
                             </div>
-                            <button type="submit" className="btn btn-primary">Mentés</button>
+                            <button type="submit" className="blueButton">Mentés</button>
                         </form>
                     </div>
                 </div>

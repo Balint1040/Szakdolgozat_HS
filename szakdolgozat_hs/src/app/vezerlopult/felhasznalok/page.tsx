@@ -42,7 +42,7 @@ export default function Page() {
         }
     }
     return (
-        <div className="pe-4 position-relative">
+        <div className="container-fluid position-relative">
             <div className="row dashboardRowHeader">
                 <div className="col-1">
                     ID
