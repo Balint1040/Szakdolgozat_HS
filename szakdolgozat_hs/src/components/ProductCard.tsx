@@ -19,7 +19,9 @@ export default function ProductCard({
                 <img src={!data.imageUrl ? data.url : data.imageUrl} />
                 <div className="imgHover"><FontAwesomeIcon icon={faMagnifyingGlassPlus as IconProp} /></div>
             </Link>
-            <h4>{(data.name.slice(0, 60).length) < 60 ? data.name : (data.name.slice(0, 60) + "...")}</h4>
+            <Link href={"/termekek/" + data.id} className="productCardNameLink">
+                <h4>{(data.name.slice(0, 60).length) < 60 ? data.name : (data.name.slice(0, 60) + "...")}</h4>
+            </Link>
             <div className="propertiesWrap">
                 {
                     [...Object.entries(data.properties)].map(([key, value], i) => {
