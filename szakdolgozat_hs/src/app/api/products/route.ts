@@ -13,6 +13,8 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url)
     const minPrice = searchParams.get('minPrice')
     const maxPrice = searchParams.get('maxPrice')
+    const categoryId = searchParams.get('categoryId')
+    const manufacturer = searchParams.get("manufacturer")
     
     let query = `
       SELECT p.*, i.url AS imageUrl 
@@ -32,6 +34,17 @@ export async function GET(request: NextRequest) {
       query += ` AND p.price <= ?`
       params.push(maxPrice)
     }
+    if (categoryId) {
+      const categoryIds = categoryId.split(',').map(id => parseInt(id, 10))
+      query += ` AND p.categoryId IN (${categoryIds.map(() => '?').join(',')})`
+      params.push(...categoryIds)
+    }
+    if(manufacturer){
+      const manufacturers = manufacturer.split(',')
+      query += `AND p.manufacturer IN (${manufacturers.map(() => "?").join(",")})`
+      params.push(...manufacturers)
+    }
+
 
     query += ` ORDER BY p.id`
 

@@ -40,9 +40,19 @@ export default function Page() {
         const saved = global?.localStorage?.getItem('maxPrice')
         return saved != null ? Number(saved) : null
     })
-    const [filters, setFilters] = useState<{ minPrice: number | null, maxPrice: number | null }>({
+    const [categoryId, setCategoryId] = useState<number[]>(() => {
+        const saved = global?.localStorage?.getItem('categoryId')
+        return saved ? JSON.parse(saved) : []
+    })
+    const [manufacturer, setManufacturer] = useState<string[]>(() => {
+        const saved = global?.localStorage?.getItem('manufacturer')
+        return saved ? JSON.parse(saved) : []
+    })
+    const [filters, setFilters] = useState<{ minPrice: number | null, maxPrice: number | null, categoryId: number[], manufacturer: string[] }>({
         minPrice,
-        maxPrice
+        maxPrice,
+        categoryId,
+        manufacturer
     })
 
 
@@ -50,14 +60,40 @@ export default function Page() {
         if (typeof window !== 'undefined') {
             const savedMinPrice = global?.localStorage?.getItem('minPrice')
             const savedMaxPrice = global?.localStorage?.getItem('maxPrice')
+            const savedCategoryId = global?.localStorage?.getItem('categoryId')
+            const savedManufacturer = global?.localStorage?.getItem('manufacturer')
             if (savedMinPrice) setMinPrice(Number(savedMinPrice))
             if (savedMaxPrice) setMaxPrice(Number(savedMaxPrice))
+            if (savedCategoryId) setCategoryId(JSON.parse((savedCategoryId)))
+            if (savedManufacturer) setManufacturer(JSON.parse((savedManufacturer)))
             setFilters({
                 minPrice: savedMinPrice ? Number(savedMinPrice) : null,
-                maxPrice: savedMaxPrice ? Number(savedMaxPrice) : null
+                maxPrice: savedMaxPrice ? Number(savedMaxPrice) : null,
+                categoryId: savedCategoryId ? JSON.parse((savedCategoryId)) : [],
+                manufacturer: savedManufacturer ? JSON.parse((savedManufacturer)) : []
             })
         }
     }, [])
+
+    const handleCategoryChange = (id: number) => {
+        setCategoryId((prev) => {
+            if (prev.includes(id)) {
+                return prev.filter((categoryId) => categoryId !== id)
+            } else {
+                return [...prev, id]
+            }
+        })
+    }
+
+    const handleManufacturerChange = (name: string) => {
+        setManufacturer((prev) => {
+            if (prev.includes(name)) {
+                return prev.filter((manufacturer) => manufacturer !== name)
+            } else {
+                return [...prev, name]
+            }
+        })
+    }
 
 
 
@@ -68,6 +104,9 @@ export default function Page() {
             const filterParams = new URLSearchParams()
             if (filters.minPrice) filterParams.append('minPrice', filters.minPrice.toString())
             if (filters.maxPrice) filterParams.append('maxPrice', filters.maxPrice.toString())
+            if (filters.categoryId.length > 0) filterParams.append('categoryId', filters.categoryId.join(','))
+            if (filters.manufacturer.length > 0) filterParams.append("manufacturer", filters.manufacturer.join(","))
+
 
             const res = await fetch(`/api/products?${filterParams}`, {
                 headers: {
@@ -119,25 +158,46 @@ export default function Page() {
     const applyFilters = () => {
         setFilters({
             minPrice,
-            maxPrice
+            maxPrice,
+            categoryId,
+            manufacturer
         })
-    
+
         if (typeof window !== 'undefined') {
             if (minPrice !== null) global?.localStorage?.setItem('minPrice', minPrice.toString())
             if (maxPrice !== null) global?.localStorage?.setItem('maxPrice', maxPrice.toString())
+            if (categoryId.length > 0) global?.localStorage?.setItem('categoryId', JSON.stringify(categoryId))
+            if (manufacturer.length > 0) global?.localStorage?.setItem("manufacturer", JSON.stringify(manufacturer))
         }
+
+        fetchProducts()
     }
-    
+
     const clearFilters = () => {
         setMinPrice(null)
         setMaxPrice(null)
-        setFilters({ minPrice: null, maxPrice: null })
-    
+        setCategoryId([])
+        setManufacturer([])
+        setFilters({ minPrice: null, maxPrice: null, categoryId: [], manufacturer: [] })
+
         if (typeof window !== 'undefined') {
             global?.localStorage?.removeItem('minPrice')
             global?.localStorage?.removeItem('maxPrice')
+            global?.localStorage?.removeItem('categoryId')
+            global?.localStorage?.removeItem('manufacturer')
         }
+        fetchProducts()
     }
+
+    const categoryOptions: { [key: number]: string } = {
+        1: "Videókártya",
+        2: "Processzor",
+        3: "Alaplap",
+        4: "Memória"
+    }
+
+    const uniqueManufacturers = Array.from(new Set(products.filter(product => categoryId.length == 0 || categoryId.includes(product.categoryId)).map(product => product.manufacturer)))
+    const uniqueCategories = Array.from(new Set(products.filter(product => manufacturer.length === 0 || manufacturer.includes(product.manufacturer)).map(product => product.categoryId)))
 
     useEffect(() => {
         fetchProducts()
@@ -156,7 +216,7 @@ export default function Page() {
                             <div className="priceFilter">
                                 <h5>Ár</h5>
                                 <div className="row">
-                                    <div className="col-5">
+                                    <div className="col-5 pe-0">
                                         <input type="number"
                                             placeholder="Min."
                                             value={minPrice || ''}
@@ -168,7 +228,7 @@ export default function Page() {
                                     </div>
                                     <div className="col-5">
                                         <input
-                                            type="number"
+                                            type="number ps-0"
                                             placeholder='Max.'
                                             value={maxPrice || ''}
                                             onChange={(e) => setMaxPrice(Number(e.target.value))}
@@ -180,124 +240,36 @@ export default function Page() {
                             <div className="checkboxFilter">
                                 <h5>Kategória</h5>
                                 <div className="checkboxWrap">
-                                    <div>
-                                        <input type="checkbox" id='cat1' />
-                                        <label htmlFor="cat1">Processzor</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='cat2' />
-                                        <label htmlFor="cat2">Videókártya</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='cat3' />
-                                        <label htmlFor="cat3">Alaplap</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='cat4' />
-                                        <label htmlFor="cat4">Memória</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='cat5' />
-                                        <label htmlFor="cat5">Tárhely</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='cat6' />
-                                        <label htmlFor="cat6">Processzorhűtő</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='cat7' />
-                                        <label htmlFor="cat7">Gépház</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='cat8' />
-                                        <label htmlFor="cat8">Kábelek</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='cat9' />
-                                        <label htmlFor="cat9">Bővítőkártyák</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='cat10' />
-                                        <label htmlFor="cat10">Tápegység</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='cat11' />
-                                        <label htmlFor="cat11">Gépház</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='cat12' />
-                                        <label htmlFor="cat12">Kábelek</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='cat13' />
-                                        <label htmlFor="cat13">Bővítőkártyák</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='cat14' />
-                                        <label htmlFor="cat14">Tápegység</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='cat15' />
-                                        <label htmlFor="cat15">Gépház</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='cat16' />
-                                        <label htmlFor="cat16">Kábelek</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='cat17' />
-                                        <label htmlFor="cat17">Bővítőkártyák</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='cat18' />
-                                        <label htmlFor="cat18">Tápegység</label>
-                                    </div>
+                                    {uniqueCategories.map((id) => (
+                                        <div key={id}>
+                                            <input
+                                                type="checkbox"
+                                                id={id.toString()}
+                                                checked={categoryId.includes(id)}
+                                                onChange={() => handleCategoryChange(id)}
+                                                disabled={!uniqueCategories.includes(id)}
+                                            />
+                                            <label htmlFor={id.toString()}>{categoryOptions[id]}</label>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                             <hr />
                             <div className="checkboxFilter">
                                 <h5>Gyártó</h5>
                                 <div className="checkboxWrap">
-                                    <div>
-                                        <input type="checkbox" id='example1' />
-                                        <label htmlFor="example1">Asus</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='example2' />
-                                        <label htmlFor="example2">Msi</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='example3' />
-                                        <label htmlFor="example3">Gigabyte</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='example4' />
-                                        <label htmlFor="example4">Bequit</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='example5' />
-                                        <label htmlFor="example5">Intel</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='example6' />
-                                        <label htmlFor="example6">Corsair</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='example7' />
-                                        <label htmlFor="example7">ROG</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='example8' />
-                                        <label htmlFor="example8">Intel</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='example9' />
-                                        <label htmlFor="example9">Corsair</label>
-                                    </div>
-                                    <div>
-                                        <input type="checkbox" id='example10' />
-                                        <label htmlFor="example10">ROG</label>
-                                    </div>
+                                    {uniqueManufacturers.map((manufacturerName) => (
+                                        <div key={manufacturerName}>
+                                            <input
+                                                type="checkbox"
+                                                id={manufacturerName}
+                                                checked={manufacturer.includes(manufacturerName)}
+                                                onChange={() => handleManufacturerChange(manufacturerName)}
+                                                disabled={!products.some(product => product.manufacturer === manufacturerName && (categoryId.length === 0 || categoryId.includes(product.categoryId)))}
+                                            />
+                                            <label htmlFor={manufacturerName}>{manufacturerName}</label>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                             <hr />
