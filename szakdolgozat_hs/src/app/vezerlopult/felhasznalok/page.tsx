@@ -10,7 +10,7 @@ export interface User {
     id: number,
     email: string,
     password: string,
-    role: string,
+    role: "admin" | "guest",
     name: string
 }
 export default function Page() {

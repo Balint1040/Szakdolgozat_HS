@@ -7,11 +7,83 @@
     --white: #FFFFFF;
     --light: #F2F2F2;
 }
-img, .swiper-slide {
+
+::-webkit-scrollbar {
+    width: 14px;
+}
+
+::-webkit-scrollbar-thumb {
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    border-radius: 9999px;
+    background-color: var(--orange);
+}
+
+::selection {
+    background: var(--orange);
+    color: #ffffff;
+}
+
+.loader {
+    border: 4px solid var(--light);
+    border-top: 4px solid var(--blue);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: loader 1.3s linear infinite;
+    margin-right: 10px;
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#scrollToTop {
+    position: fixed;
+    bottom: 25px;
+    right: 30px;
+    height: 50px;
+    width: 50px;
+    background-color: var(--orange);
+    color: var(--white);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    border: 3px solid var(--orange);
+    transition: all .3s ease-in-out;
+    opacity: 0;
+    transform: scale(0);
+}
+#scrollToTop.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+#scrollToTop:hover {
+    background-color: var(--white);
+    color: var(--orange);
+    cursor: pointer;
+}
+#scrollToTop svg {
+    transition: transform .3s ease-in-out;
+}
+#scrollToTop:hover svg {
+    transform: translateY(-3px);
+}
+
+img, .swiper-slide, .quantityWrap a {
     -webkit-user-drag: none;
     -khtml-user-drag: none;
     -moz-user-drag: none;
     -o-user-drag: none;
+    user-select: none;
 }
 
 .text-Orange {
@@ -30,9 +102,9 @@ img, .swiper-slide {
     transition: all .3s ease-in-out;
 }
 
-input[type="search"] {
+/*input[type="search"] {
     transition: all .3s ease-in-out;
-}
+}*/
 input[type="search"]:active, input[type="search"]:focus {
     box-shadow: none;
     -webkit-box-shadow: 2px 4px 20px 5px var(--blue);
@@ -187,6 +259,15 @@ nav .loggedInCartButton:hover::after {
 .loginWrap {
     min-height: calc(100vh - 100px);
 }
+.loginWrap a.text-Orange, .loginWrap a.text-Blue {
+    transition: all .3s ease-in-out;
+}
+.loginWrap a.text-Orange:hover {
+    color: var(--blue);
+}
+.loginWrap a.text-Blue:hover {
+    color: var(--orange);
+}
 .loginCard {
     padding: 20px;
     min-height: 450px;
@@ -258,12 +339,12 @@ nav {
     height: 100px;
 }
 #strengths .sCardWrap svg, #strengths .sCardWrap > div {
-    transition: all .3s ease-in-out;
+    transition: all .5s ease-in-out;
 }
-#strengths .sCardWrap:hover {
+#strengths .sCardWrap:hover, #strengths .sCardWrap.highlight{
     color: var(--orange);
 }
-#strengths .sCardWrap:hover svg {
+#strengths .sCardWrap:hover svg, #strengths .sCardWrap.highlight svg{
     transform: translateY(-10px);
     filter: drop-shadow(0px 4px 20px #FF7E2D);
 }
@@ -271,9 +352,6 @@ nav {
 #cta p {
     font-size: 40px;
     color: var(--gray);
-}
-.ctaImgColumn {
-    overflow: hidden;
 }
 .ram, .gpu, .motherb {
     position: absolute;
@@ -484,11 +562,12 @@ nav {
     display: flex;
     flex-direction: row;
     align-items: center;
-    width: 140px;
+    width: 130px;
     justify-content: center;
     font-size: 25px;
     background-color: var(--white);
     border-radius: 40px;
+    padding: 0;
 }
 .quantityWrap h3 {
     width: 50px;
@@ -503,8 +582,26 @@ nav {
 }
 .quantityWrap a {
     width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     color: var(--gray);
+    border: solid 3px transparent;
+    height: 100%;
+    transition: all .3s ease-in-out;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+.quantityWrap a:nth-of-type(odd) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+.quantityWrap a:hover {
+    border-color: var(--orange);
+    cursor: pointer;
 }
 .recommendationCard .recommendationBottomRowWrap {
     position: absolute;
@@ -785,7 +882,7 @@ footer .seo:not(:nth-last-of-type(1))::after {
     height: calc(300px - 192px - 44px);
 }
 .navbarSearch .form-control {
-    transition: border-radius .3s ease-in-out;
+    transition: all .3s ease-in-out;
     transition-delay: .3s;
 }
 .navbarSearch:has(+ .search-res-container > .search-res-item) .form-control  {
@@ -919,7 +1016,7 @@ input[type=number] {
     padding-top: 4px;
     padding-bottom: 4px;
 }
-.checkboxFilter input {
+.checkboxFilter input, input[type="checkbox"] {
     border-radius: 5px;
     color: var(--orange);
     -webkit-appearance: none;
@@ -933,7 +1030,7 @@ input[type=number] {
     justify-content: center;
     align-items: center;
 }
-.checkboxFilter input::after {
+.checkboxFilter input::after, input[type="checkbox"]::after {
     content: '\f00c';
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
@@ -942,14 +1039,14 @@ input[type=number] {
     transform: scale(0);
     transition: all .3s ease-in-out;
 }
-.checkboxFilter input:checked::after {
+.checkboxFilter input:checked::after, input[type="checkbox"]:checked::after {
     transform: scale(1);
     opacity: 1;
 }
-.checkboxFilter label:hover {
+.checkboxFilter label:hover, input[type="checkbox"] + label:hover {
     color: var(--blue);
 }
-.checkboxFilter label {
+.checkboxFilter label, input[type="checkbox"] + label {
     opacity: .75;
     padding-left: 10px;
     width: 100%;
@@ -958,7 +1055,7 @@ input[type=number] {
 .checkboxFilter input:checked + label {
     opacity: 1;
 }
-.checkboxFilter input:hover, .checkboxFilter label:hover {
+.checkboxFilter input:hover, .checkboxFilter label:hover, input[type="checkbox"]:hover, input[type="checkbox"] + label:hover {
     cursor: pointer;
 }
 
@@ -1188,6 +1285,7 @@ input[type=number] {
 
     .ctaImgColumn {
         height: 500px;
+        overflow: hidden;
     }
     .ctaImgColumn > div {
         width: 100%;

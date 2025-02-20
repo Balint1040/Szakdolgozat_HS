@@ -1,4 +1,5 @@
 'use client'
+import Loading from '@/components/Loading'
 import OrangeButton from '@/components/OrangeButton'
 import ProductSwiper from '@/components/ProductSwiper'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
@@ -108,7 +109,7 @@ export default function Page({
     }
 
     if (!product) {
-        return <div className="w-100 h-100 d-flex justify-content-center align-items-center">Loading...</div>
+        return <Loading />
     }
 
     return (

@@ -38,7 +38,7 @@ export default function Page() {
 
     return (
         <>
-            <div className="loginWrap d-flex justify-content-center align-items-center">
+            <div className="loginWrap d-flex justify-content-center align-items-center py-4">
                 <div className="loginCard d-flex justify-content-center align-items-center">
                     <form onSubmit={handleSubmit}>
                         <h2 className="text-center mb-4">Bejelentkezés</h2>
@@ -62,7 +62,7 @@ export default function Page() {
                                 onChange={e => setPassword(e.target.value)}
                             />
                         </div>
-                        <div className="mb-3 px-2 d-flex justify-content-between align-items-center">
+                        <div className="mb-3 px-2 d-flex justify-content-between align-items-center flex-wrap">
                             <div className="d-flex align-items-center">
                                 <input type="checkbox" id="rememberMe" />
                                 <label htmlFor="rememberMe" className="ps-1 mb-0">Emlékezz rám</label>

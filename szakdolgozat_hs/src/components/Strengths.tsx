@@ -1,10 +1,27 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowTrendDown, faCircleCheck, faGaugeHigh, faShieldHalved } from '@fortawesome/free-solid-svg-icons'
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+"use client"
 
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useEffect } from 'react'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowTrendDown, faCircleCheck, faGaugeHigh, faShieldHalved } from '@fortawesome/free-solid-svg-icons'
+import { IconProp } from "@fortawesome/fontawesome-svg-core"
 
 export default function Strengths() {
+    useEffect(() => {
+        const sCardWraps = document.querySelectorAll('.sCardWrap')
+        let index = 0
+        const className = 'highlight' 
+        
+        const addClassInSequence = () => {
+            sCardWraps.forEach((wrap) => wrap.classList.remove(className))
+            sCardWraps[index].classList.add(className)
+            index = (index + 1) % sCardWraps.length 
+            setTimeout(addClassInSequence, 2000) 
+        }
+
+        addClassInSequence() 
+
+    }, []) 
+
     return (
         <section id="strengths" className="position-relative">
             <div className="container">

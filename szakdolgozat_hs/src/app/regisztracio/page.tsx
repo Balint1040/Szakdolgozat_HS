@@ -37,7 +37,7 @@ export default function Page() {
 
         return (
             <>
-                <div className="loginWrap d-flex justify-content-center align-items-center">
+                <div className="loginWrap d-flex justify-content-center align-items-center py-4">
                     <div className="loginCard d-flex justify-content-center align-items-center">
                         <form onSubmit={handleSubmit}>
                             <h2 className="text-center mb-4">Regisztráció</h2>

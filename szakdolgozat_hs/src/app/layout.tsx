@@ -5,18 +5,16 @@ import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Anta } from "next/font/google";
 
-import BootstrapClient from "@/components/BootstrapClient";
 import OrangeButton from "@/components/OrangeButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faMagnifyingGlass, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import BlueButton from "@/components/BlueButton";
 import SearchButton from "@/components/SearchButton";
 import Link from "next/link";
 import LoggedInButtons from "@/components/LoggedInButtons";
 import LoggedValidation from "@/components/LoggedValidation";
-import { NextRequest } from "next/server";
-import { BrowserRouter } from "react-router";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const anta = Anta({
   weight: "400",
@@ -68,6 +66,7 @@ export default function RootLayout({
         </div>
 
 
+        <ScrollToTop />
         {
           // Consider `Link` tag instead of `a` 
         }
