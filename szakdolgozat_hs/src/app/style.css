@@ -460,7 +460,26 @@ nav {
 .reviewSwiper-scrollbar .swiper-scrollbar-drag, .recommendationSwiper-scrollbar .swiper-scrollbar-drag {
     background-color: var(--orange);
 }
-.reviewSwiper-nextEl, .reviewSwiper-prevEl, .recommendationSwiper-nextEl, .recommendationSwiper-prevEl {
+.pagination div {
+    height: 65px;
+    width: 65px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.paginationPrev, .paginationNext {
+    border: none;
+}
+.paginationPrev:disabled, .paginationNext:disabled {
+    opacity: .7;
+}
+.paginationPrev:disabled:hover, .paginationNext:disabled:hover {
+    background-color: var(--blue);
+    color: var(--white);
+    cursor: default;
+}
+.reviewSwiper-nextEl, .reviewSwiper-prevEl, .recommendationSwiper-nextEl, .recommendationSwiper-prevEl, .paginationPrev, .paginationNext {
     position: relative;
     min-height: 65px;
     height: 65px;
@@ -474,7 +493,7 @@ nav {
     color: var(--white);
     transition: all .3s ease-in-out;
 }
-.reviewSwiper-nextEl::after, .reviewSwiper-prevEl::after, .recommendationSwiper-nextEl::after, .recommendationSwiper-prevEl::after {
+.reviewSwiper-nextEl::after, .reviewSwiper-prevEl::after, .recommendationSwiper-nextEl::after, .recommendationSwiper-prevEl::after, .paginationPrev::after, .paginationNext::after {
     content: "";
     width: 100%;
     height: 100%;
@@ -485,12 +504,12 @@ nav {
     top: 0;
     left: 0;
 }
-.reviewSwiper-nextEl:hover, .reviewSwiper-prevEl:hover, .recommendationSwiper-nextEl:hover, .recommendationSwiper-prevEl:hover {
+.reviewSwiper-nextEl:hover, .reviewSwiper-prevEl:hover, .recommendationSwiper-nextEl:hover, .recommendationSwiper-prevEl:hover, .paginationPrev:hover, .paginationNext:hover {
     cursor: pointer;
     background-color: var(--white);
     color: var(--blue);
 }
-.reviewSwiper-nextEl svg, .reviewSwiper-prevEl svg, .recommendationSwiper-nextEl svg, .recommendationSwiper-prevEl svg {
+.reviewSwiper-nextEl svg, .reviewSwiper-prevEl svg, .recommendationSwiper-nextEl svg, .recommendationSwiper-prevEl svg, .paginationPrev svg, .paginationNext svg {
     height: 30px;
 }
 
@@ -875,6 +894,7 @@ footer .seo:not(:nth-last-of-type(1))::after {
     overflow-y: hidden;
     transition: height .3s ease-in-out;
     height: 0;
+    z-index: 5;
 }
 .search-res-container:has(> .search-res-item:nth-of-type(4)) {
     height: 300px;

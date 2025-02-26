@@ -4,6 +4,9 @@ import { useEffect, useState, useCallback } from 'react'
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
 import OrangeButton from '@/components/OrangeButton'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
 
 const ProductCard = dynamic(() => import("@/components/ProductCard"), {
     loading: () => <div style={{
@@ -31,7 +34,8 @@ export default function Page() {
     const [products, setProducts] = useState<Product[]>([])
     const [displayedProducts, setDisplayedProducts] = useState<Product[]>([])
     const [loading, setLoading] = useState(false)
-    const [hasMore, setHasMore] = useState(true)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [itemsPerPage] = useState(30)
     const [minPrice, setMinPrice] = useState<number | null>(() => {
         const saved = global?.localStorage?.getItem('minPrice')
         return saved != null ? Number(saved) : null
@@ -54,7 +58,6 @@ export default function Page() {
         categoryId,
         manufacturer
     })
-
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -95,30 +98,39 @@ export default function Page() {
         })
     }
 
-    
-
-    const addToCart = async(product: Product, quantity: number) => {
-        try{
+    const addToCart = async (product: Product, quantity: number) => {
+        try {
             const res = await fetch('/api/carts', {
                 method: 'POST',
-                headers:{
+                headers: {
                     'Content-Type': 'application/json',
                     'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
                 },
                 body: JSON.stringify({
                     userId: 17,
-                    productId: product.id, 
-                    quantity: quantity})
+                    productId: product.id,
+                    quantity: quantity
+                })
             })
-            if(res.ok){
+            if (res.ok) {
                 alert(`${product.name} (${quantity}) hozzáadva a kosárhoz!`)
-            }else{
+            } else {
                 alert('Hiba a termék hozzáadásakor')
             }
-        }catch(e){
+        } catch (e) {
             console.error(e)
         }
     }
+
+    const categoryOptions: { [key: number]: string } = {
+        1: "Videókártya",
+        2: "Processzor",
+        3: "Alaplap",
+        4: "Memória"
+    }
+
+    const uniqueManufacturers = Array.from(new Set(products.filter(product => categoryId.length == 0 || categoryId.includes(product.categoryId)).map(product => product.manufacturer)))
+    const uniqueCategories = Array.from(new Set(products.filter(product => manufacturer.length === 0 || manufacturer.includes(product.manufacturer)).map(product => product.categoryId)))
 
     const fetchProducts = useCallback(async () => {
         setLoading(true)
@@ -130,16 +142,14 @@ export default function Page() {
             if (filters.categoryId.length > 0) filterParams.append('categoryId', filters.categoryId.join(','))
             if (filters.manufacturer.length > 0) filterParams.append("manufacturer", filters.manufacturer.join(","))
 
-
             const res = await fetch(`/api/products?${filterParams}`, {
                 headers: {
                     'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
                 }
             })
             const data: Product[] = await res.json()
-
             setProducts(data)
-            setDisplayedProducts(data.slice(0, 20))
+            paginateProducts(data, 1)
         } catch (e) {
             console.error(e)
         } finally {
@@ -147,36 +157,23 @@ export default function Page() {
         }
     }, [filters])
 
-    const loadMoreProducts = useCallback(() => {
-        if (loading || !hasMore) return
+    const paginateProducts = (allProducts: Product[], page: number) => {
+        const startIndex = (page - 1) * itemsPerPage
+        const endIndex = startIndex + itemsPerPage
+        setDisplayedProducts(allProducts.slice(startIndex, endIndex))
+    }
 
-        setLoading(true)
-        const nextIndex = displayedProducts.length
+    const handlePageChange = (page: number) => {
+        scrollToTop()
+        setCurrentPage(page)
+        paginateProducts(products, page)
+    }
 
-        const nextProducts = products.slice(nextIndex, nextIndex + 20)
-
-        if (nextProducts.length === 0) {
-            setHasMore(false)
-        } else {
-            setDisplayedProducts((prev) => [...prev, ...nextProducts])
-        }
-
-        setLoading(false)
-    }, [loading, hasMore, displayedProducts, products])
-
-    const loaderRef = useCallback((node: HTMLDivElement) => {
-        if (loading || !hasMore) return
-        const observer = new IntersectionObserver(
-            (entries) => {
-                if (entries[0].isIntersecting) {
-                    loadMoreProducts()
-                }
-            },
-            { threshold: 1.0 }
-        )
-        if (node) observer.observe(node)
-        return () => observer.disconnect()
-    }, [loading, hasMore, loadMoreProducts])
+    const isBrowser = () => typeof window !== 'undefined'
+    function scrollToTop() {
+        if (!isBrowser()) return
+        window.scrollTo({ top: 0 })
+    }
 
     const applyFilters = () => {
         setFilters({
@@ -194,6 +191,7 @@ export default function Page() {
         }
 
         fetchProducts()
+        setCurrentPage(1)
     }
 
     const clearFilters = () => {
@@ -210,17 +208,8 @@ export default function Page() {
             global?.localStorage?.removeItem('manufacturer')
         }
         fetchProducts()
+        setCurrentPage(1)
     }
-
-    const categoryOptions: { [key: number]: string } = {
-        1: "Videókártya",
-        2: "Processzor",
-        3: "Alaplap",
-        4: "Memória"
-    }
-
-    const uniqueManufacturers = Array.from(new Set(products.filter(product => categoryId.length == 0 || categoryId.includes(product.categoryId)).map(product => product.manufacturer)))
-    const uniqueCategories = Array.from(new Set(products.filter(product => manufacturer.length === 0 || manufacturer.includes(product.manufacturer)).map(product => product.categoryId)))
 
     useEffect(() => {
         fetchProducts()
@@ -247,7 +236,7 @@ export default function Page() {
                                         />
                                     </div>
                                     <div className="col-2 text-center d-flex align-items-center justify-content-center">
-                                        -
+                                        - 
                                     </div>
                                     <div className="col-5 ps-0">
                                         <input
@@ -296,49 +285,19 @@ export default function Page() {
                                 </div>
                             </div>
                             <hr />
-                            <div className="priceFilter">
-                                <h5>Ventillátorok száma</h5>
-                                <div className="row">
-                                    <div className="col-5 pe-0">
-                                        <input type="number" placeholder="Min." />
-                                    </div>
-                                    <div className="col-2 text-center d-flex align-items-center justify-content-center">
-                                        -
-                                    </div>
-                                    <div className="col-5 ps-0">
-                                        <input type="number" placeholder='Max.' />
-                                    </div>
-                                </div>
-                            </div>
-                            <hr />
                             <div className='orangeButton' onClick={applyFilters}>Alkamazás</div>
                             <div className='blueButton mt-2' onClick={clearFilters}>Szűrők törlése</div>
                         </div>
-
                     </div>
                     <div className="col-9 pt-2">
                         <div className="orderRow p-2 mb-2">
                             <div><span className='text-Blue'>{products.length}</span> találat</div>
-                            <div className='d-flex align-items-center position-relative customSelect'>
-                                {/* <OrangeButton name='Relevancia' href='#' variant='order' /> */}
-                                <div className="dropdown">
-                                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Dropdown button
-                                    </button>
-                                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a className="dropdown-item" href="#">Action</a>
-                                        <a className="dropdown-item" href="#">Another action</a>
-                                        <a className="dropdown-item" href="#">Something else here</a>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-
                         <div className="row">
                             <Suspense fallback={"loading"}>
                                 {displayedProducts.map((product) => (
                                     <div className="col-4 p-2" key={product.id}>
-                                        <ProductCard data={product} onAddToCart={(product, quantity) => addToCart(product, quantity)}/>
+                                        <ProductCard data={product} onAddToCart={(product, quantity) => addToCart(product, quantity)} />
                                     </div>
                                 ))}
                             </Suspense>
@@ -350,15 +309,26 @@ export default function Page() {
                             </div>
                         )}
 
-                        {hasMore && (
-                            <div ref={loaderRef} style={{ height: '20px', marginBottom: '20px' }}>
-                                {/* Invisible loader */}
-                            </div>
-                        )}
+                        <div className="pagination mt-5 position-relative d-flex justify-content-center align-items-center">
+                            <button
+                                onClick={() => handlePageChange(currentPage - 1)}
+                                disabled={currentPage === 1}
+                                className='paginationPrev'
+                            >
+                                <FontAwesomeIcon icon={faAngleLeft as IconProp} />
+                            </button>
+                            <div>{currentPage}</div>
+                            <button
+                                onClick={() => handlePageChange(currentPage + 1)}
+                                disabled={displayedProducts.length < itemsPerPage}
+                                className='paginationNext'
+                            >
+                                <FontAwesomeIcon icon={faAngleRight as IconProp} />
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </>
-
     )
 }
