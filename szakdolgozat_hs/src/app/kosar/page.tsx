@@ -24,10 +24,11 @@ export default function Page() {
 
     async function fetchCartItems() {
         try {
-            const res = await fetch('/api/carts?userId=1', {
+            const res = await fetch('/api/carts', {
                 headers: {
                     'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
-                }
+                },
+                credentials: "include"
             })
             const data = await res.json()
             console.log('Data:', data)
@@ -45,7 +46,7 @@ export default function Page() {
 
     const quantityChange = async (productid: number, newQuantity: number) => {
         try{
-            const res = await fetch('/api/carts?userId=1',{
+            const res = await fetch('/api/carts',{
                 method: 'PUT',
                 headers:{
                     'Content-Type': 'application/json',
@@ -63,12 +64,13 @@ export default function Page() {
 
     const handleRemove = async(productId:number) => {
         try{
-            const res = await fetch(`/api/carts?userId=1`, {
+            const res = await fetch(`/api/carts`, {
                 method: 'DELETE',
                 headers:{
                     'Content-Type': 'application/json',
                     'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
                 },
+                credentials: 'include',
                 body: JSON.stringify({productId: productId})
             })
             if(res.ok){

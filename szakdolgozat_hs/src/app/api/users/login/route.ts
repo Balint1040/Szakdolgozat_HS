@@ -1,10 +1,22 @@
 import { NextResponse } from 'next/server'
+import { cookies } from 'next/headers'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import { pool } from '@/_lib/db'
 
 export async function POST(request: Request) {
   try {
+    const existingToken = (await cookies()).get('auth_token')
+
+    if(existingToken){
+      try{
+        jwt.verify(existingToken.value, process.env.JWT_SECRET!)
+        return NextResponse.json({ message: 'már be vagy jelentkezve' })
+      }catch{
+      
+      }
+    }
+
     const { email, password } = await request.json()
 
 

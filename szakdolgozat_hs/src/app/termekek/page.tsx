@@ -37,8 +37,8 @@ export async function addToCart(product: Product, quantity: number) {
                 'Content-Type': 'application/json',
                 'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
             },
+            credentials: 'include',
             body: JSON.stringify({
-                userId: 17,
                 productId: product.id,
                 quantity: quantity
             })

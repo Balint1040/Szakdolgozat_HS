@@ -1,13 +1,21 @@
 import { pool } from "@/_lib/db"
 import { ResultSetHeader, RowDataPacket } from "mysql2"
-import { NextResponse } from "next/server"
+import {Request} from "express"
+import { NextResponse, NextRequest } from "next/server"
+import jwt from "jsonwebtoken"
 
 
 
 export async function GET(req: Request) {
     try {
-        const { searchParams } = new URL(req.url)
-        const userId = searchParams.get('userId')
+        const token = req.cookies.get('auth_token')?.value
+
+        if(!token){
+            return NextResponse.json({ error: 'nincs hozzaferes' }, { status: 401 })
+        }
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { userId: number }
+
 
         const [rows] = await (await pool).execute(
             `SELECT 
@@ -21,7 +29,7 @@ export async function GET(req: Request) {
              JOIN cartItem ci ON c.id = ci.cartId
              JOIN product p ON ci.productId = p.id
              WHERE c.userId = ?`,
-            [userId]
+            [decoded.userId]
         )
 
 
@@ -33,13 +41,19 @@ export async function GET(req: Request) {
     }
 }
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
     try {
-        const { userId, productId, quantity } = await req.json()
+        const token = req.cookies.get('auth_token')?.value
+        if(!token){
+            return NextResponse.json({error: "nincs hozzaferes"}, { status: 401 })
+        }
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { userId: number }
+        const {productId, quantity } = await req.json()
 
         const [isCartExists] = await (await pool).execute(
-            'SELECT id FROM cart WHERE userId = 1',
-            [userId]
+            'SELECT id FROM cart WHERE userId = ?',
+            [decoded.userId]
         )
 
         let cartId
@@ -47,8 +61,8 @@ export async function POST(req: Request) {
             cartId = (isCartExists as RowDataPacket[])[0].id
         }else{
             const [result] = await (await pool).execute(
-                'INSERT INTO cart (userId) VALUES (1)',
-                [userId]
+                'INSERT INTO cart (userId) VALUES (?)',
+                [decoded.userId]
             )
             cartId = (result as ResultSetHeader).insertId
         }
@@ -67,12 +81,15 @@ export async function POST(req: Request) {
 
 export async function DELETE(req: Request){
     try{
-        const { searchParams } = new URL(req.url)
-        const userId = searchParams.get('userId')
+        const token = req.cookies.get('auth_token')?.value
+        if(!token){
+            return NextResponse.json({ error: 'nincs hozzaferes' }, { status: 401 })
+        }
 
+        const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { userId: number }
         await (await pool).execute(
             'DELETE FROM cart WHERE userId = 1',
-            [userId]
+            [decoded.userId]
         )
 
         return NextResponse.json({ message: 'Meguritve' })
@@ -82,10 +99,14 @@ export async function DELETE(req: Request){
     }
 }
 
-export async function PUT(req: Request) {
+export async function PUT(req: NextRequest) {
     try {
-        const { id, quantity } = await req.json()
-        console.log('Updating quantity:', { id, quantity }) 
+        const token = req.cookies.get('auth_token')?.value
+        if(!token) {
+            return NextResponse.json({ error: 'Nincs hozzáférés' }, { status: 401 })
+        }
+
+        const {id, quantity} = await req.json()
 
         const [result] = await (await pool).execute(
             'UPDATE cartItem SET quantity = ? WHERE id = ?',
