@@ -61,6 +61,7 @@
     transition: all .3s ease-in-out;
     opacity: 0;
     transform: scale(0);
+    z-index: 999;
 }
 #scrollToTop.visible {
     opacity: 1;
@@ -959,7 +960,6 @@ footer .seo:not(:nth-last-of-type(1))::after {
 }
 
 .filters {
-    min-height: 400px;
     width: 100%;
     background-color: var(--light);
     border-radius: 20px;
@@ -968,6 +968,7 @@ footer .seo:not(:nth-last-of-type(1))::after {
     box-shadow: 0px 4px 15px 1px var(--gray);
     position: sticky;
     top: 10px;
+    transition: all .3s ease-in-out;
 }
 .filters hr {
     margin: 15px 0;
@@ -1245,6 +1246,16 @@ input[type=number] {
         left: 10%;
         bottom: 0;
     }
+
+    .filters {
+        height: 45px;
+        overflow: hidden;
+    }
+    .filters.open {
+        max-height: min-content;
+        height: 100vh;
+    }
+    
 }
 
 @media (max-width: 767.98px) {
@@ -1274,6 +1285,11 @@ input[type=number] {
     }
     .reviewCard {
         height: 475px;
+    }
+
+    .recommendationCard .propertiesWrap {
+        max-height: 100px;
+        overflow: hidden;
     }
 }
 

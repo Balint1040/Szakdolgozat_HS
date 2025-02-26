@@ -3,7 +3,6 @@
 import { useEffect, useState, useCallback } from 'react'
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
-import OrangeButton from '@/components/OrangeButton'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
@@ -28,6 +27,30 @@ export interface Product {
     imageUrl: string,
     url: string,
     productId: number
+}
+
+export async function addToCart(product: Product, quantity: number) {
+    try {
+        const res = await fetch('/api/carts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
+            },
+            body: JSON.stringify({
+                userId: 17,
+                productId: product.id,
+                quantity: quantity
+            })
+        })
+        if (res.ok) {
+            alert(`${product.name} (${quantity}) hozzáadva a kosárhoz!`)
+        } else {
+            alert('Hiba a termék hozzáadásakor')
+        }
+    } catch (e) {
+        console.error(e)
+    }
 }
 
 export default function Page() {
@@ -98,29 +121,7 @@ export default function Page() {
         })
     }
 
-    const addToCart = async (product: Product, quantity: number) => {
-        try {
-            const res = await fetch('/api/carts', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
-                },
-                body: JSON.stringify({
-                    userId: 17,
-                    productId: product.id,
-                    quantity: quantity
-                })
-            })
-            if (res.ok) {
-                alert(`${product.name} (${quantity}) hozzáadva a kosárhoz!`)
-            } else {
-                alert('Hiba a termék hozzáadásakor')
-            }
-        } catch (e) {
-            console.error(e)
-        }
-    }
+    
 
     const categoryOptions: { [key: number]: string } = {
         1: "Videókártya",
@@ -219,10 +220,12 @@ export default function Page() {
         <>
             <div className="container productsContainer py-4">
                 <div className="row">
-                    <div className="col-3 p-2 position-relative">
-                        <div className="filters p-2">
+                    <div className="col-12 col-lg-3 p-2 position-relative">
+                        <div className="filters p-2" id='filters'>
                             <div className="row">
-                                <h3 className="text-Blue text-center">Szűrők</h3>
+                                <a className='cursor-pointer' onClick={() => {document.getElementById("filters")?.classList.toggle("open")}}>
+                                    <h3 className="text-Blue text-center">Szűrők</h3>
+                                </a>
                             </div>
                             <hr />
                             <div className="priceFilter">
@@ -285,18 +288,24 @@ export default function Page() {
                                 </div>
                             </div>
                             <hr />
-                            <div className='orangeButton' onClick={applyFilters}>Alkamazás</div>
-                            <div className='blueButton mt-2' onClick={clearFilters}>Szűrők törlése</div>
+                            <div className="row">
+                                <div className="col-12 col-md-6 col-lg-12">
+                                    <div className='orangeButton' onClick={applyFilters}>Alkamazás</div>
+                                </div>
+                                <div className="col-12 col-md-6 col-lg-12">
+                                    <div className='blueButton mt-2 mt-md-0 mt-lg-2' onClick={clearFilters}>Szűrők törlése</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className="col-9 pt-2">
+                    <div className="col-12 col-lg-9 pt-2">
                         <div className="orderRow p-2 mb-2">
                             <div><span className='text-Blue'>{products.length}</span> találat</div>
                         </div>
                         <div className="row">
                             <Suspense fallback={"loading"}>
                                 {displayedProducts.map((product) => (
-                                    <div className="col-4 p-2" key={product.id}>
+                                    <div className="col-12 col-sm-6 col-xl-4 p-2" key={product.id}>
                                         <ProductCard data={product} onAddToCart={(product, quantity) => addToCart(product, quantity)} />
                                     </div>
                                 ))}
