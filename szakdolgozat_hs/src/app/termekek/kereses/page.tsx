@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from 'react'
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { addToCart, Product } from '../page'
+import { Product } from '@/app/termekek/page'
 
 const ProductCard = dynamic(() => import("@/components/ProductCard"), {
     loading: () => <div style={{
@@ -107,7 +107,7 @@ export default function Page() {
                             <Suspense fallback={"loading"}>
                                 {products.map((product) => (
                                     <div className="col-4 p-2" key={product.id}>
-                                        <ProductCard data={product} onAddToCart={(product, quantity) => addToCart(product, quantity)} />
+                                        <ProductCard data={product}/>
                                     </div>
                                 ))}
                             </Suspense>

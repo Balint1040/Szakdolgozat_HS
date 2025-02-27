@@ -6,6 +6,7 @@ import { Suspense } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { useProductFilters } from '@/hooks/ProductFilters'
 
 const ProductCard = dynamic(() => import("@/components/ProductCard"), {
     loading: () => <div style={{
@@ -29,99 +30,29 @@ export interface Product {
     productId: number
 }
 
-export async function addToCart(product: Product, quantity: number) {
-    try {
-        const res = await fetch('/api/carts', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
-            },
-            credentials: 'include',
-            body: JSON.stringify({
-                productId: product.id,
-                quantity: quantity
-            })
-        })
-        if (res.ok) {
-            alert(`${product.name} (${quantity}) hozzáadva a kosárhoz!`)
-        } else {
-            alert('Hiba a termék hozzáadásakor')
-        }
-    } catch (e) {
-        console.error(e)
-    }
-}
 
 export default function Page() {
+
+    const {
+        minPrice,
+        maxPrice,
+        categoryId,
+        manufacturer,
+        filters,
+        setMinPrice,
+        setMaxPrice,
+        handleCategoryChange,
+        handleManufacturerChange,
+        applyFilters,
+        clearFilters
+
+    } = useProductFilters()
+
     const [products, setProducts] = useState<Product[]>([])
     const [displayedProducts, setDisplayedProducts] = useState<Product[]>([])
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
     const [itemsPerPage] = useState(30)
-    const [minPrice, setMinPrice] = useState<number | null>(() => {
-        const saved = global?.localStorage?.getItem('minPrice')
-        return saved != null ? Number(saved) : null
-    })
-    const [maxPrice, setMaxPrice] = useState<number | null>(() => {
-        const saved = global?.localStorage?.getItem('maxPrice')
-        return saved != null ? Number(saved) : null
-    })
-    const [categoryId, setCategoryId] = useState<number[]>(() => {
-        const saved = global?.localStorage?.getItem('categoryId')
-        return saved ? JSON.parse(saved) : []
-    })
-    const [manufacturer, setManufacturer] = useState<string[]>(() => {
-        const saved = global?.localStorage?.getItem('manufacturer')
-        return saved ? JSON.parse(saved) : []
-    })
-    const [filters, setFilters] = useState<{ minPrice: number | null, maxPrice: number | null, categoryId: number[], manufacturer: string[] }>({
-        minPrice,
-        maxPrice,
-        categoryId,
-        manufacturer
-    })
-
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const savedMinPrice = global?.localStorage?.getItem('minPrice')
-            const savedMaxPrice = global?.localStorage?.getItem('maxPrice')
-            const savedCategoryId = global?.localStorage?.getItem('categoryId')
-            const savedManufacturer = global?.localStorage?.getItem('manufacturer')
-            if (savedMinPrice) setMinPrice(Number(savedMinPrice))
-            if (savedMaxPrice) setMaxPrice(Number(savedMaxPrice))
-            if (savedCategoryId) setCategoryId(JSON.parse((savedCategoryId)))
-            if (savedManufacturer) setManufacturer(JSON.parse((savedManufacturer)))
-            setFilters({
-                minPrice: savedMinPrice ? Number(savedMinPrice) : null,
-                maxPrice: savedMaxPrice ? Number(savedMaxPrice) : null,
-                categoryId: savedCategoryId ? JSON.parse((savedCategoryId)) : [],
-                manufacturer: savedManufacturer ? JSON.parse((savedManufacturer)) : []
-            })
-        }
-    }, [])
-
-    const handleCategoryChange = (id: number) => {
-        setCategoryId((prev) => {
-            if (prev.includes(id)) {
-                return prev.filter((categoryId) => categoryId !== id)
-            } else {
-                return [...prev, id]
-            }
-        })
-    }
-
-    const handleManufacturerChange = (name: string) => {
-        setManufacturer((prev) => {
-            if (prev.includes(name)) {
-                return prev.filter((manufacturer) => manufacturer !== name)
-            } else {
-                return [...prev, name]
-            }
-        })
-    }
-
-    
 
     const categoryOptions: { [key: number]: string } = {
         1: "Videókártya",
@@ -174,42 +105,6 @@ export default function Page() {
     function scrollToTop() {
         if (!isBrowser()) return
         window.scrollTo({ top: 0 })
-    }
-
-    const applyFilters = () => {
-        setFilters({
-            minPrice,
-            maxPrice,
-            categoryId,
-            manufacturer
-        })
-
-        if (typeof window !== 'undefined') {
-            if (minPrice !== null) global?.localStorage?.setItem('minPrice', minPrice.toString())
-            if (maxPrice !== null) global?.localStorage?.setItem('maxPrice', maxPrice.toString())
-            if (categoryId.length > 0) global?.localStorage?.setItem('categoryId', JSON.stringify(categoryId))
-            if (manufacturer.length > 0) global?.localStorage?.setItem("manufacturer", JSON.stringify(manufacturer))
-        }
-
-        fetchProducts()
-        setCurrentPage(1)
-    }
-
-    const clearFilters = () => {
-        setMinPrice(null)
-        setMaxPrice(null)
-        setCategoryId([])
-        setManufacturer([])
-        setFilters({ minPrice: null, maxPrice: null, categoryId: [], manufacturer: [] })
-
-        if (typeof window !== 'undefined') {
-            global?.localStorage?.removeItem('minPrice')
-            global?.localStorage?.removeItem('maxPrice')
-            global?.localStorage?.removeItem('categoryId')
-            global?.localStorage?.removeItem('manufacturer')
-        }
-        fetchProducts()
-        setCurrentPage(1)
     }
 
     useEffect(() => {
@@ -306,7 +201,7 @@ export default function Page() {
                             <Suspense fallback={"loading"}>
                                 {displayedProducts.map((product) => (
                                     <div className="col-12 col-sm-6 col-xl-4 p-2" key={product.id}>
-                                        <ProductCard data={product} onAddToCart={(product, quantity) => addToCart(product, quantity)} />
+                                        <ProductCard data={product} />
                                     </div>
                                 ))}
                             </Suspense>

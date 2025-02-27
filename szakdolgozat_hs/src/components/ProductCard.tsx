@@ -7,28 +7,24 @@ import Link from "next/link"
 import OrangeCartButton from "./OrangeCartButton"
 import fallbackImg from "../../public/static/imgNotFound.png"
 import { Quantity } from "./RecommendationCard"
+import { addToCart } from "@/utils/addToCart"
 
 interface ProductCardProps{
     data: Product
-    onAddToCart: (product: Product, quantity: Quantity) => Promise<void>
 }
 
 export default function ProductCard({
     data,
-    onAddToCart
 } : ProductCardProps) {
 
     const [quantity, setQuantity] = useState<Quantity>(1 as Quantity)
 
     const handleAddToCart = async(e: React.MouseEvent) => {
         e.preventDefault()
-        if(onAddToCart){
-            try{
-                await onAddToCart(data, quantity)
-                setQuantity(1)
-            }catch(e){
-                console.error(e)
-            }
+        try {
+            await addToCart(data, quantity)
+        } catch (e) {
+            console.error(e)
         }
     }
 
