@@ -64,7 +64,7 @@ export default function Page() {
 
     const handleRemove = async(productId:number) => {
         try{
-            const res = await fetch(`/api/carts`, {
+            const res = await fetch(`/api/cartItems`, {
                 method: 'DELETE',
                 headers:{
                     'Content-Type': 'application/json',

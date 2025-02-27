@@ -44,12 +44,12 @@ export async function PUT(req: Request) {
 
 export async function DELETE(req: Request) {
     try {
-        const { searchParams } = new URL(req.url)
-        const itemId = searchParams.get('itemId')
+        const body = await req.json()
+        const productId = body.productId
 
         await (await pool).execute(
             'DELETE FROM cartItem WHERE id = ?',
-            [itemId]
+            [productId]
         )
 
         return NextResponse.json({ message: 'Termék törölve a kosárból' })
