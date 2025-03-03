@@ -6,6 +6,8 @@ import Cart from "@/components/Cart"
 import OrangeButton from "@/components/OrangeButton"
 import BlueButton from "@/components/BlueButton"
 import Loading from "@/components/Loading"
+import Stripe from "stripe"
+import { loadStripe } from "@stripe/stripe-js"
 
 interface CartItem {
     id: number
@@ -21,6 +23,8 @@ interface CartItem {
 export default function Page() {
     const [cartItems, setCartItems] = useState<CartItem[]>([])
     const [isLoading, setIsLoading] = useState(true)
+
+    const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
 
     async function fetchCartItems() {
         try {
@@ -87,6 +91,20 @@ export default function Page() {
         }, 0)
     }
 
+    async function handleCheckout() {
+        const stripe = await stripePromise;
+        
+        const response = await fetch('/api/stripe', {
+          method: 'POST',
+        });
+        
+        const { sessionId } = await response.json();
+        
+        await stripe?.redirectToCheckout({
+          sessionId,
+        });
+      }
+
     if (isLoading) {
         return <Loading />
     }
@@ -132,7 +150,8 @@ export default function Page() {
                                 Összesen: <span className="text-Orange">{calculateTotal().toFixed().replace(/(\d)(?=(\d{3})+$)/g, "$1.")}</span>,-
                             </div>
                         </div>
-                        <BlueButton name="Fizetés" href="#" variant="discover" />
+                        {/*<BlueButton name="Fizetés" href="#" variant="discover" />*/}
+                        <button onClick={handleCheckout} className="blueButton">Fizetés</button>
                     </div>
                 </div>
             </div>
