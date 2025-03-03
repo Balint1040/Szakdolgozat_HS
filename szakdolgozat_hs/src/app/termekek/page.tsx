@@ -53,6 +53,8 @@ export default function Page() {
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1)
     const [itemsPerPage] = useState(30)
+    const [selectedSort, setSelectedSort] = useState("default")
+
 
     const categoryOptions: { [key: number]: string } = {
         1: "Videókártya",
@@ -89,6 +91,10 @@ export default function Page() {
         }
     }, [filters])
 
+    useEffect(() => {
+        require('bootstrap/dist/js/bootstrap.bundle.min.js')
+    }, [])
+
     const paginateProducts = (allProducts: Product[], page: number) => {
         const startIndex = (page - 1) * itemsPerPage
         const endIndex = startIndex + itemsPerPage
@@ -118,7 +124,7 @@ export default function Page() {
                     <div className="col-12 col-lg-3 p-2 position-relative">
                         <div className="filters p-2" id='filters'>
                             <div className="row">
-                                <a className='cursor-pointer' onClick={() => {document.getElementById("filters")?.classList.toggle("open")}}>
+                                <a className='cursor-pointer' onClick={() => { document.getElementById("filters")?.classList.toggle("open") }}>
                                     <h3 className="text-Blue text-center">Szűrők</h3>
                                 </a>
                             </div>
@@ -134,7 +140,7 @@ export default function Page() {
                                         />
                                     </div>
                                     <div className="col-2 text-center d-flex align-items-center justify-content-center">
-                                        - 
+                                        -
                                     </div>
                                     <div className="col-5 ps-0">
                                         <input
@@ -196,6 +202,69 @@ export default function Page() {
                     <div className="col-12 col-lg-9 pt-2">
                         <div className="orderRow p-2 mb-2">
                             <div><span className='text-Blue'>{products.length}</span> találat</div>
+                            <div className="dropdown">
+                                <button
+                                    className="btn dropdown-toggle"
+                                    data-bs-toggle="dropdown"
+                                >
+                                    {selectedSort === 'egy' && 'egy'}
+                                    {selectedSort === 'ketto' && 'ketto'}
+                                    {selectedSort === 'harom' && 'harom'}
+                                    {selectedSort === 'negy' && 'negy'}
+                                    {selectedSort === 'ot' && 'ot'}
+                                    {selectedSort === 'hat' && 'hat'}
+                                </button>
+                                <ul className="dropdown-menu">
+                                    <li>
+                                        <button
+                                            className="dropdown-item"
+                                            onClick={() => setSelectedSort('egy')}
+                                        >
+                                            egy
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button
+                                            className="dropdown-item"
+                                            onClick={() => setSelectedSort('ketto')}
+                                        >
+                                            ketto
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button
+                                            className="dropdown-item"
+                                            onClick={() => setSelectedSort('harom')}
+                                        >
+                                            harom
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button
+                                            className="dropdown-item"
+                                            onClick={() => setSelectedSort('negy')}
+                                        >
+                                            negy
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button
+                                            className="dropdown-item"
+                                            onClick={() => setSelectedSort('ot')}
+                                        >
+                                            ot
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button
+                                            className="dropdown-item"
+                                            onClick={() => setSelectedSort('hat')}
+                                        >
+                                            hat
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                         <div className="row">
                             <Suspense fallback={"loading"}>
