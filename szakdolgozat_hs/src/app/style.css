@@ -133,6 +133,7 @@ input[type="search"]:active + .navbarSearchIcon, input[type="search"]:focus + .n
     transition: all .3s ease-in-out;
     overflow: hidden;
     position: relative;
+    border: none;
 }
 .orangeButton:hover {
     background-color: var(--white);

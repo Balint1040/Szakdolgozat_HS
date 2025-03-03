@@ -36,7 +36,7 @@ export default function ProductCard({
         setImageError(true)
     }
 
-    const imageSrc = imageError || !data.imageUrl ? fallbackImageUrl : data.imageUrl
+    const imageSrc = imageError || !data.imageUrl ? (!data.url ? fallbackImageUrl : data.url) : data.imageUrl
 
     return (
         <div className="recommendationCard productCard">
