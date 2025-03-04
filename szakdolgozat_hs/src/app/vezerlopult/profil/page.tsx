@@ -17,37 +17,70 @@ interface Product {
     imageUrls: { url: string }[],
 }
 
+interface Payment {
+    id: string
+    amount: number
+    status: string
+    created: Date
+    currencry: string
+}
+
+interface User {
+    name: string
+    email: string
+}
+
 export default function Page() {
     const [product, setProduct] = useState<Product | null>(null)
+    const [payments, setPayments] = useState<Payment[]>([])
+    const [user, setUser] = useState<User | null>(null)
 
     useEffect(() => {
         require('bootstrap/dist/js/bootstrap.bundle.min.js')
     }, [])
 
+
     useEffect(() => {
-            const fetchProduct = async () => {
-                const res = await fetch(`/api/products/1`, {
+        const fetchPaymentHistory = async () => {
+            try {
+                const res = await fetch('/api/stripe', {
                     headers: {
                         'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
                     }
                 })
                 const data = await res.json()
-                if (data.length > 0) {
-                    const productData = {
-                        id: 1,
-                        name: data[0].name,
-                        price: data[0].price,
-                        manufacturer: data[0].manufacturer,
-                        properties: data[0].properties,
-                        categoryId: data[0].categoryId,
-                        imageUrls: data.map((item: { url: string }) => ({ url: item.url })),
-                    }
-                    setProduct(productData)
+                if (data.status === 200) {
+                    setPayments(data.payments)
                 }
+            } catch (e) {
+                console.error(e)
             }
-    
-            fetchProduct()
-        }, [])
+        }
+
+        fetchPaymentHistory()
+    }, [])
+
+    useEffect(() => {
+        const fetchUserData = async() => {
+            try {
+                const res = await fetch("/api/users", {
+                    headers: {
+                        'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
+                    },
+                    credentials: "include"
+                })
+                const data = await res.json()
+                console.log('User data received:', data)
+                
+                if (res.ok ) {
+                    setUser(data)
+                }
+            } catch(e) {
+                console.error(e)
+            }
+        }
+        fetchUserData()
+    }, [])
 
     return (
         <>
@@ -57,15 +90,43 @@ export default function Page() {
                         <div className="dashboardProfilKepWrap mb-3">
                             <FontAwesomeIcon icon={faUser as IconProp} />
                         </div>
-                        <a className="editText" data-bs-toggle="modal" data-bs-target="#nameModal"><h1>Példa Név</h1></a>
-                        <a className="editText" data-bs-toggle="modal" data-bs-target="#emailModal"><h5>pelda@email.hu</h5></a>
+                        <a className="editText" data-bs-toggle="modal" data-bs-target="#nameModal">
+                            <h1>{user ? user.name : 'Betöltés...'}</h1>
+                        </a>
+                        <a className="editText" data-bs-toggle="modal" data-bs-target="#emailModal">
+                            <h5>{user ? user.email : 'Betöltés...'}</h5>
+                        </a>
                     </div>
                 </div>
                 <div className="col-8">
                     <h3>Korábbi rendelések</h3>
                     <hr />
-                    {!product ? "Még nincs előzmény" : <ProfileProductHistory product={product}/>}
-
+                    {payments.length == 0 ?(
+                        <p>Még nincs fizetési előzmény</p>
+                    ) : (
+                        <div>
+                            {payments.map((payment) => (
+                                <div key={payment.id} className="mb-3 p-3 border rounded">
+                                    <div className="d-flex justify-content-between">
+                                        <div>
+                                            <strong>Rendelés azonosító:</strong> {payment.id}
+                                        </div>
+                                        <div>
+                                            <strong>Összeg:</strong> {payment.amount.toLocaleString()} {payment.currencry}
+                                        </div>
+                                    </div>
+                                    <div className="d-flex justify-content-between mt-2">
+                                        <div>
+                                            <strong>Státusz:</strong> {payment.status}
+                                        </div>
+                                        <div>
+                                            <strong>Dátum:</strong> {new Date(payment.created).toLocaleDateString('hu-HU')}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
                 </div>
 
                 <div className="modal fade" id="nameModal" tabIndex={-1} aria-labelledby="nameModal" aria-hidden="true">
