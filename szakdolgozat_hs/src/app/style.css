@@ -985,14 +985,14 @@ input[type=number] {
     appearance: textfield;
     -moz-appearance:textfield;
 }
-.productContainer .form-control, .cartBottomRow .form-control {
+.productContainer .form-control, .cartBottomRow .form-control, .profileRow .form-control {
     background-color: var(--light) !important;
     padding: 5px 10px !important;
     box-shadow: none !important;
     margin: 0 !important;
     border-color: var(--light) !important;
 }
-.priceFilter input, .productContainer .form-control, .cartBottomRow .form-control {
+.priceFilter input, .productContainer .form-control, .cartBottomRow .form-control, .profileRow .form-control {
     width: 100%;
     background-color: var(--white);
     box-shadow: none;
@@ -1003,7 +1003,7 @@ input[type=number] {
     outline: none;
     transition: border-color .3s ease-in-out;
 }
-.priceFilter input:focus, .productContainer .form-control:focus, .cartBottomRow .form-control:focus {
+.priceFilter input:focus, .productContainer .form-control:focus, .cartBottomRow .form-control:focus, .profileRow .form-control:focus {
     border-color: var(--orange) !important;
 }
 .productContainer .blueButton {
@@ -1231,6 +1231,43 @@ input[type=number] {
     font-size: 22px;
 }
 
+.profileRow .editText > * {
+    margin: 0 !important;
+}
+.profileRow .editText:not(:nth-last-of-type(1)) {
+    margin-bottom: 10px;
+}
+.profileRow .editText {
+    color: var(--blue);
+    position: relative;
+    transition: all .3s ease-in-out;
+}
+.profileRow .editText:hover {
+    cursor: pointer;
+    color: var(--orange);
+}
+.profileRow .editText::after {
+    content: "\f044";
+    font-family: 'Font Awesome 6 Free';
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    padding-left: 10px;
+    transition: opacity .3s ease-in-out;
+    color: var(--blue) !important;
+}
+.profileRow .editText::after:hover {
+    opacity: 0 !important;
+}
+.profileRow .editText:hover::after {
+    opacity: 1;
+}
+.profileRow .orangeButton, .profileRow .blueButton {
+    font-size: 18px;
+    box-shadow: none;
+}
 
 @media (min-width: 1199.98px) {
     .ctaButtonSpan {
