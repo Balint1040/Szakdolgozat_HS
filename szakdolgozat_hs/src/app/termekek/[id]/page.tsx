@@ -1,4 +1,5 @@
 'use client'
+import Loading from '@/components/Loading'
 import OrangeButton from '@/components/OrangeButton'
 import ProductSwiper from '@/components/ProductSwiper'
 import { Quantity } from '@/components/RecommendationCard'
@@ -58,7 +59,7 @@ export default function Page({
     }, [id])
 
     if (!product) {
-        return <div className='w-100 d-flex justify-content-center align-items-center' style={{height: "calc(100vh - 100px)"}}>Loading...</div>
+        return <Loading/>
     }
 
     /*

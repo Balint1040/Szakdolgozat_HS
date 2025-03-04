@@ -38,6 +38,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="hu">
+      <head>
+        <link rel="icon" href="/icon.svg" sizes="any" />
+      </head>
       <body className={`${anta.className}`}>
 
         <nav className="navbar navbar-expand-lg">
@@ -60,7 +63,8 @@ export default function RootLayout({
 
         <div style={{
           minHeight: "calc(100vh - 100px)",
-          position: "relative"
+          position: "relative",
+          height: "100%"
         }}>
           {children}
         </div>
