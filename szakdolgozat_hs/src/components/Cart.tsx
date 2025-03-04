@@ -1,4 +1,5 @@
 import { Product } from "@/app/termekek/page";
+import Link from "next/link";
 
 
 interface CartProps {
@@ -43,33 +44,32 @@ export default function Cart({
                 <div className="d-flex flex-column h-100 justify-content-between">
                     <div className="row">
                         <div className="col-9">
-                            {product.name}
+                            <Link href={`/termekek/${product.id}`} className="cartName">{product.name}</Link>
                         </div>
                         <div className="col-3 text-end">
                             <span className="text-Blue">{(product.price*quantity).toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, "$1.")}</span>,-
                         </div>
                     </div>
-                    <div className="d-flex justify-content-between align-items-center">
+                    <div className="d-flex justify-content-between">
                         <button
-                        className="btn btn-sm btn-danger"
+                        className="orangeButton danger"
                         onClick={onRemove}
                         arai-label="Törlés"
                         >
                             Törlés
                         </button>
-                    </div>
-                    <div className="d-flex justify-content-end">
+
                         <div className="quantityWrap">
                             <a 
-                            className={`pointer ${quantityClass}`}
-                            onClick={() => quantity > 1 && onQuantityChange(quantity - 1)}
+                                className={`pointer ${quantityClass}`}
+                                onClick={() => quantity > 1 && onQuantityChange(quantity - 1)}
                             >
-                            -
+                                -
                             </a>
                             <h3>{quantity}</h3>
                             <a 
-                            className="pointer"
-                            onClick={() => onQuantityChange(quantity + 1)}
+                                className="pointer"
+                                onClick={() => onQuantityChange(quantity + 1)}
                             >
                                 +
                             </a>
