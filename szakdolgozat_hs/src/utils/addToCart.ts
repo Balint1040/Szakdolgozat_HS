@@ -1,4 +1,5 @@
 import { Product } from "@/app/termekek/page"
+import { enqueueSnackbar } from 'notistack'
 
 export async function addToCart(product: Product, quantity: number): Promise<void> {
     try {
@@ -15,7 +16,7 @@ export async function addToCart(product: Product, quantity: number): Promise<voi
             })
         })
         if (res.ok) {
-            alert(`${product.name} (${quantity}) hozzáadva a kosárhoz!`)
+            enqueueSnackbar("Termék sikeresen hozzáadva")
         } else {
             alert('nem siker')
         }

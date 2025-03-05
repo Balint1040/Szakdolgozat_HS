@@ -9,7 +9,7 @@ import Loading from "@/components/Loading"
 import Stripe from "stripe"
 import { loadStripe } from "@stripe/stripe-js"
 
-interface CartItem {
+export interface CartItem {
     id: number
     product: Product
     quantity: number
@@ -35,7 +35,6 @@ export default function Page() {
                 credentials: "include"
             })
             const data = await res.json()
-            console.log('Data:', data)
             setCartItems(data)
         } catch (error) {
             console.error('Failed to fetch cart items:', error)
