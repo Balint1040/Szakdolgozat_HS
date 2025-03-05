@@ -18,7 +18,7 @@ export async function addToCart(product: Product, quantity: number): Promise<voi
         if (res.ok) {
             enqueueSnackbar("Termék sikeresen hozzáadva")
         } else {
-            alert('nem siker')
+            enqueueSnackbar("Sikertelen hozzáadás", {variant: "error"})
         }
     } catch (e) {
         console.error(e)
