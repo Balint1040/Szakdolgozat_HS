@@ -13,7 +13,7 @@ interface Payment {
     items: {
         name: string,
         quantity: number
-    }
+    }[]
 }
 
 

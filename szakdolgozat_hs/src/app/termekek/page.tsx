@@ -117,6 +117,31 @@ export default function Page() {
         fetchProducts()
     }, [fetchProducts])
 
+    useEffect(() => {
+        if (products.length > 0) {
+            const sortedProducts = [...products]
+            
+            switch (selectedSort) {
+                case 'novekvo':
+                    sortedProducts.sort((a, b) => a.price - b.price)
+                    break
+                case 'csokkeno':
+                    sortedProducts.sort((a, b) => b.price - a.price)
+                    break
+                case 'a-z':
+                    sortedProducts.sort((a, b) => b.name.localeCompare(a.name))
+                    break
+                case 'z-a':
+                    sortedProducts.sort((a, b) => a.name.localeCompare(b.name))
+                    break
+                default:
+                    break
+            }
+            
+            paginateProducts(sortedProducts, currentPage)
+        }
+    }, [selectedSort, products, currentPage])
+
     return (
         <>
             <div className="container productsContainer py-4">
@@ -207,52 +232,51 @@ export default function Page() {
                                     className="btn dropdown-toggle"
                                     data-bs-toggle="dropdown"
                                 >
-                                    {selectedSort === 'egy' && 'egy'}
-                                    {selectedSort === 'ketto' && 'ketto'}
-                                    {selectedSort === 'harom' && 'harom'}
-                                    {selectedSort === 'negy' && 'negy'}
-                                    {selectedSort === 'ot' && 'ot'}
-                                    {selectedSort === 'hat' && 'hat'}
+                                    {selectedSort === 'default' && 'Relevancia'}
+                                    {selectedSort === 'novekvo' && 'Ár szerint növekvő'}
+                                    {selectedSort === 'csokkeno' && 'Ár szerint csökkenő'}
+                                    {selectedSort === 'a-z' && 'A-Z sorrendben'}
+                                    {selectedSort === 'z-a' && 'Z-A sorrendben'}
                                 </button>
                                 <ul className="dropdown-menu">
                                     <li>
                                         <button
                                             className="dropdown-item"
-                                            onClick={() => setSelectedSort('egy')}
+                                            onClick={() => setSelectedSort('default')}
                                         >
-                                            egy
+                                            Relevancia
                                         </button>
                                     </li>
                                     <li>
                                         <button
                                             className="dropdown-item"
-                                            onClick={() => setSelectedSort('ketto')}
+                                            onClick={() => setSelectedSort('novekvo')}
                                         >
-                                            ketto
+                                            Ár szerint növekvő
                                         </button>
                                     </li>
                                     <li>
                                         <button
                                             className="dropdown-item"
-                                            onClick={() => setSelectedSort('harom')}
+                                            onClick={() => setSelectedSort('csokkeno')}
                                         >
-                                            harom
+                                            Ár szerint csökkenő
                                         </button>
                                     </li>
                                     <li>
                                         <button
                                             className="dropdown-item"
-                                            onClick={() => setSelectedSort('negy')}
+                                            onClick={() => setSelectedSort('a-z')}
                                         >
-                                            negy
+                                            A-Z sorrendben
                                         </button>
                                     </li>
                                     <li>
                                         <button
                                             className="dropdown-item"
-                                            onClick={() => setSelectedSort('ot')}
+                                            onClick={() => setSelectedSort('z-a')}
                                         >
-                                            ot
+                                            Z-A sorrendben
                                         </button>
                                     </li>
                                     <li>
