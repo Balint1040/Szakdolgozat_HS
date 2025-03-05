@@ -63,15 +63,17 @@ export default function RootLayout({
         </nav>
 
 
-        <div style={{
-          minHeight: "calc(100vh - 100px)",
-          position: "relative",
-          height: "100%"
-        }}>
-          <Notistackprovider>
+        
+        <Notistackprovider>
+          <div style={{
+            minHeight: "calc(100vh - 100px)",
+            position: "relative",
+            height: "100%"
+          }}>
             {children}
-          </Notistackprovider>
-        </div>
+          </div>
+        </Notistackprovider>
+
 
 
         <ScrollToTop />

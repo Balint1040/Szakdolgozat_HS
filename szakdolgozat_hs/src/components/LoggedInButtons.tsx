@@ -33,7 +33,7 @@ export default function LoggedInButtons() {
         <div className="d-flex flex-row justify-content-between">
             <Link className="loggedInCartButton me-3" href="/kosar">
                 <FontAwesomeIcon icon={faCartShopping as IconProp} />
-                <span className="cartButtonNum">{cartItems.length > 9 ? "9+" : cartItems.length}</span>
+                <span className={"cartButtonNum " + (cartItems.length === 0 ? "d-none" : "")}>{cartItems.length > 9 ? "9+" : cartItems.length}</span>
             </Link>
             <Link className="loggedInCartButton loggedInProfileButton" href="/vezerlopult">
                 <FontAwesomeIcon icon={faUser as IconProp} />

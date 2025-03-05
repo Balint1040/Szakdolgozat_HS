@@ -1315,6 +1315,7 @@ input[type=number] {
 .successPayment {
     color: var(--success) !important;
     font-size: 30px;
+    min-height: calc(100vh - 100px);
 }
 
 @media (min-width: 1199.98px) {
