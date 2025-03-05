@@ -3,16 +3,10 @@ import Link from "next/link";
 
 
 interface CartProps {
-    product: {
-        id: number;
-        name: string;
-        price: number;
-        imageUrl?: string;
-        url?: string;
-    };
-    quantity: number;
-    onQuantityChange: (quantity: number) => void;
-    onRemove: () => void;
+    product: Product
+    quantity: number
+    onQuantityChange: (quantity: number) => void
+    onRemove: () => void
 }
 
 export default function Cart({
