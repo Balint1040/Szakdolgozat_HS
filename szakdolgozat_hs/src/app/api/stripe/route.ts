@@ -11,6 +11,7 @@ interface CartItem {
   quantity: number
   name: string
   price: number
+  url: string
 }
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2025-02-24.acacia'
@@ -31,11 +32,14 @@ export async function POST(req: NextRequest) {
         ci.cartId,
         ci.quantity,
         p.name,
-        p.price
+        p.price,
+        MIN(i.url) as url
        FROM cart c 
        JOIN cartItem ci ON c.id = ci.cartId
        JOIN product p ON ci.productId = p.id
-       WHERE c.userId = ?`,
+       LEFT JOIN imageurl i ON p.id = i.productId
+       WHERE c.userId = ?
+       GROUP BY ci.id, ci.cartId, ci.quantity, p.name, p.price`,
       [decoded.userId] 
     )
 
@@ -48,6 +52,7 @@ export async function POST(req: NextRequest) {
           currency: 'HUF',
           product_data: {
             name: item.name,
+            images: [item.url]
           },
           unit_amount: Math.round(Number(item.price) * 100)
         },
@@ -68,7 +73,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ sessionId: session.id })
   } catch (e) {
-    console.error(e);
+    console.error(e)
   }
 }
 
@@ -80,20 +85,28 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ status: 401 })
     }
 
-    const payments = await stripe.paymentIntents.list({
-      limit: 100000,
-    });
+    const sessions = await stripe.checkout.sessions.list({
+      limit: 10000,
+      expand: ['data.line_items']
+    })
 
-    console.log('History:', payments.data)
+    console.log('History:', sessions.data)
 
     return NextResponse.json({ 
       status: 200,
-      payments: payments.data.map(payment => ({
-        id: payment.id,
-        amount: payment.amount / 100,
-        status: payment.status,
-        created: new Date(payment.created * 1000),
-        currency: payment.currency
+      payments: sessions.data.map(session => ({
+        id: session.id,
+        amount: session.amount_total ? 100 : 0,
+        status: session.payment_status,
+        created: new Date(session.created * 1000),
+        currency: session.currency,
+        items: session.line_items?.data.map(item => {
+          console.log('Item details:', item)
+          return {
+            name: item.description,
+            quantity: item.quantity
+          }
+        })
       }))
     })
 

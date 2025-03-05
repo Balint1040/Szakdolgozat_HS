@@ -88,7 +88,7 @@ export async function DELETE(req: Request){
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { userId: number }
         await (await pool).execute(
-            'DELETE FROM cart WHERE userId = 1',
+            'DELETE FROM cart WHERE userId = ?',
             [decoded.userId]
         )
 
