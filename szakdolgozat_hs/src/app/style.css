@@ -198,6 +198,21 @@ nav .loggedInCartButton::after {
 nav .loggedInCartButton:hover::after {
     border-color: var(--orange);
 }
+nav .loggedInCartButton .cartButtonNum {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--danger);
+    color: var(--white);
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    z-index: 5;
+}
 .orangeCartButton, .loggedInCartButton {
     height: 48px;
     width: 48px;
@@ -1300,6 +1315,7 @@ input[type=number] {
 .successPayment {
     color: var(--success) !important;
     font-size: 30px;
+    min-height: calc(100vh - 100px);
 }
 
 @media (min-width: 1199.98px) {

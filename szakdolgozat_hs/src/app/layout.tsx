@@ -15,6 +15,8 @@ import Link from "next/link";
 import LoggedInButtons from "@/components/LoggedInButtons";
 import LoggedValidation from "@/components/LoggedValidation";
 import ScrollToTop from "@/components/ScrollToTop";
+import { SnackbarProvider } from 'notistack'
+import { Notistackprovider } from "@/components/SnackbarProviderClient";
 
 const anta = Anta({
   weight: "400",
@@ -61,13 +63,17 @@ export default function RootLayout({
         </nav>
 
 
-        <div style={{
-          minHeight: "calc(100vh - 100px)",
-          position: "relative",
-          height: "100%"
-        }}>
-          {children}
-        </div>
+        
+        <Notistackprovider>
+          <div style={{
+            minHeight: "calc(100vh - 100px)",
+            position: "relative",
+            height: "100%"
+          }}>
+            {children}
+          </div>
+        </Notistackprovider>
+
 
 
         <ScrollToTop />

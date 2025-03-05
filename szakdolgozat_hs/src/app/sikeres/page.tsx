@@ -6,7 +6,7 @@ export default function Page() {
 
     return (
         <>
-            <div className="d-flex justify-content-center align-items-center h-100 successPayment">
+            <div className="d-flex justify-content-center align-items-center successPayment">
                 Sikeres fizetés
             </div>
             <Realistic autorun={{ speed: 1, duration: 500, delay: 200 }} />

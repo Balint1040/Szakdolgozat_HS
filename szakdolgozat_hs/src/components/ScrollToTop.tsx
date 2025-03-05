@@ -3,6 +3,7 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { enqueueSnackbar, SnackbarProvider } from "notistack";
 import { useEffect, useState } from "react";
 
 export default function ScrollToTop() {
@@ -31,8 +32,10 @@ export default function ScrollToTop() {
         window.scrollTo({ top: 0, behavior: 'smooth' })
     }
     return (
-        <a id="scrollToTop" onClick={scrollToTop} className={`... scrollToTopButton ${isVisible ? 'visible' : ''}`}>
-            <FontAwesomeIcon icon={faArrowUp as IconProp} />
-        </a>
+        <>
+            <a id="scrollToTop" onClick={() => {scrollToTop()}} className={`... scrollToTopButton ${isVisible ? 'visible' : ''}`}>
+                <FontAwesomeIcon icon={faArrowUp as IconProp} />
+            </a>
+        </>
     )
 }
