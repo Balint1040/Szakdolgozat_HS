@@ -24,14 +24,15 @@ export default function Page() {
     useEffect(() => {
         const fetchPaymentHistory = async () => {
             try {
-                const res = await fetch('/api/stripe', {
+                const res = await fetch('/api/stripe/admin', {
                     headers: {
                         'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
-                    }
+                    },
+                    credentials: "include"
                 })
                 const data = await res.json()
                 if (data.status === 200) {
-                    setPayments(data.payments)
+                    setPayments(data.orders)
                 }
             } catch (e) {
                 console.error(e)

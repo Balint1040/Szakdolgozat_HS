@@ -61,10 +61,15 @@ export async function POST(req: NextRequest) {
       mode: 'payment',
       success_url: `${process.env.NEXT_PUBLIC_URL}/sikeres?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_URL}/kosar`,
-      metadata:{
-        userId: decoded.userId.toString()
-      }
     })
+
+
+    console.log('uj session sikeres:', {
+      sessionId: session.id,
+      amount: cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+      items: cartItems
+    })
+
 
     return NextResponse.json({ sessionId: session.id })
   } catch (e) {
@@ -80,31 +85,25 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ status: 401 })
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { userId: number }
-
     const sessions = await stripe.checkout.sessions.list({
       limit: 10000,
       expand: ['data.line_items']
     })
 
-    const userSessions = sessions.data.filter(session => 
-      session.metadata && session.metadata.userId === decoded.userId.toString()
-    )
 
     return NextResponse.json({ 
       status: 200,
-      orders: userSessions.map(session => ({
+      orders: sessions.data.map(session => ({
         id: session.id,
         amount: session.amount_total !== null ? session.amount_total / 100 : null,
         status: session.payment_status,
         created: new Date(session.created * 1000),
         currency: session.currency,
-        items: session.line_items?.data.map(item => {
-          return {
+        items: session.line_items?.data.map(item => ({
+            id: item.id,
             name: item.description,
             quantity: item.quantity
-          }
-        })
+        }))
       }))
     })
 
