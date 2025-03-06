@@ -96,7 +96,7 @@ export async function GET(req: NextRequest) {
       status: 200,
       payments: sessions.data.map(session => ({
         id: session.id,
-        amount: session.amount_total /100,
+        amount: session.amount_total !== null ? session.amount_total / 100 : null,
         status: session.payment_status,
         created: new Date(session.created * 1000),
         currency: session.currency,

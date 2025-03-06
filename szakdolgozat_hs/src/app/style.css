@@ -8,6 +8,7 @@
     --light: #F2F2F2;
     --danger: #DC3545;
     --success: #5cb85c;
+    --warning: #fd7e14;
 }
 
 ::-webkit-scrollbar {
@@ -1310,6 +1311,49 @@ input[type=number] {
 .profileRow .orangeButton, .profileRow .blueButton {
     font-size: 18px;
     box-shadow: none;
+}
+
+.orderHistoryRow {
+    padding: 20px;
+    background-color: var(--light);
+    border-radius: 10px;
+    border: 1px solid var(--gray);
+}
+.orderHistoryRow .orderHistoryId span {
+    color: #777;
+    text-overflow: ellipsis;
+}
+.orderHistoryRow div {
+    font-weight: 800;
+}
+.orderHistoryRow div span {
+    font-weight: 500;
+}
+.orderHistoryRow .paid {
+    color: var(--success);
+}
+.orderHistoryRow .unpaid {
+    color: var(--warning);
+}
+.orderHistoryRow .cancelled {
+    color: var(--danger);
+}
+.orderHistoryRow .orderHistoryItemsWrap {
+    border-radius: 15px;
+    overflow: hidden;
+}
+.orderHistoryRow .orderHistoryItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 5px;
+    background-color: var(--white);
+}
+.orderHistoryRow .orderHistoryItem:not(:nth-last-child(1)) {
+    border-bottom: 1px solid #33333340;
+}
+.orderHistoryRow .orderHistoryItem div {
+    font-weight: 500 !important;
 }
 
 .successPayment {

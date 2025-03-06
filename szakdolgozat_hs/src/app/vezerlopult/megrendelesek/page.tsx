@@ -1,8 +1,9 @@
 'use client'
 
+import Payment from "@/components/Payment"
 import { useEffect, useState } from "react"
 
-interface Payment {
+export interface PaymentInfo {
     id: string
     amount: number
     status: string
@@ -18,7 +19,7 @@ interface Payment {
 
 
 export default function Page() {
-    const [payments, setPayments] = useState<Payment[]>([])
+    const [payments, setPayments] = useState<PaymentInfo[]>([])
 
     useEffect(() => {
         const fetchPaymentHistory = async () => {
@@ -49,30 +50,7 @@ export default function Page() {
             ) : (
                 <div>
                     {payments.map((payment) => (
-                        <div key={payment.id} className="mb-3 p-3 border rounded">
-                            <div className="d-flex justify-content-between">
-                                <div>
-                                    <strong>Rendelés azonosító:</strong> {payment.id}
-                                </div>
-                                <div>
-                                    <strong>Összeg:</strong> {payment.amount.toLocaleString()} {payment.currencry}
-                                </div>
-                            </div>
-                            <div className="d-flex justify-content-between mt-2">
-                                <div>
-                                    <strong>Státusz:</strong> {payment.status}
-                                </div>
-                                <div>
-                                    <strong>Dátum:</strong> {new Date(payment.created).toLocaleDateString('hu-HU')}
-                                </div>
-                                <div className="mt-3">
-                                    <strong>Termékek:</strong>
-                                        {payment.items?.map((item, index) => (
-                                            <li key={index}>• {item.name} - {item.quantity} db</li>
-                                        ))}
-                                </div>
-                            </div>
-                        </div>
+                        <Payment payment={payment} key={payment.id} />
                     ))}
                 </div>
                 
