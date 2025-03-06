@@ -6,7 +6,16 @@ export async function middleware(req: NextRequest) {
         "/kosar"
     ]
 
-    if (protectedRoutes) {
+    const path = req.nextUrl.pathname
+    const token = req.cookies.get('auth_token')?.value
+
+    if (token && (path === "/regisztracio" || path === "/bejelentkezes")) {
+        return NextResponse.redirect(new URL("/", req.url))
+    }
+
+    const isProtectedRoute = protectedRoutes.includes(path) || path.startsWith("/vezerlopult") || path.startsWith("/kosar")
+
+    if (isProtectedRoute) {
         const token = req.cookies.get('auth_token')?.value
 
         if (!token) {
@@ -19,7 +28,7 @@ export async function middleware(req: NextRequest) {
 
         try {
             const reqHeaders = new Headers(req.headers)
-            
+
             return NextResponse.next({
                 headers: reqHeaders
             })
@@ -35,6 +44,8 @@ export async function middleware(req: NextRequest) {
 export const config = {
     matcher: [
         "/vezerlopult/:path*",
-        "/kosar/:path*"
+        "/kosar/:path*",
+        "/regisztracio",
+        "/bejelentkezes"
     ]
 }

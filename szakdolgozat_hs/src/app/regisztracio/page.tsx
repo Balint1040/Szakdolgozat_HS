@@ -1,12 +1,15 @@
 'use client'
 
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 export default function Page() {
-
+    const router = useRouter()
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [message, setMessage] = useState('')
+    const [rememberMe, setRememberMe] = useState(false)
+
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault()
@@ -18,7 +21,7 @@ export default function Page() {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    name, email, password
+                    name, email, password, rememberMe
                 }),
             })
 
@@ -28,6 +31,9 @@ export default function Page() {
                 setMessage(errorData.error || 'Sikertelen regisztráció')
                 return
             }
+
+            router.push('/')
+            router.refresh()
 
         } catch (e) {
             console.error(e)
@@ -75,8 +81,15 @@ export default function Page() {
                                 </div>
                                 <div className="mb-3 px-2 d-flex justify-content-between align-items-center">
                                     <div className="d-flex align-items-center">
-                                        <input type="checkbox" id="rememberMe" />
-                                        <label htmlFor="rememberMe" className="ps-1 mb-0">Emlékezz rám</label>
+                                        <input 
+                                            type="checkbox" 
+                                            id="rememberMe"
+                                            checked={rememberMe}
+                                            onChange={(e) => setRememberMe(e.target.checked)}
+                                        />
+                                        <label htmlFor="rememberMe" className="ps-1 mb-0">
+                                            Emlékezz rám
+                                        </label>
                                     </div>
                                 </div>
                                 <div className="d-flex justify-content-center">

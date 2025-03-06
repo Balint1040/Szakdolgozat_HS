@@ -6,7 +6,7 @@ import { pool } from '@/_lib/db'
 
 export async function POST(request: Request) {
   try {
-    const { name, email, password } = await request.json()
+    const { name, email, password , rememberMe} = await request.json()
 
     const hashedPassword = await bcrypt.hash(password, 10)
 
@@ -18,7 +18,7 @@ export async function POST(request: Request) {
     const token = jwt.sign(
       { userId: result.insertId, role: 'guest' },
       process.env.JWT_SECRET!,
-      { expiresIn: '7d' }
+     {expiresIn: '336h'}
     )
 
     const response = NextResponse.json({
@@ -28,12 +28,15 @@ export async function POST(request: Request) {
       message: 'sikeres',
     })
     
-    response.cookies.set('auth_token', token, {
+
+    const cookieOptions = {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      maxAge: 60 * 60 *24 *7,
       path: '/',
-    })
+      maxAge: rememberMe ? 1209600 : undefined 
+    }
+
+    response.cookies.set('auth_token', token, cookieOptions)
 
 
     return response;
