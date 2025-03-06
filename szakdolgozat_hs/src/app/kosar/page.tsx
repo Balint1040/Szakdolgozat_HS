@@ -8,6 +8,9 @@ import BlueButton from "@/components/BlueButton"
 import Loading from "@/components/Loading"
 import Stripe from "stripe"
 import { loadStripe } from "@stripe/stripe-js"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCartShopping, faCircleXmark } from "@fortawesome/free-solid-svg-icons"
+import { IconProp } from "@fortawesome/fontawesome-svg-core"
 
 export interface CartItem {
     id: number
@@ -91,18 +94,22 @@ export default function Page() {
     }
 
     async function handleCheckout() {
-        const stripe = await stripePromise;
-        
-        const response = await fetch('/api/stripe', {
-          method: 'POST',
-        });
-        
-        const { sessionId } = await response.json();
-        
-        await stripe?.redirectToCheckout({
-          sessionId,
-        });
-      }
+        try {
+            const stripe = await stripePromise
+
+            const response = await fetch('/api/stripe', {
+                method: 'POST',
+            })
+
+            const { sessionId } = await response.json()
+
+            await stripe?.redirectToCheckout({
+                sessionId,
+            })
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
     if (isLoading) {
         return <Loading />
@@ -119,7 +126,13 @@ export default function Page() {
                     <hr />
                 </div>
                 {cartItems.length === 0 ? (
-                    <div className="alert alert-info">A kosár üres</div>
+                    <div className="emptyCart">
+                        <div className="emptyIconWrap">
+                            <FontAwesomeIcon icon={faCartShopping as IconProp} />
+                            <FontAwesomeIcon icon={faCircleXmark as IconProp} />
+                        </div>
+                        A kosarad jelenleg üres
+                    </div>
                 ) : (
                     cartItems.map((item) => (
                         <Cart 
@@ -150,7 +163,7 @@ export default function Page() {
                             </div>
                         </div>
                         {/*<BlueButton name="Fizetés" href="#" variant="discover" />*/}
-                        <button onClick={handleCheckout} className="blueButton">Fizetés</button>
+                        <button onClick={handleCheckout} className={`blueButton ${(cartItems.length === 0 ? "disabled" : "")}`}>Fizetés</button>
                     </div>
                 </div>
             </div>

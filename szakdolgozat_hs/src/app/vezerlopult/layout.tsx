@@ -1,4 +1,7 @@
 'use client'
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link"
 import { usePathname } from "next/navigation";
 
@@ -54,6 +57,15 @@ export default function DashBoardLayout({
                                         className={`nav-link ${activeTab === '/vezerlopult/kuponok' ? 'active' : ''}`}
                                     >
                                         Kuponok
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link
+                                        href="#5"
+                                        className={`nav-link logout`}
+                                    >
+                                        Kijelentkezés
+                                        <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
                                     </Link>
                                 </li>
                             </ul>

@@ -318,7 +318,6 @@ nav {
     font-size: 40px !important;
     color: var(--white) !important;
     margin-right: 0 !important;
-    width: 190px;
 }
 .navbarSearch .form-control {
     height: 55px;
@@ -327,9 +326,6 @@ nav {
     border: none;
     padding-left: 76px;
     font-size: 20px;
-}
-.loginWrap {
-    width: 190px;
 }
 
 
@@ -813,6 +809,32 @@ nav {
 .dashboardButtonWrap a:hover:not(.active) {
     color: var(--orange);
 }
+.dashboardButtonWrap a.logout {
+    color: var(--danger);
+    position: relative;
+    z-index: 1;
+}
+.dashboardButtonWrap a.logout::after {
+    content: "";
+    height: 100%;
+    width: 0;
+    transition: all .3s ease-in-out;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: var(--danger);
+    z-index: -1;
+}
+.dashboardButtonWrap a.logout:hover::after{
+    width: 100%;
+}
+.dashboardButtonWrap a.logout:hover {
+    color: var(--white);
+}
+.dashboardButtonWrap a.logout svg {
+    margin-left: 10px;
+    font-size: 15px;
+}
 
 .dashboardProfilKepWrap {
     background-color: var(--light) !important;
@@ -934,8 +956,7 @@ footer .seo:not(:nth-last-of-type(1))::after {
     height: calc(300px - 192px - 44px);
 }
 .navbarSearch .form-control {
-    transition: all .3s ease-in-out;
-    transition-delay: .3s;
+    transition: border-radius .3s ease-in-out .3s, box-shadow .3s ease-in-out 0s;
 }
 .navbarSearch:has(+ .search-res-container > .search-res-item) .form-control  {
     border-bottom-left-radius: 0;
@@ -1213,7 +1234,7 @@ input[type=number] {
 }
 .orderRow .dropdown-menu .dropdown-item {
     color: var(--gray);
-    font-size: 20px;
+    font-size: 19px;
     padding: 3px 10px;
     transition: all .3s ease-in-out;
 }
@@ -1273,6 +1294,32 @@ input[type=number] {
 }
 .cartBottomRow {
     font-size: 22px;
+}
+.cartBottomRow .blueButton.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: .7;
+    user-select: none;
+}
+.emptyCart {
+    height: 500px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 38px;
+    flex-direction: column;
+}
+.emptyCart .emptyIconWrap {
+    position: relative;
+    font-size: 100px;
+}
+.emptyCart .emptyIconWrap > svg:nth-last-of-type(1) {
+    position: absolute;
+    color: var(--danger);
+    font-size: 40px;
+    top: 5px;
+    right: -25px;
 }
 
 .profileRow .editText > * {
