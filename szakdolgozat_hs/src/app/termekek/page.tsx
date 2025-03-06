@@ -129,10 +129,10 @@ export default function Page() {
                     sortedProducts.sort((a, b) => b.price - a.price)
                     break
                 case 'a-z':
-                    sortedProducts.sort((a, b) => b.name.localeCompare(a.name))
+                    sortedProducts.sort((a, b) => a.name.localeCompare(b.name))
                     break
                 case 'z-a':
-                    sortedProducts.sort((a, b) => a.name.localeCompare(b.name))
+                    sortedProducts.sort((a, b) => b.name.localeCompare(a.name))
                     break
                 default:
                     break
