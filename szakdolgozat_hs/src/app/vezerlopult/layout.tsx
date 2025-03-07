@@ -3,8 +3,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link"
-import { usePathname } from "next/navigation";
-
+import { usePathname, useRouter } from "next/navigation";
 
 export default function DashBoardLayout({
     children,
@@ -12,6 +11,28 @@ export default function DashBoardLayout({
     children: React.ReactNode
 }) {
     const activeTab = usePathname()
+    const router = useRouter()
+
+    const handleLogout = async () => {
+        try {
+            const res = await fetch('/api/users', {
+                method: 'POST',
+                headers: {
+                    'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
+                },
+                credentials: 'include'
+            })
+    
+            if (res.ok) {
+                router.push('/')
+                router.refresh()
+            }
+        } catch (e) {
+            console.error(e)
+        }
+    }
+    
+
     return (
         <>
             <div className="container-fluid">
@@ -61,8 +82,9 @@ export default function DashBoardLayout({
                                 </li>
                                 <li>
                                     <Link
-                                        href="#5"
+                                        href="/"
                                         className={`nav-link logout`}
+                                        onClick={handleLogout}
                                     >
                                         Kijelentkezés
                                         <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />

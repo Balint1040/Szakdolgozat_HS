@@ -13,11 +13,9 @@ export async function GET(request: NextRequest) {
     const decoded = jwt.verify(token, process.env.JWT_SECRET!) as {userId: number}
 
     const [rows] = await (await pool).execute('SELECT * FROM user WHERE ID = ?', [decoded.userId])
-    console.log(rows)
 
 
     const user = (rows as any[])[0]
-    console.log("res:", user)
     if(!user){
       return NextResponse.json({status: 404})
     }
@@ -41,4 +39,12 @@ export async function DELETE(req: Request) {
   } catch (e) {
     console.error(e)
   }
+}
+
+
+export async function POST() {
+  const res = NextResponse.json({ status: 200})
+  res.cookies.delete('auth_token')
+  
+  return res
 }
