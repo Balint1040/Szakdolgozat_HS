@@ -13,14 +13,8 @@ import { faCartShopping, faCircleXmark } from "@fortawesome/free-solid-svg-icons
 import { IconProp } from "@fortawesome/fontawesome-svg-core"
 import { enqueueSnackbar } from 'notistack'
 
-export interface CartItem {
-    id: number
-    product: Product
+export interface CartItem extends Product {
     quantity: number
-    price: number
-    name: string
-    imageurl: string
-    url: string
 }
 
 
@@ -143,13 +137,14 @@ export default function Page() {
                     cartItems.map((item) => (
                         <Cart 
                             key={item.id} 
-                            product={{
+                            /*product={{
                                 id: item.id,
                                 name: item.name,
                                 price: item.price,
-                                imageUrl: item.imageurl,
+                                imageUrl: item.imageUrl,
                                 url: item.url
-                            }}
+                            }}*/
+                           product={item}
                             quantity={item.quantity}
                             onQuantityChange={(newQuantity) => quantityChange(item.id, newQuantity)} 
                             onRemove={() => handleRemove(item.id)}

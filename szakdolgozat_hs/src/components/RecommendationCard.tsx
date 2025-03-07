@@ -21,7 +21,7 @@ export default function RecommendationCard({
     return (
         <div className="recommendationCard">
             <a href="#" className="imgWrap">
-                <img src={data.url} />
+                <img src={data.url} alt={data.name} />
                 <div className="imgHover"><FontAwesomeIcon icon={faMagnifyingGlassPlus as IconProp} /></div>
             </a>
             <h4>{data.name}</h4>

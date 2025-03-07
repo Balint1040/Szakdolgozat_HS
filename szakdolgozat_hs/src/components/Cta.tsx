@@ -22,9 +22,9 @@ export default function Cta() {
                     </div>
                     <div className="col-12 col-lg-5 ctaImgColumn">
                         <div className="position-relative h-100">
-                            <Image src={ram} alt="ram" className="ram"/>
-                            <Image src={gpu} alt="gpu" className="gpu"/>
-                            <Image src={motherb} alt="motherb"  className="motherb"/>
+                            <Image src={ram} alt="floading effect ram" className="ram"/>
+                            <Image src={gpu} alt="floading effect gpu" className="gpu"/>
+                            <Image src={motherb} alt="floading effect motherb"  className="motherb"/>
                         </div>
                     </div>
                 </div>

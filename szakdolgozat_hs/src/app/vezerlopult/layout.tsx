@@ -35,6 +35,8 @@ export default function DashBoardLayout({
 
     return (
         <>
+            
+
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-2 p-0">
@@ -87,7 +89,7 @@ export default function DashBoardLayout({
                                         onClick={handleLogout}
                                     >
                                         Kijelentkezés
-                                        <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
+                                        <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} style={{fontSize: '15px'}}/>
                                     </Link>
                                 </li>
                             </ul>

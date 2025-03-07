@@ -49,7 +49,7 @@ export default function ProductCard({
                 <div className="imgHover"><FontAwesomeIcon icon={faMagnifyingGlassPlus as IconProp} /></div>
             </Link>
             <Link href={"/termekek/" + data.id} className="productCardNameLink">
-                <h4>{data.name.length < 60 ? data.name : `${data.name.slice(0, 60)}...`}</h4>
+                <h4>{/*data.name.length < 60 ? data.name : `${data.name.slice(0, 60)}...`*/ data.name}</h4>
             </Link>
             <div className="propertiesWrap">
                 {
