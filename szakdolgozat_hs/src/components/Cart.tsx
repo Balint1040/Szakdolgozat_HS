@@ -1,9 +1,10 @@
+import { CartItem } from "@/app/kosar/page";
 import { Product } from "@/app/termekek/page";
 import Link from "next/link";
 
 
 interface CartProps {
-    product: Product
+    product: CartItem
     quantity: number
     onQuantityChange: (quantity: number) => void
     onRemove: () => void

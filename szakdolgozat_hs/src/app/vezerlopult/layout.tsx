@@ -14,6 +14,8 @@ export default function DashBoardLayout({
     const activeTab = usePathname()
     return (
         <>
+            
+
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-2 p-0">
@@ -61,11 +63,11 @@ export default function DashBoardLayout({
                                 </li>
                                 <li>
                                     <Link
-                                        href="#5"
+                                        href="#"
                                         className={`nav-link logout`}
                                     >
                                         Kijelentkezés
-                                        <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} />
+                                        <FontAwesomeIcon icon={faArrowRightFromBracket as IconProp} style={{fontSize: '15px'}}/>
                                     </Link>
                                 </li>
                             </ul>

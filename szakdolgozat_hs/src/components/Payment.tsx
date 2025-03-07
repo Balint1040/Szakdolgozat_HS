@@ -28,8 +28,8 @@ export default function Payment({
                     <div className="orderHistoryItemsWrap">
                         {payment.items?.map((item, index) => (
                             <div key={index} className="orderHistoryItem">
-                                <div>{item.name}</div>
-                                <div><span className="text-Orange">{item.quantity}</span> db</div>
+                                <div className="col-11 text-nowrap text-truncate">{item.name}</div>
+                                <div className="col-1 d-flex justify-content-end"><span className="text-Orange me-1">{item.quantity}</span> db</div>
                             </div>
                         ))}
                     </div>

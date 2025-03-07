@@ -97,7 +97,7 @@ img, .swiper-slide, .quantityWrap a {
     color: var(--blue);
 }
 .navbarSearchIcon {
-    height: 36px;
+    font-size: 36px;
     position: absolute;
     left: 20px;
     top: 50%;
@@ -697,6 +697,12 @@ nav {
 .productCardNameLink {
     color: var(--gray);
     transition: color .3s ease-in-out;
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .productCardNameLink:hover {
     color: var(--orange);

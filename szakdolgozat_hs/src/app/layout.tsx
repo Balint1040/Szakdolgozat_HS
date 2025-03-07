@@ -8,15 +8,21 @@ import { Anta } from "next/font/google";
 import OrangeButton from "@/components/OrangeButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { IconPack, IconProp } from "@fortawesome/fontawesome-svg-core";
 import BlueButton from "@/components/BlueButton";
 import SearchButton from "@/components/SearchButton";
 import Link from "next/link";
 import LoggedInButtons from "@/components/LoggedInButtons";
 import LoggedValidation from "@/components/LoggedValidation";
 import ScrollToTop from "@/components/ScrollToTop";
-import { SnackbarProvider } from 'notistack'
 import { Notistackprovider } from "@/components/SnackbarProviderClient";
+
+/*Preventing Fontawesome icons from loading with wrong size*/
+import "@fortawesome/fontawesome-svg-core/styles.css"
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { fas } from "@fortawesome/free-solid-svg-icons"
+import { fab } from "@fortawesome/free-brands-svg-icons"
+library.add(fas as IconPack, fab as IconPack)
 
 const anta = Anta({
   weight: "400",
