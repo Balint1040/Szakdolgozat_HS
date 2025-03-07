@@ -16,9 +16,16 @@ export async function addToCart(product: Product, quantity: number): Promise<voi
             })
         })
         if (res.ok) {
-            enqueueSnackbar("Termék sikeresen hozzáadva")
+            window.dispatchEvent(new Event("cartUpdated"))
+            enqueueSnackbar("Termék sikeresen hozzáadva", {
+                variant: "success",
+                autoHideDuration: 2500
+            })
         } else {
-            enqueueSnackbar("Sikertelen hozzáadás", {variant: "error"})
+            enqueueSnackbar("Terméket nem sikerült hozzáadni a kosárhoz", {
+                variant: "error",
+                autoHideDuration: 2500
+            })
         }
     } catch (e) {
         console.error(e)

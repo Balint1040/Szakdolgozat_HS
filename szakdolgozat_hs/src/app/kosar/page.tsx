@@ -11,6 +11,7 @@ import { loadStripe } from "@stripe/stripe-js"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCartShopping, faCircleXmark } from "@fortawesome/free-solid-svg-icons"
 import { IconProp } from "@fortawesome/fontawesome-svg-core"
+import { enqueueSnackbar } from 'notistack'
 
 export interface CartItem {
     id: number
@@ -81,6 +82,11 @@ export default function Page() {
             })
             if(res.ok){
                 fetchCartItems()
+                enqueueSnackbar("Termék sikeresen törölve a kosárból", {
+                variant: "success",
+                autoHideDuration: 2500
+            })
+                window.dispatchEvent(new Event("cartUpdated"))
             }
         }catch(e){
             console.error(e)

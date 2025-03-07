@@ -33,7 +33,6 @@ export async function GET(req: Request) {
         )
 
 
-        console.log('Database :', rows)
         return NextResponse.json(rows)
     } catch (e) {
         console.error('Cart fetch error:', e)

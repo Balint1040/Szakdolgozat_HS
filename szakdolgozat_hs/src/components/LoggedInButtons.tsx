@@ -27,10 +27,9 @@ export default function LoggedInButtons() {
 
     useEffect(() => {
         cartItemNumber()
-        return () => {
-            setCartItems([])
-        }
-    }, []) 
+        window.addEventListener("cartUpdated", cartItemNumber)
+        setCartItems([])
+    }, [])
 
     return (
         <div className="d-flex flex-row justify-content-between">
