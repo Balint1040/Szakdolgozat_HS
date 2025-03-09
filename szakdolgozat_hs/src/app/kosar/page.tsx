@@ -21,6 +21,8 @@ export interface CartItem extends Product {
 export default function Page() {
     const [cartItems, setCartItems] = useState<CartItem[]>([])
     const [isLoading, setIsLoading] = useState(true)
+    const [couponCode, setCouponCode] = useState("")
+    const [appliedCoupon, setAppliedCoupon] = useState<{code: string, discount: number} | null>(null)
 
     const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
 
@@ -87,10 +89,55 @@ export default function Page() {
         }
     }
 
+    const handleApplyCoupon = async () => {
+        try {
+            const res = await fetch('/api/coupons', {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
+                },
+                body: JSON.stringify({
+                    code: couponCode,
+                    totalAmount: calculateTotal()
+                })
+            })
+    
+            const data = await res.json()
+            
+            if (res.ok) {
+                setAppliedCoupon(data)
+                enqueueSnackbar("Kupon sikeresen alkalmazva!", {
+                    variant: "success",
+                    autoHideDuration: 2500
+                })
+            } else {
+                setAppliedCoupon(null)
+                enqueueSnackbar(data.message || "Érvénytelen kuponkód", {
+                    variant: "error",
+                    autoHideDuration: 2500
+                })
+            }
+        } catch (e) {
+            console.error(e)
+            setAppliedCoupon(null)
+            enqueueSnackbar("Hiba történt a kupon alkalmazása során", {
+                variant: "error",
+                autoHideDuration: 2500
+            })
+        }
+    }
+
     const calculateTotal = () => {
-        return cartItems.reduce((total, item) => {
+        const subtotal = cartItems.reduce((total, item) => {
             return total + (item.price * item.quantity)
         }, 0)
+
+        if (appliedCoupon) {
+            const discount = subtotal * (appliedCoupon.discount / 100)
+            return subtotal - discount
+        }
+        return subtotal
     }
 
     async function handleCheckout() {
@@ -144,7 +191,7 @@ export default function Page() {
                                 imageUrl: item.imageUrl,
                                 url: item.url
                             }}*/
-                           product={item}
+                            product={item}
                             quantity={item.quantity}
                             onQuantityChange={(newQuantity) => quantityChange(item.id, newQuantity)} 
                             onRemove={() => handleRemove(item.id)}
@@ -157,7 +204,20 @@ export default function Page() {
                         <div className="mb-3 d-flex justify-content-between w-100">
                             <div className="d-flex align-items-center justiy-content-center">
                                 <label htmlFor="voucher" className="pe-2">Kuponkód:</label>
-                                <input type="text" id="voucher" className="form-control" />
+                                <input
+                                    type="text"
+                                    id="voucher"
+                                    className="form-control"
+                                    value={couponCode}
+                                    onChange={(e) => setCouponCode(e.target.value)}
+                                />
+                                <button
+                                    className="btn btn-primary"
+                                    onClick={handleApplyCoupon}
+                                    disabled={!couponCode}
+                                >
+                                    Alkalmazás
+                                </button>
                             </div>
                             <div>
                                 Összesen: <span className="text-Orange">{calculateTotal().toFixed().replace(/(\d)(?=(\d{3})+$)/g, "$1.")}</span>,-

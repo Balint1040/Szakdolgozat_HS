@@ -61,6 +61,17 @@ model cartItem{
   quantity Int @default(1)
 }
 
+model coupon {
+  id Int @id @default(autoincrement())
+  code String
+  discount Int
+  minAmount Int
+  expiryDate DateTime?
+  usageLimit Int 
+  currentUsage Int
+  createdAt DateTime @default(now())
+}
+
 enum user_role {
   guest
   admin
