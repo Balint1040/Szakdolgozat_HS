@@ -76,7 +76,7 @@ export async function DELETE(req: Request) {
 
         await (await pool).execute(`DELETE FROM coupon WHERE code = ?`, [code])
 
-        return NextResponse.json({ message: "Kupon törölve", code }, { status: 204 })
+        return NextResponse.json({status: 204})
     } catch (e) {
         console.error(e)
     }

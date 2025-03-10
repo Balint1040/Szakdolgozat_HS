@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
     const manufacturer = searchParams.get("manufacturer")
     
     let query = `
-      SELECT p.*, i.url AS imageUrl 
+      SELECT p.*, i.url AS url 
       FROM product p 
       LEFT JOIN ImageUrl i ON p.id = i.productId 
       AND i.url = (SELECT MIN(url) FROM ImageUrl WHERE productId = p.id) 
@@ -36,12 +36,12 @@ export async function GET(request: NextRequest) {
     }
     if (categoryId) {
       const categoryIds = categoryId.split(',').map(id => parseInt(id, 10))
-      query += ` AND p.categoryId IN (${categoryIds.map(() => '?').join(',')})`
+      query += ` AND p.categoryId IN (${categoryIds.map(() => '?').join()})`
       params.push(...categoryIds)
     }
     if(manufacturer){
       const manufacturers = manufacturer.split(',')
-      query += `AND p.manufacturer IN (${manufacturers.map(() => "?").join(",")})`
+      query += `AND p.manufacturer IN (${manufacturers.map(() => "?").join()})`
       params.push(...manufacturers)
     }
 

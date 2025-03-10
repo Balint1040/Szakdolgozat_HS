@@ -161,7 +161,7 @@ export default function CouponsPage() {
                                 <td>{coupon.code}</td>
                                 <td>{coupon.discount}%</td>
                                 <td>{coupon.minAmount} Ft</td>
-                                <td>{coupon.expiryDate ? coupon.expiryDate : 'Nincs'}</td>
+                                <td>{coupon.expiryDate ? new Date(coupon.expiryDate).toLocaleDateString() : 'Nincs'}</td>
                                 <td>{coupon.currentUsage}/{coupon.usageLimit}</td>
                                 <td>
                                     <button
