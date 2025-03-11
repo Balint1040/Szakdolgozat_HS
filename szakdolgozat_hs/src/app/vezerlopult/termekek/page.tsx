@@ -50,7 +50,7 @@ export default function Page() {
 
 
     return (
-        <div className="container-fluid position-relative">
+        <div className="container-fluid position-relative px-0">
             <div className="row dashboardRowHeader">
                 <div className="col-1">
                     ID

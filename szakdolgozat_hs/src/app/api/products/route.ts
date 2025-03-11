@@ -17,7 +17,7 @@ export async function GET(request: NextRequest) {
     const manufacturer = searchParams.get("manufacturer")
     
     let query = `
-      SELECT p.*, i.url AS url 
+      SELECT p.*, i.url as imageUrl
       FROM product p 
       LEFT JOIN ImageUrl i ON p.id = i.productId 
       AND i.url = (SELECT MIN(url) FROM ImageUrl WHERE productId = p.id) 

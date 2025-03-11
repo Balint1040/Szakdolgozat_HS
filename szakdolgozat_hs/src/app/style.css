@@ -141,7 +141,7 @@ input[type="search"]:active + .navbarSearchIcon, input[type="search"]:focus + .n
 .orangeButton:hover {
     background-color: var(--white);
     color: var(--orange);
-    
+    cursor: pointer;
 }
 .orangeButton::after, .blueButton::after {
     content: "";
@@ -739,7 +739,9 @@ nav {
     font-size: 19px !important;
 }
 .productContainer {
-    padding: 100px 0;
+    padding: 50px 0;
+    min-height: calc(100vh - 100px);
+    height: min-content;
 }
 .productContainer .swiper-wrapper {
     align-items: center;
@@ -860,6 +862,7 @@ nav {
     padding: 5px 0;
     font-size: 20px;
     z-index: 2;
+    margin: 0 !important;
 }
 .dashboardRow {
     background-color: var(--light);
@@ -867,6 +870,7 @@ nav {
     align-items: center;
     transition: all .3s ease-in-out;
     border: solid 2px transparent;
+    margin: 0 !important;
 }
 .dashboardRow:nth-of-type(odd) {
     background-color: #eaeaea;
@@ -992,6 +996,8 @@ footer .seo:not(:nth-last-of-type(1))::after {
     display: block;
     transition: all .3s ease-in-out;
     color: var(--gray);
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .search-res-link:hover {
     background-color: var(--light);
@@ -1035,14 +1041,14 @@ input[type=number] {
     appearance: textfield;
     -moz-appearance:textfield;
 }
-.productContainer .form-control, .cartBottomRow .form-control, .profileRow .form-control {
+.productContainer .form-control, .cartBottomRow .form-control, .profileRow .form-control, .couponsContainer .form-control {
     background-color: var(--light) !important;
     padding: 5px 10px !important;
     box-shadow: none !important;
     margin: 0 !important;
     border-color: var(--light) !important;
 }
-.priceFilter input, .productContainer .form-control, .cartBottomRow .form-control, .profileRow .form-control {
+.priceFilter input, .productContainer .form-control, .cartBottomRow .form-control, .profileRow .form-control, .couponsContainer .form-control {
     width: 100%;
     background-color: var(--white);
     box-shadow: none;
@@ -1053,9 +1059,32 @@ input[type=number] {
     outline: none;
     transition: border-color .3s ease-in-out;
 }
-.priceFilter input:focus, .productContainer .form-control:focus, .cartBottomRow .form-control:focus, .profileRow .form-control:focus {
+.priceFilter input:focus, .productContainer .form-control:focus, .cartBottomRow .form-control:focus, .profileRow .form-control:focus, .couponsContainer .form-control:focus {
     border-color: var(--orange) !important;
 }
+.couponsContainer .orangeButton {
+    box-shadow: none;
+    height: 40px;
+    font-size: 20px;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.inputDate {
+    position: relative;
+}
+::-webkit-datetime-edit { 
+    padding: 10px; 
+}
+::-webkit-datetime-edit-text { 
+    color: var(--blue); padding: 0 4px; 
+}
+::-webkit-calendar-picker-indicator { 
+    filter: invert(100%);
+    padding-left: 40px;
+}
+
+
 .productContainer .blueButton {
     outline: none !important;
     border: none !important;
@@ -1306,6 +1335,15 @@ input[type=number] {
     pointer-events: none;
     opacity: .7;
     user-select: none;
+}
+.cartBottomRow .orangeButton {
+    box-shadow: none;
+    height: 40px;
+    font-size: 20px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .emptyCart {
     height: 500px;

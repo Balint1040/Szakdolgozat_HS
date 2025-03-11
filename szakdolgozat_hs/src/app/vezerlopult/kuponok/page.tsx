@@ -1,5 +1,9 @@
 'use client'
+import { IconProp } from '@fortawesome/fontawesome-svg-core'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState, useEffect } from 'react'
+import { Button, ButtonGroup } from 'react-bootstrap'
 
 interface Coupon {
     id: number
@@ -81,101 +85,118 @@ export default function CouponsPage() {
     }
 
     return (
-        <div className="container-fluid">
-            <h1 className="mb-4">Kuponok kezelése</h1>
-            <form onSubmit={handleSubmit} className="card mb-4 p-3">
-                <div className="row g-3">
-                    <div className="col-md-2">
-                        <label className="form-label">Kuponkód</label>
-                        <input
-                            type="text"
-                            className="form-control"
-                            value={newCoupon.code}
-                            onChange={e => setNewCoupon({ ...newCoupon, code: e.target.value })}
-                            required
-                        />
+        <>
+            <div className="container-fluid position-relative px-0 couponsContainer">
+                <form onSubmit={handleSubmit} className="card mb-4 p-3">
+                    <div className="row">
+                        <div className="col-md-2">
+                            <label className="form-label">Kuponkód</label>
+                            <input
+                                type="text"
+                                className="form-control"
+                                value={newCoupon.code}
+                                onChange={e => setNewCoupon({ ...newCoupon, code: e.target.value })}
+                                required
+                            />
+                        </div>
+                        <div className="col-md-2">
+                            <label className="form-label">Kedvezmény (%)</label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                min="1"
+                                max="100"
+                                value={newCoupon.discount}
+                                onChange={e => setNewCoupon({ ...newCoupon, discount: parseInt(e.target.value) })}
+                                required
+                            />
+                        </div>
+                        <div className="col-md-2">
+                            <label className="form-label">Minimum összeg</label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                min="0"
+                                value={newCoupon.minAmount}
+                                onChange={e => setNewCoupon({ ...newCoupon, minAmount: parseInt(e.target.value) })}
+                            />
+                        </div>
+                        <div className="col-md-2">
+                            <label className='form-label'>Lejárati dátum</label>
+                            <input
+                                type="date"
+                                value={newCoupon.expiryDate}
+                                className='form-control inputDate'
+                                onChange={e => setNewCoupon({ ...newCoupon, expiryDate: e.target.value })}
+                            />
+                        </div>
+                        <div className="col-md-2">
+                            <label className="form-label">Felhasználási limit</label>
+                            <input
+                                type="number"
+                                className="form-control"
+                                value={newCoupon.usageLimit}
+                                onChange={e => setNewCoupon({ ...newCoupon, usageLimit: parseInt(e.target.value) })}
+                                required
+                            />
+                        </div>
+                        <div className="col-md-2 d-flex align-items-end">
+                            <button type="submit" className="orangeButton">
+                                Létrehozás
+                            </button>
+                        </div>
                     </div>
-                    <div className="col-md-2">
-                        <label className="form-label">Kedvezmény (%)</label>
-                        <input
-                            type="number"
-                            className="form-control"
-                            min="1"
-                            max="100"
-                            value={newCoupon.discount}
-                            onChange={e => setNewCoupon({ ...newCoupon, discount: parseInt(e.target.value) })}
-                            required
-                        />
+                </form>
+                <div className="row dashboardRowHeader">
+                    <div className="col-2">
+                        Kód
                     </div>
-                    <div className="col-md-2">
-                        <label className="form-label">Minimum összeg</label>
-                        <input
-                            type="number"
-                            className="form-control"
-                            min="0"
-                            value={newCoupon.minAmount}
-                            onChange={e => setNewCoupon({ ...newCoupon, minAmount: parseInt(e.target.value) })}
-                        />
+                    <div className="col-2">
+                        Százalék
                     </div>
-                    <div className="col-md-2">
-                        <label className='fomr-control'>Lejárati dátum</label>
-                        <input
-                            type="date"
-                            value={newCoupon.expiryDate}
-                            onChange={e => setNewCoupon({ ...newCoupon, expiryDate: e.target.value })}
-                        />
+                    <div className="col-2">
+                        Minimum ár
                     </div>
-                    <div className="col-md-2">
-                        <label className="form-label">Felhasználási limit</label>
-                        <input
-                            type="number"
-                            className="form-control"
-                            value={newCoupon.usageLimit}
-                            onChange={e => setNewCoupon({ ...newCoupon, usageLimit: parseInt(e.target.value) })}
-                            required
-                        />
+                    <div className="col-2">
+                        Lejárati dátum
                     </div>
-                    <div className="col-md-2 d-flex align-items-end">
-                        <button type="submit" className="btn btn-primary w-100">
-                            Létrehozás
-                        </button>
+                    <div className="col-2">
+                        Eddig felhasználva
+                    </div>
+                    <div className="col-2">
+
                     </div>
                 </div>
-            </form>
-
-            <div className="table-responsive">
-                <table className="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Kód</th>
-                            <th>Kedvezmény</th>
-                            <th>Min. összeg</th>
-                            <th>Lejárat</th>
-                            <th>Használva</th>
-                            <th>MŰveletek</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {coupons.map(coupon => (
-                            <tr key={coupon.id}>
-                                <td>{coupon.code}</td>
-                                <td>{coupon.discount}%</td>
-                                <td>{coupon.minAmount} Ft</td>
-                                <td>{coupon.expiryDate ? new Date(coupon.expiryDate).toLocaleDateString() : 'Nincs'}</td>
-                                <td>{coupon.currentUsage}/{coupon.usageLimit}</td>
-                                <td>
-                                    <button
-                                        className="btn btn-danger btn-sm"
-                                        onClick={() => handleDelete(coupon.code)}
-                                    >
-                                        Törlés
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                {coupons.map(coupon => (
+                    <div className="row dashboardRow" key={coupon.id}>
+                        <div className="col-2">
+                            {coupon.code}
+                        </div>
+                        <div className="col-2">
+                            {coupon.discount}%
+                        </div>
+                        <div className="col-2">
+                            {coupon.minAmount} Ft
+                        </div>
+                        <div className="col-2">
+                            {coupon.expiryDate ? new Date(coupon.expiryDate).toLocaleDateString() : 'Nincs'}
+                        </div>
+                        <div className="col-2">
+                            {coupon.currentUsage}/{coupon.usageLimit}
+                        </div>
+                        <div className="col-2 d-flex justify-content-end dashboardButtons">
+                            <ButtonGroup>
+                                <Button
+                                    variant="danger"
+                                    onClick={() => handleDelete(coupon.code)}
+                                >
+                                    <FontAwesomeIcon icon={faTrash as IconProp} />
+                                </Button>
+                            </ButtonGroup>
+                        </div>
+                    </div>
+                ))}
             </div>
-        </div>
+        </>
     )
 }

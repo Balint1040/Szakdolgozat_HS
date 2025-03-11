@@ -106,6 +106,11 @@ export default function Page() {
         window.scrollTo({ top: 0 })
     }
 
+    function startsWithVowel(word: string){
+        let vowels = ("aáeéiíoóöőuúüűAÁEÉIÍOÓÖŐUÚÜŰ"); 
+        return vowels.indexOf(word[0]) !== -1;
+    }
+
     useEffect(() => {
         if (products.length > 0) {
             const sortedProducts = [...products]
@@ -220,7 +225,7 @@ export default function Page() {
                         </div>
                     <div className="col-9">
                     <div className="orderRow p-2 mb-2">
-                            <div><span className='text-Blue'>{products.length}</span> találat</div>
+                            <div><span className='text-Blue'>{products.length}</span> találat a{startsWithVowel((query ? query : "")) ? "z" : ""} <span className='text-Orange'>{query}</span> kulcsszóra</div>
                             <div className="dropdown">
                                 <button
                                     className="btn dropdown-toggle"

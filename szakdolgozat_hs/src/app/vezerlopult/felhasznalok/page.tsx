@@ -17,14 +17,14 @@ export default function Page() {
     const [users, setUsers] = useState<User[]>([])
 
     useEffect(() => {
-        async function fetchRecipes() {
+        async function fetchUsers() {
             const data = await fetch(`/api/users`)
             const init = (await data.json()) as User[]
 
             setUsers([...init])
         }
 
-        fetchRecipes()
+        fetchUsers()
     }, [])
 
     const handleDelete = async (id: number) => {
@@ -42,7 +42,7 @@ export default function Page() {
         }
     }
     return (
-        <div className="container-fluid position-relative">
+        <div className="container-fluid position-relative px-0">
             <div className="row dashboardRowHeader">
                 <div className="col-1">
                     ID

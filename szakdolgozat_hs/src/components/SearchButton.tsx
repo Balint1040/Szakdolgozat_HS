@@ -1,5 +1,6 @@
 'use client'
 
+import { Product } from "@/app/termekek/page"
 import { IconProp } from "@fortawesome/fontawesome-svg-core"
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -78,11 +79,12 @@ export default function SearchButton() {
                 <FontAwesomeIcon className="navbarSearchIcon" icon={faMagnifyingGlass as IconProp} />
             </form>
             <div className="search-res-container">
-                {results.slice(0, 4).map((result: any) => (
+                {results.slice(0, 4).map((result: Product) => (
                     <div key={result.id} className="search-res-item">
                         <Link href={`/termekek/${result.id}`}>
                             <span className="search-res-link">
-                                <img src={result.url} className="search-res-img" alt={result.name} /> {(result.name.slice(0, 40).length) < 40 ? result.name : (result.name.slice(0, 40) + "...")}
+                                <img src={result.url ? result.url : result.imageUrl} className="search-res-img" alt={result.name} /> {/*(result.name.slice(0, 40).length) < 40 ? result.name : (result.name.slice(0, 40) + "...")*/}
+                                {result.name}
                             </span>
                         </Link>
                     </div>

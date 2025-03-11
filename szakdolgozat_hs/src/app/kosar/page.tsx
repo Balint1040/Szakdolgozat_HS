@@ -202,7 +202,7 @@ export default function Page() {
                     <hr />
                     <div className="d-flex flex-column align-items-end cartBottomRow">
                         <div className="mb-3 d-flex justify-content-between w-100">
-                            <div className="d-flex align-items-center justiy-content-center">
+                            <div className="d-flex">
                                 <label htmlFor="voucher" className="pe-2">Kuponkód:</label>
                                 <input
                                     type="text"
@@ -211,13 +211,12 @@ export default function Page() {
                                     value={couponCode}
                                     onChange={(e) => setCouponCode(e.target.value)}
                                 />
-                                <button
-                                    className="btn btn-primary"
+                                <div
+                                    className="orangeButton ms-2"
                                     onClick={handleApplyCoupon}
-                                    disabled={!couponCode}
                                 >
                                     Alkalmazás
-                                </button>
+                                </div>
                             </div>
                             <div>
                                 Összesen: <span className="text-Orange">{calculateTotal().toFixed().replace(/(\d)(?=(\d{3})+$)/g, "$1.")}</span>,-
