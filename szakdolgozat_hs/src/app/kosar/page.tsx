@@ -143,9 +143,19 @@ export default function Page() {
     async function handleCheckout() {
         try {
             const stripe = await stripePromise
+            const finalTotal = calculateTotal()
 
             const response = await fetch('/api/stripe', {
                 method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json',
+                    'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
+                },
+                body: JSON.stringify({
+                    items: cartItems,
+                    coupon: appliedCoupon,
+                    totalAmount: finalTotal
+                })
             })
 
             const { sessionId } = await response.json()

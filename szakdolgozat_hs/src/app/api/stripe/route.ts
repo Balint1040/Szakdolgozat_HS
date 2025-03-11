@@ -19,6 +19,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 
 export async function POST(req: NextRequest) {
   try {
+    const {coupon} = await req.json()
 
     const token = req.cookies.get('auth_token')?.value
     if (!token) {
@@ -45,6 +46,13 @@ export async function POST(req: NextRequest) {
 
     const cartItems = rows as CartItem[]
 
+    const calculateDiscountedPrice = (price: number) => {
+      if (coupon) {
+        return Math.round(Number(price) * (1 - coupon.discount / 100) * 100)
+      }
+      return Math.round(Number(price) * 100)
+    }
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: cartItems.map(item => ({
@@ -54,7 +62,7 @@ export async function POST(req: NextRequest) {
             name: item.name,
             images: [item.url]
           },
-          unit_amount: Math.round(Number(item.price) * 100)
+          unit_amount: calculateDiscountedPrice(item.price)
         },
         quantity: item.quantity,
       })),
