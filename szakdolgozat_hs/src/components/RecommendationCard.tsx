@@ -10,6 +10,9 @@ type IntRange<F extends number, T extends number> = Exclude<Enumerate<T>, Enumer
 export type Quantity = IntRange<1, 50>
 
 import { Product } from "@/app/termekek/page"
+import { useState } from "react"
+import { addToCart } from "@/utils/addToCart"
+import OrangeCartButton from "./OrangeCartButton"
 
 
 
@@ -18,27 +21,50 @@ export default function RecommendationCard({
 } : {
     data: Product
 }) {
+
+    const [quantity, setQuantity] = useState<Quantity>(1 as Quantity)
+
+    const handleAddToCart = async(e: React.MouseEvent) => {
+        e.preventDefault()
+        try{
+            await addToCart(data, quantity)
+        }catch(e){
+            console.error(e)
+        }
+    }
+
+    const imageSrc = data.imageUrl ? data.imageUrl : (data.url ? data.url : undefined)
+
     return (
         <div className="recommendationCard">
             <a href="#" className="imgWrap">
-                <img src={data.url} alt={data.name} />
+                <img src={imageSrc} alt={data.name} />
                 <div className="imgHover"><FontAwesomeIcon icon={faMagnifyingGlassPlus as IconProp} /></div>
             </a>
             <h4>{data.name}</h4>
-            <p>{JSON.stringify(data.properties).slice(0, 120 - 3) + '...'}</p>
+            <div className="propertiesWrap">
+                {
+                    Object.entries(data.properties).slice(0, 4).map(([key, value], i) => (
+                        <div key={i} className="row propertyRow">
+                            <span className="w-50 propertyKey">{key}:</span>
+                            <span className="w-50 propertyValue">{value}</span>
+                        </div>
+                    ))
+                }
+            </div>
             
             <div className="d-flex justify-content-between recommendationBottomRowWrap">
                 <div className="d-flex justify-content-between">
-                    <a href="#" className="recommendationMore">Bővebben <FontAwesomeIcon icon={faArrowRight as IconProp} className="ms-2" /></a>
-                    <div className="recommendationPrice"><span className="text-Blue">{data.price}</span>.-</div>
+                    <a href={"/termekek/" + data.id} className="recommendationMore">Bővebben <FontAwesomeIcon icon={faArrowRight as IconProp} className="ms-2" /></a>
+                    <div className="recommendationPrice"><span className="text-Blue">{data.price.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, "$1.")}</span>.-</div>
                 </div>
                 <div className="d-flex flex-row justify-content-between mt-3">
                     <div className="quantityWrap">
-                        <a className="" onClick={() => {data.price = (data.price - 1) as Quantity}}>-</a>
-                        <h3>1</h3>
-                        <a className="" onClick={() => {data.price = (data.price + 1) as Quantity}}>+</a>
+                        <a className="pointer" onClick={() => quantity > 1 && setQuantity(q => (q - 1) as Quantity) }>-</a>
+                        <h3>{quantity}</h3>
+                        <a className="pointer" onClick={() => setQuantity(q => (q + 1) as Quantity)}>+</a>
                     </div>
-                    <OrangeButton name="Kosárba" href="#" />
+                    <button className="orangeButton" onClick={handleAddToCart}>Kosárba</button>
                 </div>
             </div>
         </div>

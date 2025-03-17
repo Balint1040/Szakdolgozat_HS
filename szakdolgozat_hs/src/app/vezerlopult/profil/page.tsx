@@ -7,16 +7,6 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 
-interface Product {
-    id: number,
-    name: string,
-    price: number,
-    properties: Object,
-    manufacturer: string,
-    categoryId: number,
-    imageUrls: { url: string }[],
-}
-
 interface Payment {
     id: string
     amount: number
@@ -31,9 +21,10 @@ interface User {
 }
 
 export default function Page() {
-    const [product, setProduct] = useState<Product | null>(null)
     const [payments, setPayments] = useState<Payment[]>([])
     const [user, setUser] = useState<User | null>(null)
+    const [newName, setNewName] = useState('')
+    const [newEmail, setNewEmail] = useState('')
 
     useEffect(() => {
         require('bootstrap/dist/js/bootstrap.bundle.min.js')
@@ -71,7 +62,6 @@ export default function Page() {
                     credentials: "include"
                 })
                 const data = await res.json()
-                console.log('User data received:', data)
                 
                 if (res.ok ) {
                     setUser(data)
@@ -82,6 +72,46 @@ export default function Page() {
         }
         fetchUserData()
     }, [])
+
+    const handleNameSubmit = async () => {
+        try {
+            const res = await fetch("/api/users", {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
+                },
+                credentials: "include",
+                body: JSON.stringify({ name: newName, email: user?.email })
+            });
+            const data = await res.json()
+            if (data.status === 200) {
+                setUser(data.user)
+            }
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    const handleEmailSubmit = async () => {
+        try {
+            const res = await fetch("/api/users", {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
+                },
+                credentials: "include",
+                body: JSON.stringify({ name: user?.name, email: newEmail })
+            });
+            const data = await res.json()
+            if (data.status === 200) {
+                setUser(data.user)
+            }
+        } catch (e) {
+            console.error(e)
+        }
+    }
 
     return (
         <>
@@ -141,12 +171,18 @@ export default function Page() {
                                 
                                 <form action="">
                                     <label htmlFor="profileName" className="form-label">Név</label>
-                                    <input type="text" id="profileName" className="form-control"/>
+                                    <input 
+                                        type="text" 
+                                        id="profileName" 
+                                        className="form-control"
+                                        value={newName}
+                                        onChange={(e => setNewName(e.target.value))}
+                                        />
                                 </form>
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="blueButton" data-bs-dismiss="modal">Mégse</button>
-                                <button type="button" className="orangeButton">Mentés</button>
+                                <button type="button" className="orangeButton" onClick={handleNameSubmit}>Mentés</button>
                             </div>
                         </div>
                     </div>
@@ -160,14 +196,20 @@ export default function Page() {
                             </div>
                             <div className="modal-body">
                                 
-                                <form action="">
+                                <form onSubmit={(e) => e.preventDefault()}>
                                     <label htmlFor="profileEmail" className="form-label">Email</label>
-                                    <input type="text" id="profileEmail" className="form-control"/>
+                                    <input 
+                                        type="email" 
+                                        id="profileEmail" 
+                                        className="form-control"
+                                        value={newEmail}
+                                        onChange={(e => setNewEmail(e.target.value))}
+                                        />
                                 </form>
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="blueButton" data-bs-dismiss="modal">Mégse</button>
-                                <button type="button" className="orangeButton">Mentés</button>
+                                <button type="button" className="orangeButton" onClick={handleEmailSubmit}>Mentés</button>
                             </div>
                         </div>
                     </div>

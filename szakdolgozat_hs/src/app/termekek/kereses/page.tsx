@@ -136,6 +136,8 @@ export default function Page() {
         }
     }, [selectedSort, products, currentPage])
 
+    const uniqueCategories = Array.from(new Set(products.filter(product => manufacturer.length === 0 || manufacturer.includes(product.manufacturer)).map(product => product.categoryId)))
+
     return (
         <>
             <div className="container productsContainer py-4">
@@ -176,21 +178,22 @@ export default function Page() {
                                 </div>
                                 <hr />
                                 <div className="checkboxFilter">
-                                    <h5>Kategória</h5>
-                                    <div className="checkboxWrap">
-                                        {Object.entries(categoryOptions).map(([id, name]) => (
-                                            <div key={id}>
-                                                <input
-                                                    type="checkbox"
-                                                    id={id}
-                                                    checked={categoryId.includes(Number(id))}
-                                                    onChange={() => handleCategoryChange(Number(id))}
-                                                />
-                                                <label htmlFor={id}>{name}</label>
-                                            </div>
-                                        ))}
-                                    </div>
+                                <h5>Kategória</h5>
+                                <div className="checkboxWrap">
+                                    {uniqueCategories.map((id) => (
+                                        <div key={id}>
+                                            <input
+                                                type="checkbox"
+                                                id={id.toString()}
+                                                checked={categoryId.includes(id)}
+                                                onChange={() => handleCategoryChange(id)}
+                                                disabled={!uniqueCategories.includes(id)}
+                                            />
+                                            <label htmlFor={id.toString()}>{categoryOptions[id]}</label>
+                                        </div>
+                                    ))}
                                 </div>
+                            </div>
                                 <hr />
                                 <div className="checkboxFilter">
                                     <h5>Gyártó</h5>

@@ -58,6 +58,13 @@ export default function CouponsPage() {
             })
 
             if (res.ok) {
+                setNewCoupon({
+                    code: "",
+                    discount: 1,
+                    minAmount: 0,
+                    expiryDate: "",
+                    usageLimit: 1
+                })
                 fetchCoupons()
             }
         } catch (e) {
@@ -106,8 +113,8 @@ export default function CouponsPage() {
                                 className="form-control"
                                 min="1"
                                 max="100"
-                                value={newCoupon.discount}
                                 onChange={e => setNewCoupon({ ...newCoupon, discount: parseInt(e.target.value) })}
+                                value={isNaN(newCoupon.discount) ? "" : newCoupon.discount}
                                 required
                             />
                         </div>
@@ -117,7 +124,7 @@ export default function CouponsPage() {
                                 type="number"
                                 className="form-control"
                                 min="0"
-                                value={newCoupon.minAmount}
+                                value={isNaN(newCoupon.minAmount) ? "" : newCoupon.minAmount}
                                 onChange={e => setNewCoupon({ ...newCoupon, minAmount: parseInt(e.target.value) })}
                             />
                         </div>
@@ -135,7 +142,7 @@ export default function CouponsPage() {
                             <input
                                 type="number"
                                 className="form-control"
-                                value={newCoupon.usageLimit}
+                                value={isNaN(newCoupon.usageLimit) ? "" : newCoupon.usageLimit}
                                 onChange={e => setNewCoupon({ ...newCoupon, usageLimit: parseInt(e.target.value) })}
                                 required
                             />

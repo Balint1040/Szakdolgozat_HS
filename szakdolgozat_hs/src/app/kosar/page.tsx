@@ -91,8 +91,8 @@ export default function Page() {
 
     const handleApplyCoupon = async () => {
         try {
-            const res = await fetch('/api/coupons', {
-                method: 'PATCH',
+            const res = await fetch('/api/coupons/apply', {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""

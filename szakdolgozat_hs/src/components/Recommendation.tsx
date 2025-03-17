@@ -10,55 +10,44 @@ import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import RecommendationCard from "./RecommendationCard";
 import { Product } from "@/app/termekek/page";
+import { useEffect, useState } from "react";
 
-
-
-const recom1 = {
-    id: 2,
-    name: "AMD Ryzen 7 7800X3D 4.2GHz 8-Cores",
-    price: 312312,
-    properties: {},
-    manufacturer: "asasd",
-    categoryId: 2,
-    imgId: 3,
-    url: "https://3.pcx.hu/pcx_prod_img/41/m/416117_4.webp?202501212151",
-    productId: 3
-}
-const recom2 = {
-    id: 23,
-    name: "G.SKILL Ripjaws S5 32GB (2x16GB) DDR5 6000MHz",
-    price: 312312,
-    properties: {},
-    manufacturer: "asasd",
-    categoryId: 2,
-    imgId: 3,
-    url: "https://2.pcx.hu/pcx_prod_img/15/m/158846_2.webp?202501212151",
-    productId: 3
-}
-const recom3 = {
-    id: 2,
-    name: "AMD Ryzen 7 7800X3D 4.2GHz 8-Cores",
-    price: 312312,
-    properties: {},
-    manufacturer: "asasd",
-    categoryId: 2,
-    imgId: 3,
-    url: "https://3.pcx.hu/pcx_prod_img/41/m/416117_4.webp?202501212151",
-    productId: 3
-}
-const recom4 = {
-    id: 23,
-    name: "G.SKILL Ripjaws S5 32GB (2x16GB) DDR5 6000MHz",
-    price: 312312,
-    properties: {},
-    manufacturer: "asasd",
-    categoryId: 2,
-    imgId: 3,
-    url: "https://2.pcx.hu/pcx_prod_img/15/m/158846_2.webp?202501212151",
-    productId: 3
-}
+const categoryIds = [1,2,3,4]
 
 export default function Recommendation() {
+    const [recommendedProducts, setRecommendedProducts] = useState<Product[]>([])
+
+    useEffect(() => {
+        const fetchRecommendedProducts = async() => {
+            try{
+
+                let allProducts: Product[] = []
+
+                for(const categoryId of categoryIds){
+                    const res = await fetch(`/api/products?categoryId=${categoryId}`, {
+                        headers: {
+                            'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
+                        }
+                    })
+
+                    const products = await res.json()
+                    if(products && products.length > 0){
+                        const shuffled = [...products].sort(() => 0.5 - Math.random())
+                        const selected = shuffled.slice(0, Math.min(2, shuffled.length))
+                        allProducts = [...allProducts, ...selected]
+                    }
+                }
+
+                const shuffledRecommendations = allProducts.sort(() => 0.5 - Math.random())
+                setRecommendedProducts(shuffledRecommendations.slice(0, 10))
+            }catch(e){
+                console.error(e)
+            }
+        }
+
+        fetchRecommendedProducts()
+    }, [])
+
     return (
         <section id="recommendation" className="position-relative">
             <div className="container">
@@ -94,10 +83,11 @@ export default function Recommendation() {
                         }}
                         className="recommendationSwiper"
                     >
-                        <SwiperSlide><RecommendationCard data={recom1 as Product} /></SwiperSlide>
-                        <SwiperSlide><RecommendationCard data={recom2 as Product} /></SwiperSlide>
-                        <SwiperSlide><RecommendationCard data={recom3 as Product} /></SwiperSlide>
-                        <SwiperSlide><RecommendationCard data={recom4 as Product} /></SwiperSlide>
+                        {recommendedProducts.map((product) => (
+                            <SwiperSlide key={`${product.id}`}>
+                                <RecommendationCard data={product} />
+                            </SwiperSlide>
+                        ))}
                     </Swiper>
                     <div className="recommendationSwiper-controlWrap">
                         <div className="recommendationSwiper-prevEl"><FontAwesomeIcon icon={faAngleLeft as IconProp} /></div>

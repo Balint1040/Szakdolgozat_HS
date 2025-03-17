@@ -107,9 +107,9 @@ export default function RootLayout({
               </div>
               <div className="col-12 col-md-6 col-lg-4 d-flex flex-column align-items-center align-items-lg-end text-end order-2 order-lg-3 mt-5 mt-md-0">
                 <h1 className="text-end">Navigáció</h1>
-                <a href="#" className="navigButton">Profilom</a>
+                <a href="/vezerlopult" className="navigButton">Profilom</a>
                 <a href="/termekek" className="navigButton">Termékek</a>
-                <a href="#" className="navigButton">Kosaram</a>
+                <a href="/kosar" className="navigButton">Kosaram</a>
               </div>
             </div>
             <div className="d-flex flex-row justify-content-center flex-wrap">

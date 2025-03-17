@@ -18,7 +18,7 @@ export default function Page() {
 
     useEffect(() => {
         async function fetchUsers() {
-            const data = await fetch(`/api/users`)
+            const data = await fetch(`/api/users/admin`)
             const init = (await data.json()) as User[]
 
             setUsers([...init])
@@ -29,7 +29,7 @@ export default function Page() {
 
     const handleDelete = async (id: number) => {
         if (confirm("Biztosan törölni szeretnéd ezt a terméket?")) {
-            await fetch(`/api/users`, {
+            await fetch(`/api/users/admin`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
