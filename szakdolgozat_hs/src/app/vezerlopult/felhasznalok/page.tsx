@@ -3,6 +3,7 @@ import { Product } from "@/app/termekek/page"
 import { IconProp } from "@fortawesome/fontawesome-svg-core"
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { enqueueSnackbar } from "notistack"
 import { useEffect, useState } from "react"
 import { Button, ButtonGroup } from "react-bootstrap"
 
@@ -38,7 +39,7 @@ export default function Page() {
                 body: JSON.stringify({ id })
             })
             setUsers(users.filter(users => users.id !== id))
-            alert("Termék törölve!")
+            enqueueSnackbar('Felhasználó sikeres törölve', {variant: "success", autoHideDuration: 2000})
         }
     }
     return (

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPen, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { IconProp } from "@fortawesome/fontawesome-svg-core"
+import { enqueueSnackbar } from "notistack"
 
 export default function Page() {
 
@@ -44,7 +45,7 @@ export default function Page() {
                 body: JSON.stringify({ id })
             })
             setProducts(products.filter(product => product.id !== id))
-            alert("Termék törölve!")
+            enqueueSnackbar('Termék sikeresen törölve', {variant:"success", autoHideDuration: 2000})
         }
     }
 

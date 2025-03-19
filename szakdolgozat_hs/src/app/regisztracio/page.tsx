@@ -1,13 +1,13 @@
 'use client'
 
 import { useRouter } from "next/navigation"
+import { enqueueSnackbar } from "notistack"
 import { useState } from "react"
 export default function Page() {
     const router = useRouter()
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [message, setMessage] = useState('')
     const [rememberMe, setRememberMe] = useState(false)
 
 
@@ -25,11 +25,8 @@ export default function Page() {
                 }),
             })
 
-            if (!response.ok) {
-                const errorData = await response.json()
-                console.error('Hiba:', errorData)
-                setMessage(errorData.error || 'Sikertelen regisztráció')
-                return
+            if(response.ok){
+                enqueueSnackbar('Sikeres regisztráció', {variant: "success", autoHideDuration: 2000})
             }
 
             router.push('/')

@@ -5,6 +5,7 @@ import ProfileProductHistory from "@/components/ProfileProductHistory";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { enqueueSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 
 interface Payment {
@@ -83,10 +84,13 @@ export default function Page() {
                 },
                 credentials: "include",
                 body: JSON.stringify({ name: newName, email: user?.email })
-            });
+            })
             const data = await res.json()
             if (data.status === 200) {
                 setUser(data.user)
+                enqueueSnackbar('Név sikeresen módosítva', { variant: 'success', autoHideDuration: 2000 })
+            }else{
+                enqueueSnackbar('Nem megfelelő a név formátuma', {variant: "error", autoHideDuration: 2000})
             }
         } catch (e) {
             console.error(e)
@@ -103,10 +107,13 @@ export default function Page() {
                 },
                 credentials: "include",
                 body: JSON.stringify({ name: user?.name, email: newEmail })
-            });
+            })
             const data = await res.json()
             if (data.status === 200) {
                 setUser(data.user)
+                enqueueSnackbar('Email cím sikeresen módosítva', {variant: 'success', autoHideDuration: 2000})
+            }else{
+                enqueueSnackbar('Nem megfelelő email cím formátum', {variant: "error"} )
             }
         } catch (e) {
             console.error(e)

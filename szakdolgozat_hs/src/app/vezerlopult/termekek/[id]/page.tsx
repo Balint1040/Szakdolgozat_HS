@@ -7,6 +7,7 @@ import { faAnglesLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { enqueueSnackbar } from 'notistack'
 import React, { useEffect, useState } from 'react'
 
 interface Product {
@@ -104,7 +105,7 @@ export default function Page({
                 },
                 body: JSON.stringify(product)
             })
-            alert("juhu")
+            enqueueSnackbar('Sikeres termékmódosítás', {variant: "success", autoHideDuration: 2000})
         }
     }
 

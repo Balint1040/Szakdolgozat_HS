@@ -5,6 +5,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core"
 import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useRouter } from "next/navigation"
+import { enqueueSnackbar } from "notistack"
 import React, { useEffect, useState } from "react"
 
 
@@ -59,13 +60,13 @@ export default function Page({
                     'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
                 },
                 body: JSON.stringify({ role: user.role })
-            });
+            })
     
             if(!res.ok) {
-                return alert('nem')
+                enqueueSnackbar('Nem sikerült végrahajtani a folyamatot', {variant: "error"})
             }
     
-            alert('juhu')
+            enqueueSnackbar('Sikeres módosítás', {variant: "success", autoHideDuration: 2000})
         } catch (e) {
             console.error(e)
         }

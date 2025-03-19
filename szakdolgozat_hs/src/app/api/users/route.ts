@@ -53,6 +53,23 @@ export async function PUT(req: NextRequest){
     const {name, email} = await req.json()
     const decoded = jwt.verify(token, process.env.JWT_SECRET!) as {userId: number}
 
+    if(name){
+      if(name.length < 3 || name.length > 20){
+        return NextResponse.json({
+          message: "A névnek 3 és 20 karakter között kell legyen",
+          status: 400
+        })
+      }
+    }
+
+    const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ\s\-.']+$/
+    if(!nameRegex.test(name)){
+      return NextResponse.json({
+        message: "Nem megfelelő névformátum",
+        status: 400
+      })
+    }
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (email && !emailRegex.test(email)) {
       return NextResponse.json({ error: 'Érvénytelen email cím vagy helytelen formátum' }, { status: 400 })
