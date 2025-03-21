@@ -19,12 +19,12 @@ export async function addToCart(product: Product, quantity: number): Promise<voi
             window.dispatchEvent(new Event("cartUpdated"))
             enqueueSnackbar("Termék sikeresen hozzáadva", {
                 variant: "success",
-                autoHideDuration: 2500
+                autoHideDuration: 2000
             })
         } else {
-            enqueueSnackbar("Terméket nem sikerült hozzáadni a kosárhoz", {
+            enqueueSnackbar("Kosárba helyezéshez először be kell jelentkezned!", {
                 variant: "error",
-                autoHideDuration: 2500
+                autoHideDuration: 2000
             })
         }
     } catch (e) {

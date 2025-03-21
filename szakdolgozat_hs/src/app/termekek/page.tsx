@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from 'react'
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons'
+import { faAngleLeft, faAngleRight, faCircleXmark, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { useProductFilters } from '@/hooks/ProductFilters'
 
@@ -279,25 +279,27 @@ export default function Page() {
                                             Z-A sorrendben
                                         </button>
                                     </li>
-                                    <li>
-                                        <button
-                                            className="dropdown-item"
-                                            onClick={() => setSelectedSort('hat')}
-                                        >
-                                            hat
-                                        </button>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
                         <div className="row">
-                            <Suspense fallback={"loading"}>
+                            {products.length === 0 ? (
+                                <div className='emptyCart'>
+                                    <div className="emptyIconWrap">
+                                        <FontAwesomeIcon icon={faMagnifyingGlass as IconProp} />
+                                        <FontAwesomeIcon icon={faCircleXmark as IconProp} />
+                                    </div>
+                                    Nem található ilyen termék
+                                </div>
+                            ) : (
+                                <Suspense fallback={"loading"}>
                                 {displayedProducts.map((product) => (
-                                    <div className="col-12 col-sm-6 col-xl-4 p-2" key={product.id}>
-                                        <ProductCard data={product} />
+                                    <div className="col-4 p-2" key={product.id}>
+                                        <ProductCard data={product}/>
                                     </div>
                                 ))}
                             </Suspense>
+                            )}
                         </div>
 
                         {loading && (

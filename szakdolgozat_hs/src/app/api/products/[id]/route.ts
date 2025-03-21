@@ -32,19 +32,12 @@ export async function PUT(request: NextRequest, context: { params: { id?: string
       const params = await context.params
       const id = params.id
   
-      const { name, price, properties, manufacturer, categoryId, imageUrls } = await request.json()
+      const { name, price, properties, manufacturer, categoryId } = await request.json()
   
       await (await pool).execute(
         'UPDATE product SET name = ?, price = ?, properties = ?, manufacturer = ?, categoryId = ? WHERE id = ?',
         [name, price, properties, manufacturer, categoryId, id]
       )
-  
-      for (const imageUrl of imageUrls) {
-        await (await pool).execute(
-          'INSERT INTO imageurl (productId, url) VALUES (?, ?)',
-          [id, imageUrl]
-        )
-      }
   
       return NextResponse.json({ message: 'updated' }, { status: 200 })
     } catch (e) {

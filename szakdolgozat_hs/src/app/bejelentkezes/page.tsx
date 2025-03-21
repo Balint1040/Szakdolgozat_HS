@@ -2,21 +2,37 @@
 
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { enqueueSnackbar } from "notistack"
 import React, { useState } from "react"
 
 
 export default function Page() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [message, setMessage] = useState('')
     const router = useRouter()
 
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault()
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+
+        if (!email) {
+            enqueueSnackbar("Az email cím megadása kötelező", { variant: 'error', autoHideDuration: 2000 })
+            return
+        }
+        
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (!emailRegex.test(email)) {
+            enqueueSnackbar("Érvénytelen email formátum", { variant: 'error', autoHideDuration: 2000 })
+            return
+        }
+        
+        if (!password) {
+            enqueueSnackbar("A jelszó megadása kötelező!", { variant: 'error', autoHideDuration: 2000 })
+            return
+        }
 
         try {
 
-            const response = await fetch('/api/users/login', {
+            const res = await fetch('/api/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -24,13 +40,18 @@ export default function Page() {
                 body: JSON.stringify({ email, password })
             })
 
-            if (!response.ok) {
-                const result = await response.json()
-                setMessage(result.error || 'Sikertelen bejelentkezés')
+            const data = await res.json()
+
+            if (!res.ok || data.status == 401) {
+                enqueueSnackbar("Helytelen email vagy jelszó", { variant: 'error', autoHideDuration: 2000 })
                 return
             }
-            router.push('/')
-            router.refresh()
+
+            enqueueSnackbar("Sikeres bejelentkezés! Átirányítás...", { variant: 'success', autoHideDuration: 2000})
+            setTimeout(()=> {
+                router.push('/')
+                router.refresh()
+            }, 1500)
         } catch (e) {
             console.error(e)
         }
@@ -48,7 +69,7 @@ export default function Page() {
                                     <label htmlFor="email">E-mail cím</label>
                                     <input
                                         type="email"
-                                        id="email" required
+                                        id="email"
                                         className="form-control"
                                         value={email}
                                         onChange={e => setEmail(e.target.value)}
@@ -58,7 +79,7 @@ export default function Page() {
                                     <label htmlFor="password">Jelszó</label>
                                     <input
                                         type="password"
-                                        id="password" required
+                                        id="password"
                                         className="form-control"
                                         value={password}
                                         onChange={e => setPassword(e.target.value)}
@@ -73,7 +94,6 @@ export default function Page() {
                                 </div>
                                 <div className="d-flex justify-content-center">
                                     <button type="submit" className="orangeButton">Bejelentkezés</button>
-                                    {message && <p>{message}</p>}
                                 </div>
                                 <div className="text-center mt-4">
                                     <span>Még nincs fiókja? <Link href="/regisztracio" className="text-Orange">Regisztrálok</Link></span>

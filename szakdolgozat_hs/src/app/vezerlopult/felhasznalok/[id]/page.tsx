@@ -76,7 +76,7 @@ export default function Page({
         <>
             <div className="container productContainer">
                 <div className="mb-2">
-                    <a className='pointer' onClick={() => { router.back() }}>
+                    <a className='pointer' onClick={() => { router.push('/vezerlopult/felhasznalok') }}>
                         <FontAwesomeIcon icon={faAnglesLeft as IconProp} /> Vissza
                     </a>
                 </div>

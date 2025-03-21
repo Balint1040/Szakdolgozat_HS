@@ -117,7 +117,7 @@ export default function Page({
         <>
             <div className="container-fluid productContainer py-3">
                 <div className="mb-2">
-                    <a className='pointer' onClick={() => { router.back() }}>
+                    <a className='pointer' onClick={() => { router.push('/vezerlopult/termekek') }}>
                         <FontAwesomeIcon icon={faAnglesLeft as IconProp} /> Vissza
                     </a>
                 </div>
@@ -127,7 +127,7 @@ export default function Page({
                     </div>
                     <div className="col-6">
                         <h2>{product.name}</h2>
-                        <h3 className='my-3'>Ár: <span className="text-Blue">{product.price.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, "$1.")},-</span></h3>
+                        <h3 className='my-3'>Ár: <span className="text-Blue">{Number(product.price).toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, "$1.")},-</span></h3>
                         <form onSubmit={handleSubmit}>
                             <div className="mb-3">
                                 <label htmlFor="name" className="form-label">Név:</label>

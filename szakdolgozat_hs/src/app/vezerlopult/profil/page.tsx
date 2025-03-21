@@ -89,8 +89,10 @@ export default function Page() {
             if (data.status === 200) {
                 setUser(data.user)
                 enqueueSnackbar('Név sikeresen módosítva', { variant: 'success', autoHideDuration: 2000 })
+                const closeButton = document.querySelector('#nameModal .btn-close')
+                closeButton?.dispatchEvent(new Event('click'))
             }else{
-                enqueueSnackbar('Nem megfelelő a név formátuma', {variant: "error", autoHideDuration: 2000})
+                enqueueSnackbar('A névnek minimum 3 karakterből kell állnia', {variant: "error", autoHideDuration: 2000})
             }
         } catch (e) {
             console.error(e)
@@ -112,6 +114,8 @@ export default function Page() {
             if (data.status === 200) {
                 setUser(data.user)
                 enqueueSnackbar('Email cím sikeresen módosítva', {variant: 'success', autoHideDuration: 2000})
+                const closeButton = document.querySelector('#emailModal .btn-close')
+                closeButton?.dispatchEvent(new Event('click'))
             }else{
                 enqueueSnackbar('Nem megfelelő email cím formátum', {variant: "error"} )
             }

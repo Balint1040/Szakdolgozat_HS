@@ -11,11 +11,36 @@ export default function Page() {
     const [rememberMe, setRememberMe] = useState(false)
 
 
-    const handleSubmit = async (event: React.FormEvent) => {
-        event.preventDefault()
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
+
+        if(!name){
+            enqueueSnackbar("A név megadása kötelező", {variant: 'error', autoHideDuration: 2000})
+            return
+        }
+
+        if (!email) {
+            enqueueSnackbar("Az email cím megadása kötelező", { variant: 'error', autoHideDuration: 2000 })
+            return
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (!emailRegex.test(email)) {
+            enqueueSnackbar("Érvénytelen email formátum", { variant: 'error', autoHideDuration: 2000 })
+            return
+        }
+        
+        if (!password) {
+            enqueueSnackbar("A jelszó megadása kötelező!", { variant: 'error', autoHideDuration: 2000 })
+            return
+        }
+        if(password.length < 6){
+            enqueueSnackbar("A jelszónak legalább 6 karakter hosszúnak kell lennie", {variant: 'error', autoHideDuration: 2000})
+            return
+        }
 
         try {
-            const response = await fetch('/api/users/register', {
+            const res = await fetch('/api/users/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -25,12 +50,14 @@ export default function Page() {
                 }),
             })
 
-            if(response.ok){
-                enqueueSnackbar('Sikeres regisztráció', {variant: "success", autoHideDuration: 2000})
+            if(res.ok){
+                enqueueSnackbar('Sikeres regisztráció! Átirányítás...', {variant: "success", autoHideDuration: 2000}) 
+                setTimeout(()=> {
+                    router.push('/')
+                    router.refresh()
+                }, 1500)
             }
 
-            router.push('/')
-            router.refresh()
 
         } catch (e) {
             console.error(e)
@@ -53,7 +80,6 @@ export default function Page() {
                                         id="name"
                                         value={name}
                                         onChange={(e) => setName(e.target.value)}
-                                        required
                                     />
                                 </div>
                                 <div className="mb-3">
@@ -63,7 +89,6 @@ export default function Page() {
                                         id="email"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        required
                                     />
                                 </div>
                                 <div className="mb-3">
@@ -73,7 +98,6 @@ export default function Page() {
                                         id="password"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        required
                                     />
                                 </div>
                                 <div className="mb-3 px-2 d-flex justify-content-between align-items-center">

@@ -13,14 +13,16 @@ import { Product } from "@/app/termekek/page"
 import { useState } from "react"
 import { addToCart } from "@/utils/addToCart"
 import OrangeCartButton from "./OrangeCartButton"
+import Link from "next/link"
+import fallbackImg from "../../public/static/imgNotFound.png"
 
-
+interface ProductCardProps{
+    data: Product
+}
 
 export default function RecommendationCard({
     data
-} : {
-    data: Product
-}) {
+} : ProductCardProps) {
 
     const [quantity, setQuantity] = useState<Quantity>(1 as Quantity)
 
@@ -33,15 +35,29 @@ export default function RecommendationCard({
         }
     }
 
-    const imageSrc = data.imageUrl ? data.imageUrl : (data.url ? data.url : undefined)
+    const [imageError, setImageError] = useState(false)
+
+    const fallbackImageUrl = fallbackImg.src
+
+    function handleLoadingError() {
+        setImageError(true)
+    }
+
+    const imageSrc = imageError || !data.imageUrl ? (!data.url ? fallbackImageUrl : data.url) : data.imageUrl
 
     return (
         <div className="recommendationCard">
-            <a href="#" className="imgWrap">
-                <img src={imageSrc} alt={data.name} />
+            <Link href={"/termekek/" + data.id} className="imgWrap">
+                <img 
+                    src={imageSrc} 
+                    onError={handleLoadingError} 
+                    alt={data.name}
+                />
                 <div className="imgHover"><FontAwesomeIcon icon={faMagnifyingGlassPlus as IconProp} /></div>
-            </a>
-            <h4>{data.name}</h4>
+            </Link>
+            <Link href={"/termekek/" + data.id} className="productCardNameLink">
+                <h4>{/*data.name.length < 60 ? data.name : `${data.name.slice(0, 60)}...`*/ data.name}</h4>
+            </Link>
             <div className="propertiesWrap">
                 {
                     Object.entries(data.properties).slice(0, 4).map(([key, value], i) => (
@@ -55,7 +71,7 @@ export default function RecommendationCard({
             
             <div className="d-flex justify-content-between recommendationBottomRowWrap">
                 <div className="d-flex justify-content-between">
-                    <a href={"/termekek/" + data.id} className="recommendationMore">Bővebben <FontAwesomeIcon icon={faArrowRight as IconProp} className="ms-2" /></a>
+                    <Link href={"/termekek/" + data.id} className="recommendationMore">Bővebben <FontAwesomeIcon icon={faArrowRight as IconProp} className="ms-2" /></Link>
                     <div className="recommendationPrice"><span className="text-Blue">{data.price.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, "$1.")}</span>.-</div>
                 </div>
                 <div className="d-flex flex-row justify-content-between mt-3">

@@ -28,9 +28,14 @@ export default function Page() {
         fetchUsers()
     }, [])
 
+    useEffect(() => {
+        require('bootstrap/dist/js/bootstrap.bundle.min.js')
+    }, [])
+
+
     const handleDelete = async (id: number) => {
-        if (confirm("Biztosan törölni szeretnéd ezt a terméket?")) {
-            await fetch(`/api/users/admin`, {
+        try {
+            const res = await fetch(`/api/users/admin`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -38,8 +43,16 @@ export default function Page() {
                 },
                 body: JSON.stringify({ id })
             })
-            setUsers(users.filter(users => users.id !== id))
-            enqueueSnackbar('Felhasználó sikeres törölve', {variant: "success", autoHideDuration: 2000})
+
+            if (res.ok) {
+                setUsers(users.filter(user => user.id !== id))
+                enqueueSnackbar('Felhasználó sikeresen törölve', { variant: "success", autoHideDuration: 2000 })
+                const closeButton = document.querySelector(`#deleteModal${id} .btn-close`)
+                closeButton?.dispatchEvent(new Event('click'))
+            }
+        } catch (e) {
+            console.error(e)
+            enqueueSnackbar('A felhasználót nem sikerült törölni', { variant: "error", autoHideDuration: 2000 })
         }
     }
     return (
@@ -82,11 +95,29 @@ export default function Page() {
                             </Button>
                             <Button
                                 variant="danger"
-                                onClick={() => handleDelete(user.id)}
+                                data-bs-toggle="modal"
+                                data-bs-target={`#deleteModal${user.id}`}
                             >
                                 <FontAwesomeIcon icon={faTrash as IconProp} />
                             </Button>
                         </ButtonGroup>
+                    </div>
+                    <div className="modal fade" id={`deleteModal${user.id}`} tabIndex={-1} aria-hidden="true">
+                        <div className="modal-dialog modal-dialog-centered">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title">Felhasználó törlése</h5>
+                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div className="modal-body">
+                                    Biztosan törölni szeretnéd <strong>{user.name}</strong> felhasználót?
+                                </div>
+                                <div className="modal-footer">
+                                    <button type="button" className="blueButton" data-bs-dismiss="modal">Mégsem</button>
+                                    <button type="button" className="orangeButton" onClick={() => handleDelete(user.id)}>Törlés</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             ))}

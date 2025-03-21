@@ -4,6 +4,7 @@ import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation";
+import { enqueueSnackbar } from "notistack";
 
 export default function DashBoardLayout({
     children,
@@ -24,6 +25,7 @@ export default function DashBoardLayout({
             })
     
             if (res.ok) {
+                enqueueSnackbar('Sikeres kijelentkezés', {variant: 'success', autoHideDuration: 2000})
                 router.push('/')
                 router.refresh()
             }

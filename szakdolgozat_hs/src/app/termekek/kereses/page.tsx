@@ -281,14 +281,6 @@ export default function Page() {
                                             Z-A sorrendben
                                         </button>
                                     </li>
-                                    <li>
-                                        <button
-                                            className="dropdown-item"
-                                            onClick={() => setSelectedSort('hat')}
-                                        >
-                                            hat
-                                        </button>
-                                    </li>
                                 </ul>
                             </div>
                         </div>

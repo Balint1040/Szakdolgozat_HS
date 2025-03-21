@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import { pool } from '@/_lib/db'
 
-export async function POST(request: Request) {
+export async function POST(req: Request) {
   try {
     const existingToken = (await cookies()).get('auth_token')
 
@@ -17,7 +17,20 @@ export async function POST(request: Request) {
       }
     }
 
-    const { email, password } = await request.json()
+    const { email, password } = await req.json()
+
+    if(!email || !password){
+      return NextResponse.json({
+        message: "Email és jelszó megadása kötelező", status: 400
+      })
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if(!emailRegex.test(email)){
+      return NextResponse.json({
+        message: "Érvénytelen email formátum", status: 400
+      })
+    }
 
 
     const [rows]: any = await (await pool).execute(
@@ -25,11 +38,17 @@ export async function POST(request: Request) {
       [email]
     )
 
+    if (!rows || (rows as any[]).length === 0) {
+      return NextResponse.json({ 
+        message: "Helytelen email cím vagy jelszó", status: 401, autoHideDuration: 2000
+      })
+    }
+
     const user = rows[0]
 
     const passwordMatch = await bcrypt.compare(password, user.password)
     if (!passwordMatch) {
-      return NextResponse.json({ error: 'helytelen jelszo' })
+      return NextResponse.json({ error: "Helytelen jelszó", status: 401 })
     }
 
     const token = jwt.sign(
