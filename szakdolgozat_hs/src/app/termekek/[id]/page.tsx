@@ -5,7 +5,7 @@ import ProductSwiper from '@/components/ProductSwiper'
 import { Quantity } from '@/components/RecommendationCard'
 import { addToCart } from '@/utils/addToCart'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { faAnglesLeft } from '@fortawesome/free-solid-svg-icons'
+import { faAnglesLeft, faSortDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -81,10 +81,10 @@ export default function Page({
                     <a className='pointer' onClick={() => (router.back())}><FontAwesomeIcon icon={faAnglesLeft as IconProp} /> Vissza</a>
                 </div>
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-12 col-lg-7 col-xl-6 order-2 order-lg-1">
                         <ProductSwiper images={product.imageUrls} />
                     </div>
-                    <div className="col-6">
+                    <div className="col-12 col-lg-5 col-xl-6 order-1 order-lg-2">
                         <h2>{product.name}</h2>
                         <h3 className='my-3'>Ár: <span className="text-Blue">{product.price.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, "$1.")}</span> <span className="text-Orange">Ft</span></h3>
                         <div className="d-flex justify-content-between align-items-center my-3">
@@ -104,19 +104,46 @@ export default function Page({
                                 </a>
                             </div>
                             <button className='orangeButton' onClick={handleAddToCart}>Kosárba</button>
-                             {/*<OrangeButton href="#" onClick={handleAddToCart} />   - - -   Adamnak */}
+                            {/*<OrangeButton href="#" onClick={handleAddToCart} />   - - -   Adamnak */}
                         </div>
                         <p>Gyártó: {product.manufacturer}</p>
-                        {[...Object.entries(product.properties)].map(
-                            ([key, value], i) => {
-                            return (
-                                <div key={i} className="row propertyRow">
-                                <span className="w-50 propertyKey">{key}:</span>
-                                <span className="w-50 propertyValue">{value}</span>
-                                </div>
-                            );
-                            }
-                        )}
+                        <div id="properyMask">
+                            <div className="propertyWrap" id='propertyWrap'>
+                                {[...Object.entries(product.properties)].map(
+                                    ([key, value], i) => {
+                                        return (
+                                            <div key={i} className="row propertyRow">
+                                                <span className="propertyKey">{key}:</span>
+                                                <span className="propertyValue">{value}</span>
+                                            </div>
+                                        );
+                                    }
+                                )}
+                                <a 
+                                    className="productMorePropery d-flex d-lg-none" 
+                                    id='productMorePropery'
+                                    onClick={() => {
+                                        const el = document.getElementById("propertyWrap")
+                                        const mask = document.getElementById("properyMask")
+                                        const text = document.getElementById("productMoreProperyText")
+                                        if (!el || !mask || !text) {
+                                            return
+                                        }
+                                        el.classList.toggle("open")
+                                        if (el.classList.contains("open")) {
+                                            text.textContent = "Kevesebb"
+                                        } else {
+                                            text.textContent = "Több"
+                                        }
+                                        let currentHeight = el.offsetHeight
+                                        mask.style.height = currentHeight + "px"
+                                    }}
+                                >
+                                    <span id='productMoreProperyText'>Több</span>
+                                    <FontAwesomeIcon icon={faSortDown as IconProp} className='ms-2 d-block d-lg-none productMoreProperyArrow' />
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

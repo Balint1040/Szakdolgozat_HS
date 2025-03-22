@@ -715,6 +715,9 @@ nav {
     position: relative;
     margin-bottom: 2;
 }
+.propertyRow > span {
+    width: 50%;
+}
 .propertyRow:not(:nth-last-of-type(1))::after {
     content: "";
     height: 1px;
@@ -732,6 +735,28 @@ nav {
 .propertyKey, .propertyValue {
     font-size: 14px;
     word-wrap: break-word;
+}
+.productMorePropery {
+    display: none;
+}
+.propertyWrap:has(.propertyRow:nth-of-type(5)) .productMorePropery {
+    width: 100%;
+    /*background-color: var(--blue);
+    color: var(--white);*/
+    text-align: center;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    color: var(--blue);
+}
+.productMoreProperyArrow {
+    font-size: 18px;
+    transform: translateY(4px);
+    color: var(--orange);
+    transition: all .3s ease-in-out;
+}
+.propertyWrap.open .productMoreProperyArrow {
+    transform: translateY(12px) rotate(180deg);
 }
 
 
@@ -1547,7 +1572,30 @@ input[type=number] {
         max-height: min-content;
         height: 100vh;
     }
+
+    .swiper-slide img {
+        width: 100%;
+    }
     
+
+    #properyMask {
+        transition: height .3s ease-in-out;
+        overflow: hidden;
+    }
+
+    #properyMask:has( .propertyWrap .propertyRow:nth-child(4)) {
+        height: 155px;
+    }
+
+    .propertyWrap .propertyRow:not(:nth-child(-n + 4)) {
+        display: none;
+    }
+    .propertyWrap.open .propertyRow {
+        display: flex;
+    }
+    .propertyWrap {
+        transition: all .3s ease-in-out;
+    }
 }
 
 @media (max-width: 767.98px) {
@@ -1621,6 +1669,9 @@ input[type=number] {
         font-size: 27px;
     }
 
+    #properyMask:has( .propertyWrap .propertyRow:nth-child(4)) {
+        height: 261px;
+    }
 
     .ctaImgColumn {
         height: 500px;
@@ -1664,5 +1715,9 @@ input[type=number] {
     .orderRow .dropdown-toggle {
         width: 170px;
         font-size: 14px;
+    }
+
+    .propertyRow > span {
+        width: 100%;
     }
 }
