@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from 'react'
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleLeft, faAngleRight, faCircleXmark, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import { faAngleLeft, faAngleRight, faCircleXmark, faMagnifyingGlass, faSortDown } from '@fortawesome/free-solid-svg-icons'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { useProductFilters } from '@/hooks/ProductFilters'
 
@@ -149,8 +149,9 @@ export default function Page() {
                     <div className="col-12 col-lg-3 p-2 position-relative">
                         <div className="filters p-2" id='filters'>
                             <div className="row">
-                                <a className='cursor-pointer' onClick={() => { document.getElementById("filters")?.classList.toggle("open") }}>
+                                <a className='cursor-pointer d-flex justify-content-center flex-row' onClick={() => { document.getElementById("filters")?.classList.toggle("open") }}>
                                     <h3 className="text-Blue text-center">Szűrők</h3>
+                                    <FontAwesomeIcon icon={faSortDown as IconProp} className='ms-2 d-block d-lg-none filterArrow' />
                                 </a>
                             </div>
                             <hr />
@@ -294,7 +295,7 @@ export default function Page() {
                             ) : (
                                 <Suspense fallback={"loading"}>
                                 {displayedProducts.map((product) => (
-                                    <div className="col-4 p-2" key={product.id}>
+                                    <div className="col-12 col-sm-6 col-md-4 p-2" key={product.id}>
                                         <ProductCard data={product}/>
                                     </div>
                                 ))}

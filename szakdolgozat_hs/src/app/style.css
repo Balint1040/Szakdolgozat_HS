@@ -1030,6 +1030,15 @@ footer .seo:not(:nth-last-of-type(1))::after {
 .filters hr {
     margin: 15px 0;
 }
+.filterArrow {
+    transform: translateY(1px);
+    transition: all .3s ease-in-out;
+    height: 20px !important;
+    color: var(--blue);
+}
+.filters.open .filterArrow {
+    transform: rotate(180deg) translateY(-10px);
+}
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     appearance: none;
@@ -1590,6 +1599,10 @@ input[type=number] {
         font-size: 25px !important;
     }
 
+    .navbarSearch {
+        margin-top: 10px;
+    }
+
     .hero .contentWrapper p {
         font-size: 30px;
     }
@@ -1643,5 +1656,13 @@ input[type=number] {
     .reviewCard p {
         font-size: 18px !important;
         line-height: 20px;
+    }
+
+    .orderRow > div:not(.dropdown) {
+        font-size: 16px;
+    }
+    .orderRow .dropdown-toggle {
+        width: 170px;
+        font-size: 14px;
     }
 }
