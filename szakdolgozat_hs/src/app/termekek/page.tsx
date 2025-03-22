@@ -24,10 +24,11 @@ export interface Product {
     properties: Object,
     manufacturer: string,
     categoryId: number,
-    imgId: number,
-    imageUrl: string,
-    url: string,
-    productId: number
+    imgId?: number,
+    imageUrl?: string,
+    imageUrls?: { url: string }[],
+    url?: string,
+    productId?: number
 }
 
 

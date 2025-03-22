@@ -10,18 +10,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
+import { Product } from '../page'
 
-
-
-interface Product {
-    id: number,
-    name: string,
-    price: number,
-    properties: Object,
-    manufacturer: string,
-    categoryId: number,
-    imageUrls: { url: string }[],
-}
 
 export default function Page({
     params
@@ -82,7 +72,7 @@ export default function Page({
                 </div>
                 <div className="row">
                     <div className="col-12 col-lg-7 col-xl-6 order-2 order-lg-1">
-                        <ProductSwiper images={product.imageUrls} />
+                        {product.imageUrls && <ProductSwiper images={product.imageUrls} />}
                     </div>
                     <div className="col-12 col-lg-5 col-xl-6 order-1 order-lg-2">
                         <h2>{product.name}</h2>
