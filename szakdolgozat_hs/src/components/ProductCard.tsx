@@ -53,7 +53,7 @@ export default function ProductCard({
             </Link>
             <div className="propertiesWrap">
                 {
-                    Object.entries(data.properties).slice(0, 4).map(([key, value], i) => (
+                    Object.entries(data.properties).map(([key, value], i) => (
                         <div key={i} className="row propertyRow">
                             <span className="w-50 propertyKey">{key}:</span>
                             <span className="w-50 propertyValue">{value}</span>

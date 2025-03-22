@@ -667,8 +667,25 @@ nav {
     letter-spacing: 0;
     line-height: 110%;
     color: #777777;
-    max-height: 80px;
+    height: 80px;
     font-size: 16px;
+    position: relative;
+}
+.productCard .propertiesWrap {
+    height: 115px !important;
+}
+.recommendationCard .propertiesWrap {
+    overflow: clip;
+}
+.recommendationCard .propertiesWrap::after {
+    content: "";
+    width: 100%;
+    height: 25px;
+    background: linear-gradient(0deg, var(--light), transparent);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
 }
 .recommendationCard .recommendationPrice {
     font-size: 25px;
@@ -703,6 +720,14 @@ nav {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.productCard .propertyValue {
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .productCardNameLink:hover {
     color: var(--orange);
