@@ -663,6 +663,7 @@ nav {
     font-size: 20px;
 }
 .recommendationCard p, .recommendationCard .propertiesWrap {
+    padding-top: 10px;
     margin-bottom: 5px;
     letter-spacing: 0;
     line-height: 110%;
@@ -685,7 +686,7 @@ nav {
     position: absolute;
     bottom: 0;
     left: 0;
-    z-index: 2;
+    z-index: 1;
 }
 .recommendationCard .recommendationPrice {
     font-size: 25px;
