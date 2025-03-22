@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
+import { jwtVerify } from "jose"
+
 
 export async function middleware(req: NextRequest) {
     const protectedRoutes = [
@@ -11,6 +13,19 @@ export async function middleware(req: NextRequest) {
 
     if (token && (path === "/regisztracio" || path === "/bejelentkezes")) {
         return NextResponse.redirect(new URL("/", req.url))
+    }
+
+    if (path.startsWith("/vezerlopult/termekek") || path.startsWith("/vezerlopult/felhasznalok") || path.startsWith("/vezerlopult/kuponok") || path.startsWith("/vezerlopult/megrendelesek")) {
+        if (!token) {
+            return NextResponse.redirect(new URL("/", req.url))
+        }
+        const secret = new TextEncoder().encode(process.env.JWT_SECRET)
+        const { payload } = await jwtVerify(token, secret)
+        
+        if (payload.role !== "admin") {
+            return NextResponse.redirect(new URL("/", req.url))
+        }
+
     }
 
     const isProtectedRoute = protectedRoutes.includes(path) || path.startsWith("/vezerlopult") || path.startsWith("/kosar")
