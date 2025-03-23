@@ -176,8 +176,8 @@ export default function Page() {
         <>
             <div className="container py-4">
                 <div className="row">
-                    <div className="d-flex justify-content-between align-items-center pb-3">
-                        <h3>Kosaram</h3>
+                    <div className="d-flex flex-column flex-sm-row justify-content-between align-items-center pb-3">
+                        <h3 className="mb-3 mb-sm-0">Kosaram</h3>
                         <OrangeButton name="Tovább vásárlok" href="/termekek" variant="discover" />
                     </div>
                     <hr />
@@ -211,8 +211,8 @@ export default function Page() {
                 <div className="row">
                     <hr />
                     <div className="d-flex flex-column align-items-end cartBottomRow">
-                        <div className="mb-3 d-flex justify-content-between w-100">
-                            <div className="d-flex">
+                        <div className="mb-3 d-flex flex-column flex-lg-row align-items-center justify-content-lg-between w-100">
+                            <div className="d-flex flex-column flex-sm-row voucherWrap">
                                 <label htmlFor="voucher" className="pe-2">Kuponkód:</label>
                                 <input
                                     type="text"
@@ -228,12 +228,15 @@ export default function Page() {
                                     Alkalmazás
                                 </div>
                             </div>
-                            <div>
-                                Összesen: <span className="text-Orange">{calculateTotal().toFixed().replace(/(\d)(?=(\d{3})+$)/g, "$1.")}</span>,-
+                            <div className="d-flex flex-column checkoutWrap">
+                                <div className="text-center text-lg-end">
+                                    Összesen: <span className="text-Orange">{calculateTotal().toFixed().replace(/(\d)(?=(\d{3})+$)/g, "$1.")}</span>,-
+                                </div>
+                                <button onClick={handleCheckout} className={`blueButton ${(cartItems.length === 0 ? "disabled" : "")}`}>Fizetés</button>
                             </div>
                         </div>
                         {/*<BlueButton name="Fizetés" href="#" variant="discover" />*/}
-                        <button onClick={handleCheckout} className={`blueButton ${(cartItems.length === 0 ? "disabled" : "")}`}>Fizetés</button>
+                        
                     </div>
                 </div>
             </div>

@@ -30,18 +30,18 @@ export default function Cart({
 
     return (
         <div className="row cartItemRow">
-            <div className="col-4 p-0 position-relative h-100">
+            <div className="col-12 col-md-4 p-0 position-relative h-100">
                 <div className="cartImgWrap">
                     <img src={!product.imageUrl ? product.url : product.imageUrl} alt={product.name} />
                 </div>
             </div>
-            <div className="col-8 h-100 position-relative">
+            <div className="col-12 col-md-8 h-100 position-relative">
                 <div className="d-flex flex-column h-100 justify-content-between">
                     <div className="row">
-                        <div className="col-9">
+                        <div className="col-12 col-lg-9">
                             <Link href={`/termekek/${product.id}`} className="cartName">{product.name}</Link>
                         </div>
-                        <div className="col-3 text-end">
+                        <div className="col-12 col-lg-3 text-end">
                             <span className="text-Blue">{(product.price*quantity).toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, "$1.")}</span>,-
                         </div>
                     </div>
