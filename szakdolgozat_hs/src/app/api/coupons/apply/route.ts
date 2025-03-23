@@ -24,12 +24,6 @@ export async function POST(req: Request) {
             }, { status: 400 })
         }
 
-        await (await pool).execute(`
-            UPDATE coupon 
-            SET currentUsage = currentUsage + 1 
-            WHERE code = ?
-        `, [code])
-
         return NextResponse.json({
             code: coupon.code,
             discount: coupon.discount

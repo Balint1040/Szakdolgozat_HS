@@ -19,7 +19,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 
 export async function POST(req: NextRequest) {
   try {
-    const {coupon} = await req.json()
+    const {coupon, applyCoupon} = await req.json()
 
     const token = req.cookies.get('auth_token')?.value
     if (!token) {
@@ -70,7 +70,9 @@ export async function POST(req: NextRequest) {
       success_url: `${process.env.NEXT_PUBLIC_URL}/sikeres?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.NEXT_PUBLIC_URL}/kosar`,
       metadata:{
-        userId: decoded.userId.toString()
+        userId: decoded.userId.toString(),
+        couponCode: coupon?.code || "",
+        couponDiscount: coupon?.discount?.toString() || ""
       }
     })
 

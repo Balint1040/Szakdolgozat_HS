@@ -2,6 +2,7 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { enqueueSnackbar } from 'notistack'
 import { useState, useEffect } from 'react'
 import { Button, ButtonGroup } from 'react-bootstrap'
 
@@ -72,6 +73,11 @@ export default function CouponsPage() {
         }
     }
 
+    useEffect(() => {
+        require('bootstrap/dist/js/bootstrap.bundle.min.js')
+    }, [])
+
+
     const handleDelete = async (code: string) => {
         try {
             const res = await fetch('/api/coupons', {
@@ -85,9 +91,13 @@ export default function CouponsPage() {
 
             if (res.ok) {
                 fetchCoupons()
+                enqueueSnackbar("Kupon törölve", { variant: "success", autoHideDuration: 2000 })
+                const closeButton = document.querySelector(`#deleteModal${code} .btn-close`)
+                closeButton?.dispatchEvent(new Event('click'))
             }
         } catch (e) {
             console.error(e)
+            enqueueSnackbar("Kupon törlése sikertelen", { variant: "error", autoHideDuration: 2000 })
         }
     }
 
@@ -195,11 +205,29 @@ export default function CouponsPage() {
                             <ButtonGroup>
                                 <Button
                                     variant="danger"
-                                    onClick={() => handleDelete(coupon.code)}
+                                    data-bs-toggle="modal"
+                                    data-bs-target={`#deleteModal${coupon.code}`}
                                 >
                                     <FontAwesomeIcon icon={faTrash as IconProp} />
                                 </Button>
                             </ButtonGroup>
+                        </div>
+                        <div className="modal fade" id={`deleteModal${coupon.code}`} tabIndex={-1} aria-hidden="true">
+                            <div className="modal-dialog modal-dialog-centered">
+                                <div className="modal-content">
+                                    <div className="modal-header">
+                                        <h5 className="modal-title">Kupon törlése</h5>
+                                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div className="modal-body">
+                                        Biztosan törölni szeretnéd <strong>{coupon.code}</strong> kódot?
+                                    </div>
+                                    <div className="modal-footer">
+                                        <button type='button' className='blueButton' data-bs-dismiss="modal">Mégsem</button>
+                                        <button type='button' className='orangeButton' onClick={() => handleDelete(coupon.code)}>Törlés</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 ))}

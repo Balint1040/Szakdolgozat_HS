@@ -34,6 +34,11 @@ export default function Page() {
         fetchProducts()
     }, [])
 
+    useEffect(() => {
+        require('bootstrap/dist/js/bootstrap.bundle.min.js')
+    }, [])
+
+
     const handleDelete = async (id: number) => {
         try {
             const res = await fetch(`/api/products`, {

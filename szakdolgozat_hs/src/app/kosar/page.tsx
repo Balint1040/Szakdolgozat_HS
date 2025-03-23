@@ -109,13 +109,13 @@ export default function Page() {
                 setAppliedCoupon(data)
                 enqueueSnackbar("Kupon sikeresen alkalmazva!", {
                     variant: "success",
-                    autoHideDuration: 2500
+                    autoHideDuration: 2000
                 })
             } else {
                 setAppliedCoupon(null)
                 enqueueSnackbar(data.message || "Érvénytelen kuponkód", {
                     variant: "error",
-                    autoHideDuration: 2500
+                    autoHideDuration: 2000
                 })
             }
         } catch (e) {
@@ -123,7 +123,7 @@ export default function Page() {
             setAppliedCoupon(null)
             enqueueSnackbar("Hiba történt a kupon alkalmazása során", {
                 variant: "error",
-                autoHideDuration: 2500
+                autoHideDuration: 2000
             })
         }
     }
@@ -145,7 +145,7 @@ export default function Page() {
             const stripe = await stripePromise
             const finalTotal = calculateTotal()
 
-            const response = await fetch('/api/stripe', {
+            const res = await fetch('/api/stripe', {
                 method: 'POST',
                 headers:{
                     'Content-Type': 'application/json',
@@ -154,11 +154,12 @@ export default function Page() {
                 body: JSON.stringify({
                     items: cartItems,
                     coupon: appliedCoupon,
-                    totalAmount: finalTotal
+                    totalAmount: finalTotal,
+                    applyCoupon: true
                 })
             })
 
-            const { sessionId } = await response.json()
+            const { sessionId } = await res.json()
 
             await stripe?.redirectToCheckout({
                 sessionId,
