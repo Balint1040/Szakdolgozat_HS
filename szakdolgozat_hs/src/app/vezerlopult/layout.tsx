@@ -1,6 +1,6 @@
 'use client'
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRightFromBracket, faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation";
@@ -41,8 +41,8 @@ export default function DashBoardLayout({
 
             <div className="container-fluid">
                 <div className="row">
-                    <div className="col-2 p-0">
-                        <div className="d-flex flex-column py-3 dashboardButtonWrap">
+                    <div className="col-0 col-lg-2 p-0">
+                        <div className="d-flex flex-column py-3 dashboardButtonWrap" id="dashboardButtonWrap">
                             <ul className="nav nav-pills flex-column mb-auto">
                                 <li className="nav-item">
                                     <Link
@@ -97,7 +97,18 @@ export default function DashBoardLayout({
                             </ul>
                         </div>
                     </div>
-                    <div className="col-10 p-3">
+                    <div className="col-12 col-lg-10 p-3">
+                        <a 
+                            className="dashboardButtonToggle" 
+                            id="dashboardButtonToggle"
+                            onClick={() => { 
+                                document.getElementById("dashboardButtonWrap")?.classList.toggle("open") 
+                                document.getElementById("dashboardButtonToggle")?.classList.toggle("open") 
+                            }}
+                        >
+                            <FontAwesomeIcon icon={faBars as IconProp} className="bashboardOpen" />
+                            <FontAwesomeIcon icon={faXmark as IconProp} className="bashboardClose" />
+                        </a>
                         {children}
                     </div>
                 </div>

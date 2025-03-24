@@ -43,7 +43,7 @@ export default function Page() {
     }, [])
 
     return (
-        <div className="container py-4">
+        <div className="container py-4 mt-4 mt-lg-0">
             <h3>Korábbi rendelések</h3>
             <hr />
             {payments.length == 0 ? (

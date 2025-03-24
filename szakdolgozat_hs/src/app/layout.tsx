@@ -22,7 +22,11 @@ import "@fortawesome/fontawesome-svg-core/styles.css"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fas } from "@fortawesome/free-solid-svg-icons"
 import { fab } from "@fortawesome/free-brands-svg-icons"
+import AosClient from "@/components/AosClient";
 library.add(fas as IconPack, fab as IconPack)
+
+
+//AOS.init()
 
 const anta = Anta({
   weight: "400",
@@ -67,6 +71,7 @@ export default function RootLayout({
             </div>
           </div>
         </nav>
+        <AosClient />
 
 
         

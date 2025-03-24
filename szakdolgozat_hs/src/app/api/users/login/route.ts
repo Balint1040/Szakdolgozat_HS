@@ -17,7 +17,7 @@ export async function POST(req: Request) {
       }
     }
 
-    const { email, password } = await req.json()
+    const { email, password, rememberMe } = await req.json()
 
     if(!email || !password){
       return NextResponse.json({
@@ -54,7 +54,7 @@ export async function POST(req: Request) {
     const token = jwt.sign(
       { userId: user.id, role: user.role }, 
       process.env.JWT_SECRET!, 
-      { expiresIn: '7h' }
+      { expiresIn: rememberMe ? '336h' : '24h'}
     )
 
     const response = NextResponse.json({
@@ -65,7 +65,7 @@ export async function POST(req: Request) {
     response.cookies.set('auth_token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      maxAge: 60 * 60 *24 *7,
+      maxAge: rememberMe ? 1209600 * 1000 : 86400 * 1000,
       path: '/',
     })
 

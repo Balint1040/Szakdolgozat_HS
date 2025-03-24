@@ -64,11 +64,11 @@ export default function Hero() {
         <section className="position-relative hero">
             <div className="container h-100">
                 <div className="row d-flex align-items-center h-100">
-                    <div className="contentWrapper">
+                    <div className="contentWrapper" data-aos="zoom-in-left">
                         <p className="text-end pb-3">
                             <span className="text-Orange" id="productCount">{countDisplay}</span> termékünk várja, hogy kiválaszd a számodra legmegfelelőbbet!
                         </p>
-                        <OrangeButton name="Termékek felfedezése" href="/termekek" variant="discover"/>
+                        <OrangeButton name="Termékek felfedezése" href="/termekek" variant="discover" />
                     </div>
                 </div>
             </div>

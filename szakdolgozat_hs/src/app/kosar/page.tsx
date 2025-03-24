@@ -179,7 +179,7 @@ export default function Page() {
                 <div className="row">
                     <div className="d-flex flex-column flex-sm-row justify-content-between align-items-center pb-3">
                         <h3 className="mb-3 mb-sm-0">Kosaram</h3>
-                        <OrangeButton name="Tovább vásárlok" href="/termekek" variant="discover" />
+                        <OrangeButton name="Tovább vásárolok" href="/termekek" variant="discover" />
                     </div>
                     <hr />
                 </div>

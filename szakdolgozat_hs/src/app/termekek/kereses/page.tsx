@@ -296,8 +296,8 @@ export default function Page() {
                                 </div>
                             ) : (
                                 <Suspense fallback={"loading"}>
-                                {displayedProducts.map((product) => (
-                                    <div className="col-12 col-sm-6 col-md-4 p-2" key={product.id}>
+                                {displayedProducts.map((product, i) => (
+                                    <div className="col-12 col-sm-6 col-md-4 p-2" key={product.id} data-aos="zoom-in-up" data-aos-delay={((i % 3) + 1) * 50} data-aos-offset="50"> 
                                         <ProductCard data={product}/>
                                     </div>
                                 ))}

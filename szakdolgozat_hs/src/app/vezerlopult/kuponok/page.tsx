@@ -106,7 +106,7 @@ export default function CouponsPage() {
             <div className="container-fluid position-relative px-0 couponsContainer">
                 <form onSubmit={handleSubmit} className="card mb-4 p-3">
                     <div className="row">
-                        <div className="col-md-2">
+                        <div className="col-12 col-sm-6 col-lg-4 col-xxl-2 mt-2 mt-xxl-0">
                             <label className="form-label">Kuponkód</label>
                             <input
                                 type="text"
@@ -116,7 +116,7 @@ export default function CouponsPage() {
                                 required
                             />
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-12 col-sm-6 col-lg-4 col-xxl-2 mt-2 mt-xxl-0">
                             <label className="form-label">Kedvezmény (%)</label>
                             <input
                                 type="number"
@@ -128,7 +128,7 @@ export default function CouponsPage() {
                                 required
                             />
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-12 col-sm-6 col-lg-4 col-xxl-2 mt-2 mt-xxl-0">
                             <label className="form-label">Minimum összeg</label>
                             <input
                                 type="number"
@@ -138,7 +138,7 @@ export default function CouponsPage() {
                                 onChange={e => setNewCoupon({ ...newCoupon, minAmount: parseInt(e.target.value) })}
                             />
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-12 col-sm-6 col-lg-4 col-xxl-2 mt-2 mt-xxl-0">
                             <label className='form-label'>Lejárati dátum</label>
                             <input
                                 type="date"
@@ -147,7 +147,7 @@ export default function CouponsPage() {
                                 onChange={e => setNewCoupon({ ...newCoupon, expiryDate: e.target.value })}
                             />
                         </div>
-                        <div className="col-md-2">
+                        <div className="col-12 col-sm-6 col-lg-4 col-xxl-2 mt-2 mt-xxl-0">
                             <label className="form-label">Felhasználási limit</label>
                             <input
                                 type="number"
@@ -157,7 +157,7 @@ export default function CouponsPage() {
                                 required
                             />
                         </div>
-                        <div className="col-md-2 d-flex align-items-end">
+                        <div className="col-12 col-sm-6 col-lg-4 col-xxl-2 d-flex align-items-end mt-2 mt-xxl-0">
                             <button type="submit" className="orangeButton">
                                 Létrehozás
                             </button>

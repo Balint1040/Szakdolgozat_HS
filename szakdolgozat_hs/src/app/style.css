@@ -307,6 +307,7 @@ nav .loggedInCartButton .cartButtonNum {
 nav {
     height: 100px;
     background-color: var(--gray);
+    z-index: 5;
     /*-webkit-box-shadow: 0px 4px 20px 5px var(--blue);
     -moz-box-shadow: 0px 4px 20px 5px var(--blue);
     box-shadow: 0px 4px 20px 5px var(--blue);
@@ -331,6 +332,7 @@ nav {
 
 .hero {
     height: calc(100vh - 100px);
+    min-height: 400px;
     background-image: url("../../public/static/heroBg.jpg");
     background-size: cover;
     background-position: center center;
@@ -600,6 +602,11 @@ nav {
 .recommendationCard img {
     max-height: 190px;
     max-width: 95%;
+}
+.recommendationCard .imgWrap img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
 }
 .quantityWrap {
     display: flex;
@@ -1521,6 +1528,10 @@ input[type=number] {
     min-height: calc(100vh - 100px);
 }
 
+.dashboardButtonToggle {
+    display: none;
+}
+
 @media (min-width: 1199.98px) {
     .ctaButtonSpan {
         width: unset !important;
@@ -1640,6 +1651,87 @@ input[type=number] {
     .propertyWrap {
         transition: all .3s ease-in-out;
     }
+
+    .dashboardButtonWrap {
+        position: absolute;
+        top: 0;
+        left: -200px;
+        width: 200px;
+        transition: all .3s ease-in-out;
+        z-index: 3;
+    }
+    .dashboardButtonWrap.open {
+        left: 0;
+    }
+
+    .dashboardButtonToggle {
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: var(--gray);
+        height: 57px;
+        width: 57px;
+        justify-content: center;
+        align-items: center;
+        color: var(--white);
+        font-size: 25px;
+        border-bottom-right-radius: 10px;
+        z-index: 4;
+        transition: all .3s ease-in-out;
+    }
+    .dashboardButtonToggle.open {
+        left: 200px;
+    }
+    .bashboardClose, .bashboardOpen {
+        transition: all .3s ease-in-out;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .dashboardButtonToggle .bashboardClose, .dashboardButtonToggle.open .bashboardOpen {
+        opacity: 0;
+    }
+    .dashboardButtonToggle.open .bashboardClose, .dashboardButtonToggle .bashboardOpen {
+        opacity: 1;
+    }
+
+    .container-fluid:has(> .dashboardRowHeader) {
+        overflow-x: scroll;
+        overflow-y: clip;
+        margin-top: 50px;
+    }
+    .dashboardRowHeader, .dashboardRow {
+        min-width: 920px;
+        position: relative !important;
+    }
+
+    .dashboardRow {
+        position: relative !important;
+        height: 48px;
+    }
+    .dashboardButtons {
+        opacity: 1;
+    }
+    .dashboardRowHeader > div:nth-child(1), .dashboardRow > div:nth-child(1) {
+        position: sticky;
+        left: 0;
+        top: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    
+    .dashboardRowHeader:nth-of-type(odd) > div:nth-child(1) {
+        background-color: #cdcdcd;
+    }
+    .dashboardRow:nth-of-type(odd) > div:nth-child(1) {
+        background-color: #eaeaea;
+    }
+    .dashboardRow:nth-of-type(even) > div:nth-child(1) {
+        background-color: var(--light);
+    }
 }
 
 @media (max-width: 767.98px) {
@@ -1651,7 +1743,9 @@ input[type=number] {
         width: 100% !important;
     }
 
-
+    .ctaImgColumn {
+        overflow-x: clip;
+    }
     .ctaImgColumn > div {
         width: 100%;
     }
@@ -1682,6 +1776,10 @@ input[type=number] {
     .cartItemRow .cartImgWrap {
         height: 225px;
     }
+
+    .hero .contentWrapper p {
+        font-size: 39px;
+    }
 }
 
 @media (max-width: 575.98px) {
@@ -1711,6 +1809,11 @@ input[type=number] {
     .orangeButton, .blueButton {
         font-size: 18px;
         line-height: 26px;
+    }
+
+    #productCount {
+        display: inline-block;
+        width: 70px;
     }
 
     .sCardWrap {
@@ -1790,5 +1893,13 @@ input[type=number] {
     }
     .cartItemRow .cartName {
         font-size: 20px;
+    }
+
+    .dashboardProfilKepWrap {
+        width: 300px;
+        height: 300px;
+    }
+    .orderHistoryRow {
+        padding: 10px;
     }
 }

@@ -41,7 +41,7 @@ export async function POST(request: Request) {
     const token = jwt.sign(
       { userId: result.insertId, role: 'guest' },
       process.env.JWT_SECRET!,
-     {expiresIn: '336h'}
+      {expiresIn: rememberMe ? '336h' : '24h'}
     )
 
     const response = NextResponse.json({
@@ -56,7 +56,7 @@ export async function POST(request: Request) {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       path: '/',
-      maxAge: rememberMe ? 1209600 : undefined 
+      maxAge: rememberMe ? 1209600 * 1000 : 86400 * 1000 
     }
 
     response.cookies.set('auth_token', token, cookieOptions)

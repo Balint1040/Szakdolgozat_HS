@@ -40,7 +40,7 @@ export default function Reviews() {
     }
 
     return (
-        <section id="reviews" className="position-relative">
+        <section id="reviews" className="position-relative" data-aos="zoom-in-up" data-aos-offset="500">
             <div className="container">
                 <div className="row">
                     <h1>Mások mondták rólunk...</h1>

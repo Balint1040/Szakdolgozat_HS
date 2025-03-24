@@ -27,25 +27,25 @@ export default function Strengths() {
             <div className="container">
                 <div className="row">
                     <div className="col-12 col-sm-6 col-lg-3 mb-sm-4">
-                        <div className="d-flex justify-content-center flex-column sCardWrap">
+                        <div className="d-flex justify-content-center flex-column sCardWrap" data-aos="zoom-in-up" data-aos-delay="100" data-aos-offset="100">
                             <FontAwesomeIcon icon={faGaugeHigh as IconProp} />
                             <div className="text-center fs-3 mt-2">Gyors</div>
                         </div>
                     </div>
                     <div className="col-12 col-sm-6 col-lg-3 mb-sm-4">
-                        <div className="d-flex justify-content-center flex-column sCardWrap">
+                        <div className="d-flex justify-content-center flex-column sCardWrap" data-aos="zoom-in-up" data-aos-delay="300" data-aos-offset="100">
                             <FontAwesomeIcon icon={faCircleCheck as IconProp} />
                             <div className="text-center fs-3 mt-2">Megbízható</div>
                         </div>
                     </div>
                     <div className="col-12 col-sm-6 col-lg-3 mb-sm-4">
-                        <div className="d-flex justify-content-center flex-column sCardWrap">
+                        <div className="d-flex justify-content-center flex-column sCardWrap" data-aos="zoom-in-up" data-aos-delay="500" data-aos-offset="100">
                             <FontAwesomeIcon icon={faShieldHalved as IconProp} />
                             <div className="text-center fs-3 mt-2">Biztonságos</div>
                         </div>
                     </div>
                     <div className="col-12 col-sm-6 col-lg-3 mb-sm-4">
-                        <div className="d-flex justify-content-center flex-column sCardWrap">
+                        <div className="d-flex justify-content-center flex-column sCardWrap" data-aos="zoom-in-up" data-aos-delay="700" data-aos-offset="100">
                             <FontAwesomeIcon icon={faArrowTrendDown as IconProp} />
                             <div className="text-center fs-3 mt-2">Kedvező áron</div>
                         </div>

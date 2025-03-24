@@ -49,7 +49,7 @@ export default function Recommendation() {
     }, [])
 
     return (
-        <section id="recommendation" className="position-relative">
+        <section id="recommendation" className="position-relative" data-aos="zoom-in-up" data-aos-offset="400">
             <div className="container">
                 <div className="row">
                     <h1>Termékek, amik tetszhetnek...</h1>

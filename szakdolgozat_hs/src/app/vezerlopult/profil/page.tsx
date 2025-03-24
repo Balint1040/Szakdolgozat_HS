@@ -1,12 +1,14 @@
 'use client'
 
 import Cart from "@/components/Cart";
+import Payment from "@/components/Payment";
 import ProfileProductHistory from "@/components/ProfileProductHistory";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { enqueueSnackbar } from "notistack";
 import { useEffect, useState } from "react";
+import { PaymentInfo } from "../megrendelesek/page";
 
 interface Payment {
     id: string
@@ -127,7 +129,7 @@ export default function Page() {
     return (
         <>
             <div className="row profileRow py-3">
-                <div className="col-4">
+                <div className="col-12 col-xl-5 col-xxl-4">
                     <div className="d-flex flex-column justify-content-center align-items-center w-100">
                         <div className="dashboardProfilKepWrap mb-3">
                             <FontAwesomeIcon icon={faUser as IconProp} />
@@ -140,7 +142,7 @@ export default function Page() {
                         </a>
                     </div>
                 </div>
-                <div className="col-8">
+                <div className="col-12 col-xl-7 col-xxl-8">
                     <h3>Korábbi rendelések</h3>
                     <hr />
                     {payments.length == 0 ?(
@@ -148,24 +150,7 @@ export default function Page() {
                     ) : (
                         <div>
                             {payments.map((payment) => (
-                                <div key={payment.id} className="mb-3 p-3 border rounded">
-                                    <div className="d-flex justify-content-between">
-                                        <div>
-                                            <strong>Rendelés azonosító:</strong> {payment.id}
-                                        </div>
-                                        <div>
-                                            <strong>Összeg:</strong> {payment.amount.toLocaleString()} {payment.currencry}
-                                        </div>
-                                    </div>
-                                    <div className="d-flex justify-content-between mt-2">
-                                        <div>
-                                            <strong>Státusz:</strong> {payment.status}
-                                        </div>
-                                        <div>
-                                            <strong>Dátum:</strong> {new Date(payment.created).toLocaleDateString('hu-HU')}
-                                        </div>
-                                    </div>
-                                </div>
+                                <Payment payment={payment as PaymentInfo} key={payment.id} />
                             ))}
                         </div>
                     )}

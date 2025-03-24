@@ -23,6 +23,7 @@
     "@types/gsap": "^1.20.2",
     "@types/jsonwebtoken": "^9.0.8",
     "@types/react-datepicker": "^6.2.0",
+    "aos": "^2.3.4",
     "axios": "^1.7.9",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^5.3.3",
@@ -46,6 +47,7 @@
     "szakdolgozat_hs": "file:"
   },
   "devDependencies": {
+    "@types/aos": "^3.0.7",
     "@types/bootstrap": "^5.2.10",
     "@types/node": "^20",
     "@types/react": "^18",
