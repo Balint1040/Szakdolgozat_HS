@@ -544,6 +544,7 @@ nav {
 
 #recommendation {
     padding: 100px 0 150px 0;
+    min-height: 968px;
 }
 #recommendation h1 {
     margin-bottom: 100px;
