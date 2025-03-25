@@ -31,7 +31,7 @@ export default function Page() {
         }
         
         if (!password) {
-            enqueueSnackbar("A jelszó megadása kötelező!", { variant: 'error', autoHideDuration: 2000 })
+            enqueueSnackbar("A jelszó megadása kötelező", { variant: 'error', autoHideDuration: 2000 })
             return
         }
         if(password.length < 6){

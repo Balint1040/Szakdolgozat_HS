@@ -9,6 +9,8 @@ import React, { useState } from "react"
 export default function Page() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [rememberMe, setRememberMe] = useState(false)
+
     const router = useRouter()
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -37,7 +39,7 @@ export default function Page() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ email, password })
+                body: JSON.stringify({ email, password, rememberMe})
             })
 
             const data = await res.json()
@@ -87,7 +89,12 @@ export default function Page() {
                                 </div>
                                 <div className="mb-3 px-2 d-flex justify-content-between align-items-center flex-wrap">
                                     <div className="d-flex align-items-center">
-                                        <input type="checkbox" id="rememberMe" />
+                                        <input 
+                                        type="checkbox" 
+                                        id="rememberMe" 
+                                        checked={rememberMe}
+                                        onChange={(e) => setRememberMe(e.target.checked)}
+                                        />
                                         <label htmlFor="rememberMe" className="ps-1 mb-0">Emlékezz rám</label>
                                     </div>
                                     <a href="#" className="forgotPassword text-Blue">Elfelejtett jelszó?</a>

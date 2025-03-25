@@ -17,7 +17,7 @@ export async function POST(request: Request) {
       }
     }
 
-    const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ\s\-.']+$/
+    const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ0-9\s\-.']+$/
     if(!nameRegex.test(name)){
       return NextResponse.json({
         message: "Nem megfelelő névformátum",
@@ -27,7 +27,7 @@ export async function POST(request: Request) {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (email && !emailRegex.test(email)) {
-      return NextResponse.json({ error: 'Érvénytelen email cím vagy helytelen formátum' }, { status: 400 })
+      return NextResponse.json({ error: 'Helytelen email formátum' }, { status: 400 })
     }
 
 

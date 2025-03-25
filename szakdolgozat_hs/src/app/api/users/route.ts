@@ -62,7 +62,7 @@ export async function PUT(req: NextRequest){
       }
     }
 
-    const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ\s\-.']+$/
+    const nameRegex = /^[A-Za-zÀ-ÖØ-öø-ÿ0-9\s\-.']+$/
     if(!nameRegex.test(name)){
       return NextResponse.json({
         message: "Nem megfelelő névformátum",
