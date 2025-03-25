@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import { jwtVerify } from "jose"
+import jwt from "jsonwebtoken"
 
 
 export async function middleware(req: NextRequest) {
@@ -19,10 +19,14 @@ export async function middleware(req: NextRequest) {
         if (!token) {
             return NextResponse.redirect(new URL("/", req.url))
         }
-        const secret = new TextEncoder().encode(process.env.JWT_SECRET)
-        const { payload } = await jwtVerify(token, secret)
-        
-        if (payload.role !== "admin") {
+        try {
+            const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { role?: string }
+            
+            if (!decoded || decoded.role !== 'admin') {
+                return NextResponse.redirect(new URL("/", req.url))
+            }
+        } catch (error) {
+            console.error('Token verification failed:', error)
             return NextResponse.redirect(new URL("/", req.url))
         }
 
