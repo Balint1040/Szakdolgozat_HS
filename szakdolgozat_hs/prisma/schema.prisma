@@ -7,19 +7,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model imageurltoproduct {
-  A Int
-  B Int
-
-  @@unique([A, B], map: "_ImageUrlToProduct_AB_unique")
-  @@index([B], map: "_ImageUrlToProduct_B_index")
-  @@map("_imageurltoproduct")
-}
-
 model imageurl {
   id        Int    @id @default(autoincrement())
   url       String
   productId Int
+  product   product @relation(fields: [productId], references: [id])
 
   @@index([productId], map: "ImageUrl_productId_fkey")
 }
@@ -32,6 +24,7 @@ model product {
   manufacturer String
   categoryId   Int?
   cartItems cartItem[]
+  imageUrl imageurl[]
 }
 
 model user {
