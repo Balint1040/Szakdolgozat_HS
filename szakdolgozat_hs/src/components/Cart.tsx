@@ -39,7 +39,7 @@ export default function Cart({
                 <div className="d-flex flex-column h-100 justify-content-between">
                     <div className="row">
                         <div className="col-12 col-lg-9">
-                            <Link href={`/termekek/${product.id}`} className="cartName">{product.name}</Link>
+                            <Link href={`/termekek/${product.productId}`} className="cartName">{product.name}</Link>
                         </div>
                         <div className="col-12 col-lg-3 text-end">
                             <span className="text-Blue">{(product.price*quantity).toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, "$1.")}</span>,-
@@ -49,7 +49,6 @@ export default function Cart({
                         <button
                         className="orangeButton danger"
                         onClick={onRemove}
-                        arai-label="Törlés"
                         >
                             Törlés
                         </button>

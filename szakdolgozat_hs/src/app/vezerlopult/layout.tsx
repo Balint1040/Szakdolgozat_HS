@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation";
 import { enqueueSnackbar } from "notistack";
+import jwt from 'jsonwebtoken'
+import { NextRequest } from "next/server";
 
 export default function DashBoardLayout({
     children,

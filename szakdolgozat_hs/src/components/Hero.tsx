@@ -63,8 +63,8 @@ export default function Hero() {
     return (
         <section className="position-relative hero">
             <div className="container h-100">
-                <div className="row d-flex align-items-center h-100">
-                    <div className="contentWrapper" data-aos="zoom-in-left">
+                <div className="row d-flex align-items-center h-100" data-aos="zoom-in-left">
+                    <div className="contentWrapper">
                         <p className="text-end pb-3">
                             <span className="text-Orange" id="productCount">{countDisplay}</span> termékünk várja, hogy kiválaszd a számodra legmegfelelőbbet!
                         </p>

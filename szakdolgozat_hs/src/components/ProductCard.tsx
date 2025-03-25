@@ -28,6 +28,13 @@ export default function ProductCard({
         }
     }
 
+    let quantityClass = ""
+    if (quantity === 1) {
+        quantityClass = "disabled"
+    } else {
+        quantityClass = ""
+    }
+
     const [imageError, setImageError] = useState(false)
 
     const fallbackImageUrl = fallbackImg.src
@@ -71,7 +78,7 @@ export default function ProductCard({
                         <div className="d-flex flex-row justify-content-between mt-3">
                         <div className="quantityWrap">
                             <a 
-                                className="pointer"
+                                className={`pointer ${quantityClass}`}
                                 onClick={() => quantity > 1 && setQuantity(q => (q - 1) as Quantity)}
                             >
                                 -

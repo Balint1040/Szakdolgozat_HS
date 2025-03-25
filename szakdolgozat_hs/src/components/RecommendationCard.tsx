@@ -35,6 +35,13 @@ export default function RecommendationCard({
         }
     }
 
+    let quantityClass = ""
+    if (quantity === 1) {
+        quantityClass = "disabled"
+    } else {
+        quantityClass = ""
+    }
+
     const [imageError, setImageError] = useState(false)
 
     const fallbackImageUrl = fallbackImg.src
@@ -76,7 +83,7 @@ export default function RecommendationCard({
                 </div>
                 <div className="d-flex flex-row justify-content-between mt-3">
                     <div className="quantityWrap">
-                        <a className="pointer" onClick={() => quantity > 1 && setQuantity(q => (q - 1) as Quantity) }>-</a>
+                        <a className={`pointer ${quantityClass}`} onClick={() => quantity > 1 && setQuantity(q => (q - 1) as Quantity) }>-</a>
                         <h3>{quantity}</h3>
                         <a className="pointer" onClick={() => setQuantity(q => (q + 1) as Quantity)}>+</a>
                     </div>

@@ -7,14 +7,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faAngleRight, faCircleXmark, faMagnifyingGlass, faSortDown } from '@fortawesome/free-solid-svg-icons'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { useProductFilters } from '@/hooks/ProductFilters'
+import Loading from '@/components/Loading'
 
 const ProductCard = dynamic(() => import("@/components/ProductCard"), {
-    loading: () => <div style={{
-        height: "500px",
-        backgroundColor: "#f2f2f2",
-        borderRadius: "20px",
-        width: "100%"
-    }}></div>,
+    loading: () => (
+        <>
+            <div className='cardLoading'>
+                <div className="imgPlaceholder"></div>
+                <div className="namePlaceholder"></div>
+                <div className="pricePlaceholder"></div>
+            </div>
+        </>
+    )
 })
 
 export interface Product {
@@ -51,7 +55,7 @@ export default function Page() {
 
     const [products, setProducts] = useState<Product[]>([])
     const [displayedProducts, setDisplayedProducts] = useState<Product[]>([])
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [currentPage, setCurrentPage] = useState(1)
     const [itemsPerPage] = useState(30)
     const [selectedSort, setSelectedSort] = useState("default")
@@ -111,7 +115,7 @@ export default function Page() {
     const isBrowser = () => typeof window !== 'undefined'
     function scrollToTop() {
         if (!isBrowser()) return
-        window.scrollTo({ top: 0 })
+        window.scrollTo({ top: 0, behavior: 'instant' })
     }
 
     useEffect(() => {
@@ -285,7 +289,7 @@ export default function Page() {
                             </div>
                         </div>
                         <div className="row">
-                            {products.length === 0 ? (
+                            {products.length === 0 && !loading ? (
                                 <div className='emptyCart'>
                                     <div className="emptyIconWrap">
                                         <FontAwesomeIcon icon={faMagnifyingGlass as IconProp} />
@@ -295,18 +299,18 @@ export default function Page() {
                                 </div>
                             ) : (
                                 <Suspense fallback={"loading"}>
-                                {displayedProducts.map((product, i) => (
-                                    <div className="col-12 col-sm-6 col-md-4 p-2" key={product.id} data-aos="zoom-in-up" data-aos-delay={((i % 3) + 1) * 50} data-aos-offset="50">
-                                        <ProductCard data={product} />
-                                    </div>
-                                ))}
-                            </Suspense>
+                                    {displayedProducts.map((product, i) => (
+                                        <div className="col-12 col-sm-6 col-md-4 p-2" key={product.id} data-aos="zoom-in-up" data-aos-delay={((i % 3) + 1) * 50} data-aos-offset="50">
+                                            <ProductCard data={product} />
+                                        </div>
+                                    ))}
+                                </Suspense>
                             )}
                         </div>
 
                         {loading && (
-                            <div style={{ textAlign: 'center', marginTop: '20px' }}>
-                                <div>Loading...</div>
+                            <div className="w-100 h-100 d-flex justify-content-center align-items-center productsLoading">
+                                <div className="loader"></div><div>Betöltés...</div>
                             </div>
                         )}
 

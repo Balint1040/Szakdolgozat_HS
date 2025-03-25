@@ -213,7 +213,7 @@ export default function Page() {
                     <hr />
                     <div className="d-flex flex-column align-items-end cartBottomRow">
                         <div className="mb-3 d-flex flex-column flex-lg-row align-items-center justify-content-lg-between w-100">
-                            <div className="d-flex flex-column flex-sm-row voucherWrap">
+                            <div className="d-flex flex-column flex-sm-row voucherWrap align-items-center">
                                 <label htmlFor="voucher" className="pe-2">Kuponkód:</label>
                                 <input
                                     type="text"

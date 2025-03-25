@@ -26,7 +26,7 @@ export default function Page() {
     const query = searchParams.get('')
     const [products, setProducts] = useState<Product[]>([])
     const [displayedProducts, setDisplayedProducts] = useState<Product[]>([])
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [hasMore, setHasMore] = useState(true)
     const [selectedSort, setSelectedSort] = useState("default")
     const [currentPage, setCurrentPage] = useState(1)
@@ -103,7 +103,7 @@ export default function Page() {
     const isBrowser = () => typeof window !== 'undefined'
     function scrollToTop() {
         if (!isBrowser()) return
-        window.scrollTo({ top: 0 })
+        window.scrollTo({ top: 0, behavior: 'instant' })
     }
 
     function startsWithVowel(word: string){
@@ -286,7 +286,7 @@ export default function Page() {
                             </div>
                         </div>
                         <div className="row">
-                            {products.length === 0 ? (
+                            {products.length === 0 && !loading ? (
                                 <div className='emptyCart'>
                                     <div className="emptyIconWrap">
                                         <FontAwesomeIcon icon={faMagnifyingGlass as IconProp} />
@@ -304,6 +304,12 @@ export default function Page() {
                             </Suspense>
                             )}
                         </div>
+
+                        {loading && (
+                            <div className="w-100 h-100 d-flex justify-content-center align-items-center productsLoading">
+                                <div className="loader"></div><div>Betöltés...</div>
+                            </div>
+                        )}
 
                         <div className="pagination mt-5 position-relative d-flex justify-content-center align-items-center">
                             <button
