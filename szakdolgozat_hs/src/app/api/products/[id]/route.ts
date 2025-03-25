@@ -16,7 +16,7 @@ export async function GET(
             return NextResponse.json({ error: 'Hozzáférés megtagadva' }, { status: 403 })
         }
 
-        const [rows] = await (await pool).execute('SELECT * FROM product INNER JOIN imageurl ON product.id = imageurl.productID WHERE product.id = ?', [id]);
+        const [rows] = await (await pool).execute('SELECT * FROM product LEFT JOIN imageurl ON product.id = imageurl.productID WHERE product.id = ?', [id]);
 
 
         return NextResponse.json(rows)

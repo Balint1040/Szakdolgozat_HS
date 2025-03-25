@@ -11,6 +11,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { Product } from '../page'
+import fallbackImg from '../../../../public/static/imgNotFound.png'
 
 
 export default function Page({
@@ -60,9 +61,12 @@ export default function Page({
 
     const handleAddToCart = () => {
         if (product) {
-            addToCart(product, quantity) // TODO: fix argument
+            addToCart(product, quantity)
         }
     }
+
+    const fb = []
+    fb.push({url: fallbackImg.src}) 
 
     return (
         <>
@@ -72,7 +76,7 @@ export default function Page({
                 </div>
                 <div className="row">
                     <div className="col-12 col-lg-7 col-xl-6 order-2 order-lg-1">
-                        {product.imageUrls && <ProductSwiper images={product.imageUrls} />}
+                        {product.imageUrls == null ? product.imageUrls && <ProductSwiper images={product.imageUrls} /> : <ProductSwiper images={fb} />}
                     </div>
                     <div className="col-12 col-lg-5 col-xl-6 order-1 order-lg-2">
                         <h2>{product.name}</h2>
