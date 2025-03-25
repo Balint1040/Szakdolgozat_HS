@@ -142,7 +142,7 @@ export default function Page() {
                         </a>
                     </div>
                 </div>
-                <div className="col-12 col-xl-7 col-xxl-8">
+                <div className="col-12 col-xl-7 col-xxl-8 mt-5 mt-xl-0">
                     <h3>Korábbi rendelések</h3>
                     <hr />
                     {payments.length == 0 ?(

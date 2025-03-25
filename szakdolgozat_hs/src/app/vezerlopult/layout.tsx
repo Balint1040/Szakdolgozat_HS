@@ -7,12 +7,15 @@ import { usePathname, useRouter } from "next/navigation";
 import { enqueueSnackbar } from "notistack";
 import jwt from 'jsonwebtoken'
 import { NextRequest } from "next/server";
+import RoleValidation from "@/components/RoleValidation";
+import { useEffect, useState } from "react";
 
 export default function DashBoardLayout({
     children,
 }: {
     children: React.ReactNode
 }) {
+    const [role, setRole] = useState('')
     const activeTab = usePathname()
     const router = useRouter()
 
@@ -35,18 +38,23 @@ export default function DashBoardLayout({
             console.error(e)
         }
     }
-    
+
+
+    function handleSideBarCollapse() {
+        document.getElementById("dashboardButtonWrap")?.classList.toggle("open") 
+        document.getElementById("dashboardButtonToggle")?.classList.toggle("open") 
+    }
 
     return (
         <>
             
 
-            <div className="container-fluid">
+            <div className="container-fluid position-relative">
                 <div className="row">
                     <div className="col-0 col-lg-2 p-0">
                         <div className="d-flex flex-column py-3 dashboardButtonWrap" id="dashboardButtonWrap">
                             <ul className="nav nav-pills flex-column mb-auto">
-                                <li className="nav-item">
+                                <li>
                                     <Link
                                         href="/vezerlopult/profil"
                                         className={`nav-link ${activeTab === '/vezerlopult/profil' ? 'active' : ''}`}
@@ -54,7 +62,7 @@ export default function DashBoardLayout({
                                         Profil
                                     </Link>
                                 </li>
-                                <li>
+                                <li className="valid">
                                     <Link
                                         href="/vezerlopult/termekek"
                                         className={`nav-link ${activeTab === '/vezerlopult/termekek' ? 'active' : ''}`}
@@ -62,7 +70,7 @@ export default function DashBoardLayout({
                                         Termékek
                                     </Link>
                                 </li>
-                                <li>
+                                <li className="valid">
                                     <Link
                                         href="/vezerlopult/felhasznalok"
                                         className={`nav-link ${activeTab === '/vezerlopult/felhasznalok' ? 'active' : ''}`}
@@ -70,7 +78,7 @@ export default function DashBoardLayout({
                                         Felhasználók
                                     </Link>
                                 </li>
-                                <li>
+                                <li className="valid">
                                     <Link
                                         href="/vezerlopult/megrendelesek"
                                         className={`nav-link ${activeTab === '/vezerlopult/megrendelesek' ? 'active' : ''}`}
@@ -78,7 +86,7 @@ export default function DashBoardLayout({
                                         Megrendelések
                                     </Link>
                                 </li>
-                                <li>
+                                <li className="valid">
                                     <Link
                                         href="/vezerlopult/kuponok"
                                         className={`nav-link ${activeTab === '/vezerlopult/kuponok' ? 'active' : ''}`}
@@ -103,14 +111,12 @@ export default function DashBoardLayout({
                         <a 
                             className="dashboardButtonToggle" 
                             id="dashboardButtonToggle"
-                            onClick={() => { 
-                                document.getElementById("dashboardButtonWrap")?.classList.toggle("open") 
-                                document.getElementById("dashboardButtonToggle")?.classList.toggle("open") 
-                            }}
+                            onClick={handleSideBarCollapse}
                         >
                             <FontAwesomeIcon icon={faBars as IconProp} className="bashboardOpen" />
                             <FontAwesomeIcon icon={faXmark as IconProp} className="bashboardClose" />
                         </a>
+                        <div id="dashboardButtonToggleMask" onClick={handleSideBarCollapse}></div>
                         {children}
                     </div>
                 </div>

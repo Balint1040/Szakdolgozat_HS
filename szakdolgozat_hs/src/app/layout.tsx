@@ -23,6 +23,7 @@ import { library } from "@fortawesome/fontawesome-svg-core"
 import { fas } from "@fortawesome/free-solid-svg-icons"
 import { fab } from "@fortawesome/free-brands-svg-icons"
 import AosClient from "@/components/AosClient";
+import RoleValidation from "@/components/RoleValidation";
 library.add(fas as IconPack, fab as IconPack)
 
 
@@ -43,11 +44,15 @@ export const metadata: Metadata = {
 const seo = ["pc alkatrész", "processzor", "videó kártya", "ram", "megbízható", "olcsó", "alaplap"]
 
 
-export default function RootLayout({
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const role = await RoleValidation()
+
   return (
     <html lang="hu">
       <head>
@@ -76,11 +81,14 @@ export default function RootLayout({
 
         
         <Notistackprovider>
-          <div style={{
+          <div 
+          style={{
             minHeight: "calc(100vh - 100px)",
             position: "relative",
             height: "100%"
-          }}>
+          }}
+          className={role === "admin" ? "admin" : ""}
+          >
             {children}
           </div>
         </Notistackprovider>

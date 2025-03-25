@@ -9,6 +9,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { enqueueSnackbar } from 'notistack'
 import React, { useEffect, useState } from 'react'
+import fallbackImg from '../../../../../public/static/imgNotFound.png'
 
 interface Product {
     id: number,
@@ -113,19 +114,27 @@ export default function Page({
         return <Loading />
     }
 
+    const fb = [{
+        url: fallbackImg.src
+    }]
+
+    if (product.imageUrls === undefined || product.imageUrls.length === 1) {
+        product.imageUrls = fb
+    }
+
     return (
         <>
-            <div className="container-fluid productContainer py-3">
+            <div className="container-fluid productContainer py-3 mt-5 mt-lg-0">
                 <div className="mb-2">
                     <a className='pointer' onClick={() => { router.push('/vezerlopult/termekek') }}>
                         <FontAwesomeIcon icon={faAnglesLeft as IconProp} /> Vissza
                     </a>
                 </div>
-                <div className="row">
-                    <div className="col-6">
+                <div className="row justify-content-center justify-content-xxl-start">
+                    <div className="col-12 col-sm-10 col-md-8 col-lg-12 col-xxl-6 order-2 order-xxl-1">
                         <ProductSwiper images={product.imageUrls} />
                     </div>
-                    <div className="col-6">
+                    <div className="col-12 col-xxl-6 order-1 order-xxl-2">
                         <h2>{product.name}</h2>
                         <h3 className='my-3'>Ár: <span className="text-Blue">{Number(product.price).toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, "$1.")},-</span></h3>
                         <form onSubmit={handleSubmit}>
@@ -177,8 +186,8 @@ export default function Page({
                             }
                                 <label className="form-label">Tulajdonságok:</label>
                                 {Object.entries(product.properties).map((property, index) => (
-                                    <div className="row my-2" key={index}>
-                                        <div className="col-6">
+                                    <div className="row my-4 my-sm-2" key={index}>
+                                        <div className="col-12 col-sm-6 mb-2 mb-sm-0">
                                             <input 
                                                 type="text" 
                                                 className="form-control" 
@@ -187,7 +196,7 @@ export default function Page({
                                                 placeholder="Tulajdonság neve"
                                             />
                                         </div>
-                                        <div className="col-6">
+                                        <div className="col-12 col-sm-6">
                                             <input 
                                                 type="text" 
                                                 className="form-control" 

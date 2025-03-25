@@ -899,6 +899,12 @@ nav {
     color: var(--orange);
 }
 
+.valid {
+    display: none;
+}
+.admin .valid {
+    display: block !important;
+}
 
 
 .dashboardButtonWrap {
@@ -1174,7 +1180,7 @@ input[type=number] {
 .cartBottomRow .form-control {
     height: 40px;
 }
-.couponsContainer .orangeButton {
+.couponsContainer .orangeButton.add {
     box-shadow: none;
     height: 40px;
     font-size: 20px;
@@ -1603,11 +1609,14 @@ input[type=number] {
         height: 140px;
     }
     .navbar-brand {
-        font-size: 60px;
+        font-size: 30px !important;
     }
     nav .orangeButton {
         position: relative;
         display: block;
+    }
+    .searchWrap {
+        margin-top: 5px;
     }
 
     .searchWrap, .navbarSearch, .navbarSearch .form-control {
@@ -1700,6 +1709,18 @@ input[type=number] {
     }
     .dashboardButtonWrap.open {
         left: 0;
+    }
+    #dashboardButtonToggleMask {
+        display: none;
+    }
+    .open + #dashboardButtonToggleMask {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        display: block;
     }
 
     .dashboardButtonToggle {
@@ -1846,9 +1867,9 @@ input[type=number] {
     .hero .contentWrapper p {
         font-size: 30px;
     }
-    nav .orangeButton {
+    /*nav .orangeButton {
         margin-bottom: 10px;
-    }
+    }*/
     .orangeButton, .blueButton {
         font-size: 18px;
         line-height: 26px;

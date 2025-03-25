@@ -65,8 +65,13 @@ export default function Page({
         }
     }
 
-    const fb = []
-    fb.push({url: fallbackImg.src}) 
+    const fb = [{
+        url: fallbackImg.src
+    }]
+
+    if (product.imageUrls === undefined || product.imageUrls.length === 1) {
+        product.imageUrls = fb
+    }
 
     return (
         <>
@@ -76,7 +81,7 @@ export default function Page({
                 </div>
                 <div className="row">
                     <div className="col-12 col-lg-7 col-xl-6 order-2 order-lg-1">
-                        {product.imageUrls == null ? product.imageUrls && <ProductSwiper images={product.imageUrls} /> : <ProductSwiper images={fb} />}
+                        <ProductSwiper images={product.imageUrls} />
                     </div>
                     <div className="col-12 col-lg-5 col-xl-6 order-1 order-lg-2">
                         <h2>{product.name}</h2>
@@ -114,7 +119,7 @@ export default function Page({
                                     }
                                 )}
                                 <a 
-                                    className="productMorePropery d-flex d-lg-none" 
+                                    className="productMorePropery d-lg-none" 
                                     id='productMorePropery'
                                     onClick={() => {
                                         const el = document.getElementById("propertyWrap")

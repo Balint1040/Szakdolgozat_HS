@@ -158,7 +158,7 @@ export default function CouponsPage() {
                             />
                         </div>
                         <div className="col-12 col-sm-6 col-lg-4 col-xxl-2 d-flex align-items-end mt-2 mt-xxl-0">
-                            <button type="submit" className="orangeButton">
+                            <button type="submit" className="orangeButton add">
                                 Létrehozás
                             </button>
                         </div>
