@@ -60,6 +60,10 @@ export default function Recommendation() {
                         spaceBetween={50}
                         slidesPerView={3}
                         breakpoints={{
+                            100: {
+                                slidesPerView: 1,
+                                spaceBetween: 20,
+                            },
                             320: {
                                 slidesPerView: 1,
                                 spaceBetween: 40,
@@ -69,6 +73,10 @@ export default function Recommendation() {
                                 spaceBetween: 40,
                             },
                             992: {
+                                spaceBetween: 80,
+                                slidesPerView: 2
+                            },
+                            1200: {
                                 spaceBetween: 50,
                                 slidesPerView: 3
                             },

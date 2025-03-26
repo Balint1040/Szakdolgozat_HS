@@ -80,7 +80,7 @@ export default function Page({
                     <a className='pointer' onClick={() => (router.back())}><FontAwesomeIcon icon={faAnglesLeft as IconProp} /> Vissza</a>
                 </div>
                 <div className="row">
-                    <div className="col-12 col-lg-7 col-xl-6 order-2 order-lg-1">
+                    <div className="col-12 col-lg-7 col-xl-6 order-2 order-lg-1 mt-5 mt-lg-0">
                         <ProductSwiper images={product.imageUrls} />
                     </div>
                     <div className="col-12 col-lg-5 col-xl-6 order-1 order-lg-2">
