@@ -230,8 +230,8 @@ export default function Page() {
                             </div>
                         </div>
                     </div>
-                    <div className="col-12 col-lg-9 pt-2">
-                        <div className="orderRow p-2 mb-2">
+                    <div className="col-12 col-lg-9 pt-2 position-relative">
+                        <div className="orderRow p-2">
                             <div><span className='text-Blue'>{products.length}</span> találat</div>
                             <div className="dropdown">
                                 <button
@@ -288,7 +288,7 @@ export default function Page() {
                                 </ul>
                             </div>
                         </div>
-                        <div className="row">
+                        <div className="row py-2">
                             {products.length === 0 && !loading ? (
                                 <div className='emptyCart'>
                                     <div className="emptyIconWrap">
@@ -300,7 +300,7 @@ export default function Page() {
                             ) : (
                                 <Suspense fallback={"loading"}>
                                     {displayedProducts.map((product, i) => (
-                                        <div className="col-12 col-sm-6 col-md-4 p-2" key={product.id} data-aos="zoom-in-up" data-aos-delay={((i % 3) + 1) * 50} data-aos-offset="50">
+                                        <div className="col-12 col-sm-6 col-md-4 px-1 px-sm-2 py-2" key={product.id} data-aos="zoom-in-up" data-aos-delay={((i % 3) + 1) * 50} data-aos-offset="50">
                                             <ProductCard data={product} />
                                         </div>
                                     ))}

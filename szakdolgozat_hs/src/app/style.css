@@ -1231,8 +1231,8 @@ input[type=number] {
     line-height: 100%;
 }
 .checkboxWrap {
-    max-height: 175px;
-    overflow-y: scroll;
+    max-height: 20vh;
+    overflow-y: auto;
     scroll-behavior: smooth;
 }
 .checkboxWrap > div {
@@ -1602,6 +1602,13 @@ input[type=number] {
     #cta p {
         font-size: 35px;
     }
+
+    .recommendationCard .recommendationMore {
+        font-size: 15px;
+    }
+    .recommendationCard .recommendationPrice {
+        font-size: 22px;
+    }
 }
 
 @media (max-width: 991.98px) {
@@ -1834,6 +1841,13 @@ input[type=number] {
         overflow: hidden;
     }
 
+    .recommendationCard .recommendationMore {
+        font-size: 16px;
+    }
+    .recommendationCard .recommendationPrice {
+        font-size: 25px;
+    }
+
     .cartItemRow {
         height: unset;
     }
@@ -1873,6 +1887,11 @@ input[type=number] {
     .orangeButton, .blueButton {
         font-size: 18px;
         line-height: 26px;
+    }
+
+    .orderRow {
+        width: 100% !important;
+        transform: translateX(0px);
     }
 
     #productCount {
