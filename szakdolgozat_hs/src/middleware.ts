@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import jwt from "jsonwebtoken"
-import { jwtVerify } from "jose"
+import { jwtVerify } from 'jose'
 
 
 export async function middleware(req: NextRequest) {
@@ -28,7 +27,7 @@ export async function middleware(req: NextRequest) {
                 return NextResponse.redirect(new URL("/", req.url))
             }
         } catch (error) {
-            console.error('Token verification failed:', error)
+            console.error('Hiba:', error)
             return NextResponse.redirect(new URL("/", req.url))
         }
 
