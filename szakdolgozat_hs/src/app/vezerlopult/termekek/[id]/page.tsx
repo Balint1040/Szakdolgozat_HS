@@ -3,7 +3,7 @@ import Loading from '@/components/Loading'
 import OrangeButton from '@/components/OrangeButton'
 import ProductSwiper from '@/components/ProductSwiper'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { faAnglesLeft } from '@fortawesome/free-solid-svg-icons'
+import { faAnglesLeft, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useRouter } from 'next/navigation'
 import { enqueueSnackbar } from 'notistack'
@@ -160,7 +160,7 @@ export default function Page({
 
     return (
         <>
-            <div className="container-fluid productContainer py-3 mt-5 mt-lg-0">
+            <div className="container-fluid productContainer py-3 mt-5 mt-lg-0 position-relative">
                 <div className="mb-2">
                     <a className='pointer' onClick={() => { router.push('/vezerlopult/termekek') }}>
                         <FontAwesomeIcon icon={faAnglesLeft as IconProp} /> Vissza
@@ -169,6 +169,52 @@ export default function Page({
                 <div className="row justify-content-center justify-content-xxl-start">
                     <div className="col-12 col-sm-10 col-md-8 col-lg-12 col-xxl-6 order-2 order-xxl-1">
                         <ProductSwiper images={product.imageUrls} />
+                        <div className="mb-3">
+                            <label className="form-label">Képek kezelése:</label>
+                            <div className="image-list mb-3">
+                                {product.imageUrls.map((image, index) => (
+                                    <div key={index} className="d-flex align-items-center mb-2">
+                                        <img
+                                            src={image.url || fallbackImg.src}
+                                            style={{ width: '50px', height: '50px', objectFit: 'contain', marginRight: '10px' }}
+                                        />
+                                        <input
+                                            type="text"
+                                            className="form-control"
+                                            value={image.url != fallbackImg.src ? image.url : ""}
+                                            onChange={(e) => handleChange(e, undefined, index)}
+                                            placeholder="Kép URL"
+                                        />
+                                        <button
+                                            type="button"
+                                            className="btn btn-danger btn-sm ms-2"
+                                            onClick={() => {
+                                                const newImageUrls = product.imageUrls.filter((_, i) => i !== index)
+                                                setProduct(prevState => prevState ? ({ ...prevState, imageUrls: newImageUrls }) : null)
+                                                setDeletedImages(prevState => [...prevState, image.url])
+                                            }}
+                                        >
+                                            <FontAwesomeIcon icon={faTrash as IconProp} />
+                                        </button>
+                                    </div>
+                                ))}
+                                <button
+                                    className="addImgButton"
+                                    onClick={() => {
+                                        setProduct(prevState => {
+                                            if (!prevState) return null
+                                            return {
+                                                ...prevState,
+                                                imageUrls: [...prevState.imageUrls, { url: fallbackImg.src }]
+                                            }
+                                        })
+                                    }}
+                                >
+                                    Új kép hozzáadása
+                                    <span><FontAwesomeIcon icon={faPlus as IconProp} /></span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                     <div className="col-12 col-xxl-6 order-1 order-xxl-2">
                         <h2>{product.name}</h2>
@@ -257,54 +303,13 @@ export default function Page({
                                     ))}
                                 </select>
                             </div>
-                            <div className="mb-3">
-                                <label className="form-label">Képek kezelése:</label>
-                                <div className="image-list mb-3">
-                                    {product.imageUrls.map((image, index) => (
-                                        <div key={index} className="d-flex align-items-center mb-2">
-                                            <img
-                                                src={image.url || fallbackImg.src}
-                                                style={{ width: '50px', height: '50px', objectFit: 'cover', marginRight: '10px' }}
-                                            />
-                                            <input
-                                                type="text"
-                                                className="form-control"
-                                                value={image.url}
-                                                onChange={(e) => handleChange(e, undefined, index)}
-                                                placeholder="Kép URL"
-                                            />
-                                            <button
-                                                type="button"
-                                                className="btn btn-danger btn-sm ms-2"
-                                                onClick={() => {
-                                                    const newImageUrls = product.imageUrls.filter((_, i) => i !== index)
-                                                    setProduct(prevState => prevState ? ({ ...prevState, imageUrls: newImageUrls }) : null)
-                                                    setDeletedImages(prevState => [...prevState, image.url])
-                                                }}
-                                            >
-                                                Törlés
-                                            </button>
-                                        </div>
-                                    ))}
-                                    <button
-                                        type="button"
-                                        className="btn btn-primary mt-2"
-                                        onClick={() => {
-                                            setProduct(prevState => {
-                                                if (!prevState) return null
-                                                return {
-                                                    ...prevState,
-                                                    imageUrls: [...prevState.imageUrls, { url: "" }]
-                                                }
-                                            })
-                                        }}
-                                    >
-                                        Új kép hozzáadása
-                                    </button>
-                                </div>
-                            </div>
-                            <button type="submit" className="blueButton">Mentés</button>
+                            <button type="submit" className="orangeButton visually-hidden" id='productSumbit' name='productSumbit'>Mentés</button>
                         </form>
+                    </div>
+                    <div className="col-12 order-3">
+                        <div className="d-flex justify-content-center">
+                            <label className="orangeButton w-min-content" htmlFor='productSumbit'>Mentés</label>
+                        </div>
                     </div>
                 </div>
             </div>

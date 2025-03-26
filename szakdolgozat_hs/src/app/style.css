@@ -863,6 +863,41 @@ nav {
 .productContainer .swiper-button-prev::after, .productContainer .swiper-button-next::after {
     color: var(--blue);
 }
+.productContainer .addImgButton {
+    box-shadow: none !important;
+    font-size: 22px;
+    background-color: transparent;
+    color: var(--blue);
+    border: none;
+    width: 100%;
+    margin-top: 20px;
+    transition: all .3s ease-in-out;
+    border-radius: 30px;
+    padding: 10px;
+}
+.productContainer .addImgButton:hover {
+    color: var(--orange);
+    background-color: var(--light);
+}
+.productContainer .addImgButton span {
+    color: var(--orange);
+    margin-left: 5px;
+}
+.productContainer label.orangeButton {
+    width: min-content;
+    margin-top: 25px;
+} 
+.productContainer .swiper-thumbs {
+    height: 200px;
+}
+.productContainer .productSwiper {
+    height: 420px;
+}
+.productContainer .swiper-thumbs img, .productContainer .productSwiper img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
 
 .thumbSwiperSlide {
     height: 100%;
