@@ -170,19 +170,20 @@ export default function Page({
                     <div className="col-12 col-sm-10 col-md-8 col-lg-12 col-xxl-6 order-2 order-xxl-1">
                         <ProductSwiper images={product.imageUrls} />
                         <div className="mb-3">
-                            <label className="form-label mt-5">Képek kezelése:</label>
-                            <div className="image-list">
+                            <label className="form-label">Képek kezelése:</label>
+                            <div className="image-list mb-3">
                                 {product.imageUrls.map((image, index) => (
                                     <div key={index} className="d-flex align-items-center mb-2">
                                         <img
-                                            src={image.url}
+                                            src={image.url || fallbackImg.src}
                                             style={{ width: '50px', height: '50px', objectFit: 'contain', marginRight: '10px' }}
                                         />
                                         <input
                                             type="text"
                                             className="form-control"
-                                            value={image.url}
-                                            onChange={(e) => handleChange(e, index)}
+                                            value={image.url != fallbackImg.src ? image.url : ""}
+                                            onChange={(e) => handleChange(e, undefined, index)}
+                                            placeholder="Kép URL"
                                         />
                                         <button
                                             type="button"
@@ -197,15 +198,21 @@ export default function Page({
                                         </button>
                                     </div>
                                 ))}
-                                <div className="d-flex justify-content-center">
-                                    <button
-                                        type="button"
-                                        className="addImgButton"
-                                    >
-                                        Új kép hozzáadása
-                                        <span><FontAwesomeIcon icon={faPlus as IconProp} /></span>
-                                    </button>
-                                </div>
+                                <button
+                                    className="addImgButton"
+                                    onClick={() => {
+                                        setProduct(prevState => {
+                                            if (!prevState) return null
+                                            return {
+                                                ...prevState,
+                                                imageUrls: [...prevState.imageUrls, { url: fallbackImg.src }]
+                                            }
+                                        })
+                                    }}
+                                >
+                                    Új kép hozzáadása
+                                    <span><FontAwesomeIcon icon={faPlus as IconProp} /></span>
+                                </button>
                             </div>
                         </div>
                     </div>
