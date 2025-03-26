@@ -1,4 +1,4 @@
-@import '@fortawesome/fontawesome-free/css/all.min.css';
+@import '../../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 
 :root {
     --blue: #1761A0;
@@ -104,6 +104,14 @@ img, .swiper-slide, .quantityWrap a {
     transform: translateY(-50%);
     opacity: .75;
     transition: all .3s ease-in-out;
+}
+.loggedInProfileButton {
+    overflow: clip;
+}
+.navbarPfp {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
 
 /*input[type="search"] {
@@ -479,12 +487,20 @@ nav {
 .reviewCard {
     background-color: var(--light);
     border-radius: 20px;
-    overflow: hidden;
+    /*overflow: hidden;*/
     height: 380px;
 }
-.reviewCard svg {
+.reviewCard svg, .reviewCard .star {
     color: #E0B507;
     filter: drop-shadow(0px 4px 15px #333333);
+}
+.reviewCard .reviewDate {
+    position: absolute;
+    font-size: 17px;
+    right: 25px;
+    bottom: 15px;
+    font-style: italic;
+    opacity: .5;
 }
 .reviewSwiper {
     overflow-x: visible;
@@ -985,6 +1001,31 @@ nav {
     font-size: 15px;
 }
 
+.dashboardPfp {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+
+}
+.usersProfilePicWrap {
+    background-color: var(--white);
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+    position: relative;
+    overflow: clip;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    color: var(--gray);
+}
+.usersProfilePicWrap .usersProfilePic {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
 .dashboardProfilKepWrap {
     background-color: var(--light) !important;
     border-radius: 100%;
@@ -1017,6 +1058,7 @@ nav {
 }
 .dashboardProfilKepWrap:hover::after {
     opacity: 1;
+    cursor: pointer;
 }
 .dashboardRowHeader {
     position: sticky;
@@ -1051,6 +1093,48 @@ nav {
     opacity: 1;
 }
 
+
+.dashboardReviewsContainer .reviewDelete {
+    content: "\f1f8";
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 25px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--danger);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    position: absolute;
+    top: -5px;
+    right: 0;
+    opacity: 0;
+    transition: all .3s ease-in-out;
+    border: none !important;
+}
+.dashboardReviewsContainer .reviewDelete:hover, .dashboardReviewsContainer .reviewCard:hover + .reviewDelete {
+    opacity: 1;
+}
+#reviewModal .form-control {
+    box-shadow: none !important;
+    border-radius: 20px;
+    position: relative;
+    min-height: 40vh;
+    font-size: 20px;
+}
+#reviewModal .form-control:active, #reviewModal .form-control:focus {
+    border-color: var(--orange) !important;
+}
+#reviewModal .star {
+    color: #7a6c32;
+    opacity: .8;
+}
+#reviewModal .activeStar .star {
+    color: #E0B507;
+    opacity: 1;
+}
 
 
 footer {
@@ -2036,6 +2120,10 @@ input[type=number] {
         font-size: 20px;
     }
 
+    .usersProfilePicWrap {
+        width: 200px;
+        height: 200px;
+    }
     .dashboardProfilKepWrap {
         width: 300px;
         height: 300px;

@@ -24,6 +24,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons"
 import { fab } from "@fortawesome/free-brands-svg-icons"
 import AosClient from "@/components/AosClient";
 import RoleValidation from "@/components/RoleValidation";
+import BootstrapClient from "@/components/BootstrapClient";
 library.add(fas as IconPack, fab as IconPack)
 
 

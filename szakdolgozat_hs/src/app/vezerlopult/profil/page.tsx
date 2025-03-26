@@ -18,7 +18,7 @@ interface Payment {
     currencry: string
 }
 
-interface User {
+export interface User {
     name: string
     email: string
     profilePicture?: string
@@ -155,13 +155,13 @@ export default function Page() {
             <div className="row profileRow py-3">
                 <div className="col-12 col-xl-5 col-xxl-4">
                     <div className="d-flex flex-column justify-content-center align-items-center w-100">
-                    <div className="dashboardProfilKepWrap mb-3" data-bs-toggle="modal" data-bs-target="#profilePicModal">
-    {user?.profilePicture ? (
-        <img src={user.profilePicture} alt="Profile" className="img-fluid" />
-    ) : (
-        <FontAwesomeIcon icon={faUser as IconProp} />
-    )}
-</div>
+                        <div className="dashboardProfilKepWrap mb-3" data-bs-toggle="modal" data-bs-target="#profilePicModal">
+                            {user?.profilePicture ? (
+                                <img src={user.profilePicture} alt="Profile" className="dashboardPfp" />
+                            ) : (
+                                <FontAwesomeIcon icon={faUser as IconProp} />
+                            )}
+                        </div>
                         <a className="editText" data-bs-toggle="modal" data-bs-target="#nameModal">
                             <h1>{user ? user.name : 'Betöltés...'}</h1>
                         </a>

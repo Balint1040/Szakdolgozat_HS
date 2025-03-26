@@ -7,7 +7,8 @@ export interface IReviewCard {
     id: number
     name: string,
     text: string,
-    star: Star
+    star: Star,
+    date: string
 }
 
 export default function ReviewCard({
@@ -16,7 +17,7 @@ export default function ReviewCard({
     data: IReviewCard
 }) {
     return (
-        <div className="reviewCard d-flex flex-column justify-content-center align-items-center p-5" key={data.id}>
+        <div className="reviewCard position-relative d-flex flex-column justify-content-center align-items-center p-5" key={data.id}>
             <p className="text-center fs-3">{data.text}</p>
             <span>
                 {[...Array(data.star).keys()].map((i = 1) => (
@@ -24,6 +25,7 @@ export default function ReviewCard({
                 ))}
             </span>
             <span className="fs-4 text-Orange">- {data.name}</span>
+            <span className="reviewDate">{data.date}</span>
         </div>
     )
 }

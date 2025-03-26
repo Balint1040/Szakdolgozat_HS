@@ -3,20 +3,13 @@
 import Loading from "@/components/Loading"
 import ProductSwiper from "@/components/ProductSwiper"
 import { IconProp } from "@fortawesome/fontawesome-svg-core"
-import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons"
+import { faAnglesLeft, faUser } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useRouter } from "next/navigation"
 import { enqueueSnackbar } from "notistack"
 import React, { useEffect, useState } from "react"
-
-
-interface User {
-    id: number,
-    email: string,
-    password: string,
-    role: string,
-    name: string
-}
+import { UserDashboard } from "../page"
+import { User } from "../../profil/page"
 
 export default function Page({
     params
@@ -25,7 +18,7 @@ export default function Page({
 }) {
     const router = useRouter()
     const { id } = React.use(params)
-    const [user, setUser] = useState<User | null>(null)
+    const [user, setUser] = useState<UserDashboard | null>(null)
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -41,6 +34,7 @@ export default function Page({
         }
         fetchUser()
     }, [id])
+
 
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -84,29 +78,42 @@ export default function Page({
                 <div className="row orderHistoryRow fs-5">
                     <h2>Felhasználó adatai</h2>
                     <hr />
-                    <div className="col-12">
-                        <div>Név: <span className="text-break">{user.name}</span></div>
+                    <div className="col-12 col-md-6 col-lg-5 col-xxl-3 d-flex justify-content-center justify-content-md-start">
+                        <div className="usersProfilePicWrap mb-3">
+                            {user?.profilePicture ? (
+                                <img src={user.profilePicture} alt="Profile" className="usersProfilePic" />
+                            ) : (
+                                <FontAwesomeIcon icon={faUser as IconProp} />
+                            )}
+                        </div>
                     </div>
-                    <div className="col-12">
-                        <div>Email: <span className="text-break">{user.email}</span></div>
-                    </div>
-                    <div className="col-12">
-                        <label htmlFor="role" className="form-label">Szerepkör:</label>
-                        <select
-                            id="role"
-                            className="form-select mb-3"
-                            value={user.role}
-                            onChange={handleChange}
-                        >
-                            <option value="guest">Guest</option>
-                            <option value="admin">Admin</option>
-                        </select>
-                        <button
-                            className="orangeButton"
-                            onClick={handleSave}
-                        >
-                            Mentés
-                        </button>
+                    <div className="col-12 col-md-6 col-lg-7 col-xxl-9 d-flex align-items-center">
+                        <div className="row">
+                            <div className="col-12">
+                                <div>Név: <span className="text-break">{user.name}</span></div>
+                            </div>
+                            <div className="col-12">
+                                <div>Email: <span className="text-break">{user.email}</span></div>
+                            </div>
+                            <div className="col-12">
+                                <label htmlFor="role" className="form-label">Szerepkör:</label>
+                                <select
+                                    id="role"
+                                    className="form-select mb-3"
+                                    value={user.role}
+                                    onChange={handleChange}
+                                >
+                                    <option value="guest">Guest</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                                <button
+                                    className="orangeButton"
+                                    onClick={handleSave}
+                                >
+                                    Mentés
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

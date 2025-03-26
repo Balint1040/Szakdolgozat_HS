@@ -62,6 +62,14 @@ export default function DashBoardLayout({
                                         Profil
                                     </Link>
                                 </li>
+                                <li>
+                                    <Link
+                                        href="/vezerlopult/ertekeles"
+                                        className={`nav-link ${activeTab === '/vezerlopult/ertekeles' ? 'active' : ''}`}
+                                    >
+                                        Értékelés
+                                    </Link>
+                                </li>
                                 <li className="valid">
                                     <Link
                                         href="/vezerlopult/termekek"

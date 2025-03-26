@@ -7,20 +7,20 @@ import { enqueueSnackbar } from "notistack"
 import { useEffect, useState } from "react"
 import { Button, ButtonGroup } from "react-bootstrap"
 
-export interface User {
+export interface UserDashboard {
     id: number,
     email: string,
-    password: string,
-    role: "admin" | "guest",
-    name: string
+    role: "admin" | "guest" | string,
+    name: string,
+    profilePicture?: string
 }
 export default function Page() {
-    const [users, setUsers] = useState<User[]>([])
+    const [users, setUsers] = useState<UserDashboard[]>([])
 
     useEffect(() => {
         async function fetchUsers() {
             const data = await fetch(`/api/users/admin`)
-            const init = (await data.json()) as User[]
+            const init = (await data.json()) as UserDashboard[]
 
             setUsers([...init])
         }
