@@ -66,12 +66,21 @@ export async function POST(req: NextRequest) {
             cartId = (result as ResultSetHeader).insertId
         }
 
-        await (await pool).execute(
-            'INSERT INTO cartItem (cartId, productId, quantity) VALUES (?, ?, ?)',
-            [cartId, productId, quantity]
-        )
+        const [existingItem] = await (await pool).execute(
+            'SELECT id, quantity FROM cartItem WHERE cartId = ? AND productId = ?', [cartId, productId]) as RowDataPacket[]        
         
-        return NextResponse.json({ cartId }, { status: 201 })
+        if(existingItem.length > 0){
+            await (await pool).execute(
+                `UPDATE cartItem SET quantity = quantity + ? WHERE id = ?`,[quantity, existingItem[0].id]
+            )
+            return NextResponse.json({message: "Mennyiség módosítva", status: 2000})
+        }else{
+            await (await pool).execute(
+                'INSERT INTO cartItem (cartId, productId, quantity) VALUES (?, ?, ?)',
+                [cartId, productId, quantity]
+            )
+            return NextResponse.json({cartId, status: 201})
+        }
     } catch (e) {
         console.error(e)
         return NextResponse.json({ error: 'Hiba a term'})
