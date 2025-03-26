@@ -21,7 +21,7 @@ export async function GET(
 
         return NextResponse.json(rows)
     } catch (error) {
-        return console.error(error);
+        return console.error(error)
     }
 
 }
@@ -32,12 +32,30 @@ export async function PUT(request: NextRequest, context: { params: { id?: string
       const params = await context.params
       const id = params.id
   
-      const { name, price, properties, manufacturer, categoryId } = await request.json()
+      const { name, price, properties, manufacturer, categoryId, images, deletedImages } = await request.json()
   
       await (await pool).execute(
         'UPDATE product SET name = ?, price = ?, properties = ?, manufacturer = ?, categoryId = ? WHERE id = ?',
         [name, price, properties, manufacturer, categoryId, id]
       )
+
+      if(deletedImages && deletedImages.length > 0) {
+        for(const url of deletedImages) {
+          await (await pool).execute(
+            'DELETE FROM imageurl WHERE productId = ? AND url = ?',
+            [id, url]
+          )
+        }
+      }
+
+      if(images && images.length > 0) {
+        for (const imageUrl of images) {
+          await (await pool).execute(
+            'INSERT INTO imageurl (productId, url) VALUES (?, ?)',
+            [id, imageUrl]
+          )
+        }
+      }
   
       return NextResponse.json({ message: 'updated' }, { status: 200 })
     } catch (e) {

@@ -29,6 +29,7 @@ export default function Page({
     const router = useRouter()
     const { id } = React.use(params)
     const [product, setProduct] = useState<Product | null>(null)
+    const [deletedImages, setDeletedImages] = useState<string[]>([])
 
     const categoryOptions = {
         1: "Videókártya",
@@ -99,14 +100,25 @@ export default function Page({
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         if (product) {
-            await fetch(`/api/products/${id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(product)
-            })
-            enqueueSnackbar('Sikeres termékmódosítás', {variant: "success", autoHideDuration: 2000})
+            try {
+                await fetch(`/api/products/${id}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-Api-Key": process.env.NEXT_PUBLIC_API_KEY || ""
+                    },
+                    body: JSON.stringify({
+                        ...product,
+                        deletedImages: deletedImages
+                    })
+                });
+    
+                enqueueSnackbar('Sikeres termékmódosítás', {variant: "success", autoHideDuration: 2000})
+                setDeletedImages([])
+            } catch (e) {
+                console.error(e)
+                enqueueSnackbar('Hiba történt a mentés során', {variant: "error", autoHideDuration: 2000})
+            }
         }
     }
 
@@ -220,6 +232,42 @@ export default function Page({
                                         <option key={id} value={id}>{name}</option>
                                     ))}
                                 </select>
+                            </div>
+                            <div className="mb-3">
+                                <label className="form-label">Képek kezelése:</label>
+                                <div className="image-list mb-3">
+                                    {product.imageUrls.map((image, index) => (
+                                        <div key={index} className="d-flex align-items-center mb-2">
+                                            <img
+                                                src={image.url}
+                                                style={{ width: '50px', height: '50px', objectFit: 'cover', marginRight: '10px' }}
+                                            />
+                                            <input
+                                                type="text"
+                                                className="form-control"
+                                                value={image.url}
+                                                onChange={(e) => handleChange(e, index)}
+                                            />
+                                            <button
+                                                type="button"
+                                                className="btn btn-danger btn-sm ms-2"
+                                                onClick={() => {
+                                                    const newImageUrls = product.imageUrls.filter((_, i) => i !== index)
+                                                    setProduct(prevState => prevState ? ({ ...prevState, imageUrls: newImageUrls }) : null)
+                                                    setDeletedImages(prevState => [...prevState, image.url])
+                                                }}
+                                            >
+                                                Törlés
+                                            </button>
+                                        </div>
+                                    ))}
+                                    <button
+                                        type="button"
+                                        className="btn btn-primary mt-2"
+                                    >
+                                        Új kép hozzáadása
+                                    </button>
+                                </div>
                             </div>
                             <button type="submit" className="blueButton">Mentés</button>
                         </form>
