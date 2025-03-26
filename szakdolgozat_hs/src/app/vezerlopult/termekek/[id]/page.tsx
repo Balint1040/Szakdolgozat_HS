@@ -68,6 +68,14 @@ export default function Page({
         if (imageIndex !== undefined) {
             setProduct(prevState => {
                 if (!prevState) return null
+                
+                const isDuplicate = prevState.imageUrls.some(
+                    (img, idx) => idx !== imageIndex && img.url === value
+                )
+                if (isDuplicate) {
+                    return prevState
+                }
+    
                 const newImageUrls = [...prevState.imageUrls]
                 newImageUrls[imageIndex] = { url: value }
                 return {
