@@ -5,7 +5,6 @@ import ProductSwiper from '@/components/ProductSwiper'
 import { IconProp } from '@fortawesome/fontawesome-svg-core'
 import { faAnglesLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { enqueueSnackbar } from 'notistack'
 import React, { useEffect, useState } from 'react'
@@ -63,14 +62,26 @@ export default function Page({
         fetchProduct()
     }, [id])
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>, propertyIndex?: number, isKey?: boolean) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>, propertyIndex?: number,imageIndex?: number,isKey?: boolean) => {
         const { name, value } = e.target
-        if (propertyIndex !== undefined) {
-            setProduct(prevState  => {
 
-                if(!prevState) return null
-                
-                const properties = Object.entries(prevState.properties);
+        if (imageIndex !== undefined) {
+            setProduct(prevState => {
+                if (!prevState) return null
+                const newImageUrls = [...prevState.imageUrls]
+                newImageUrls[imageIndex] = { url: value }
+                return {
+                    ...prevState,
+                    imageUrls: newImageUrls
+                }
+            })
+            return
+        }
+
+        if (propertyIndex !== undefined) {
+            setProduct(prevState => {
+                if (!prevState) return null
+                const properties = Object.entries(prevState.properties)
                 if (isKey) {
                     const [_, oldValue] = properties[propertyIndex]
                     properties[propertyIndex] = [value, oldValue]
@@ -82,25 +93,37 @@ export default function Page({
                 const updatedProperties = properties.reduce((acc, [key, value]) => {
                     acc[key] = value
                     return acc
-                }, {} as Record<string, string>);
+                }, {} as Record<string, string>)
     
                 return {
                     ...prevState,
                     properties: updatedProperties
                 }
             })
-        } else {
-            setProduct(prevState => prevState ? ({
-                ...prevState,
-                [name]: value
-            }) : null)
         }
+
+        setProduct(prevState => prevState ? ({
+            ...prevState,
+            [name]: value
+        }) : null)
     }
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         if (product) {
             try {
+                const validImages = product.imageUrls.filter(img => img.url).map(img => img.url)
+
+                const res = await fetch(`/api/products/${id}`, {
+                    headers: {
+                        'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
+                    }
+                })
+                const currentData = await res.json()
+                const existingUrls = new Set(currentData.map((item: { url: string }) => item.url))
+
+                const newImages = validImages.filter(url => !existingUrls.has(url))
+
                 await fetch(`/api/products/${id}`, {
                     method: "PUT",
                     headers: {
@@ -109,9 +132,10 @@ export default function Page({
                     },
                     body: JSON.stringify({
                         ...product,
-                        deletedImages: deletedImages
+                        deletedImages: deletedImages,
+                        images: newImages
                     })
-                });
+                })
     
                 enqueueSnackbar('Sikeres termékmódosítás', {variant: "success", autoHideDuration: 2000})
                 setDeletedImages([])
@@ -194,7 +218,7 @@ export default function Page({
                                     onChange={handleChange}
                                 />
                             </div>
-                            */ 
+                            */
                             }
                                 <label className="form-label">Tulajdonságok:</label>
                                 {Object.entries(product.properties).map((property, index) => (
@@ -204,7 +228,7 @@ export default function Page({
                                                 type="text" 
                                                 className="form-control" 
                                                 value={property[0]} 
-                                                onChange={(e) => handleChange(e, index, true)} 
+                                                onChange={(e) => handleChange(e, index)} 
                                                 placeholder="Tulajdonság neve"
                                             />
                                         </div>
@@ -213,7 +237,7 @@ export default function Page({
                                                 type="text" 
                                                 className="form-control" 
                                                 value={property[1]} 
-                                                onChange={(e) => handleChange(e, index, false)} 
+                                                onChange={(e) => handleChange(e, index)} 
                                                 placeholder="Érték"
                                             />
                                         </div>
@@ -239,14 +263,15 @@ export default function Page({
                                     {product.imageUrls.map((image, index) => (
                                         <div key={index} className="d-flex align-items-center mb-2">
                                             <img
-                                                src={image.url}
+                                                src={image.url || fallbackImg.src}
                                                 style={{ width: '50px', height: '50px', objectFit: 'cover', marginRight: '10px' }}
                                             />
                                             <input
                                                 type="text"
                                                 className="form-control"
                                                 value={image.url}
-                                                onChange={(e) => handleChange(e, index)}
+                                                onChange={(e) => handleChange(e, undefined, index)}
+                                                placeholder="Kép URL"
                                             />
                                             <button
                                                 type="button"
@@ -264,6 +289,15 @@ export default function Page({
                                     <button
                                         type="button"
                                         className="btn btn-primary mt-2"
+                                        onClick={() => {
+                                            setProduct(prevState => {
+                                                if (!prevState) return null
+                                                return {
+                                                    ...prevState,
+                                                    imageUrls: [...prevState.imageUrls, { url: "" }]
+                                                }
+                                            })
+                                        }}
                                     >
                                         Új kép hozzáadása
                                     </button>
