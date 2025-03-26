@@ -52,6 +52,26 @@ export default function ProductSwiper({
                 onSwiper={setThumbsSwiper}
                 spaceBetween={10}
                 slidesPerView={4}
+                breakpoints={{
+                    100: {
+                        slidesPerView: 2
+                    },
+                    320: {
+                        slidesPerView: 2
+                    },
+                    576: {
+                        slidesPerView: 3
+                    },
+                    768: {
+                        slidesPerView: 3
+                    },
+                    992: {
+                        slidesPerView: 4
+                    },
+                    1200: {
+                        slidesPerView: 5
+                    },
+                  }}
                 freeMode={true}
                 watchSlidesProgress={true}
                 modules={[FreeMode, Navigation, Thumbs]}

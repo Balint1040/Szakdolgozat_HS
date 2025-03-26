@@ -167,7 +167,7 @@ export default function Page({
                     </a>
                 </div>
                 <div className="row justify-content-center justify-content-xxl-start">
-                    <div className="col-12 col-sm-10 col-md-8 col-lg-12 col-xxl-6 order-2 order-xxl-1">
+                    <div className="col-12 col-sm-10 col-md-8 col-lg-12 col-xxl-6 order-2 order-xxl-1 mt-5 mt-xxl-0">
                         <ProductSwiper images={product.imageUrls} />
                         <div className="mb-3">
                             <label className="form-label">Képek kezelése:</label>
@@ -269,26 +269,45 @@ export default function Page({
                                 <label className="form-label">Tulajdonságok:</label>
                                 {Object.entries(product.properties).map((property, index) => (
                                     <div className="row my-4 my-sm-2" key={index}>
-                                        <div className="col-12 col-sm-6 mb-2 mb-sm-0">
-                                            <input 
-                                                type="text" 
-                                                className="form-control" 
-                                                value={property[0]} 
-                                                onChange={(e) => handleChange(e, index)} 
-                                                placeholder="Tulajdonság neve"
-                                            />
+                                        <div className="col-10 col-sm-11">
+                                            <div className="row">
+                                                <div className="col-12 col-sm-6 mb-2 mb-sm-0">
+                                                    <input 
+                                                        type="text" 
+                                                        className="form-control" 
+                                                        value={property[0]} 
+                                                        onChange={(e) => handleChange(e, index)} 
+                                                        placeholder="Tulajdonság neve"
+                                                    />
+                                                </div>
+                                                <div className="col-12 col-sm-6">
+                                                    <input 
+                                                        type="text" 
+                                                        className="form-control" 
+                                                        value={property[1]} 
+                                                        onChange={(e) => handleChange(e, index)} 
+                                                        placeholder="Érték"
+                                                    />
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className="col-12 col-sm-6">
-                                            <input 
-                                                type="text" 
-                                                className="form-control" 
-                                                value={property[1]} 
-                                                onChange={(e) => handleChange(e, index)} 
-                                                placeholder="Érték"
-                                            />
+                                        <div className="col-1">
+                                            <div className="d-flex h-100 align-items-center justify-content-center">
+                                                <button
+                                                    className="btn btn-danger btn-sm"
+                                                >
+                                                    <FontAwesomeIcon icon={faTrash as IconProp} />
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 ))}
+                                <button
+                                    className="addImgButton"
+                                >
+                                    Új tulajdonság hozzáadása
+                                    <span><FontAwesomeIcon icon={faPlus as IconProp} /></span>
+                                </button>
                             <div className="mb-3">
                                 <label htmlFor="categoryId" className="form-label">Termékkategória:</label>
                                 <select
