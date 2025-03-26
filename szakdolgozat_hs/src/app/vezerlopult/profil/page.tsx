@@ -21,6 +21,7 @@ interface Payment {
 interface User {
     name: string
     email: string
+    profilePicture?: string
 }
 
 export default function Page() {
@@ -28,6 +29,7 @@ export default function Page() {
     const [user, setUser] = useState<User | null>(null)
     const [newName, setNewName] = useState('')
     const [newEmail, setNewEmail] = useState('')
+    const [newProfilePicture, setNewProfilePicture] = useState('')
 
     useEffect(() => {
         require('bootstrap/dist/js/bootstrap.bundle.min.js')
@@ -91,8 +93,6 @@ export default function Page() {
             if (data.status === 200) {
                 setUser(data.user)
                 enqueueSnackbar('Név sikeresen módosítva', { variant: 'success', autoHideDuration: 2000 })
-                const closeButton = document.querySelector('#nameModal .btn-close')
-                closeButton?.dispatchEvent(new Event('click'))
             }else{
                 enqueueSnackbar('A névnek minimum 3 karakterből kell állnia', {variant: "error", autoHideDuration: 2000})
             }
@@ -116,8 +116,6 @@ export default function Page() {
             if (data.status === 200) {
                 setUser(data.user)
                 enqueueSnackbar('Email cím sikeresen módosítva', {variant: 'success', autoHideDuration: 2000})
-                const closeButton = document.querySelector('#emailModal .btn-close')
-                closeButton?.dispatchEvent(new Event('click'))
             }else{
                 enqueueSnackbar('Nem megfelelő email cím formátum', {variant: "error"} )
             }
@@ -126,14 +124,44 @@ export default function Page() {
         }
     }
 
+    const handleProfilePicSubmit = async() => {
+        try{
+            const res = await fetch("/api/users", {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
+                },
+                credentials: "include",
+                body: JSON.stringify({
+                    name: user?.name,
+                    email: user?.email,
+                    profilePicture: newProfilePicture
+                })
+            })
+            const data = await res.json()
+            if(data.status == 200){
+                setUser(data.user)
+                enqueueSnackbar('Profilkép sikeresen módosítva', {variant: 'success', autoHideDuration: 2000})
+            }
+        }catch(e){
+            console.error(e)
+            enqueueSnackbar("Nem sikerült a profilkép módosítása", {variant: 'error', autoHideDuration: 2000})
+        }
+    }
+
     return (
         <>
             <div className="row profileRow py-3">
                 <div className="col-12 col-xl-5 col-xxl-4">
                     <div className="d-flex flex-column justify-content-center align-items-center w-100">
-                        <div className="dashboardProfilKepWrap mb-3"  data-bs-toggle="modal" data-bs-target="#profilePicModal">
-                            <FontAwesomeIcon icon={faUser as IconProp} />
-                        </div>
+                    <div className="dashboardProfilKepWrap mb-3" data-bs-toggle="modal" data-bs-target="#profilePicModal">
+    {user?.profilePicture ? (
+        <img src={user.profilePicture} alt="Profile" className="img-fluid" />
+    ) : (
+        <FontAwesomeIcon icon={faUser as IconProp} />
+    )}
+</div>
                         <a className="editText" data-bs-toggle="modal" data-bs-target="#nameModal">
                             <h1>{user ? user.name : 'Betöltés...'}</h1>
                         </a>
@@ -178,7 +206,7 @@ export default function Page() {
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="blueButton" data-bs-dismiss="modal">Mégse</button>
-                                <button type="button" className="orangeButton" onClick={handleNameSubmit}>Mentés</button>
+                                <button type="button" className="orangeButton" data-bs-dismiss="modal"onClick={handleNameSubmit}>Mentés</button>
                             </div>
                         </div>
                     </div>
@@ -225,14 +253,14 @@ export default function Page() {
                                         type="text" 
                                         id="profilePic" 
                                         className="form-control"
-                                        value={newEmail}
-                                        
+                                        value={newProfilePicture}
+                                        onChange={(e => setNewProfilePicture(e.target.value))}
                                         />
                                 </form>
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="blueButton" data-bs-dismiss="modal">Mégse</button>
-                                <button type="button" className="orangeButton" onClick={handleEmailSubmit}>Mentés</button>
+                                <button type="button" className="orangeButton" data-bs-dismiss="modal" onClick={handleProfilePicSubmit}>Mentés</button>
                             </div>
                         </div>
                     </div>

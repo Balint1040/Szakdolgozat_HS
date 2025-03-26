@@ -34,6 +34,7 @@ model user {
   role      user_role @default(guest)
   createdAt DateTime  @default(now())
   name      String
+  profilePicture String?
   cart cart[]
 }
 

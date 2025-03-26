@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { userId: number }
-    const [rows] = await (await pool).execute('SELECT id, name, email, role FROM user WHERE id = ?', [decoded.userId])
+    const [rows] = await (await pool).execute('SELECT id, name, email, role, profilePicture FROM user WHERE id = ?', [decoded.userId])
 
 
     const user = (rows as any[])[0]
@@ -24,7 +24,8 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json({
       name: user.name,
-      email: user.email
+      email: user.email,
+      profilePicture: user.profilePicture,
     })
 
   } catch (e) {
@@ -50,7 +51,7 @@ export async function PUT(req: NextRequest){
       return NextResponse.json({ status: 401 })
     }
 
-    const {name, email} = await req.json()
+    const {name, email, profilePicture} = await req.json()
     const decoded = jwt.verify(token, process.env.JWT_SECRET!) as {userId: number}
 
     if(name){
@@ -75,15 +76,14 @@ export async function PUT(req: NextRequest){
       return NextResponse.json({ error: 'Érvénytelen email cím vagy helytelen formátum' }, { status: 400 })
     }
 
-  
     await (await pool).execute(
-      'UPDATE user SET name = ?, email = ? WHERE ID = ?', [name, email, decoded.userId]
+      'UPDATE user SET name = ?, email = ?, profilePicture = ? WHERE ID = ?', [name, email, profilePicture, decoded.userId]
     )
   
     return NextResponse.json({
       message: "Sikeres",
       status: 200,
-      user: {name, email}
+      user: {name, email, profilePicture}
     })
   }catch(e){
     console.error(e)
