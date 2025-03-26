@@ -282,31 +282,6 @@ export default function Page({
                             </div>
                             */
                             }
-<<<<<<< Updated upstream
-                                <label className="form-label">Tulajdonságok:</label>
-                                {Object.entries(product.properties).map((property, index) => (
-                                    <div className="row my-4 my-sm-2" key={index}>
-                                        <div className="col-10 col-sm-11">
-                                            <div className="row">
-                                                <div className="col-12 col-sm-6 mb-2 mb-sm-0">
-                                                    <input 
-                                                        type="text" 
-                                                        className="form-control" 
-                                                        value={property[0]} 
-                                                        onChange={(e) => handleChange(e, index, undefined, true)} 
-                                                        placeholder="Tulajdonság neve"
-                                                    />
-                                                </div>
-                                                <div className="col-12 col-sm-6">
-                                                    <input 
-                                                        type="text" 
-                                                        className="form-control" 
-                                                        value={property[1]} 
-                                                        onChange={(e) => handleChange(e, index, undefined, false)} 
-                                                        placeholder="Érték"
-                                                    />
-                                                </div>
-=======
                             <label className="form-label">Tulajdonságok:</label>
                             {Object.entries(product.properties).map((property, index) => (
                                 <div className="row my-4 my-sm-2" key={index}>
@@ -320,7 +295,6 @@ export default function Page({
                                                     onChange={(e) => handleChange(e, index, undefined, true)}
                                                     placeholder="Tulajdonság neve"
                                                 />
->>>>>>> Stashed changes
                                             </div>
                                             <div className="col-12 col-sm-6">
                                                 <input
