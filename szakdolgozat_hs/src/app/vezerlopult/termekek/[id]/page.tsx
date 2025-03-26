@@ -132,6 +132,13 @@ export default function Page({
 
                 const newImages = validImages.filter(url => !existingUrls.has(url))
 
+                const validProperties = Object.entries(product.properties).reduce((acc, [key, value]) => {
+                    if (key.trim() && value.trim()) {
+                        acc[key] = value
+                    }
+                    return acc
+                }, {} as Record<string, string>)
+
                 await fetch(`/api/products/${id}`, {
                     method: "PUT",
                     headers: {
@@ -140,6 +147,7 @@ export default function Page({
                     },
                     body: JSON.stringify({
                         ...product,
+                        properties: validProperties,
                         deletedImages: deletedImages,
                         images: newImages
                     })
@@ -274,6 +282,7 @@ export default function Page({
                             </div>
                             */
                             }
+<<<<<<< Updated upstream
                                 <label className="form-label">Tulajdonságok:</label>
                                 {Object.entries(product.properties).map((property, index) => (
                                     <div className="row my-4 my-sm-2" key={index}>
@@ -297,25 +306,77 @@ export default function Page({
                                                         placeholder="Érték"
                                                     />
                                                 </div>
+=======
+                            <label className="form-label">Tulajdonságok:</label>
+                            {Object.entries(product.properties).map((property, index) => (
+                                <div className="row my-4 my-sm-2" key={index}>
+                                    <div className="col-10 col-sm-11">
+                                        <div className="row">
+                                            <div className="col-12 col-sm-6 mb-2 mb-sm-0">
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    value={property[0]}
+                                                    onChange={(e) => handleChange(e, index, undefined, true)}
+                                                    placeholder="Tulajdonság neve"
+                                                />
+>>>>>>> Stashed changes
                                             </div>
-                                        </div>
-                                        <div className="col-1">
-                                            <div className="d-flex h-100 align-items-center justify-content-center">
-                                                <button
-                                                    className="btn btn-danger btn-sm"
-                                                >
-                                                    <FontAwesomeIcon icon={faTrash as IconProp} />
-                                                </button>
+                                            <div className="col-12 col-sm-6">
+                                                <input
+                                                    type="text"
+                                                    className="form-control"
+                                                    value={property[1]}
+                                                    onChange={(e) => handleChange(e, index, undefined, false)}
+                                                    placeholder="Érték"
+                                                />
                                             </div>
                                         </div>
                                     </div>
-                                ))}
-                                <button
-                                    className="addImgButton"
-                                >
-                                    Új tulajdonság hozzáadása
-                                    <span><FontAwesomeIcon icon={faPlus as IconProp} /></span>
-                                </button>
+                                    <div className="col-1">
+                                        <div className="d-flex h-100 align-items-center justify-content-center">
+                                            <button
+                                                className="btn btn-danger btn-sm"
+                                                type='button'
+                                                onClick={() => {
+                                                    const properties = Object.entries(product.properties)
+                                                    const filteredProperties = properties.filter((_, i) => i !== index)
+                                                    const updatedProperties = filteredProperties.reduce((acc, [key, value]) => {
+                                                        acc[key] = value
+                                                        return acc
+                                                    }, {} as Record<string, string>)
+
+                                                    setProduct(prevState => prevState ? ({
+                                                        ...prevState,
+                                                        properties: updatedProperties
+                                                    }) : null)
+                                                }}
+                                            >
+                                                <FontAwesomeIcon icon={faTrash as IconProp} />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                            <button
+                                className="addImgButton"
+                                type='button'
+                                onClick={() => {
+                                    setProduct(prevState => {
+                                        if (!prevState) return null
+                                        return {
+                                            ...prevState,
+                                            properties: {
+                                                ...prevState.properties,
+                                                "": ""
+                                            }
+                                        }
+                                    })
+                                }}
+                            >
+                                Új tulajdonság hozzáadása
+                                <span><FontAwesomeIcon icon={faPlus as IconProp} /></span>
+                            </button>
                             <div className="mb-3">
                                 <label htmlFor="categoryId" className="form-label">Termékkategória:</label>
                                 <select
