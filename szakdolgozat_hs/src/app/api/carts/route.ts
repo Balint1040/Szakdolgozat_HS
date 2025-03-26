@@ -22,6 +22,7 @@ export async function GET(req: Request) {
                 ci.id,
                 ci.cartId,
                 ci.quantity,
+                ci.productId,
                 p.name,
                 p.price,
                 (SELECT url FROM imageurl WHERE productId = p.id LIMIT 1) as url

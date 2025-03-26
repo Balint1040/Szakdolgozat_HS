@@ -284,7 +284,7 @@ export default function Page({
                                                         type="text" 
                                                         className="form-control" 
                                                         value={property[0]} 
-                                                        onChange={(e) => handleChange(e, index)} 
+                                                        onChange={(e) => handleChange(e, index, undefined, true)} 
                                                         placeholder="Tulajdonság neve"
                                                     />
                                                 </div>
@@ -293,7 +293,7 @@ export default function Page({
                                                         type="text" 
                                                         className="form-control" 
                                                         value={property[1]} 
-                                                        onChange={(e) => handleChange(e, index)} 
+                                                        onChange={(e) => handleChange(e, index, undefined, false)} 
                                                         placeholder="Érték"
                                                     />
                                                 </div>

@@ -15,6 +15,7 @@ import { enqueueSnackbar } from 'notistack'
 
 export interface CartItem extends Product {
     quantity: number
+    productId: number
 }
 
 

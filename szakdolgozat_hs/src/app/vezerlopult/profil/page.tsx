@@ -131,7 +131,7 @@ export default function Page() {
             <div className="row profileRow py-3">
                 <div className="col-12 col-xl-5 col-xxl-4">
                     <div className="d-flex flex-column justify-content-center align-items-center w-100">
-                        <div className="dashboardProfilKepWrap mb-3">
+                        <div className="dashboardProfilKepWrap mb-3"  data-bs-toggle="modal" data-bs-target="#profilePicModal">
                             <FontAwesomeIcon icon={faUser as IconProp} />
                         </div>
                         <a className="editText" data-bs-toggle="modal" data-bs-target="#nameModal">
@@ -200,6 +200,33 @@ export default function Page() {
                                         className="form-control"
                                         value={newEmail}
                                         onChange={(e => setNewEmail(e.target.value))}
+                                        />
+                                </form>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="blueButton" data-bs-dismiss="modal">Mégse</button>
+                                <button type="button" className="orangeButton" onClick={handleEmailSubmit}>Mentés</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="modal fade" id="profilePicModal" tabIndex={-1} aria-labelledby="profilePicModal" aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title">Profilkép szerkesztése</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div className="modal-body">
+                                
+                                <form onSubmit={(e) => e.preventDefault()}>
+                                    <label htmlFor="profilePic" className="form-label">Profilkép (url)</label>
+                                    <input 
+                                        type="text" 
+                                        id="profilePic" 
+                                        className="form-control"
+                                        value={newEmail}
+                                        
                                         />
                                 </form>
                             </div>

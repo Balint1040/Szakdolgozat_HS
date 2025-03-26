@@ -994,6 +994,29 @@ nav {
     justify-content: center;
     align-items: center;
     font-size: 160px;
+    position: relative;
+    overflow: clip;
+}
+.dashboardProfilKepWrap::after {
+    content: "\f044";
+    font-family: 'Font Awesome 6 Free';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #33333370;
+    color: var(--white);
+    font-size: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s ease-in-out;
+    opacity: 0;
+    border-radius: 100%;
+}
+.dashboardProfilKepWrap:hover::after {
+    opacity: 1;
 }
 .dashboardRowHeader {
     position: sticky;
