@@ -72,7 +72,7 @@ model review{
   userId Int
   user user @relation(fields: [userId], references: [id])
   rating Int
-  text String
+  text String @db.Text
   createdAt DateTime @default(now())
 }
 
