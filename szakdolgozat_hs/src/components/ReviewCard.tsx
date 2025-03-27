@@ -8,7 +8,7 @@ export interface IReviewCard {
     name: string,
     text: string,
     star: Star,
-    date: string
+    createdAt: string
 }
 
 export default function ReviewCard({
@@ -25,7 +25,7 @@ export default function ReviewCard({
                 ))}
             </span>
             <span className="fs-4 text-Orange">- {data.name}</span>
-            <span className="reviewDate">{data.date}</span>
+            <span className="reviewDate">{data.createdAt}</span>
         </div>
     )
 }

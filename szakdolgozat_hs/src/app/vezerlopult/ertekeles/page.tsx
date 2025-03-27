@@ -5,15 +5,9 @@ import ReviewCard, { IReviewCard } from "@/components/ReviewCard";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faStar, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { enqueueSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 
-const review1 = {
-    id: 1,
-    name: "Horváth Győző",
-    text: '"Kiváló webshop, szép termékválaszték. Pontos és gyors szállítás. Volt egy garanciális jellegű problémám, de ez az én hibám volt, és a személyzet minden segítséget megadott, amire szükségem volt, műszaki és pénzügyi tanácsokkal kiegészítve. Ennél jobb ügyfélszolgálatot nem is lehet kérni."',
-    star: 5,
-    date: "2025. 02. 11."
-}
 
 export default function Page() {
 
@@ -22,6 +16,92 @@ export default function Page() {
     }, [])
 
     const [activeStars, setActiveStars] = useState<number>(0); // Tracks how many stars are active
+    const [reviews, setReviews] = useState<IReviewCard[]>([])
+    const [reviewText, setReviewText] = useState<string>("")
+
+    const fetchReviews = async () => {
+        try {
+            const res = await fetch("/api/reviews", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-Api-Key": process.env.NEXT_PUBLIC_API_KEY || ""
+                },
+                credentials: "include"
+            })
+            const data = await res.json()
+            if (res.ok) {
+                setReviews(data)
+            }
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    useEffect(() => {
+        fetchReviews()
+    }, [])
+
+    const handleSubmit = async() => {
+
+        if(reviewText === ""){
+            enqueueSnackbar("Az értékelés mező nem lehet üres", {variant: "error", autoHideDuration: 2000})
+            return
+        }
+
+        if(activeStars === 0){
+            enqueueSnackbar("Elfelejtettél csillagot megadni", {variant: "error", autoHideDuration: 2000})
+            return
+        }
+
+        try{
+            const res = await fetch("/api/reviews", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-Api-Key": process.env.NEXT_PUBLIC_API_KEY || ""
+                },
+                credentials: "include",
+                body: JSON.stringify({
+                    text: reviewText,
+                    rating: activeStars
+                })
+            })
+            if(res.ok){
+                setReviewText("")
+                setActiveStars(0)
+                fetchReviews()
+                enqueueSnackbar("Vélemény sikeres létrehozva", {variant: "success", autoHideDuration: 2000})
+            }
+        }catch(e){
+            console.error(e)
+        }
+    }
+
+    const handleDelete = async(id: number) => {
+        try{
+            const res = await fetch(`/api/reviews/?id=${id}`, {
+                method: "DELETE",
+
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-Api-Key": process.env.NEXT_PUBLIC_API_KEY || ""
+                },
+                credentials: "include"
+            })
+
+            console.log('res?', res.status)
+
+            if(res.ok){
+                fetchReviews()
+                enqueueSnackbar("Vélemény sikeresen törölve", {variant: "success", autoHideDuration: 2000})
+            }
+        }catch(e){
+            console.error(e)
+            enqueueSnackbar("A véleményt nem sikerült törölni", {variant: "error", autoHideDuration: 2000})
+        }
+    }
+
 
     const handleStar = (event: React.MouseEvent) => {
         const clickedElement = event.currentTarget as HTMLElement;
@@ -48,22 +128,24 @@ export default function Page() {
             </div>
             <hr />
             <div className="row py-3">
-                <div className="col-12 mb-3 position-relative">
-                    <ReviewCard data={review1 as IReviewCard} />
-                    <button
-                        className="reviewDelete"
-                    >
-                        <FontAwesomeIcon icon={faTrash as IconProp} />
-                    </button>
-                </div>
-                <div className="col-12 mb-3 position-relative">
-                    <ReviewCard data={review1 as IReviewCard} />
-                    <button
-                        className="reviewDelete"
-                    >
-                        <FontAwesomeIcon icon={faTrash as IconProp} />
-                    </button>
-                </div>
+                {reviews.map((review) => (
+                    <div key={review.id} className="col-12 mb-3 position-relative">
+                        <ReviewCard
+                            data={{
+                                ...review,
+                                createdAt: new Date(review.createdAt).toLocaleDateString("hu-HU")
+                            }}
+                        />
+                        <button 
+                            className="reviewDelete"
+                            onClick={() => {
+                                handleDelete(review.id)
+                            }}
+                            >
+                            <FontAwesomeIcon icon={faTrash as IconProp}/>
+                        </button>
+                    </div>
+                ))}
             </div>
 
             <div className="modal fade" id="reviewModal" tabIndex={-1} aria-labelledby="reviewModal" aria-hidden="true">
@@ -77,7 +159,13 @@ export default function Page() {
                             
                             <form onSubmit={(e) => e.preventDefault()}>
                                 <div className="form-floating">
-                                    <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea">
+                                    <textarea 
+                                        className="form-control" 
+                                        placeholder="Leave a comment here" 
+                                        id="floatingTextarea"
+                                        value={reviewText}
+                                        onChange={(e) => setReviewText(e.target.value)}
+                                        >
                                     </textarea>
                                     <label htmlFor="floatingTextarea">Értékelés</label>
                                 </div>
@@ -101,7 +189,14 @@ export default function Page() {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="blueButton" data-bs-dismiss="modal">Mégse</button>
-                            <button type="button" className="orangeButton ms-3">Mentés</button>
+                            <button 
+                                type="button" 
+                                className="orangeButton ms-3"
+                                onClick={handleSubmit}
+                                data-bs-dismiss="modal"
+                                >
+                                    Mentés
+                                </button>
                         </div>
                     </div>
                 </div>
