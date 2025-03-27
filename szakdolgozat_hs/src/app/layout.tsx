@@ -114,8 +114,8 @@ export default async function RootLayout({
                 <Link href={"/"}>
                 <h1 className="text-center logo"><span className="text-Orange">H</span><span className="text-Blue">S</span><span>market</span></h1>
                 </Link>
-                <OrangeButton name="Impresszum" href="#" />
-                <BlueButton name="Adatvédelem" href="#" />
+                <OrangeButton name="Impresszum" href="/impresszum" />
+                <BlueButton name="Adatvédelem" href="/adatvedelem" />
 
                 <span className="footerCr">{new Date().getFullYear()} © Minden jog fenntartva</span>
               </div>
