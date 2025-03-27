@@ -18,6 +18,7 @@ export default function Page() {
     const [activeStars, setActiveStars] = useState<number>(0); // Tracks how many stars are active
     const [reviews, setReviews] = useState<IReviewCard[]>([])
     const [reviewText, setReviewText] = useState<string>("")
+    const [count, setCount] = useState(0)
 
     const fetchReviews = async () => {
         try {
@@ -142,10 +143,11 @@ export default function Page() {
                         {reviews.map((review) => (
                             <div key={review.id} className="col-12 mb-3 position-relative">
                                 <ReviewCard
-                                    data={{
+                                    /*data={{
                                         ...review,
                                         createdAt: new Date(review.createdAt).toLocaleDateString("hu-HU")
-                                    }}
+                                    }}*/
+                                   data={review}
                                 />
                                 <button 
                                     className="reviewDelete"
@@ -162,7 +164,7 @@ export default function Page() {
             </div>
 
             <div className="modal fade" id="reviewModal" tabIndex={-1} aria-labelledby="reviewModal" aria-hidden="true">
-                <div className="modal-dialog modal-dialog-centered modal-fullscreen">
+                <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title">Értékelés írása</h5>
@@ -177,10 +179,15 @@ export default function Page() {
                                         placeholder="Leave a comment here" 
                                         id="floatingTextarea"
                                         value={reviewText}
-                                        onChange={(e) => setReviewText(e.target.value)}
+                                        maxLength={350}
+                                        onChange={(e) => {
+                                            setReviewText(e.target.value)
+                                            /*setCount(e.target.value.length)*/
+                                        }}
                                         >
                                     </textarea>
                                     <label htmlFor="floatingTextarea">Értékelés</label>
+                                    <span>{count} / 350</span>
                                 </div>
                                 <div className="d-flex w-100 justify-content-center mt-5 fs-3">
                                     {[...Array(5).keys()].map((i) => (
@@ -207,9 +214,9 @@ export default function Page() {
                                 className="orangeButton ms-3"
                                 onClick={handleSubmit}
                                 data-bs-dismiss="modal"
-                                >
-                                    Mentés
-                                </button>
+                            >
+                                Mentés
+                            </button>
                         </div>
                     </div>
                 </div>

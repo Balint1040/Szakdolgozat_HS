@@ -1141,8 +1141,16 @@ nav {
     box-shadow: none !important;
     border-radius: 20px;
     position: relative;
-    min-height: 40vh;
+    min-height: 300px;
+    max-height: 500px;
     font-size: 20px;
+}
+#reviewModal .form-floating span {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 15px;
+    font-style: italic;
 }
 #reviewModal .form-control:active, #reviewModal .form-control:focus {
     border-color: var(--orange) !important;
@@ -1997,6 +2005,9 @@ input[type=number] {
     .reviewCard {
         height: 475px;
     }
+    .reviewCard p {
+        font-size: 22px !important;
+    }
 
     .recommendationCard .propertiesWrap {
         max-height: 100px;
@@ -2102,6 +2113,7 @@ input[type=number] {
 
     .reviewCard {
         font-size: 20px !important;
+        height: unset;
     }
     .reviewCard p {
         font-size: 18px !important;

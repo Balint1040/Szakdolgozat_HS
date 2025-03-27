@@ -73,6 +73,13 @@ export default function Page({
         product.imageUrls = fb
     }
 
+    let quantityClass = ""
+    if (quantity === 1) {
+        quantityClass = "disabled"
+    } else {
+        quantityClass = ""
+    }
+
     return (
         <>
             <div className="container productContainer">
@@ -89,7 +96,7 @@ export default function Page({
                         <div className="d-flex justify-content-between align-items-center my-3">
                             <div className="quantityWrap">
                                 <a 
-                                    className="pointer"
+                                    className={`pointer ${quantityClass}`}
                                     onClick={() => quantity > 1 && setQuantity(q => (q - 1) as Quantity)}
                                 >
                                     -

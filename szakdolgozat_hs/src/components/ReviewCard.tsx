@@ -39,10 +39,34 @@ export default function ReviewCard({
         fetchUser()
     }, [])
 
+    function timeAgo(createdAt: string) {
+        console.log("createdAt string: " + createdAt)
+        const currentTime = new Date()
+        const reviewTime = new Date(createdAt)
+
+        console.log("current: " + currentTime)
+        console.log("review: " + reviewTime)
+        const timeDifference = currentTime.getTime() - reviewTime.getTime()
+
+        const seconds = Math.floor(timeDifference / 1000)
+        const minutes = Math.floor(seconds / 60)
+        const hours = Math.floor(minutes / 60)
+
+        if (seconds < 60) {
+            return "Épp most"
+        } else if (minutes < 60) {
+            return `${minutes} perce`
+        } else if (hours < 24) {
+            return `${hours} órája`
+        } else {
+            return createdAt
+        }
+    }
+
 
     return (
-        <div className="reviewCard position-relative d-flex flex-column justify-content-center align-items-center p-5" key={data.id}>
-            <p className="text-center fs-3">"{data.text}"</p>
+        <div className="reviewCard position-relative d-flex flex-column justify-content-center align-items-center py-5 p-3 p-sm-5" key={data.id}>
+            <p className="text-center fs-3 text-break">"{data.text}"</p>
             <span>
                 {[...Array(data.rating).keys()].map((i = 1) => (
                     <FontAwesomeIcon icon={faStar as IconProp}  key={"star-" + i++}/>
@@ -58,7 +82,7 @@ export default function ReviewCard({
                 </div>
                 <span className="ms-3 fs-4 text-Orange">- {data.name}</span>
             </div>
-            <span className="reviewDate">{data.createdAt}</span>
+            <span className="reviewDate">{timeAgo(data.createdAt)}</span>
         </div>
     )
 }
