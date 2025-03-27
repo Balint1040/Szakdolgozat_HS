@@ -488,7 +488,7 @@ nav {
     background-color: var(--light);
     border-radius: 20px;
     /*overflow: hidden;*/
-    height: 380px;
+    min-height: 380px;
 }
 .reviewCard svg, .reviewCard .star {
     color: #E0B507;
@@ -501,6 +501,26 @@ nav {
     bottom: 15px;
     font-style: italic;
     opacity: .5;
+}
+.reviewPfp {
+    height: 50px;
+    width: 50px;
+    background-color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    font-size: 25px;
+    overflow: clip;
+}
+.reviewPfp img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.reviewPfp svg {
+    color: var(--gray);
+    filter: none !important;
 }
 .reviewSwiper {
     overflow-x: visible;
