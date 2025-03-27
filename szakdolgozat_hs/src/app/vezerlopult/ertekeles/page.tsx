@@ -3,7 +3,7 @@
 import OrangeButton from "@/components/OrangeButton";
 import ReviewCard, { IReviewCard } from "@/components/ReviewCard";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { faStar, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faCircleXmark, faStar, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { enqueueSnackbar } from "notistack";
 import { useEffect, useState } from "react";
@@ -128,24 +128,37 @@ export default function Page() {
             </div>
             <hr />
             <div className="row py-3">
-                {reviews.map((review) => (
-                    <div key={review.id} className="col-12 mb-3 position-relative">
-                        <ReviewCard
-                            data={{
-                                ...review,
-                                createdAt: new Date(review.createdAt).toLocaleDateString("hu-HU")
-                            }}
-                        />
-                        <button 
-                            className="reviewDelete"
-                            onClick={() => {
-                                handleDelete(review.id)
-                            }}
-                            >
-                            <FontAwesomeIcon icon={faTrash as IconProp}/>
-                        </button>
+                {reviews.length === 0 ? (
+                    <div className="emptyCart">
+                        <div className="emptyIconWrap">
+                            <FontAwesomeIcon icon={faStar as IconProp} />
+                            <FontAwesomeIcon icon={faCircleXmark as IconProp} />
+                        </div>
+                        Még nincs értékelésed
                     </div>
-                ))}
+                ) : (
+                    
+                    <>
+                        {reviews.map((review) => (
+                            <div key={review.id} className="col-12 mb-3 position-relative">
+                                <ReviewCard
+                                    data={{
+                                        ...review,
+                                        createdAt: new Date(review.createdAt).toLocaleDateString("hu-HU")
+                                    }}
+                                />
+                                <button 
+                                    className="reviewDelete"
+                                    onClick={() => {
+                                        handleDelete(review.id)
+                                    }}
+                                    >
+                                    <FontAwesomeIcon icon={faTrash as IconProp}/>
+                                </button>
+                            </div>
+                        ))}
+                    </>
+                )}
             </div>
 
             <div className="modal fade" id="reviewModal" tabIndex={-1} aria-labelledby="reviewModal" aria-hidden="true">
