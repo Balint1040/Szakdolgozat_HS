@@ -40,12 +40,8 @@ export default function ReviewCard({
     }, [])
 
     function timeAgo(createdAt: string) {
-        console.log("createdAt string: " + createdAt)
         const currentTime = new Date()
         const reviewTime = new Date(createdAt)
-
-        console.log("current: " + currentTime)
-        console.log("review: " + reviewTime)
         const timeDifference = currentTime.getTime() - reviewTime.getTime()
 
         const seconds = Math.floor(timeDifference / 1000)
@@ -59,7 +55,7 @@ export default function ReviewCard({
         } else if (hours < 24) {
             return `${hours} órája`
         } else {
-            return createdAt
+            return reviewTime.toLocaleDateString()
         }
     }
 

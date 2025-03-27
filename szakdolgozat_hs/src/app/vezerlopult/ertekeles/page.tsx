@@ -19,10 +19,11 @@ export default function Page() {
     const [reviews, setReviews] = useState<IReviewCard[]>([])
     const [reviewText, setReviewText] = useState<string>("")
     const [count, setCount] = useState(0)
+    const [currentUser] = useState<number | null>(null)
 
     const fetchReviews = async () => {
         try {
-            const res = await fetch("/api/reviews", {
+            const res = await fetch(`/api/reviews/${currentUser}`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -41,7 +42,7 @@ export default function Page() {
 
     useEffect(() => {
         fetchReviews()
-    }, [])
+    }, [currentUser])
 
     const handleSubmit = async() => {
 
@@ -90,8 +91,6 @@ export default function Page() {
                 },
                 credentials: "include"
             })
-
-            console.log('res?', res.status)
 
             if(res.ok){
                 fetchReviews()
@@ -182,7 +181,7 @@ export default function Page() {
                                         maxLength={350}
                                         onChange={(e) => {
                                             setReviewText(e.target.value)
-                                            /*setCount(e.target.value.length)*/
+                                            setCount(e.target.value.length)
                                         }}
                                         >
                                     </textarea>

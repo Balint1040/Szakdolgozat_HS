@@ -50,10 +50,8 @@ export default function Page() {
             }
 
             enqueueSnackbar("Sikeres bejelentkezés! Átirányítás...", { variant: 'success', autoHideDuration: 2000})
-            setTimeout(()=> {
-                router.push('/')
-                router.refresh()
-            }, 1500)
+            router.push('/')
+            router.refresh()
         } catch (e) {
             console.error(e)
         }
