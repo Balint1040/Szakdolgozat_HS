@@ -87,7 +87,10 @@ export default function Page() {
                     'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
                 },
                 credentials: "include",
-                body: JSON.stringify({ name: newName, email: user?.email })
+                body: JSON.stringify({ 
+                    name: newName, 
+                    email: user?.email, 
+                    profilePicture: user?.profilePicture })
             })
             const data = await res.json()
             if (data.status === 200) {
@@ -110,7 +113,10 @@ export default function Page() {
                     'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
                 },
                 credentials: "include",
-                body: JSON.stringify({ name: user?.name, email: newEmail })
+                body: JSON.stringify({ 
+                    name: user?.name, 
+                    email: newEmail, 
+                    profilePicture: user?.profilePicture })
             })
             const data = await res.json()
             if (data.status === 200) {

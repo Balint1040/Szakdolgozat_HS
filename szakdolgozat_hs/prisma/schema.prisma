@@ -70,7 +70,7 @@ model coupon {
 model review{
   id Int @id @default(autoincrement())
   userId Int
-  user user @relation(fields: [userId], references: [id])
+  user user @relation(fields: [userId], references: [id], onDelete: Cascade)
   rating Int
   text String @db.Text
   createdAt DateTime @default(now())
