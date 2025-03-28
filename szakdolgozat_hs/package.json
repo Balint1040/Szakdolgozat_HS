@@ -49,7 +49,8 @@
     "react-router-dom": "^7.1.5",
     "stripe": "^17.7.0",
     "swiper": "^11.2.1",
-    "szakdolgozat_hs": "file:"
+    "szakdolgozat_hs": "file:",
+    "vanilla-cookieconsent": "^3.1.0"
   },
   "devDependencies": {
     "@types/aos": "^3.0.7",

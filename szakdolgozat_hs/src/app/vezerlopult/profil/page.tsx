@@ -1,8 +1,6 @@
 'use client'
 
-import Cart from "@/components/Cart";
 import Payment from "@/components/Payment";
-import ProfileProductHistory from "@/components/ProfileProductHistory";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

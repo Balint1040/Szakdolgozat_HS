@@ -37,6 +37,19 @@
     margin-right: 10px;
 }
 
+#cc-main {
+    font-family: 'Anta' !important;
+    letter-spacing: .1px;
+}
+.cm__btn:not(.cm__btn--secondary), .pm__btn:not(.pm__btn--secondary) {
+    background-color: var(--orange) !important;
+    border-color: var(--orange) !important;
+}
+.cm__btn:not(.cm__btn--secondary):hover, .pm__btn:not(.pm__btn--secondary):hover {
+    background-color: var(--white) !important;
+    color: var(--gray) !important;
+}
+
 @keyframes loader {
     0% {
         transform: rotate(0deg);

@@ -1,5 +1,6 @@
 'use client'
 
+import Loading from "@/components/Loading"
 import Payment from "@/components/Payment"
 import { useEffect, useState } from "react"
 
@@ -20,6 +21,7 @@ export interface PaymentInfo {
 
 export default function Page() {
     const [payments, setPayments] = useState<PaymentInfo[]>([])
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         const fetchPaymentHistory = async () => {
@@ -34,6 +36,7 @@ export default function Page() {
                 if (data.status === 200) {
                     setPayments(data.orders)
                 }
+                setIsLoading(false)
             } catch (e) {
                 console.error(e)
             }
@@ -47,7 +50,15 @@ export default function Page() {
             <h3>Korábbi rendelések</h3>
             <hr />
             {payments.length == 0 ? (
-                <p>Még nincs fizetési előzmény</p>
+                <>
+                    {isLoading ? (
+                        <div className="w-100 h-100 d-flex justify-content-center align-items-center py-5">
+                            <div className="loader"></div><div>Betöltés...</div>
+                        </div>
+                    ) : (
+                        <p className="text-center">Még nincs fizetési előzmény</p>
+                    )}
+                </>
             ) : (
                 <div>
                     {payments.map((payment) => (
@@ -57,6 +68,5 @@ export default function Page() {
                 
             )}
         </div>
-        
     )
 }

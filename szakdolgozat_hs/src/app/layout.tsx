@@ -25,6 +25,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons"
 import AosClient from "@/components/AosClient";
 import RoleValidation from "@/components/RoleValidation";
 import BootstrapClient from "@/components/BootstrapClient";
+import CookieConsentClient from "@/components/CookieConsentClient";
 library.add(fas as IconPack, fab as IconPack)
 
 
@@ -78,6 +79,7 @@ export default async function RootLayout({
           </div>
         </nav>
         <AosClient />
+        <CookieConsentClient />
 
 
         
