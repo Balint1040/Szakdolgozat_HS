@@ -884,7 +884,7 @@ nav {
 }
 
 
-.productContainer .propertyKey, .productContainer .propertyValue {
+.propertyKey, .propertyValue {
     font-size: 19px !important;
 }
 .productContainer {
@@ -902,17 +902,17 @@ nav {
 .productSwiper {
     margin-bottom: 10px;
 }
-.productContainer .quantityWrap {
+.quantityWrap {
     height: 50px;
     background-color: var(--light);
 }
-.productContainer .quantityWrap h3 {
+.quantityWrap h3 {
     border-color: var(--white);
 }
 .productContainer .swiper-button-prev::after, .productContainer .swiper-button-next::after {
     color: var(--blue);
 }
-.productContainer .addImgButton {
+.addImgButton {
     box-shadow: none !important;
     font-size: 22px;
     background-color: transparent;
@@ -924,15 +924,15 @@ nav {
     border-radius: 30px;
     padding: 10px;
 }
-.productContainer .addImgButton:hover {
+.addImgButton:hover {
     color: var(--orange);
     background-color: var(--light);
 }
-.productContainer .addImgButton span {
+.addImgButton span {
     color: var(--orange);
     margin-left: 5px;
 }
-.productContainer label.orangeButton {
+label.orangeButton {
     width: min-content;
     margin-top: 25px;
 } 
