@@ -95,6 +95,15 @@
     transform: translateY(-3px);
 }
 
+.notFoundLink {
+    color: var(--orange);
+    font-size: 25px;
+    transition: all .3s ease-in-out;
+}
+.notFoundLink:hover {
+    color: var(--blue);
+}
+
 img, .swiper-slide, .quantityWrap a {
     -webkit-user-drag: none;
     -khtml-user-drag: none;

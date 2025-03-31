@@ -1,6 +1,10 @@
+'use client'
+
 import { CartItem } from "@/app/kosar/page";
 import { Product } from "@/app/termekek/page";
 import Link from "next/link";
+import fallbackImg from '../../public/static/imgNotFound.png'
+import { useState } from "react";
 
 
 interface CartProps {
@@ -16,6 +20,12 @@ export default function Cart({
     onQuantityChange,
     onRemove
 } : CartProps) {
+
+    const [imageError, setImageError] = useState<boolean>()
+    
+    function handleLoadingError() {
+        setImageError(true)
+    }
     
     if(!product){
         console.error('Product is missing', product)
@@ -32,7 +42,11 @@ export default function Cart({
         <div className="row cartItemRow">
             <div className="col-12 col-md-4 p-0 position-relative h-100">
                 <div className="cartImgWrap">
-                    <img src={!product.imageUrl ? product.url : product.imageUrl} alt={product.name} />
+                    {!imageError ? (
+                        <img src={!product.imageUrl ? (product.url ?? fallbackImg.src) : product.imageUrl} alt={product.name} onError={() => handleLoadingError()} />
+                    ) : (
+                        <img src={fallbackImg.src} alt={product.name} />
+                    )}
                 </div>
             </div>
             <div className="col-12 col-md-8 h-100 position-relative">

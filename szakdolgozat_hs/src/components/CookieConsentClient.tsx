@@ -52,7 +52,7 @@ const pluginConfig: CookieConsentConfig = {
         consentModal: {
           title: "Oldalunk sütiket használ!",
           description:
-            'Weboldalunk stüiket használ az alapvető funkciók biztosítása és az Ön online élményének javítása érdekében. <a href="#privacy-policy" data-cc="show-preferencesModal" class="cc__link">Beállítások kezelése</a>',
+            'Weboldalunk sütiket használ az alapvető funkciók biztosítása és az Ön online élményének javítása érdekében. <a href="#privacy-policy" data-cc="show-preferencesModal" class="cc__link">Beállítások kezelése</a>',
           acceptAllBtn: "Elfogadás",
           acceptNecessaryBtn: "Elutasítás",
           showPreferencesBtn: "Beállítások kezelése",

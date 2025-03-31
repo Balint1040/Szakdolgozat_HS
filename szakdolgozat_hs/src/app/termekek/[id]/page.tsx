@@ -69,7 +69,7 @@ export default function Page({
         url: fallbackImg.src
     }]
 
-    if (product.imageUrls === undefined || product.imageUrls.length === 1) {
+    if (product.imageUrls === undefined || product.imageUrls.length === 0 || product.imageUrls[0].url === null) {
         product.imageUrls = fb
     }
 
