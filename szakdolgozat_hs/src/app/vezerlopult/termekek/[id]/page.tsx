@@ -313,18 +313,18 @@ export default function Page({
                                                 className="btn btn-danger btn-sm"
                                                 type='button'
                                                 onClick={() => {
-                                                    const properties = Object.entries(product.properties)
-                                                    const filteredProperties = properties.filter((_, i) => i !== index)
-                                                    const updatedProperties = filteredProperties.reduce((acc, [key, value]) => {
-                                                        acc[key] = value
-                                                        return acc
-                                                    }, {} as Record<string, string>)
-
-                                                    setProduct(prevState => prevState ? ({
-                                                        ...prevState,
-                                                        properties: updatedProperties
-                                                    }) : null)
+                                                    setProduct(prevState => {
+                                                        if (!prevState) return null
+                                                        const updatedProperties = Object.fromEntries(
+                                                            Object.entries(prevState.properties).filter((_, i) => i !== index)
+                                                        )
+                                                        return {
+                                                            ...prevState,
+                                                            properties: updatedProperties
+                                                        }
+                                                    })
                                                 }}
+                                                
                                             >
                                                 <FontAwesomeIcon icon={faTrash as IconProp} />
                                             </button>
@@ -336,16 +336,10 @@ export default function Page({
                                 className="addImgButton"
                                 type='button'
                                 onClick={() => {
-                                    setProduct(prevState => {
-                                        if (!prevState) return null
-                                        return {
-                                            ...prevState,
-                                            properties: {
-                                                ...prevState.properties,
-                                                "": ""
-                                            }
-                                        }
-                                    })
+                                    setProduct(prevState => prevState ? {
+                                        ...prevState,
+                                        properties: { ...prevState.properties, "": "" }
+                                    } : null)
                                 }}
                             >
                                 Új tulajdonság hozzáadása

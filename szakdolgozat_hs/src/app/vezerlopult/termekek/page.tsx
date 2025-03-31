@@ -72,7 +72,7 @@ export default function Page() {
                 <h1 className="mb-3 mb-sm-0">Termékek</h1>
                 <button
                     className="orangeButton"
-                    onClick={() => router.push('/vezerlopult/termekek/uj')}
+                    onClick={() => router.push('/vezerlopult/termekek/hozzaadas')}
                 >
                     Termék hozzáadása
                 </button>
