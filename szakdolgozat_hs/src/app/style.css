@@ -1638,6 +1638,12 @@ input[type=number] {
     color: var(--danger);
     background-color: var(--white);
 }
+.cartItemRow .quantityWrap {
+    background-color: var(--white);
+}
+.cartItemRow .quantityWrap h3 {
+    border-color: var(--light);
+}
 .cartBottomRow {
     font-size: 22px;
 }

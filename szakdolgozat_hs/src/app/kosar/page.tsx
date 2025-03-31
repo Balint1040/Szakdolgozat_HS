@@ -234,7 +234,7 @@ export default function Page() {
                                 <div className="text-center text-lg-end">
                                     Összesen: <span className="text-Orange">{calculateTotal().toFixed().replace(/(\d)(?=(\d{3})+$)/g, "$1.")}</span>,-
                                 </div>
-                                <button onClick={handleCheckout} className={`blueButton ${(cartItems.length === 0 ? "disabled" : "")}`}>Fizetés</button>
+                                <button onClick={handleCheckout} className={`blueButton mt-3 ${(cartItems.length === 0 ? "disabled" : "")}`}>Fizetés</button>
                             </div>
                         </div>
                         {/*<BlueButton name="Fizetés" href="#" variant="discover" />*/}

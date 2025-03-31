@@ -67,9 +67,9 @@ export default function Page() {
 
 
     return (
-        <div className="container-fluid position-relative px-0 productContainer">
-            <div className="d-flex justify-content-between">
-                <h1 className="mb-3 mb-sm-0">Termékek</h1>
+        <div className="container-fluid position-relative px-0 pt-2 productContainer">
+            <div className="d-flex justify-content-between align-items-center">
+                <h3 className="mb-3 mb-sm-0">Termékek</h3>
                 <button
                     className="orangeButton"
                     onClick={() => router.push('/vezerlopult/termekek/hozzaadas')}
