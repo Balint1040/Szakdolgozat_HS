@@ -17,24 +17,32 @@ export default function Page() {
     name: "",
     price: 0,
     manufacturer: "",
-    categoryId: "",
+    categoryId: "1",
     properties: {} as Record<string, string>,
-    imageUrls: [{ url: "" }],
+    imageUrls: [""]
   })
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    try {
-      const validImages = newProduct.imageUrls
-      .filter(img => img.url) 
-      .map(img => img.url)
 
-      const validProperties = Object.entries(newProduct.properties).reduce((acc, [key, value]) => {
-        if (key.trim() && value.trim()) {
-          acc[key] = value
-        }
-        return acc
-      }, {} as Record<string, string>)
+    if(!newProduct.name){
+      enqueueSnackbar("A termék neve kötelező", { variant: "error", autoHideDuration: 2000 })
+      return
+    }
+    if(!newProduct.price){
+      enqueueSnackbar("A termék árának megadása kötelező", { variant: "error", autoHideDuration: 2000 })
+      return
+    }
+    if(!newProduct.manufacturer){
+      enqueueSnackbar("A gyártó megadása kötelező", { variant: "error", autoHideDuration: 2000 })
+      return
+    }
+
+    try {
+      const validImages = newProduct.imageUrls.filter(url => url && url !==fallbackImg.src) 
+
+      const validProperties = Object.fromEntries(Object.entries(newProduct.properties)
+      .filter(([key, value]) => key.trim() && value.trim()))
 
       const res = await fetch('/api/products', {
         method: "POST",
@@ -57,7 +65,7 @@ export default function Page() {
           manufacturer: "",
           categoryId: "",
           properties: {},
-          imageUrls: [{ url: "" }],
+          imageUrls: [""],
         })
       } 
     } catch (e) {
@@ -74,11 +82,6 @@ export default function Page() {
     4: "Memória"
   }
 
-  const fb = [{
-    url: fallbackImg.src
-  }]
-
-
   return (
     <>
       <div>
@@ -90,33 +93,43 @@ export default function Page() {
           </div>
           <div className="row justify-content-center justify-content-xxl-start">
             <div className="col-12 col-sm-10 col-md-8 col-lg-12 col-xxl-6 order-2 order-xxl-1 mt-5 mt-xxl-0">
-              <ProductSwiper images={[{ url: fallbackImg.src }]} />
+              <ProductSwiper images={newProduct.imageUrls.map(url => ({
+                url: url || fallbackImg.src
+              }))} />
               <div className="mb-3">
                 <label className="form-label">Képek kezelése:</label>
-                {newProduct.imageUrls.map((image, index) => (
+                {newProduct.imageUrls.map((url, index) => (
                   <div key={index} className="d-flex align-items-center mb-2">
                     <img
-                      src={image.url || fallbackImg.src}
+                      src={url || fallbackImg.src}
                       style={{ width: '50px', height: '50px', objectFit: 'contain', marginRight: '10px' }}
                     />
                     <input
                       type="text"
                       className="form-control"
-                      value={image.url != fallbackImg.src ? image.url : ""}
+                      value={url !== fallbackImg.src ? url : ""}
                       onChange={(e) => {
-                        const updatedImageUrls = [...newProduct.imageUrls]
-                        updatedImageUrls[index] = { url: e.target.value }
-                        setNewProduct({ ...newProduct, imageUrls: updatedImageUrls })
+                        const newUrl = e.target.value
+                        setNewProduct(prev => {
+                          if (prev.imageUrls.includes(newUrl)) {
+                            enqueueSnackbar("Ez a kép már hozzá lett adva", { variant: "error", autoHideDuration: 2000 })
+                            return prev
+                          }
+                          const updatedImageUrls = [...prev.imageUrls]
+                          updatedImageUrls[index] = newUrl
+                          return { ...prev, imageUrls: updatedImageUrls }
+                        })
                       }}
                       placeholder="Kép URL"
                     />
                     <button
                       type="button"
                       className="btn btn-danger btn-sm ms-2"
-                      onClick={() => {
-                        const newImageUrls = newProduct.imageUrls.filter((_, i) => i !== index)
-                        setNewProduct(prevState => ({ ...prevState, imageUrls: newImageUrls }))
-                      }}
+                      onClick={() => 
+                        setNewProduct(prev => ({
+                          ...prev, imageUrls: prev.imageUrls.filter((_, i) => i !== index)
+                        }))
+                      }
                     >
                       <FontAwesomeIcon icon={faTrash as IconProp} />
                     </button>
@@ -125,9 +138,9 @@ export default function Page() {
                 <button
                   className="addImgButton"
                   onClick={() => {
-                    setNewProduct(prevState => ({
-                      ...prevState,
-                      imageUrls: [...prevState.imageUrls, { url: fallbackImg.src }]
+                    setNewProduct(prev => ({
+                      ...prev,
+                      imageUrls: [...prev.imageUrls, ""]
                     }))
                   }}
                 >
@@ -231,9 +244,9 @@ export default function Page() {
                     type="button"
                     className="addImgButton"
                     onClick={(e) => {
-                      setNewProduct((prevState) => ({
-                        ...prevState,
-                        properties: { ...prevState.properties, "": "" },
+                      setNewProduct((prev) => ({
+                        ...prev,
+                        properties: { ...prev.properties, "": "" },
                       }))
                     }}
                 >
@@ -246,6 +259,7 @@ export default function Page() {
                     id="categoryId"
                     name="categoryId"
                     className="form-control"
+                    value ={newProduct.categoryId}
                     onChange={(e) => setNewProduct({ ...newProduct, categoryId: e.target.value })}
                   >
                     {Object.entries(categoryOptions).map(([id, name]) => (
