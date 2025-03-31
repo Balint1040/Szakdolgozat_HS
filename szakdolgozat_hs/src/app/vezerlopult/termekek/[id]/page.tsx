@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation'
 import { enqueueSnackbar } from 'notistack'
 import React, { useEffect, useState } from 'react'
 import fallbackImg from '../../../../../public/static/imgNotFound.png'
+import NotFound from '@/app/not-found'
 
 interface Product {
     id: number,
@@ -44,7 +45,7 @@ export default function Page({
                     'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
                 }
             })
-            const data = await res.json()
+            const data = await res.json()   
             if (data.length > 0) {
                 const productData = {
                     id: data[0].id,
@@ -163,7 +164,7 @@ export default function Page({
     }
 
     if (!product) {
-        return <Loading />
+        return <NotFound />
     }
 
     const fb = [{

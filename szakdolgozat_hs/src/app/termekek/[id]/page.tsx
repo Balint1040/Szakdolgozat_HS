@@ -12,47 +12,67 @@ import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { Product } from '../page'
 import fallbackImg from '../../../../public/static/imgNotFound.png'
+import NotFound from '@/app/not-found'
 
 
 export default function Page({
     params
-} : {
+}: {
     params: Promise<{ id: string }>
 }) {
     const router = useRouter()
     const { id } = React.use(params)
     const [product, setProduct] = useState<Product | null>(null)
     const [quantity, setQuantity] = useState<Quantity>(1 as Quantity)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const fetchProduct = async () => {
-            const res = await fetch(`/api/products/${id}`, {
-                headers: {
-                    'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
+            try {
+                const res = await fetch(`/api/products/${id}`, {
+                    headers: {
+                        'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || ""
+                    }
+                })
+
+                if (!res.ok) {
+                    setProduct(null)
+                    return
                 }
-            })
-            const data = await res.json()
-            if (data.length > 0) {
-                const productData = {
-                    id: Number(id),
-                    name: data[0].name,
-                    price: data[0].price,
-                    manufacturer: data[0].manufacturer,
-                    properties: data[0].properties,
-                    categoryId: data[0].categoryId,
-                    imageUrls: data.map((item: { url: string }) => ({ url: item.url })),
+                const data = await res.json()
+                if (data.length > 0) {
+                    const productData = {
+                        id: Number(id),
+                        name: data[0].name,
+                        price: data[0].price,
+                        manufacturer: data[0].manufacturer,
+                        properties: data[0].properties,
+                        categoryId: data[0].categoryId,
+                        imageUrls: data.map((item: { url: string }) => ({ url: item.url })),
+                    }
+                    setProduct(productData)
+                } else {
+                    setProduct(null)
                 }
-                setProduct(productData)
+            } catch (e) {
+                console.error(e)
+                setProduct(null)
+            } finally {
+                setLoading(false)
             }
         }
 
         fetchProduct()
     }, [id])
 
-    if (!product) {
-        return <Loading/>
+
+    if (loading) {
+        return <Loading />
     }
 
+    if (!product) {
+        return <NotFound />
+    }
     /*
     {product.imageUrls.map((image, index) => (
         <img key={index} src={image.url} alt={`Product Image ${index + 1}`} />
@@ -95,16 +115,16 @@ export default function Page({
                         <h3 className='my-3'>Ár: <span className="text-Blue">{product.price.toFixed(0).replace(/(\d)(?=(\d{3})+$)/g, "$1.")}</span> <span className="text-Orange">Ft</span></h3>
                         <div className="d-flex justify-content-between align-items-center my-3">
                             <div className="quantityWrap">
-                                <a 
+                                <a
                                     className={`pointer ${quantityClass}`}
                                     onClick={() => quantity > 1 && setQuantity(q => (q - 1) as Quantity)}
                                 >
                                     -
                                 </a>
                                 <h3>{quantity}</h3>
-                                <a 
+                                <a
                                     className="pounter"
-                                    onClick={() => setQuantity(q => (q + 1) as Quantity)}    
+                                    onClick={() => setQuantity(q => (q + 1) as Quantity)}
                                 >
                                     +
                                 </a>
@@ -122,11 +142,11 @@ export default function Page({
                                                 <span className="propertyKey">{key}:</span>
                                                 <span className="propertyValue">{value}</span>
                                             </div>
-                                        );
+                                        )
                                     }
                                 )}
-                                <a 
-                                    className="productMorePropery d-lg-none" 
+                                <a
+                                    className="productMorePropery d-lg-none"
                                     id='productMorePropery'
                                     onClick={() => {
                                         const el = document.getElementById("propertyWrap")
@@ -154,5 +174,5 @@ export default function Page({
                 </div>
             </div>
         </>
-    );
+    )
 }
