@@ -6,15 +6,15 @@ import bcrypt from 'bcryptjs'
 const prisma = new PrismaClient()
 
 async function main() {
-  const productData = fs.readFileSync('./prisma/data/products.csv')
-  const imageData = fs.readFileSync('./prisma/data/imageurl.csv')
+  const productSeed = fs.readFileSync('./prisma/data/products.csv')
+  const imageSeed = fs.readFileSync('./prisma/data/imageurl.csv')
 
-  const products = parse(productData, {
+  const products = parse(productSeed, {
     columns: true,
     delimiter: ';' 
   })
 
-  const images = parse(imageData, {
+  const images = parse(imageSeed, {
     columns: true,
     delimiter: ';' 
   })

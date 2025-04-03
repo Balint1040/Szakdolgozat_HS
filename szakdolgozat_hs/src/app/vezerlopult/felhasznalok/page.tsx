@@ -47,8 +47,6 @@ export default function Page() {
             if (res.ok) {
                 setUsers(users.filter(user => user.id !== id))
                 enqueueSnackbar('Felhasználó sikeresen törölve', { variant: "success", autoHideDuration: 2000 })
-                const closeButton = document.querySelector(`#deleteModal${id} .btn-close`)
-                closeButton?.dispatchEvent(new Event('click'))
             }
         } catch (e) {
             console.error(e)
@@ -114,7 +112,7 @@ export default function Page() {
                                 </div>
                                 <div className="modal-footer">
                                     <button type="button" className="blueButton" data-bs-dismiss="modal">Mégsem</button>
-                                    <button type="button" className="orangeButton" onClick={() => handleDelete(user.id)}>Törlés</button>
+                                    <button type="button" className="orangeButton" data-bs-dismiss="modal" onClick={() => handleDelete(user.id)}>Törlés</button>
                                 </div>
                             </div>
                         </div>

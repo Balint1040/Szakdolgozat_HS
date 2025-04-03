@@ -92,8 +92,6 @@ export default function CouponsPage() {
             if (res.ok) {
                 fetchCoupons()
                 enqueueSnackbar("Kupon törölve", { variant: "success", autoHideDuration: 2000 })
-                const closeButton = document.querySelector(`#deleteModal${code} .btn-close`)
-                closeButton?.dispatchEvent(new Event('click'))
             }
         } catch (e) {
             console.error(e)
@@ -224,7 +222,7 @@ export default function CouponsPage() {
                                     </div>
                                     <div className="modal-footer">
                                         <button type='button' className='blueButton' data-bs-dismiss="modal">Mégsem</button>
-                                        <button type='button' className='orangeButton' onClick={() => handleDelete(coupon.code)}>Törlés</button>
+                                        <button type='button' className='orangeButton' data-bs-dismiss="modal" onClick={() => handleDelete(coupon.code)}>Törlés</button>
                                     </div>
                                 </div>
                             </div>

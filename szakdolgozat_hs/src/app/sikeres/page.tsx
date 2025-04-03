@@ -13,8 +13,8 @@ export default function Page() {
     useEffect(() => {
         async function clearCart() {
             try {
-                const res = await fetch('/api/cartItems', {
-                    method: 'PATCH',
+                const res = await fetch('/api/cartItems/clear', {
+                    method: 'DELETE',
                     headers: {
                         'X-Api-Key': process.env.NEXT_PUBLIC_API_KEY || "",
                         'Content-Type': 'application/json'

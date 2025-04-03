@@ -59,25 +59,3 @@ export async function DELETE(req: Request) {
         return NextResponse.json({ error: 'Hiba a termék törlésekor' }, { status: 500 })
     }
 }
-
-
-export async function PATCH(req: NextRequest) {
-    try {
-        const token = req.cookies.get('auth_token')?.value
-        if(!token) {
-            return NextResponse.json({ status: 401 })
-        }
-
-        const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { userId: number }
-
-        await (await pool).execute(
-            'DELETE ci FROM cartItem ci JOIN cart c ON ci.cartId = c.id WHERE c.userId = ?',
-            [decoded.userId]
-        )
-
-        return NextResponse.json({ message: 'Kosár kiürítve!' })
-    } catch (e) {
-        console.error(e)
-        return NextResponse.json({ status: 500 })
-    }
-}

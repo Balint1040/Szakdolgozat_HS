@@ -44,7 +44,7 @@ export async function PUT(
             [role, id]
         )
 
-        return NextResponse.json({ message: 'Sikeres módosítás' })
+        return NextResponse.json({ message: 'Sikeres módosítás' }, { status: 200 })
     } catch (e) {
         console.error(e)
         return NextResponse.json({ status: 500 })

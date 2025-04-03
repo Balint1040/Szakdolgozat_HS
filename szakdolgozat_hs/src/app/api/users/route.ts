@@ -1,5 +1,4 @@
 import { NextResponse, NextRequest } from 'next/server'
-//import { roleValidationMiddleware } from '@/middleware/roleValidationMiddleware'
 import { pool } from '@/_lib/db'
 import jwt from 'jsonwebtoken'
 
@@ -16,11 +15,7 @@ export async function GET(req: NextRequest) {
     const [rows] = await (await pool).execute('SELECT id, name, email, role, profilePicture FROM user WHERE id = ?', [decoded.userId])
 
 
-    const user = (rows as any[])[0]
-
-    if (!user) {
-      return NextResponse.json({ message: "Nem található felhasználó", status: 404 })
-    }
+    const user = rows[0]
 
     return NextResponse.json({
       name: user.name,

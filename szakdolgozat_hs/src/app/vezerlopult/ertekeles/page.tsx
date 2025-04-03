@@ -15,7 +15,7 @@ export default function Page() {
         require('bootstrap/dist/js/bootstrap.bundle.min.js')
     }, [])
 
-    const [activeStars, setActiveStars] = useState<number>(0); // Tracks how many stars are active
+    const [activeStars, setActiveStars] = useState<number>(0)
     const [reviews, setReviews] = useState<IReviewCard[]>([])
     const [reviewText, setReviewText] = useState<string>("")
     const [count, setCount] = useState(0)
@@ -104,12 +104,12 @@ export default function Page() {
 
 
     const handleStar = (event: React.MouseEvent) => {
-        const clickedElement = event.currentTarget as HTMLElement;
-        const id = clickedElement.id; // This gets the ID of the clicked star wrapper
-        const starNumber = parseInt(id.replace("starWrap-", ""), 10); // Extract the number from the ID
+        const clickedElement = event.currentTarget as HTMLElement
+        const id = clickedElement.id
+        const starNumber = parseInt(id.replace("starWrap-", ""), 10)
 
-        // Set the active stars based on the clicked star
-        setActiveStars(starNumber);
+
+        setActiveStars(starNumber)
     };
 
     return (
@@ -191,15 +191,15 @@ export default function Page() {
                                 <div className="d-flex w-100 justify-content-center mt-5 fs-3">
                                     {[...Array(5).keys()].map((i) => (
                                         <span
-                                            key={"star-" + (i + 1)} // The key needs to be unique
-                                            id={"starWrap-" + (i + 1)} // This is the wrapper ID
-                                            className={`star-wrapper ${i + 1 <= activeStars ? "activeStar" : ""}`} // Apply activeStar to active stars
-                                            onClick={handleStar} // Click handler
+                                            key={"star-" + (i + 1)}
+                                            id={"starWrap-" + (i + 1)}
+                                            className={`star-wrapper ${i + 1 <= activeStars ? "activeStar" : ""}`}
+                                            onClick={handleStar}
                                         >
                                             <FontAwesomeIcon
                                                 icon={faStar as IconProp}
-                                                className={`star ${i + 1 <= activeStars ? "activeStar" : ""}`} // Apply activeStar to the icon
-                                                id={"star-" + (i + 1)} // The star ID
+                                                className={`star ${i + 1 <= activeStars ? "activeStar" : ""}`}
+                                                id={"star-" + (i + 1)}
                                             />
                                         </span>
                                     ))}

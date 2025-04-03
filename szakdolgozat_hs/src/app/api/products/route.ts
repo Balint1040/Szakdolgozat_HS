@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import {ResultSetHeader} from 'mysql2/promise'
 import { pool } from '@/_lib/db'
-//import { roleValidationMiddleware } from '@/middleware/roleValidationMiddleware'
 
 
 export async function GET(request: NextRequest) {
@@ -23,7 +22,7 @@ export async function GET(request: NextRequest) {
       AND i.url = (SELECT MIN(url) FROM ImageUrl WHERE productId = p.id) 
       WHERE 1=1
     `
-    const params: any[] = []
+    const params: (string | number)[] = []
 
     if (minPrice) {
       query += ` AND p.price >= ?`
@@ -53,7 +52,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(rows)
   } catch (e) {
     console.error(e)
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
+    return NextResponse.json({ error: 'Sikertelen kérés' }, { status: 500 })
   }
 }
 
@@ -75,7 +74,7 @@ export async function POST(request: Request) {
       )
     }
 
-    return NextResponse.json({ message: 'added' }, { status: 201 })
+    return NextResponse.json({ message: 'Sikeres hozzáadás' }, { status: 201 })
   } catch (e) {
     console.error(e)
   }
@@ -89,7 +88,7 @@ export async function DELETE(req: Request) {
 
     await (await pool).execute('DELETE FROM product WHERE id = ?', [id])
 
-    return NextResponse.json({ message: 'deleted' })
+    return NextResponse.json({ status: 204 })
   } catch (e) {
     console.error(e)
   }

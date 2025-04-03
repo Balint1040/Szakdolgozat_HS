@@ -60,6 +60,6 @@ export async function PUT(request: NextRequest, context: { params: { id?: string
       return NextResponse.json({ message: 'updated' }, { status: 200 })
     } catch (e) {
       console.error(e)
-      return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
+      return NextResponse.json({ error: 'Termékmódosítás sikertelen' }, { status: 500 })
     }
   }

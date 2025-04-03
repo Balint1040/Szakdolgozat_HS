@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
         )
       }
     
-    return NextResponse.json({message: "Fizetés sikeres", status: 200})
+    return NextResponse.json({status: 200})
     
   } catch (e) {
     console.error(e)

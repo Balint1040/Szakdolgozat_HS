@@ -58,7 +58,7 @@ export default function Page({
             })
 
             if (!res.ok) {
-                enqueueSnackbar('Nem sikerült végrahajtani a folyamatot', { variant: "error" })
+                enqueueSnackbar('Nem sikerült végrahajtani a folyamatot', { variant: "error", autoHideDuration: 2000 })
             }
 
             enqueueSnackbar('Sikeres módosítás', { variant: "success", autoHideDuration: 2000 })

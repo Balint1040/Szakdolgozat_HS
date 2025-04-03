@@ -27,7 +27,7 @@ export default function Page() {
     const [products, setProducts] = useState<Product[]>([])
     const [displayedProducts, setDisplayedProducts] = useState<Product[]>([])
     const [loading, setLoading] = useState(true)
-    const [hasMore, setHasMore] = useState(true)
+    //const [hasMore, setHasMore] = useState(true)
     const [selectedSort, setSelectedSort] = useState("default")
     const [currentPage, setCurrentPage] = useState(1)
     const [itemsPerPage] = useState(30)

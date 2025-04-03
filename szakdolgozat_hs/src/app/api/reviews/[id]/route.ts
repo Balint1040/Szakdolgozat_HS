@@ -24,9 +24,6 @@ export async function GET(req: NextRequest) {
             ORDER BY review.createdAt DESC`, 
             [decoded.userId])
 
-        if (!rows) {
-            return NextResponse.json({ message: "Nincs vélemény", status: 404 })
-        }
         return NextResponse.json(rows)
     } catch (e) {
         console.error(e)
