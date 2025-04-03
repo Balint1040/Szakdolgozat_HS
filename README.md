@@ -1,32 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Telepítés
 
-## Getting Started
+### Követelmények
+- **Node.js verzió**: minimum 20.17.0  
+- **MySQL verzió**: 8.0.30  
 
-First, run the development server:
+### Böngészőkénti támogatottság
+- Chrome 60+  
+- Firefox 60+  
+- Safari 12+  
+- Edge 79+  
+- Internet Explorer nem támogatott  
 
+### Klónozd a repót
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Balint1040/Szakdolgozat_HS.git
+cd (projekt elérési útja)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Telepítsd a függőségeket
+Fortawesomeból legacy verziót használunk
+```bash
+npm i --legacy-peer-deps
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Állítsd be az adatbázist
+Hozd létre a hsmarket nevezetű adatbázis táblát.
+Futtasd az adatbázis migrációkat és a seedert:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run db:setup
+```
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
+Indítsd el a szervert
+```bash
+npm run dev
+```
