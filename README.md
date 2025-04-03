@@ -23,9 +23,9 @@ Fortawesomeból legacy verziót használunk
 npm i --legacy-peer-deps
 ```
 
-Állítsd be az adatbázist
-Hozd létre a hsmarket nevezetű adatbázis táblát.
-Futtasd az adatbázis migrációkat és a seedert:
+- Állítsd be az adatbázist  
+- Hozd létre a hsmarket nevezetű adatbázis táblát.  
+- Futtasd az adatbázis migrációkat és a seedert:  
 
 ```bash
 npm run db:setup
